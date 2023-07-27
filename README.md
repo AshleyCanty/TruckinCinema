@@ -8,7 +8,7 @@ _Delsea Drive-in Theater is not associated with this application. This project f
 ### Wireframes
 I became acquainted with Figma after taking a UI/UX course on Coursera. It was part of Meta's iOS Developer Professional Certificate program, which I'm still in the process of completing. I spent 1 week on the wireframe and revamped the design twice before deciding to use AMC's layout along with [this movie app design](https://ui8.net/enver-studio-ffdda4/products/cinemax---movie-apps-ui-kits) that I found on ui8.com. I really like Figma and found the wireframing process to be quite fun. I was really excited to start bringing it all to life as soon as possible. 
 
-[Click here to view wireframes](https://www.figma.com/file/4liFti5eWpvnhMLRl7qiRj/Truckin'-Cinema?type=design&node-id=0%3A1&mode=design&t=E0pKTa2AQP9wU2Dh-1)
+[Click here to see the wireframes](https://www.figma.com/file/4liFti5eWpvnhMLRl7qiRj/Truckin'-Cinema?type=design&node-id=0%3A1&mode=design&t=E0pKTa2AQP9wU2Dh-1)
 
 ----------------------
 
