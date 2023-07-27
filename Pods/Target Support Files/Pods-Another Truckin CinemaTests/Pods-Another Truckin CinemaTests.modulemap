@@ -1,0 +1,6 @@
+framework module Pods_Another_Truckin_CinemaTests {
+  umbrella header "Pods-Another Truckin CinemaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

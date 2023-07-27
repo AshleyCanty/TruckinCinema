@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "poster-spiderman.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

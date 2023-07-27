@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "food-drinks-blur-img.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
