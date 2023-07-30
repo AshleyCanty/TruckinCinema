@@ -244,7 +244,6 @@
 				2461ED9B2A701C73007916A3 /* MovieDetailsTrailerTopView.swift */,
 				2461ED9D2A70233E007916A3 /* MovieDetailsTitleDurationView.swift */,
 				2461EDA02A7092B4007916A3 /* SeperatorView.swift */,
-				2461EDA22A709CBA007916A3 /* CustomSegmentedControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +298,8 @@
 			children = (
 				24771A7B2A5659FB00FB33AF /* AppColors.swift */,
 				2487F78A2A5AFD5300FD1517 /* AppFont.swift */,
+				2457A9002A593960009A9C8A /* BaseViewController.swift */,
+				2461EDA22A709CBA007916A3 /* CustomSegmentedControl.swift */,
 				24FC6D422A68315F00461AA8 /* AppLabels */,
 				24FC6D3D2A6830EA00461AA8 /* AppButtons */,
 			);
@@ -352,7 +353,6 @@
 		24771A7A2A5659D000FB33AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2457A9002A593960009A9C8A /* BaseViewController.swift */,
 				2466C7732A579437006AED5F /* UIColor+extensions.swift */,
 				2487F78C2A5AFDED00FD1517 /* UIFont+extensions.swift */,
 				2487F7992A5BC90200FD1517 /* UIImage+extensions.swift */,

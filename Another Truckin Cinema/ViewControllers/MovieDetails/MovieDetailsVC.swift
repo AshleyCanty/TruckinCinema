@@ -61,7 +61,7 @@ class MovieDetailsVC: BaseViewController {
         static let RSVPButtonHeight: CGFloat = 50
         static let SegmentedControlBackgroundColor: UIColor = AppColors.BackgroundMain
         static let SegmentedControlTintColor: UIColor = .yellow
-        static let SegmentedControlTopMargin: CGFloat = 14
+        static let SegmentedControlTopMargin: CGFloat = 0
     }
     /// movieId string
     fileprivate var movieId: Int? {
@@ -78,14 +78,11 @@ class MovieDetailsVC: BaseViewController {
     /// Title details view height anchor
     fileprivate var titleDetailViewHeightAnchor: NSLayoutConstraint?
     ///  segmented control
-    fileprivate lazy var segmentedControl: UISegmentedControl = {
-        let sc = UISegmentedControl(items: [SegmentedControlTitle.Showtimes.getString(),
+    fileprivate lazy var segmentedControl: CustomSegmentedControl = {
+        let sc = CustomSegmentedControl(items: [SegmentedControlTitle.Showtimes.getString(),
                                             SegmentedControlTitle.Details.getString(),
                                             SegmentedControlTitle.Videos.getString()])
         sc.selectedSegmentIndex = 0
-        sc.backgroundColor = Style.SegmentedControlBackgroundColor
-        sc.tintColor = Style.SegmentedControlTintColor
-        sc.selectedSegmentTintColor = .orange
         return sc
     }()
     /// rsvp button
@@ -112,7 +109,6 @@ class MovieDetailsVC: BaseViewController {
         AppNavigation.shared.setNavBarToTranslucent()
         loadBackDropImage()
         segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
-        segmentedControl.setDividerImage(nil, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: UIBarMetrics.default)
     }
     
     override func viewDidLayoutSubviews() {
@@ -127,7 +123,7 @@ class MovieDetailsVC: BaseViewController {
     }
     
     @objc func selectedSegment() {
-        segmentedControl.addBorderForSelectedSegment()
+//        segmentedControl.addBorderForSelectedSegment()
         print()
         
     }
@@ -151,15 +147,17 @@ class MovieDetailsVC: BaseViewController {
         titleDetailView.disableTranslatesAutoresizingMaskIntoContraints()
         titleDetailView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         titleDetailView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
+        /// Updated in viewDidLayoutSubviews()
         titleDetailViewTopAnchor = titleDetailView.topAnchor.constraint(equalTo: trailerHeader.bottomAnchor, constant: 0)
         titleDetailViewTopAnchor?.isActive = true
         titleDetailViewHeightAnchor = titleDetailView.heightAnchor.constraint(equalToConstant: 0)
         titleDetailViewHeightAnchor?.isActive = true
 
         segmentedControl.disableTranslatesAutoresizingMaskIntoContraints()
+        segmentedControl.heightAnchor.tc_constrain(equalToConstant: 45)
         segmentedControl.topAnchor.tc_constrain(equalTo: titleDetailView.bottomAnchor, constant: Style.SegmentedControlTopMargin)
-        segmentedControl.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
-        segmentedControl.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
+        segmentedControl.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
+        segmentedControl.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         
         rsvpButton.disableTranslatesAutoresizingMaskIntoContraints()
         rsvpButton.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight)

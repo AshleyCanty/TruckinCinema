@@ -38,6 +38,12 @@ public struct AppColors {
     /// MovieDetails
     static let MovieDetailsTextColorPrimary: UIColor = UIColor.white
     static let MovieDetailsTextColorSecondary: UIColor = UIColor(hex: "A6A6A6")
+    
+    /// Custom Segmented Control
+    /// /// MovieDetails
+    static let SegmentedControlTextColor: UIColor = UIColor(hex: "A6A6A6")
+    static let SegmentedControlSelectedTextColor: UIColor = .white
+    static let SegmentedControlHighlightedBgColor: UIColor = UIColor(hex: "333333")
 }
 
 struct AppTheme {
