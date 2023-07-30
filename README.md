@@ -1,4 +1,6 @@
-# TruckinCinema _(in progress)_
+
+
+# TruckinCinema _(in progress - building UI with dummy data first)_
 Another Truckin' Cinema is proud to present their mobile app to the world. Drive-in theater lovers will now be able to RSVP for movies, order food for delivery or pickup, and join the ATC membership for weekly promotional benefits!
 
 _Delsea Drive-in Theater is not associated with this application. This project for the sole purpose of demonstrating my skills as a developer._
