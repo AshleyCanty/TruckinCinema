@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
-    
+    /// Style struct
     fileprivate struct Style {
         static let MenuButtonSize: CGFloat = 24
         static let NavigationTitleLeftRightMargin: CGFloat = 32
@@ -29,10 +29,7 @@ class BaseViewController: UIViewController {
         return menuButton
     }()
     
-    public var statusBarHeight: CGFloat {
-        get { return view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 44}
-    }
-    
+    /// Used to set Navigation Title
     static var source: String = ""
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -74,7 +71,7 @@ class BaseViewController: UIViewController {
         if let tabTitle = TabBarItemTitle(rawValue: title) {
             applyMainNavigationBarStyle(title: tabTitle)
         } else {
-            /// handles other viewcontrollers that are NOT the 4 main tabBar ViewControllers
+            /// Refactor. handles other viewcontrollers that are NOT the 4 main tabBar ViewControllers
             ///
         }
     }

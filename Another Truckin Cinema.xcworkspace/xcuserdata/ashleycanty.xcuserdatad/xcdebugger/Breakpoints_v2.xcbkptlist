@@ -8,15 +8,127 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AF8EFFB0-4E4A-4800-AD9F-99B56CB090F3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "selectedSegment()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF8EFFB0-4E4A-4800-AD9F-99B56CB090F3 - b77525a2cf804f4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.MovieDetailsVC.viewDidLayoutSubviews() -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "AF8EFFB0-4E4A-4800-AD9F-99B56CB090F3 - 27f6953549f90ca6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.MovieDetailsVC.selectedSegment() -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C17723B-E506-449F-970A-32519DCBCDB4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/Views/CustomSegmentedControl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "CustomSegmentedControl"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DFD478E-7D2B-43B5-B2A4-07AA749190AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/Views/CustomSegmentedControl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "configure(buttonTitles:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0DFD478E-7D2B-43B5-B2A4-07AA749190AA - f608a293c64467c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.CustomSegmentedControl.updateSelectorViewPosition() -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/Views/CustomSegmentedControl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "0DFD478E-7D2B-43B5-B2A4-07AA749190AA - 26f7d87daf6ddc0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.CustomSegmentedControl.configure(buttonTitles: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/Views/CustomSegmentedControl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9A7F60A-63FF-479F-9E11-348C73B5ED98"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/Views/CustomSegmentedControl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "selectedSegment()"
+            landmarkName = "configure(buttonTitles:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
