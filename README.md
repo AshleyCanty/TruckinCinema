@@ -14,7 +14,7 @@ I became acquainted with Figma after taking a UI/UX course on Coursera. It was p
 
 ----------------------
 
-### Flow Charts and UML Diagram
+### Flow Charts and UML Diagram _(subject to change)_
 
   * Login Flow -> [PDF](https://drive.google.com/file/d/1Arge3kHS7mNSa68OHg1ZKrE_qDJvdXSR/view?usp=share_link)
   * Registration Flow -> [PDF](https://drive.google.com/file/d/13B4611rEZcatBUMfMtnUcZKH6h21Cvnv/view?usp=share_link)
