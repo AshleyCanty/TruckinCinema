@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+
+/// CustomSegmentedControl
 class CustomSegmentedControl: UIControl {
     /// Style struct
     struct Style {
@@ -136,7 +138,7 @@ class CustomSegmentedControl: UIControl {
         addSubview(selectorView)
         selectorView.disableTranslatesAutoresizingMaskIntoContraints()
         selectorView.heightAnchor.tc_constrain(equalToConstant: Style.SelectedBorderHeight)
-        selectorView.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: Style.SelectedBorderHeight)
+        selectorView.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: -Style.SelectedBorderHeight)
         selectorViewWidthConstraint = selectorView.widthAnchor.constraint(equalToConstant: buttons[selectedSegment].frame.width)
         selectorViewWidthConstraint?.isActive = true
         selectorViewCenterXConstraint = selectorView.centerXAnchor.constraint(equalTo: buttons[selectedSegment].centerXAnchor)

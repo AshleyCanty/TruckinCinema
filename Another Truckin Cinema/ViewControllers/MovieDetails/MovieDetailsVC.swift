@@ -43,7 +43,94 @@ import youtube_ios_player_helper
  */
 
 /// MovieDetailsVC
-class MovieDetailsVC: BaseViewController {
+class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    func getHeightForShowtimeCells(indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return 62
+        } else {
+            return 160
+        }
+    }
+    
+    func getHeightForSummaryCell(indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return getHeightForShowtimeCells(indexPath: indexPath)
+        case .one:
+            return getHeightForSummaryCell(indexPath: indexPath)
+        case .two:
+            return 0
+        case .none:
+            return 0
+        }
+
+    }
+    enum SegmentedControlIndex: Int {
+        case zero, one, two
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return 3
+        case .one:
+            return 1
+        case .two:
+            return 0
+        case .none:
+            return 0
+        }
+    }
+    
+    /// Return showtime cell
+    private func getShowtimeCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
+                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: ShowtimeSubtitle.Placement.getString())
+                return showtimeCell
+            }
+        } else if indexPath.row == 1 {
+            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
+                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: ShowtimeSubtitle.Showtime.getString())
+                return showtimeCell
+            }
+        } else {
+            if let unwrappedCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeRadioListCell.reuseIdentifier, for: indexPath) as? ShowtimeRadioListCell {
+                return unwrappedCell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    /// Return summary cell
+    private func getSummaryCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            cell = getShowtimeCell(tableView: tableView, indexPath: indexPath)
+        case .one:
+            cell = getSummaryCell(tableView: tableView, indexPath: indexPath)
+        case .two:
+            print()
+        case .none:
+            print()
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
     /// enum  for Segmented Control Titles
     enum SegmentedControlTitle: String, CaseIterable {
         case Showtimes = "SHOWTIMES"
@@ -51,23 +138,13 @@ class MovieDetailsVC: BaseViewController {
         case Videos = "VIDEOS"
         func getString() -> String { return self.rawValue }
     }
-    /// enum for Movie Detail screen Icon names
-    enum IconName: String {
-        case PlayButton = "play-button-hollow"
-        func getString() -> String { return self.rawValue }
-    }
+
     /// Style struct
     struct Style {
         static let RSVPButtonHeight: CGFloat = 50
         static let SegmentedControlBackgroundColor: UIColor = AppColors.BackgroundMain
         static let SegmentedControlTintColor: UIColor = .yellow
         static let SegmentedControlTopMargin: CGFloat = 0
-    }
-    /// movieId string
-    fileprivate var movieId: Int? {
-        didSet {
-            // Call method that calls API class
-        }
     }
     /// Tralier header view
     fileprivate lazy var trailerHeader = MovieDetailsTrailerTopView()
@@ -85,12 +162,25 @@ class MovieDetailsVC: BaseViewController {
         sc.selectedSegmentIndex = 0
         return sc
     }()
+    /// table view that display different data when segmentedControl changes
+    fileprivate var tableView: UITableView = {
+       let table = UITableView()
+        table.separatorStyle = .none
+        return table
+    }()
+    
     /// rsvp button
     fileprivate lazy var rsvpButton: ThemeButton = {
         let btn = ThemeButton(type: .custom)
         btn.setTitle(ButtonTitle.RSVPNow.getString(), for: .normal)
         return btn
     }()
+    /// movieId string
+    fileprivate var movieId: Int? {
+        didSet {
+            // Call method that calls API class
+        }
+    }
 
     init(movieId: Int) {
         self.movieId = movieId
@@ -109,6 +199,8 @@ class MovieDetailsVC: BaseViewController {
         AppNavigation.shared.setNavBarToTranslucent()
         loadBackDropImage()
         segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
+        registerTableViewCells()
+        configureTableDataSource()
     }
     
     override func viewDidLayoutSubviews() {
@@ -122,7 +214,22 @@ class MovieDetailsVC: BaseViewController {
         }
     }
     
+    /// registers table view cells
+    fileprivate func registerTableViewCells() {
+        tableView.register(ShowtimeCell.self, forCellReuseIdentifier: ShowtimeCell.reuseIdentifier)
+        tableView.register(ShowtimeRadioListCell.self, forCellReuseIdentifier: ShowtimeRadioListCell.reuseIdentifier)
+        tableView.register(MovieSummaryGenreCell.self, forCellReuseIdentifier: MovieSummaryGenreCell.reuseIdentifier)
+        
+    }
+    
+    /// Configured tableview datasource and delegate
+    fileprivate func configureTableDataSource() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     @objc func selectedSegment() {
+        tableView.reloadData()
 //        segmentedControl.addBorderForSelectedSegment()
         print()
         
@@ -159,6 +266,15 @@ class MovieDetailsVC: BaseViewController {
         segmentedControl.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
         segmentedControl.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         
+        // TODO - CREATE THE FCKING TABLEVIEW
+        view.addSubview(tableView)
+        tableView.backgroundColor = .clear
+        tableView.disableTranslatesAutoresizingMaskIntoContraints()
+        tableView.topAnchor.tc_constrain(equalTo: segmentedControl.bottomAnchor, constant: 20)
+        tableView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
+        tableView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
+        tableView.bottomAnchor.tc_constrain(equalTo: rsvpButton.topAnchor)
+
         rsvpButton.disableTranslatesAutoresizingMaskIntoContraints()
         rsvpButton.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight)
         rsvpButton.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)

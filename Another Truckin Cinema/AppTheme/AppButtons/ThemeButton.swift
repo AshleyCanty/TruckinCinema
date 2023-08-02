@@ -12,7 +12,7 @@ import UIKit
 class ThemeButton: RoundedButton {
     
     struct Style {
-        static var TitleFont: UIFont = AppFont.regular(size: 15)
+        static var TitleFont: UIFont = AppFont.semiBold(size: 15)
         static var ActiveBg: UIColor = AppColors.ButtonActive
         static var InactiveBg: UIColor = AppColors.ButtonInactive
         static var HighlightedBg: UIColor = AppColors.ButtonHighlighted
@@ -21,11 +21,8 @@ class ThemeButton: RoundedButton {
         static var HighlightedTitleColor: UIColor = AppColors.ButtonTitleLabelHighlighted
     }
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = AppColors.BackgroundMain
-        
     }
     
     required init?(coder: NSCoder) {

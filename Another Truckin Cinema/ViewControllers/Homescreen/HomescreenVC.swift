@@ -209,8 +209,10 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
 extension HomescreenVC {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movieDetailVC = MovieDetailsVC(movieId: 385687)
-        AppNavigation.shared.navigateTo(movieDetailVC)
+        if type(of: collectionView) == MovieCollection.self {
+            let movieDetailVC = MovieDetailsVC(movieId: 385687)
+            AppNavigation.shared.navigateTo(movieDetailVC)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -22,9 +22,9 @@ public struct AppColors {
     static let ButtonActive: UIColor = UIColor(hex: "#14CDDA")
     static let ButtonInactive: UIColor = UIColor(hex: "#14CDDA").withAlphaComponent(0.65)
     static let ButtonHighlighted: UIColor = UIColor(hex: "#14A0AA")
-    static let ButtonTitleLabelActive: UIColor = UIColor(hex: "#fff")
-    static let ButtonTitleLabelInactive: UIColor = UIColor(hex: "#fff").withAlphaComponent(0.65)
-    static let ButtonTitleLabelHighlighted: UIColor = UIColor(hex: "#fff")
+    static let ButtonTitleLabelActive: UIColor = UIColor(hex: "#ffffff")
+    static let ButtonTitleLabelInactive: UIColor = UIColor(hex: "#ffffff").withAlphaComponent(0.65)
+    static let ButtonTitleLabelHighlighted: UIColor = UIColor(hex: "#ffffff")
     
     /// Banner
     static let BannerSignupRibbonBackground: UIColor = UIColor(hex: "FEAC66")
