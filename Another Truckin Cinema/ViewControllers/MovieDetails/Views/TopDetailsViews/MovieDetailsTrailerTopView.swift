@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 
+protocol MovieDetailsTrailerTopViewProtocol: AnyObject {
+    func didPressPlayButtonForTopTrailer()
+}
+
 class MovieDetailsTrailerTopView: UIView {
     /// enum for Movie Detail screen Icon names
     enum IconName: String {
@@ -17,7 +21,7 @@ class MovieDetailsTrailerTopView: UIView {
     }
     /// Style struct
     fileprivate struct Style {
-        static let PlayButtonSize: CGFloat = 36
+        static let PlayButtonSize: CGFloat = 28
         static let GradientColors: [UIColor] = [UIColor.clear, AppColors.BackgroundMain]
     }
     /// backdrop imageview
@@ -41,6 +45,8 @@ class MovieDetailsTrailerTopView: UIView {
         btn.imageEdgeInsets = .zero
         return btn
     }()
+    
+    weak var delegate: MovieDetailsTrailerTopViewProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -73,9 +79,15 @@ class MovieDetailsTrailerTopView: UIView {
         playButton.widthAnchor.tc_constrain(equalToConstant: Style.PlayButtonSize)
         playButton.centerXAnchor.tc_constrain(equalTo: centerXAnchor)
         playButton.centerYAnchor.tc_constrain(equalTo: centerYAnchor)
+        
+        playButton.addTarget(self, action: #selector(didPressPlayButton), for: .touchUpInside)
     }
     /// Sets the backdrop image
     public func setBackdropImage(_ image: UIImage) {
         backdropImageView.image = image
+    }
+    
+    @objc fileprivate func didPressPlayButton() {
+        delegate?.didPressPlayButtonForTopTrailer()
     }
 }

@@ -42,94 +42,9 @@ import youtube_ios_player_helper
  
  */
 
-/// MovieDetailsVC
-class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    func getHeightForShowtimeCells(indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 || indexPath.row == 1 {
-            return 62
-        } else {
-            return 160
-        }
-    }
-    
-    func getHeightForSummaryCell(indexPath: IndexPath) -> CGFloat {
-        return 160
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            return getHeightForShowtimeCells(indexPath: indexPath)
-        case .one:
-            return getHeightForSummaryCell(indexPath: indexPath)
-        case .two:
-            return 0
-        case .none:
-            return 0
-        }
 
-    }
-    enum SegmentedControlIndex: Int {
-        case zero, one, two
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            return 3
-        case .one:
-            return 1
-        case .two:
-            return 0
-        case .none:
-            return 0
-        }
-    }
-    
-    /// Return showtime cell
-    private func getShowtimeCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: ShowtimeSubtitle.Placement.getString())
-                return showtimeCell
-            }
-        } else if indexPath.row == 1 {
-            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: ShowtimeSubtitle.Showtime.getString())
-                return showtimeCell
-            }
-        } else {
-            if let unwrappedCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeRadioListCell.reuseIdentifier, for: indexPath) as? ShowtimeRadioListCell {
-                return unwrappedCell
-            }
-        }
-        return UITableViewCell()
-    }
-    
-    /// Return summary cell
-    private func getSummaryCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell
-        return cell ?? UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            cell = getShowtimeCell(tableView: tableView, indexPath: indexPath)
-        case .one:
-            cell = getSummaryCell(tableView: tableView, indexPath: indexPath)
-        case .two:
-            print()
-        case .none:
-            print()
-        }
-        cell.selectionStyle = .none
-        return cell
-    }
+/// MovieDetailsVC
+class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, ShowtimeRadioListCellProtocol, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
     
     /// enum  for Segmented Control Titles
     enum SegmentedControlTitle: String, CaseIterable {
@@ -175,6 +90,8 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         btn.setTitle(ButtonTitle.RSVPNow.getString(), for: .normal)
         return btn
     }()
+    /// wrapper view to hide/show the rsvp button
+    fileprivate lazy var rsvpButtonWrapperView = UIView()
     /// movieId string
     fileprivate var movieId: Int? {
         didSet {
@@ -185,9 +102,8 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     init(movieId: Int) {
         self.movieId = movieId
         super.init()
+        trailerHeader.delegate = self
         configure()
-        
-//        startButton.addTarget(self, action: #selector(), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -196,11 +112,17 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppNavigation.shared.setNavBarToTranslucent()
         loadBackDropImage()
-        segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
         registerTableViewCells()
         configureTableDataSource()
+        self.navigationItem.hidesBackButton = true
+        segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        setSource(sourceTitle: "MovieDetailsVC")
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -219,6 +141,7 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         tableView.register(ShowtimeCell.self, forCellReuseIdentifier: ShowtimeCell.reuseIdentifier)
         tableView.register(ShowtimeRadioListCell.self, forCellReuseIdentifier: ShowtimeRadioListCell.reuseIdentifier)
         tableView.register(MovieSummaryGenreCell.self, forCellReuseIdentifier: MovieSummaryGenreCell.reuseIdentifier)
+        tableView.register(MovieTrailerCell.self, forCellReuseIdentifier: MovieTrailerCell.reuseIdentifier)
         
     }
     
@@ -229,8 +152,14 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @objc func selectedSegment() {
+        // TODO - put rsvp button into its own view that can be hidden whenever switch tabs, and doesnt block trailer tab cells
+        // TODO - Create a sidemenu with a gradient background and corner radius
+        if segmentedControl.selectedSegmentIndex != 0 {
+            rsvpButton.isHidden = true
+        } else {
+            rsvpButton.isHidden = false
+        }
         tableView.reloadData()
-//        segmentedControl.addBorderForSelectedSegment()
         print()
         
     }
@@ -243,7 +172,8 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         view.addSubview(trailerHeader)
         view.addSubview(titleDetailView)
         view.addSubview(segmentedControl)
-        view.addSubview(rsvpButton)
+        view.addSubview(rsvpButtonWrapperView)
+        view.addSubview(tableView)
         
         trailerHeader.disableTranslatesAutoresizingMaskIntoContraints()
         trailerHeader.topAnchor.tc_constrain(equalTo: view.topAnchor)
@@ -266,20 +196,34 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         segmentedControl.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
         segmentedControl.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         
-        // TODO - CREATE THE FCKING TABLEVIEW
-        view.addSubview(tableView)
+        tableView.estimatedRowHeight = 200
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.disableTranslatesAutoresizingMaskIntoContraints()
-        tableView.topAnchor.tc_constrain(equalTo: segmentedControl.bottomAnchor, constant: 20)
+        tableView.topAnchor.tc_constrain(equalTo: segmentedControl.bottomAnchor, constant: 25)
         tableView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         tableView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
-        tableView.bottomAnchor.tc_constrain(equalTo: rsvpButton.topAnchor)
+        tableView.bottomAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        rsvpButtonWrapperView.alpha = 0
+        rsvpButtonWrapperView.backgroundColor = .clear
+        view.bringSubviewToFront(rsvpButtonWrapperView)
+        rsvpButtonWrapperView.disableTranslatesAutoresizingMaskIntoContraints()
+        rsvpButtonWrapperView.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight + AppTheme.BottomMargin*2)
+        rsvpButtonWrapperView.bottomAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        rsvpButtonWrapperView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
+        rsvpButtonWrapperView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
 
+        rsvpButtonWrapperView.addSubview(rsvpButton)
         rsvpButton.disableTranslatesAutoresizingMaskIntoContraints()
         rsvpButton.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight)
-        rsvpButton.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
-        rsvpButton.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
-        rsvpButton.bottomAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppTheme.BottomMargin)
+        rsvpButton.centerYAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.centerYAnchor)
+        rsvpButton.leadingAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
+        rsvpButton.trailingAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
+        
+        rsvpButton.addTarget(self, action: #selector(didPressRSVPButton), for: .touchUpInside)
+        
+        addCustomNavBar()
     }
     
     /// Loads backdrop image for trailer header
@@ -293,7 +237,205 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    @objc fileprivate func play() {
-        let key = "pYPcCSxprcs" // Get ready to join the fight
+    // MARK: - Custom NavBar methods
+    
+    func didPressNavBarRightButton() {}
+    
+    func didPressNavBarLeftButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func addCustomNavBar() {
+        let appNavBar = AppNavigationBar(type: .MovieDetails)
+        view.addSubview(appNavBar)
+        appNavBar.disableTranslatesAutoresizingMaskIntoContraints()
+        appNavBar.heightAnchor.tc_constrain(equalToConstant: AppNavigationBar.Style.Height)
+        appNavBar.topAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        appNavBar.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
+        appNavBar.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
+        appNavBar.delegate = self
+    }
+    
+    // MARK: - Cell Delegate methods
+    
+    /// animates rsvp button visibility based on isSelected value
+    func didSelectRadioButton(isSelected: Bool) {
+        if isSelected {
+            showRSVPButton()
+            return
+        }
+            hideRSVPButton()
+    }
+    /// shows rsvp button
+    @objc func showRSVPButton() {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.rsvpButtonWrapperView.alpha = 1
+        }
+    }
+    /// hides rsvp button
+    @objc func hideRSVPButton() {
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.rsvpButtonWrapperView.alpha = 0
+        }
+    }
+    
+    func didPressPlayButton(key: String) {
+        playTrailer(videoKey: key)
+    }
+    
+    func didPressPlayButtonForTopTrailer() {
+        playTrailer(videoKey: "pYPcCSxprcs")
+    }
+    
+    private func playTrailer(videoKey: String? = ""){
+        // let key = "pYPcCSxprcs" // Get ready to join the fight
+        guard let key = videoKey else { return }
+        let trailerPlayerVC = TrailerPlayerVC()
+        trailerPlayerVC.setVideKey(key: key)
+        trailerPlayerVC.modalTransitionStyle = .coverVertical
+        trailerPlayerVC.modalPresentationStyle = .fullScreen
+        present(trailerPlayerVC, animated: true)
+    }
+    
+    @objc private func didPressRSVPButton() {
+        let ticketSelectionVC = TicketSelectionVC(movieDetails: "")
+        AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
+    }
+}
+
+// MARK: -- TableView Delegate & Data Source Methods
+
+extension MovieDetailsVC {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return 3
+        case .one:
+            return 1
+        case .two:
+            return 3
+        case .none:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            cell = getShowtimeCell(indexPath: indexPath)
+        case .one:
+            if let unwrappedCell = getSummaryCell(indexPath: indexPath) as? MovieSummaryGenreCell {
+                unwrappedCell.cellDelegate = self
+                cell = unwrappedCell
+            }
+        case .two:
+            cell = getTrailerCell(indexPath: indexPath)
+        case .none:
+            print()
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return getHeightForShowtimeCells(indexPath: indexPath)
+        case .one:
+            return getHeightForSummaryCell(indexPath: indexPath)
+        case .two:
+            return getHeightForTrailerCell(indexPath: indexPath)
+        case .none:
+            return 0
+        }
+    }
+    
+    // MARK: -- Custom table methods
+    
+    /// MovieSummaryGenreCellProtocol method used to update TableView row heights after the summary textView height changes
+    func updateRowHeightForSummaryCell() {
+        triggerTableViewUpdates()
+    }
+    
+    /// MovieTrailerCellProtocol method used to update TableView row heights 
+    func updateRowHeightForTrailerCell() {
+//        triggerTableViewUpdates()
+    }
+    
+    private func triggerTableViewUpdates() {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    /// enum for segmentedControl index2
+    enum SegmentedControlIndex: Int {
+        case zero, one, two
+    }
+    
+    /// return showtime cell height
+    func getHeightForShowtimeCells(indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return 62
+        } else {
+            return 160
+        }
+    }
+    /// return summary cell height
+    func getHeightForSummaryCell(indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    /// return trailer cell height
+    func getHeightForTrailerCell(indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    /// Return showtime cell
+    private func getShowtimeCell(indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
+                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: ShowtimeSubtitle.Placement.getString())
+                return showtimeCell
+            }
+        } else if indexPath.row == 1 {
+            if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
+                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: ShowtimeSubtitle.Showtime.getString())
+                return showtimeCell
+            }
+        } else {
+            if let unwrappedCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeRadioListCell.reuseIdentifier, for: indexPath) as? ShowtimeRadioListCell {
+                unwrappedCell.cellDelegate = self
+                return unwrappedCell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    /// Return summary cell
+    private func getSummaryCell(indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell
+        return cell ?? UITableViewCell()
+    }
+    
+    /// Return movie trailer cell
+    private func getTrailerCell(indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieTrailerCell.reuseIdentifier, for: indexPath) as? MovieTrailerCell {
+            cell.cellDelegate = self
+            cell.setVideoKey(key: "pYPcCSxprcs")
+            let imageUrlString = "https://image.tmdb.org/t/p/w780/qWQSnedj0LCUjWNp9fLcMtfgadp.jpg"
+            ImageDownloader.downloadImage(imageUrlString) { image, _ in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    cell.setBackdropImage(image)
+                }
+            }
+            return cell
+        }
+        return UITableViewCell()
     }
 }

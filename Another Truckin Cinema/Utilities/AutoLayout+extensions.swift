@@ -26,6 +26,11 @@ extension NSLayoutAnchor {
     @objc func tc_constrain(lessThanOrEqualTo anchor: NSLayoutAnchor) {
         self.constraint(lessThanOrEqualTo: anchor).isActive = true
     }
+    
+    /// Method that automatically activates a constraint
+    @objc func tc_constrain(greaterThanOrEqualTo anchor: NSLayoutAnchor) {
+        self.constraint(greaterThanOrEqualTo: anchor).isActive = true
+    }
 }
 
 extension NSLayoutDimension {
@@ -40,6 +45,16 @@ extension NSLayoutDimension {
     
     @objc func tc_constrain(equalTo anchor: NSLayoutDimension, multiplier: CGFloat, constant: CGFloat) {
         self.constraint(equalTo: anchor, multiplier: multiplier, constant: constant).isActive = true
+    }
+    
+    /// Method that automatically activates a constraint
+    @objc func tc_constrain(lessThanOrEqualToConstant constant: CGFloat) {
+        self.constraint(lessThanOrEqualToConstant: constant).isActive = true
+    }
+    
+    /// Method that automatically activates a constraint
+    @objc func tc_constrain(greaterThanOrEqualToConstant constant: CGFloat) {
+        self.constraint(greaterThanOrEqualToConstant: constant).isActive = true
     }
 }
 

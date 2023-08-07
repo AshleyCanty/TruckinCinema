@@ -60,5 +60,8 @@ struct AppTheme {
     static let ShadowOpacity: Float = 0.08
     static let ShadowRadius: CGFloat = 6
     static let ShadowOffset: CGSize = CGSize(width: 0, height: 0)
+    
+    /// General corner radius
+    static let CornerRadius: CGFloat = 15
 }
 

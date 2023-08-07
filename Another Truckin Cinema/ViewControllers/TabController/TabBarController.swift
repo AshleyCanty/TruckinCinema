@@ -49,7 +49,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.selectedIndex = 0
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .white
-        
     }
     
     /// Adds styling to tabBar item

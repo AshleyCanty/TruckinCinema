@@ -15,7 +15,7 @@ import UIKit
 public enum NavigationIcon: String {
     case MenuButton = "menu"
     case CloseButton = "close-btn"
-    case BackButton = "back-button"
+    case BackButton = "back-btn"
 
     func getString() -> String { return self.rawValue }
 }

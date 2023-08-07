@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import LTHRadioButton
 
+protocol ShowtimeRadioListCellProtocol: AnyObject {
+    func didSelectRadioButton(isSelected: Bool)
+}
+
 class ShowtimeRadioListCell: UITableViewCell {
     /// Reuse identifier
     static let reuseIdentifier = "ShowtimeRadioListCell"
@@ -49,6 +53,8 @@ class ShowtimeRadioListCell: UITableViewCell {
     
     fileprivate var radioButtons = [LTHRadioButton]()
     
+    weak var cellDelegate: ShowtimeRadioListCellProtocol?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
@@ -87,11 +93,17 @@ class ShowtimeRadioListCell: UITableViewCell {
             radioButton.onSelect { [weak self] in
                 guard let sSelf = self else { return }
                 sSelf.deselectOtherButtons(sender: radioButton)
-                print()
+                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: true)
             }
-            radioButton.onDeselect {
-                print()
+            radioButton.onDeselect { [weak self] in
+                guard let sSelf = self else { return }
+                let results = sSelf.radioButtons.filter({ $0.isSelected == true }).count
+                if results == 0 {
+                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: false)
+                }
             }
+            
+            
 
             radioButtons.append(radioButton)
             

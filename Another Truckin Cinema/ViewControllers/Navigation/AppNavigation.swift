@@ -14,6 +14,10 @@ final class AppNavigation: UINavigationController {
     
     private init() { super.init(nibName: nil, bundle: nil) }
     
+    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
+        super.init(navigationBarClass: navigationBarClass, toolbarClass: toolbarClass)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -21,6 +25,7 @@ final class AppNavigation: UINavigationController {
     /// Replaces current view controller with those passed as paramters
     func setVCs(_ viewControllers: [UIViewController], animated: Bool = true) {
         setViewControllers(viewControllers, animated: animated)
+        
     }
     
     func navigateTo(_ viewController: UIViewController, animated: Bool = true) {

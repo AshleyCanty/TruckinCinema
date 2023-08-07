@@ -20,9 +20,9 @@ class BaseViewController: UIViewController {
     
     /// Right bar button item
     fileprivate lazy var menuButton: UIButton = {
-        let menuButton = UIButton(type: .custom)
+        let menuButton = UIButton(type: .system)
         menuButton.frame = CGRect(x: 0, y: 0, width: Style.MenuButtonSize, height: Style.MenuButtonSize)
-        menuButton.setImage(UIImage(named: NavigationIcon.MenuButton.getString())?.withRenderingMode(.alwaysTemplate), for: .normal)
+        menuButton.setImage(UIImage(systemName: "person.crop.circle.fill"), for: .normal)
         menuButton.imageView?.tintColor = AppColors.RegularGray
         menuButton.imageView?.contentMode = .scaleAspectFit
         menuButton.addTarget(self, action: #selector(openSideMenu), for: .touchUpInside)
@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBar(title: BaseViewController.source)
+//        setupNavigationBar(title: BaseViewController.source)
     }
     
     ///  Use a viewController's title to set the "source" property, which is then used to set the title & style of the navigationBar in the root navigation controller. "source" is a static property belonging to the BaseViewController class.
@@ -72,9 +72,12 @@ class BaseViewController: UIViewController {
             applyMainNavigationBarStyle(title: tabTitle)
         } else {
             /// Refactor. handles other viewcontrollers that are NOT the 4 main tabBar ViewControllers
-            ///
+            if let topViewController = AppNavigation.shared.topViewController {
+            }
         }
     }
+    
+    // TODO: - Pass timer to each view controller and resume countdown
 
     /// Sets up regular navigation bar used by all 4 Tabbar viewControllers.
     func applyMainNavigationBarStyle(title: TabBarItemTitle) {

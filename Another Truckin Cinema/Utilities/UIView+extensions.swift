@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 extension UIView {
+    /// Returnd width of app's window inside the window scene
+    func getwindowSceneWidth() -> CGFloat {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        let width = window?.screen.bounds.width ?? 0
+        return width
+    }
+    
     func addBorder(color: UIColor, width: CGFloat) {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width

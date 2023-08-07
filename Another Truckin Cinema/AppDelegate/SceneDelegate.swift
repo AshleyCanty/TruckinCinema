@@ -15,16 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         /// Lets configure our windowScene
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         /// Assigns the windowScene to the window that it'll contain
         window?.windowScene = windowScene
         /// Passes our custom view controller to the rootViewController property of the window in the windowScene
         AppNavigation.shared.setVCs([TabBarController()])
+    
         window?.rootViewController = AppNavigation.shared
         /// Make the window visible and brings it to the front of all other windows
         window?.makeKeyAndVisible()
+        
+        AppNavigation.shared.setNavigationBarHidden(true, animated: false)
+        UINavigationBar.appearance().tintColor = UIColor.white
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

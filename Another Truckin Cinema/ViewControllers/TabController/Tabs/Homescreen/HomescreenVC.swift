@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 /// HomescreenVC class
-class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {    
+class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, AppNavigationBarDelegate {    
     
     /// Style struct
     fileprivate struct Style {
         static let BannerHeight: CGFloat = 100
-        static let BannerTopAnchorConstant: CGFloat = 0
+        static let BannerTopAnchorConstant: CGFloat = 9
         static let BannerLeadingTrailingMargin: CGFloat = 12
         static let BannerCornerRadius: CGFloat = 15
         static let LeadingTrailingMargin: CGFloat = 12
@@ -109,6 +109,8 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         return collection
     }()
     
+    /// custom nav bar
+    fileprivate lazy var appNavBar = AppNavigationBar(type: .Plain)
     
     /// Tracks banner's current item index
     fileprivate var bannerItemIndex: Int = 0
@@ -123,8 +125,10 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setSource(sourceTitle: TabBarItemTitle.Home.getString())
+//        setSource(sourceTitle: TabBarItemTitle.Home.getString())
         super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     // MARK: -- Private methods
@@ -134,6 +138,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         setupCollectionViewDataSources()
         
         /// In order of layout
+        addCustomNavBar()
         addBannerConstraints()
         addDateLabels()
         addMovieCollectionConstraints()
@@ -172,10 +177,9 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
 
         bannerWrapper.addSubviews(subviews: [cycledBanner, pageControl])
         view.addSubview(bannerWrapper)
-        
         /// banner shadow wrapper view constraints
         bannerWrapper.disableTranslatesAutoresizingMaskIntoContraints()
-        bannerWrapper.topAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Style.BannerTopAnchorConstant)
+        bannerWrapper.topAnchor.tc_constrain(equalTo: appNavBar.bottomAnchor, constant: Style.BannerTopAnchorConstant)
         bannerWrapper.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: Style.BannerLeadingTrailingMargin)
         bannerWrapper.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -Style.BannerLeadingTrailingMargin)
         bannerWrapper.heightAnchor.tc_constrain(equalToConstant: Style.BannerHeight)
@@ -201,6 +205,24 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         movieCollection.bottomAnchor.tc_constrain(equalTo: view.bottomAnchor, constant: -Style.MovieCollectionViewTopMargin)
         movieCollection.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         movieCollection.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
+    }
+    
+    // MARK: - Custom NavBar Delegate Methods
+    
+    func didPressNavBarLeftButton() {}
+    
+    func didPressNavBarRightButton() {}
+    
+    func addCustomNavBar() {
+        view.addSubview(appNavBar)
+        appNavBar.disableTranslatesAutoresizingMaskIntoContraints()
+        appNavBar.heightAnchor.tc_constrain(equalToConstant: AppNavigationBar.Style.Height)
+        appNavBar.topAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        appNavBar.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
+        appNavBar.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
+        appNavBar.delegate = self
+        
+        appNavBar.configureNavBar(withTitle: NavigationTitle.NowPlaying.getString())
     }
 }
 
