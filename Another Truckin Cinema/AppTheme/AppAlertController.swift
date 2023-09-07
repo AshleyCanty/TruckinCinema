@@ -15,8 +15,8 @@ class AppAlertController: UIAlertController {
         let actionNo = UIAlertAction(title: "No", style: .default, handler: handlerActionNo)
         let actionYes = UIAlertAction(title: "Yes", style: .default, handler: handlerActionYes)
         
-        alert.addAction(actionYes)
         alert.addAction(actionNo)
+        alert.addAction(actionYes)
         return alert
     }
 }

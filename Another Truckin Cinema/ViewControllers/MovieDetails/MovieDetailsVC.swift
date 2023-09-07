@@ -44,7 +44,7 @@ import youtube_ios_player_helper
 
 
 /// MovieDetailsVC
-class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, ShowtimeRadioListCellProtocol, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
+class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, ShowtimeRadioListCellDelegate, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
     
     /// enum  for Segmented Control Titles
     enum SegmentedControlTitle: String, CaseIterable {
@@ -56,7 +56,6 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
 
     /// Style struct
     struct Style {
-        static let RSVPButtonHeight: CGFloat = 50
         static let SegmentedControlBackgroundColor: UIColor = AppColors.BackgroundMain
         static let SegmentedControlTintColor: UIColor = .yellow
         static let SegmentedControlTopMargin: CGFloat = 0
@@ -102,8 +101,6 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     init(movieId: Int) {
         self.movieId = movieId
         super.init()
-        trailerHeader.delegate = self
-        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -112,18 +109,15 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        trailerHeader.delegate = self
+        configure()
         loadBackDropImage()
         registerTableViewCells()
         configureTableDataSource()
         self.navigationItem.hidesBackButton = true
         segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
     }
-    
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard titleDetailView.frame != .zero else { return }
@@ -151,7 +145,6 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @objc func selectedSegment() {
-        // TODO - put rsvp button into its own view that can be hidden whenever switch tabs, and doesnt block trailer tab cells
         // TODO - Create a sidemenu with a gradient background and corner radius
         if segmentedControl.selectedSegmentIndex != 0 {
             rsvpButton.isHidden = true
@@ -159,13 +152,8 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             rsvpButton.isHidden = false
         }
         tableView.reloadData()
-        print()
-        
     }
-    
-    // Youtube videos are embedded in webpages, you can use WebView to show those.
-    // Or you can have movies stored locally and
-    
+     
     /// configure views
     fileprivate func configure() {
         view.addSubview(trailerHeader)
@@ -208,14 +196,14 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         rsvpButtonWrapperView.backgroundColor = .clear
         view.bringSubviewToFront(rsvpButtonWrapperView)
         rsvpButtonWrapperView.disableTranslatesAutoresizingMaskIntoContraints()
-        rsvpButtonWrapperView.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight + AppTheme.BottomMargin*2)
+        rsvpButtonWrapperView.heightAnchor.tc_constrain(equalToConstant: ThemeButton.Style.Height + AppTheme.BottomMargin*2)
         rsvpButtonWrapperView.bottomAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         rsvpButtonWrapperView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
         rsvpButtonWrapperView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
 
         rsvpButtonWrapperView.addSubview(rsvpButton)
         rsvpButton.disableTranslatesAutoresizingMaskIntoContraints()
-        rsvpButton.heightAnchor.tc_constrain(equalToConstant: Style.RSVPButtonHeight)
+        rsvpButton.heightAnchor.tc_constrain(equalToConstant: ThemeButton.Style.Height)
         rsvpButton.centerYAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.centerYAnchor)
         rsvpButton.leadingAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         rsvpButton.trailingAnchor.tc_constrain(equalTo: rsvpButtonWrapperView.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)

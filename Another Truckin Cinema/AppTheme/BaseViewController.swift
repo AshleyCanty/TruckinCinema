@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    /// Custom Nav Bar
+//    public lazy var appNavBar = AppNavigationBar(type: .MovieRSVP, shouldShowTimer: true)
+    
     /// Style struct
     fileprivate struct Style {
         static let MenuButtonSize: CGFloat = 24
@@ -51,11 +55,6 @@ class BaseViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        setupNavigationBar(title: BaseViewController.source)
-    }
-    
     ///  Use a viewController's title to set the "source" property, which is then used to set the title & style of the navigationBar in the root navigation controller. "source" is a static property belonging to the BaseViewController class.
     public func setSource(sourceTitle: String) {
         BaseViewController.source = sourceTitle
@@ -95,4 +94,54 @@ class BaseViewController: UIViewController {
             tabBarController.navigationItem.titleView = titleLabel
         }
     }
+    
+    // MARK: - Custom NavBar Delegate Methods
+//    
+//    func didPressNavBarLeftButton() {
+//        navigationController?.popViewController(animated: true)
+//    }
+//    
+//    func didPressNavBarRightButton() {}
+//    
+//    func addCustomNavBar() {
+//        view.addSubview(appNavBar)
+//        appNavBar.disableTranslatesAutoresizingMaskIntoContraints()
+//        appNavBar.topAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.topAnchor)
+//        appNavBar.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
+//        appNavBar.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
+//        appNavBar.delegate = self
+//        
+//        appNavBar.configureNavBar()
+//    }
 }
+
+
+extension UINavigationController {
+    func setStatusBar(backgroundColor: UIColor = AppColors.BackgroundMain) {
+        let statusBarFrame: CGRect
+        if #available(iOS 13.0, *) {
+            statusBarFrame = CGRect(x: 0, y: 0, width: view.window?.windowScene?.statusBarManager?.statusBarFrame.width ?? view.frame.width, height: view.window?.safeAreaInsets.top ?? .zero)
+        } else {
+            statusBarFrame = UIApplication.shared.statusBarFrame
+        }
+        
+        
+        if let statusBarView = view.subviews.first(where: { type(of: $0) == StatusBarUIView.self }) {
+            statusBarView.backgroundColor = backgroundColor
+        } else {
+            let statusBarView = StatusBarUIView(frame: statusBarFrame)
+            statusBarView.backgroundColor = backgroundColor
+            view.addSubview(statusBarView)
+        }
+    }
+    
+    func getStatusBarHeight() -> CGFloat? {
+        if let statusBarView = view.subviews.first(where: { type(of: $0) == StatusBarUIView.self }) {
+            return statusBarView.frame.height ?? 44
+        }
+        return 44
+    }
+}
+
+
+class StatusBarUIView: UIView {}

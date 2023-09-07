@@ -37,13 +37,11 @@ class AppNavigationBar: UIView {
         static let TitleLabelFont: UIFont = AppFont.semiBold(size: 18)
         static let LargeTitleLabelFont: UIFont = AppFont.semiBold(size: 25)
         static let SubtitleLabelTextColor: UIColor = AppColors.TextColorSecondary
-        static let SubtitleLabelFont: UIFont = AppFont.regular(size: 12)
-        static let SubtitleLabelMediumFont: UIFont = AppFont.medium(size: 12)
-        static let SubtitleMediumFontPurchaseScreen: UIFont = AppFont.medium(size: 10)
+        static let SubtitleLabelFont: UIFont = AppFont.regular(size: 10)
+        static let SubtitleLabelMediumFont: UIFont = AppFont.medium(size: 13)
+        static let SubtitleMediumFontPurchaseScreen: UIFont = AppFont.medium(size: 11)
         static let SubtitleTextColorSecondary: UIColor = AppColors.TextColorPrimary
         static let CloseButtonBottomSpacing: CGFloat = 5
-        
-
     }
     
     /// enum for Title View types
@@ -55,6 +53,7 @@ class AppNavigationBar: UIView {
         case FoodDeliveryOrPickUp
         case SignIn
         case Registration
+        case ContactInfo
     }
     /// stackview for timer & close button
     lazy var rightSideStack: UIStackView = {
@@ -164,6 +163,7 @@ class AppNavigationBar: UIView {
         super.layoutSubviews()
         rightSideViewWidthConstraint.constant = max(Style.CloseButtonWidth, timerLabel.intrinsicContentSize.width)
         layoutIfNeeded()
+        
     }
     
     /// updates timer label
@@ -173,11 +173,13 @@ class AppNavigationBar: UIView {
 
     /// configure views
     private func configure() {
+        backgroundColor = AppColors.BackgroundMain
         self.tintColor = AppColors.TextColorPrimary
  
         switch type {
         case .Plain: setupViewsForPlainNavBar()
         case .MovieDetails:
+            backgroundColor = .clear
             setupViewsForMovieDetails()
         case .MovieRSVP:
             setupViewsForRSVPFlow()
@@ -189,6 +191,8 @@ class AppNavigationBar: UIView {
             setupViewsForSignIn()
         case .Registration:
             setupViewsForRegistration()
+        case .ContactInfo:
+            setupViewsForContactInfo()
         case .none: break // do nothing
         }
         
@@ -247,7 +251,7 @@ extension AppNavigationBar {
         /// Hide close button once rsvp process has begin and start timer
         closeButton.isHidden = shouldShowTimer
         timerLabel.isHidden = !shouldShowTimer
-        timerLabel.text = shouldShowTimer ? "7:00" : ""
+        timerLabel.text = shouldShowTimer ? "07:00" : ""
         
         // Add views
         addSubview(titleView)
@@ -278,12 +282,12 @@ extension AppNavigationBar {
         titleView.leadingAnchor.tc_constrain(equalTo: backButton.trailingAnchor, constant: Style.TitleViewLeftMargin)
         titleView.topAnchor.tc_constrain(equalTo: topAnchor, constant: 0)
         titleView.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: -5)
+        titleView.trailingAnchor.tc_constrain(lessThanOrEqualTo: rightSideView.leadingAnchor, constant: Style.TitleViewRightMargin)
 
         /// Right side view (timer label & close button)
         rightSideView.disableTranslatesAutoresizingMaskIntoContraints()
         rightSideView.topAnchor.tc_constrain(equalTo: topAnchor)
         rightSideView.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: 0)
-        rightSideView.leadingAnchor.tc_constrain(equalTo: titleView.trailingAnchor, constant: Style.TitleViewRightMargin)
         rightSideView.trailingAnchor.tc_constrain(equalTo: trailingAnchor, constant: -Style.RightMargin)
         rightSideViewWidthConstraint = rightSideView.widthAnchor.constraint(equalToConstant: max(Style.CloseButtonWidth , timerLabel.intrinsicContentSize.width))
         rightSideViewWidthConstraint.isActive = true
@@ -385,6 +389,27 @@ extension AppNavigationBar {
         titleView.trailingAnchor.tc_constrain(equalTo: trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
         titleView.topAnchor.tc_constrain(equalTo: topAnchor)
         titleView.bottomAnchor.tc_constrain(equalTo: bottomAnchor)
+    }
+    
+    private func setupViewsForContactInfo() {
+        addSubview(backButton)
+        setBackButtonConstraints()
+        
+        addSubview(titleLabel)
+        titleLabel.disableTranslatesAutoresizingMaskIntoContraints()
+        titleLabel.leadingAnchor.tc_constrain(equalTo: backButton.trailingAnchor, constant: Style.LeftMargin)
+        titleLabel.trailingAnchor.tc_constrain(equalTo: trailingAnchor, constant: -Style.RightMargin)
+        titleLabel.centerYAnchor.tc_constrain(equalTo: centerYAnchor)
+        
+        let bottomBorder = UIView()
+        bottomBorder.backgroundColor = AppColors.RegularGray.withAlphaComponent(0.30)
+        
+        addSubview(bottomBorder)
+        bottomBorder.disableTranslatesAutoresizingMaskIntoContraints()
+        bottomBorder.heightAnchor.tc_constrain(equalToConstant: 1)
+        bottomBorder.bottomAnchor.tc_constrain(equalTo: bottomAnchor)
+        bottomBorder.leadingAnchor.tc_constrain(equalTo: leadingAnchor)
+        bottomBorder.trailingAnchor.tc_constrain(equalTo: trailingAnchor)
     }
     
     private func setBackButtonConstraints() {

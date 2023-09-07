@@ -7,12 +7,18 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import IQKeyboardManager
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupAPIs()
+        setupLibrariesAndFrameworks()
+        
         return true
     }
 
@@ -58,6 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    private func setupAPIs() {
+        GMSServices.provideAPIKey("AIzaSyCPPsnixtrpM6i6NU8S9XNxlfnNEOaAFPQ")
+    }
+    
+    private func setupLibrariesAndFrameworks() {
+        IQKeyboardManager.shared().isEnabled = true
+    }
 
     // MARK: - Core Data Saving support
 

@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import DropDown
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    // TODO: - Put all signup banners / & labels below it into tableview or collection view
 
     /// This method is similar to AppDelegate's didFinishLaunchingWithOptions, its one of the first things that runs
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        configureDropDown()
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         /// Lets configure our windowScene
@@ -60,7 +64,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
+    
+    public func configureDropDown() {
+        DropDown.startListeningToKeyboard()
+        DropDown.appearance().textColor = AppColors.TextColorPrimary
+        DropDown.appearance().textFont = AppFont.regular(size: 13)
+        DropDown.appearance().backgroundColor = AppColors.BackgroundSecondary
+        DropDown.appearance().selectionBackgroundColor = UIColor(hex: "1F212E")
+        DropDown.appearance().selectedTextColor = AppColors.TextColorPrimary
+        DropDown.appearance().shadowColor = .black
+    }
 }
 

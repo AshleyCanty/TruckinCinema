@@ -29,12 +29,12 @@ class MovieTrailerCell: UITableViewCell {
     /// Style struct
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
-        static let TextFont: UIFont = AppFont.regular(size: 10)
+        static let TextFont: UIFont = AppFont.regular(size: 11)
         static let TextColor: UIColor = AppColors.TextColorSecondary
         static let DurationTextColor: UIColor = AppColors.TextColorPrimary
         static let TitleTopMargin: CGFloat = 12
         static let GenrePillBackgroundColor: UIColor = AppColors.BackgroundSecondary
-        static let GenrePillTextFont: UIFont = AppFont.medium(size: 12)
+        static let GenrePillTextFont: UIFont = AppFont.medium(size: 13)
         static let GenrePillTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillSpacing: CGFloat = 10.0
         static let PlayButtonSize: CGFloat = 36

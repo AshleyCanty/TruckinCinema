@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "snacks_nachos.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -38,6 +38,10 @@ public struct AppColors {
     static let ButtonTitleLabelInactive: UIColor = UIColor(hex: "#ffffff").withAlphaComponent(0.65)
     static let ButtonTitleLabelHighlighted: UIColor = UIColor(hex: "#ffffff")
     
+    /// Add Email Button
+    static let EmailButtonTitleHighlighted: UIColor = UIColor(hex: "169AA4")
+    static let EmailButtonHighlighted: UIColor = UIColor(hex: "222533")
+    
     /// Banner
     static let BannerSignupRibbonBackground: UIColor = UIColor(hex: "#FEAC66")
     static let BannerCollectionBGColor: UIColor = UIColor(hex: "#1A1824")
@@ -71,5 +75,11 @@ struct AppTheme {
     
     /// General corner radius
     static let CornerRadius: CGFloat = 15
+
+    static let BannerHeight: CGFloat = 100
+    static let BannerTopAnchorConstant: CGFloat = 9
+    static let BannerBottomMargin: CGFloat = 15
+    static let BannerLeadingTrailingMargin: CGFloat = 12
+    static let BannerCornerRadius: CGFloat = 15
 }
 

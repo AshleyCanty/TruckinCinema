@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import LTHRadioButton
 
-protocol ShowtimeRadioListCellProtocol: AnyObject {
+protocol ShowtimeRadioListCellDelegate: AnyObject {
     func didSelectRadioButton(isSelected: Bool)
 }
 
@@ -32,12 +32,12 @@ class ShowtimeRadioListCell: UITableViewCell {
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
         static let TextColor: UIColor = AppColors.TextColorPrimary
-        static let TitleLabelFont: UIFont = AppFont.semiBold(size: 12)
-        static let RegularLabelFont: UIFont = AppFont.regular(size: 12)
+        static let TitleLabelFont: UIFont = AppFont.semiBold(size: 13)
+        static let RegularLabelFont: UIFont = AppFont.regular(size: 13)
         static let RadioSelectedColor: UIColor = AppColors.RegularTeal
         static let RadioDeselectedColor: UIColor = AppColors.TextColorPrimary
         static let RadioLabelTextColor: UIColor = AppColors.TextColorPrimary
-        static let RadioLabelFont: UIFont = AppFont.regular(size: 12)
+        static let RadioLabelFont: UIFont = AppFont.regular(size: 13)
         static let RadioSpacing: CGFloat = 20
     }
     
@@ -53,7 +53,7 @@ class ShowtimeRadioListCell: UITableViewCell {
     
     fileprivate var radioButtons = [LTHRadioButton]()
     
-    weak var cellDelegate: ShowtimeRadioListCellProtocol?
+    weak var cellDelegate: ShowtimeRadioListCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -102,9 +102,7 @@ class ShowtimeRadioListCell: UITableViewCell {
                     sSelf.cellDelegate?.didSelectRadioButton(isSelected: false)
                 }
             }
-            
-            
-
+    
             radioButtons.append(radioButton)
             
             let radioLabel = UILabel()

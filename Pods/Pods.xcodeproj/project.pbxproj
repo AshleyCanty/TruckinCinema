@@ -6,128 +6,292 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */;
+			buildPhases = (
+				942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+			);
+			name = GoogleMaps;
+			productName = GoogleMaps;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		06FFE460D79ABD60F42C0332EB3BEE4D /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B000BA351A0EE8E71B03C2CC088FF5A /* IQTitleBarButtonItem.m */; };
+		074639EB93F8D5E133781EE3CA7DAD8B /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = E3924CB79E71A1E10AFABF6082CAB211 /* YTPlayerView-iframe-player.html */; };
 		08E06C696103054C4B32302B72F87F9B /* youtube-ios-player-helper-Assets in Resources */ = {isa = PBXBuildFile; fileRef = D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */; };
-		0CBCF6963163D5FB68204D081467692A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58600A053A5BD33A263BEC9BC67E7F93 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */; };
-		1787B38DA8D85E7E1E278F4BDFE3F186 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = B07C73AD2FA9D75E3F99C0BD63B55A1F /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1E3C5B68611DB9C730F676866F6CE41A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DD1A10982638623B3CEA6DC20AC61A32 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26EE736C078EEB204BA61ACBBE685975 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = D61C084AD515F3C10DDD20B69380004D /* YTPlayerView-iframe-player.html */; };
-		2C107C37C9907E7F3C1BBB2C885A82C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		381FD2D72F0A2FCBB3AAB45E1BCC6381 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		5366C2882BF017DCF8588BBED675F299 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		78F53547A47A7C8D6D2F7BD32D559046 /* Pods-Another Truckin CinemaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3677AD5FF8A33F3B0755CBCC659507C6 /* Pods-Another Truckin CinemaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		81FBD7182100BEFD62F686B9B844C5A3 /* LTHRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA2B4C793D270CDBA721A0815942EF3 /* LTHRadioButton.swift */; };
-		83DBED1320BDA6E03ADCBED4C528994A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		9993B099811B91366D99222A9A636C95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		ABB3F9520EED2C86F663DE714A6272D6 /* Pods-Another Truckin Cinema-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE34F8E39B3EAEBE313E0E3C2A65EFA4 /* Pods-Another Truckin Cinema-dummy.m */; };
-		AE355D53854650EE61D83CCABC1919AC /* LTHRadioButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E4781FA65AE9F7361283BEC5DF2B7D7 /* LTHRadioButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B329893F915A170B891E3DD77F45B1EC /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EC90AE681B7EF9D5E87E62A31F9BD9 /* YTPlayerView.m */; };
-		BA42F6E17C747191746A705342FC0609 /* Pods-Another Truckin CinemaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A81C83C5A5EEB4B4D3CEFA2D7EB2FB /* Pods-Another Truckin CinemaTests-dummy.m */; };
-		DAB517BA1E5F9BC057D50ACF9D7301A6 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 110573D56A6024A5747176F26E7F0F87 /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB6851BA53D3FAE4500DB85EF0EB7125 /* Pods-Another Truckin Cinema-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DBFD125B0B0A848EEF274FB449FA3508 /* Pods-Another Truckin Cinema-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E66207A83E032E882101C1DAB3BDD19F /* LTHRadioButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B38ED76457EC69F57B60ED9E279476 /* LTHRadioButton-dummy.m */; };
-		EF702DFFDA4EB848608C78F1E651DA1D /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD02DB40AE70F9A1F47A03CA2C2008E /* youtube-ios-player-helper-dummy.m */; };
+		0A48DAEFF3B2B76B6D59ECEACCF349DB /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E0EC6486EA7027A17F63E20EEEDD9 /* IQKeyboardManager.m */; };
+		10BBF53FAF4C4845C71FF1D16A1F2185 /* IQPreviousNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A094D441D11421F1C9AC0F51700160D8 /* IQPreviousNextView.m */; };
+		14F350D1AE912096B4B04F9A0C6BAABE /* IQToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 80DC18664AF53FEE1824BD255195A113 /* IQToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1787B38DA8D85E7E1E278F4BDFE3F186 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E0A1E5E3580111F8B7E5CE5DF7D2C92 /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B7D9DB1E917F99A1EEA8725ED86C415 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		2457FC29D9DFC58923D6750CF1096A07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840FA0B75AF62912A30DDC66B647ED98 /* CoreGraphics.framework */; };
+		245C3EFCCB26556535EC3F082169D7F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		293A4E38AD5968B32012FDCC10D5E3AC /* IQKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FC99F8987DE922698B224F316E5535B2 /* IQKeyboardManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C107C37C9907E7F3C1BBB2C885A82C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		2F822E3E2AEAA87BAD9A511F5487BA4B /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 37713E4F2B74D5405B3E58263C398BBE /* IQBarButtonItem.m */; };
+		34D86F4481D9328BF45B637B906B3122 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		376283CB1C2F4FBFDEB918476761CBF2 /* IQKeyboardManagerConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6109C30712FE84CE36A547410F5A48BD /* IQKeyboardManagerConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A5E751E5D684DE8F34433773EF9F259 /* IQTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = EBEA03694812506350E84BFF79E1AFD5 /* IQTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C63DF222FD6B77E855A172B1CB46771 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885C14C8C850F931F4DBD8A0215B021 /* IQTextView.m */; };
+		43B3A6E418AF6D457318D5DFD64B22B7 /* IQPreviousNextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0ADEFEE75DB8EB19476726488D51D14 /* IQPreviousNextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47E70B39D50CD49CB93F05C8A29A71FE /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F4845AB22DC2FA4D3E6319D2A95D94 /* IQUIViewController+Additions.m */; };
+		4D44DCC513AD5E580D92EDDF2D6A45A0 /* IQUITextFieldView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = A1644F85B67A6980A87E1085B6B83F1F /* IQUITextFieldView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		515E22E4255B6073C1897BDDB091A2B8 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D4C9DE7026AAEE8834CCB91F61214 /* DropDown+Appearance.swift */; };
+		5366C2882BF017DCF8588BBED675F299 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		56F69E27093A6FF4B13AACEA76827231 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A42DBD2F42D55606EEBA514009498B87 /* QuartzCore.framework */; };
+		571898C9118E0B2E87F77CD223979CC4 /* IQKeyboardReturnKeyHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 46D999F088DB39BE32D8D9137F3C419A /* IQKeyboardReturnKeyHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		665C9DB83D65C4BEBC87158858235628 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		6737EE70D0024E211C2ECD17B4DC2C80 /* Pods-Another Truckin Cinema-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B45E95674615DD5FB0E62A1AE5CDE3 /* Pods-Another Truckin Cinema-dummy.m */; };
+		68E1653C561E14BBEAC9CF4873570D58 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359489F4E3DDCD9B6E20301BC5225F81 /* DropDownCell.xib */; };
+		6C8D636FC19EF52AC1C6C137034BD842 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE00058EB144B242BC9110421EE114 /* IQUIScrollView+Additions.m */; };
+		74012B832FAF67F8D62A2B27CDAFE8B5 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8997CBE188E68CAF4A723259F986B /* DPDConstants.swift */; };
+		768C7D8165465E63F576F9135C572829 /* IQKeyboardManagerConstantsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E05642EE7C20B27DBD71F241D8487E /* IQKeyboardManagerConstantsInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		77F56E4B8630FEEF0B934FC9F86852AE /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5BB7EA9A5111D1349167CDCFB70A9 /* IQUIView+Hierarchy.m */; };
+		78F53547A47A7C8D6D2F7BD32D559046 /* Pods-Another Truckin CinemaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E802E9F76BA39FD31E110DF62F75EDA /* Pods-Another Truckin CinemaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81FBD7182100BEFD62F686B9B844C5A3 /* LTHRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA234C76AFD15436222408BD868E40 /* LTHRadioButton.swift */; };
+		84459C4824533C9C4FD12AFC941F3CE1 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025008437795D8D1B768D795BA76A85 /* DropDown.swift */; };
+		89A72A55273CE358DC4E7600F785C37B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830FD0B0A7A89495CD08A3E945BA000E /* DPDKeyboardListener.swift */; };
+		8B566763930AD11F2945B71E4B2754A2 /* IQKeyboardManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00953F16E3F95B765C67CBF0CBFC4CC5 /* IQKeyboardManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		907338727C09F65DB75AA7AB9E10C3B4 /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC5B2EE91A81FF2608812633382B93A /* DropDown-dummy.m */; };
+		92A2BA5CE2E0F13CF32B96118A54B298 /* IQNSArray+Sort.h in Headers */ = {isa = PBXBuildFile; fileRef = DFACB327D3BC08A6C13A6C2A9ECDC682 /* IQNSArray+Sort.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9869BE90A4E205295E92E1930E059FC0 /* IQUIView+Hierarchy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D884D3317CAB74BEFF24D6813875594 /* IQUIView+Hierarchy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9993B099811B91366D99222A9A636C95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */; };
+		9EE42EA1D5742891C0A2718A3BFE0F4A /* IQBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8364BC7A7C53FE105EC956B795538F31 /* IQBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0AF68FE7C423F0A669441A25935D049 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2DF9D4B62403F1D396BB81323EB24 /* IQNSArray+Sort.m */; };
+		A0C2891A8EE757E199310C3601A66130 /* IQUIScrollView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 424365BFC0398FEEB978D245D82D60CA /* IQUIScrollView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A25CA3F2540143EFA8C6D6C45845B79A /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F78F7AF048885936829F8D4B713CE77 /* IQKeyboardReturnKeyHandler.m */; };
+		AA29871A7967C49B9385E1DDBEA4C992 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EB923E8DCA1218A20E3D32D1D0B170D1 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE355D53854650EE61D83CCABC1919AC /* LTHRadioButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD3EF9C3128D4131A0C266CA9E06DA8E /* LTHRadioButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B329893F915A170B891E3DD77F45B1EC /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6566FF5E6F1046810B48AA8E84A985E4 /* YTPlayerView.m */; };
+		B34EE15CECE3B3F06DC0C1BB1FFA61C1 /* IQUIView+IQKeyboardToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = A8E4D6269EBCA2ADB2E04F6607CCF739 /* IQUIView+IQKeyboardToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73E510E851686F8184E26986A470458 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069F63A326A23E530B1916596B911549 /* DPDUIView+Extension.swift */; };
+		BA42F6E17C747191746A705342FC0609 /* Pods-Another Truckin CinemaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1ACFA18E7D364C3A9482C6496C9EA5 /* Pods-Another Truckin CinemaTests-dummy.m */; };
+		BDC10974A8641F01C5665C61EA37A153 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048D1492AD20DBABA6D796E8FABCE06 /* DropDownCell.swift */; };
+		C2E3562A9EDADE0BCFD5D54324629F46 /* IQUIViewController+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3B097387417E9A728FDF149033A2E1 /* IQUIViewController+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCECE87431A451056454222F247B89D5 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 815B66F0567215B164B018C432547A0D /* IQUITextFieldView+Additions.m */; };
+		D15F805E4601B78817EE5B42C3DDF7F5 /* Pods-Another Truckin Cinema-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA38C5A436E30051BCE919037E9F68E /* Pods-Another Truckin Cinema-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7F7B341B13256F8BC2E5D6FF736B64A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 066090832589634094B35FFCB3216772 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */; };
+		DAB517BA1E5F9BC057D50ACF9D7301A6 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 89BC7CD5BDA2ACD7C308C18332281D35 /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDEBC6CD2F36B3D7445C6C419FC34102 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 55ECB59552C1C5CD78AC23FEF8DD86AC /* IQUIView+IQKeyboardToolbar.m */; };
+		E0A8C46EEE733B55971B1CC5ED65C9AA /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9142030F2478C1737DB3EF6C9F230623 /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3226C305B708F68460A437B3A73C0DE /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DAB895876764A6E8C4A6909A8F304D7 /* IQToolbar.m */; };
+		E66207A83E032E882101C1DAB3BDD19F /* LTHRadioButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B86E85EB6AC5261D0B32B5C0FEFF6744 /* LTHRadioButton-dummy.m */; };
+		EF702DFFDA4EB848608C78F1E651DA1D /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359F426C1CDC6C8BDE30AE62AC81ED1 /* youtube-ios-player-helper-dummy.m */; };
+		F4F723087ED20D05F02C8FF1562305CA /* IQKeyboardManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC41DD664C9CD94A79F991C39D7329DC /* IQKeyboardManager-dummy.m */; };
+		F677A7103D7C898C2FF7998DACFAF54B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D60AC13D33197690A05C641925DDDA /* UIKit.framework */; };
+		F73C6B8F53A58263A375518A8BFF974F /* IQTitleBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 037C4D446B394F60CB0797AA7DC934DE /* IQTitleBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		09F1899BF492FBDD75DA52EDD50D0F81 /* PBXContainerItemProxy */ = {
+		04EFBB069C5D861407FFA091A25BF3EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D1A7AF186BE136DE56FD5699070589B8;
-			remoteInfo = "youtube-ios-player-helper";
+			remoteGlobalIDString = E9F9401E9C74C0C393164FD8D86D0068;
+			remoteInfo = DropDown;
 		};
-		51C6EF1F5E6F058B4B4BF027E8419869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB6589BA961B6D177A92436AC1859598;
-			remoteInfo = LTHRadioButton;
-		};
-		74664B3D6C1C934631CCCE98AEDD63DF /* PBXContainerItemProxy */ = {
+		0EC339F063B91EDEEF62E0C83CB6B954 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2C909AA309499BF383B9FD1D8D833A27;
 			remoteInfo = "Pods-Another Truckin Cinema";
 		};
-		B0FA16477DCB7FDE378A5D947D1DD726 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D1A7AF186BE136DE56FD5699070589B8;
-			remoteInfo = "youtube-ios-player-helper";
-		};
-		C82D4FA86AA94DD98B5A874215979DF0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3820B3D61248CD2A225DA312BC70F110;
-			remoteInfo = "youtube-ios-player-helper-Assets";
-		};
-		F9862A01A4B83673B6B55F301F56DA45 /* PBXContainerItemProxy */ = {
+		2B4B8E4AF4BB1BF60CE543B5676EA609 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FB6589BA961B6D177A92436AC1859598;
 			remoteInfo = LTHRadioButton;
 		};
+		36EB5DDA61B03AB13148F6B90ED83CA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+		4454230701C86A8975D5CFE66C9853C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1A7AF186BE136DE56FD5699070589B8;
+			remoteInfo = "youtube-ios-player-helper";
+		};
+		459A3B3D8C0693909C580F9A3EFC8777 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
+			remoteInfo = GoogleMaps;
+		};
+		5CDDA6CD38184AA10C7A8B8138C73784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9F9401E9C74C0C393164FD8D86D0068;
+			remoteInfo = DropDown;
+		};
+		690F3C9C5238A900C4574CB0B0368DD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3820B3D61248CD2A225DA312BC70F110;
+			remoteInfo = "youtube-ios-player-helper-Assets";
+		};
+		864BFF9B085A30519F540EADFB0653F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBA456CB50E371584C11231929A0971E;
+			remoteInfo = IQKeyboardManager;
+		};
+		8746EF1635F08E9A5BF87FA2E30B7249 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBA456CB50E371584C11231929A0971E;
+			remoteInfo = IQKeyboardManager;
+		};
+		D32375D23182FD3471E9CEA9E5E4F0CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6589BA961B6D177A92436AC1859598;
+			remoteInfo = LTHRadioButton;
+		};
+		E8A2C47C82A4C8CB525B4FC46EC53702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1A7AF186BE136DE56FD5699070589B8;
+			remoteInfo = "youtube-ios-player-helper";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0494FCFEA479E5E5A838427FCE299138 /* Pods-Another Truckin Cinema.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin Cinema.modulemap"; sourceTree = "<group>"; };
-		04B8AB92C918D226E112316C8C0F509C /* Pods-Another Truckin Cinema-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-acknowledgements.plist"; sourceTree = "<group>"; };
-		0B9272B81C370FFE245546330D72D2FA /* Pods-Another Truckin CinemaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin CinemaTests.modulemap"; sourceTree = "<group>"; };
-		0C7D72C3DFC4C63BFA9BDFF23E91D72D /* Pods-Another Truckin Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema.debug.xcconfig"; sourceTree = "<group>"; };
-		110573D56A6024A5747176F26E7F0F87 /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
-		1E4781FA65AE9F7361283BEC5DF2B7D7 /* LTHRadioButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LTHRadioButton-umbrella.h"; sourceTree = "<group>"; };
-		2B2CAA528AE5CEF2A75028D30E5246B8 /* LTHRadioButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LTHRadioButton.debug.xcconfig; sourceTree = "<group>"; };
-		2E2195A9E791E14831D287401A7BBD1C /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
-		2ED42D6E58FF2616D45A1052B59708A8 /* Pods-Another Truckin Cinema-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin Cinema-acknowledgements.markdown"; sourceTree = "<group>"; };
-		346C11C32BE1C272005D5E63C4BB2499 /* LTHRadioButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LTHRadioButton.modulemap; sourceTree = "<group>"; };
+		00953F16E3F95B765C67CBF0CBFC4CC5 /* IQKeyboardManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManager-umbrella.h"; sourceTree = "<group>"; };
+		037C4D446B394F60CB0797AA7DC934DE /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQTitleBarButtonItem.h; path = IQKeyboardManager/IQToolbar/IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		04D60AC13D33197690A05C641925DDDA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		064B9270D2EC9FA2BD54705CEDD5BC50 /* IQKeyboardManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IQKeyboardManager-Info.plist"; sourceTree = "<group>"; };
+		066090832589634094B35FFCB3216772 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m"; sourceTree = "<group>"; };
+		069F63A326A23E530B1916596B911549 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		0AFBB9A0587AA715C66BB8AE5BABE0C9 /* Pods-Another Truckin Cinema-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-resources.sh"; sourceTree = "<group>"; };
+		0BA2DF9D4B62403F1D396BB81323EB24 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQNSArray+Sort.m"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		0F2CC5B8D577D89EE1B6D1E2C2B7161E /* Pods-Another Truckin Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		1885C14C8C850F931F4DBD8A0215B021 /* IQTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQTextView.m; path = IQKeyboardManager/IQTextView/IQTextView.m; sourceTree = "<group>"; };
+		1AA38C5A436E30051BCE919037E9F68E /* Pods-Another Truckin Cinema-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin Cinema-umbrella.h"; sourceTree = "<group>"; };
+		1DAB895876764A6E8C4A6909A8F304D7 /* IQToolbar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQToolbar.m; path = IQKeyboardManager/IQToolbar/IQToolbar.m; sourceTree = "<group>"; };
+		220AE21ACB5871A8C8C6D7C381C68D27 /* IQKeyboardManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.debug.xcconfig; sourceTree = "<group>"; };
+		22BE00058EB144B242BC9110421EE114 /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIScrollView+Additions.m"; path = "IQKeyboardManager/Categories/IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
+		258B1A1152D16C35806963B0B9B43485 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMaps.xcframework; path = Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
+		2C25DB253661D1B79B31EF8BD620CD3F /* Pods-Another Truckin Cinema-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Info.plist"; sourceTree = "<group>"; };
+		2E1ACFA18E7D364C3A9482C6496C9EA5 /* Pods-Another Truckin CinemaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin CinemaTests-dummy.m"; sourceTree = "<group>"; };
+		2F6326FCEE71E93D7FB0201347DC95FE /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
+		359489F4E3DDCD9B6E20301BC5225F81 /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
 		360170E3C876AE2A416062276B96325D /* Pods-Another Truckin Cinema */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Another Truckin Cinema"; path = Pods_Another_Truckin_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3677AD5FF8A33F3B0755CBCC659507C6 /* Pods-Another Truckin CinemaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin CinemaTests-umbrella.h"; sourceTree = "<group>"; };
-		38A533B76C2808847E5B24100FA7119B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5305AB04FC088643525511117777E39F /* Pods-Another Truckin Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema.release.xcconfig"; sourceTree = "<group>"; };
-		58600A053A5BD33A263BEC9BC67E7F93 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m"; sourceTree = "<group>"; };
-		5F47F0C152CC09CCF70AD73765468E3E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap"; sourceTree = "<group>"; };
-		6825EE90A996858C6DE2BDD2DB4034A4 /* Pods-Another Truckin CinemaTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin CinemaTests-Info.plist"; sourceTree = "<group>"; };
-		6AA2B4C793D270CDBA721A0815942EF3 /* LTHRadioButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LTHRadioButton.swift; path = source/LTHRadioButton.swift; sourceTree = "<group>"; };
-		6B245A547068049EE3988CED4331BA70 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist"; sourceTree = "<group>"; };
-		70184909E8F5DE32D2EC14E9C6CF7424 /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		75389320B6857D9949395DE952A05D7B /* Pods-Another Truckin Cinema-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-frameworks.sh"; sourceTree = "<group>"; };
-		75B38ED76457EC69F57B60ED9E279476 /* LTHRadioButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LTHRadioButton-dummy.m"; sourceTree = "<group>"; };
-		76EC90AE681B7EF9D5E87E62A31F9BD9 /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Sources/YTPlayerView.m; sourceTree = "<group>"; };
+		37713E4F2B74D5405B3E58263C398BBE /* IQBarButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQBarButtonItem.m; path = IQKeyboardManager/IQToolbar/IQBarButtonItem.m; sourceTree = "<group>"; };
+		3DD8997CBE188E68CAF4A723259F986B /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
+		3E7E0EC6486EA7027A17F63E20EEEDD9 /* IQKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardManager.m; path = IQKeyboardManager/IQKeyboardManager.m; sourceTree = "<group>"; };
+		424365BFC0398FEEB978D245D82D60CA /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIScrollView+Additions.h"; path = "IQKeyboardManager/Categories/IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		447B83CB7791F80FAA2E4AC60B782D41 /* Pods-Another Truckin Cinema-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-frameworks.sh"; sourceTree = "<group>"; };
+		46D999F088DB39BE32D8D9137F3C419A /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardReturnKeyHandler.h; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		4E802E9F76BA39FD31E110DF62F75EDA /* Pods-Another Truckin CinemaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin CinemaTests-umbrella.h"; sourceTree = "<group>"; };
+		5048D1492AD20DBABA6D796E8FABCE06 /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
+		55ECB59552C1C5CD78AC23FEF8DD86AC /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIView+IQKeyboardToolbar.m"; path = "IQKeyboardManager/IQToolbar/IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		56B3FC5ED86839EA5E53AD8CF0C31ED9 /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
+		5D51EFBF257FD2628CB50EF8D809A95F /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64_x86_64-simulator/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		5D884D3317CAB74BEFF24D6813875594 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIView+Hierarchy.h"; path = "IQKeyboardManager/Categories/IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		5F78F7AF048885936829F8D4B713CE77 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardReturnKeyHandler.m; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		60F4845AB22DC2FA4D3E6319D2A95D94 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIViewController+Additions.m"; path = "IQKeyboardManager/Categories/IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		6109C30712FE84CE36A547410F5A48BD /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstants.h; path = IQKeyboardManager/Constants/IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		61FCAF49E1DEABBD5E2863CE649B2F56 /* Pods-Another Truckin CinemaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin CinemaTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		624D4C9DE7026AAEE8834CCB91F61214 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		6566FF5E6F1046810B48AA8E84A985E4 /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Sources/YTPlayerView.m; sourceTree = "<group>"; };
+		69306B66ED90ED0AFCD163AC7895F750 /* LTHRadioButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LTHRadioButton.debug.xcconfig; sourceTree = "<group>"; };
+		6B000BA351A0EE8E71B03C2CC088FF5A /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQTitleBarButtonItem.m; path = IQKeyboardManager/IQToolbar/IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		6DC5B2EE91A81FF2608812633382B93A /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
+		7653C42AE2757F9BEAE1AFE1E1856C79 /* Pods-Another Truckin CinemaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin CinemaTests.modulemap"; sourceTree = "<group>"; };
+		76A658828C14EB658DEE2AE9D4FD019F /* DropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.release.xcconfig; sourceTree = "<group>"; };
+		777184E2760C1FE763D58B1377D821AE /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMapsBase.xcframework; path = Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
+		79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7AA5BB7EA9A5111D1349167CDCFB70A9 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIView+Hierarchy.m"; path = "IQKeyboardManager/Categories/IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
 		7BB386AC90DF82BE83EE5FB4D43ED4E8 /* Pods-Another Truckin CinemaTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Another Truckin CinemaTests"; path = Pods_Another_Truckin_CinemaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A2397E9112839BD1B1BEA98A266580 /* Pods-Another Truckin Cinema-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Info.plist"; sourceTree = "<group>"; };
+		7BC97B6D1275C25E1881AB36F52A5B5D /* LTHRadioButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LTHRadioButton.modulemap; sourceTree = "<group>"; };
+		7C1A90B23DA052EB6DD6F95FBB5E0ACB /* Pods-Another Truckin Cinema-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-acknowledgements.plist"; sourceTree = "<group>"; };
+		7C3B097387417E9A728FDF149033A2E1 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIViewController+Additions.h"; path = "IQKeyboardManager/Categories/IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		7CAA97C6E4760EA55E7A4FB7E78830D3 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh"; sourceTree = "<group>"; };
+		7DE42ABF3A157892302E62A7B87819BA /* DropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.debug.xcconfig; sourceTree = "<group>"; };
+		7EF80784783EF8B2DCAAA91DEA3A5EF0 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		80DC18664AF53FEE1824BD255195A113 /* IQToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQToolbar.h; path = IQKeyboardManager/IQToolbar/IQToolbar.h; sourceTree = "<group>"; };
+		815B66F0567215B164B018C432547A0D /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUITextFieldView+Additions.m"; path = "IQKeyboardManager/Categories/IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		82B54C8B15AF04D88072AAB58769E8B1 /* IQKeyboardManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManager.modulemap; sourceTree = "<group>"; };
+		830FD0B0A7A89495CD08A3E945BA000E /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		8364BC7A7C53FE105EC956B795538F31 /* IQBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQBarButtonItem.h; path = IQKeyboardManager/IQToolbar/IQBarButtonItem.h; sourceTree = "<group>"; };
+		840FA0B75AF62912A30DDC66B647ED98 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		8498A1B2C60117E181CA67921DDAE0B6 /* youtube-ios-player-helper */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "youtube-ios-player-helper"; path = youtube_ios_player_helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		946898F83D0EB750EA7E1AC413B474F0 /* youtube-ios-player-helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.release.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F3640B4DF0A40AEBDB8360488842966 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B07C73AD2FA9D75E3F99C0BD63B55A1F /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Sources/YTPlayerView.h; sourceTree = "<group>"; };
-		B169327CA2186A66E9DA2AA0EAE5F39F /* ResourceBundle-Assets-youtube-ios-player-helper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Assets-youtube-ios-player-helper-Info.plist"; sourceTree = "<group>"; };
-		BC5D2328368C7E4A68917CA82A680882 /* Pods-Another Truckin CinemaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin CinemaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89BC7CD5BDA2ACD7C308C18332281D35 /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
+		8C9A9A8E2F76A4C2A1CC2CB15B33671D /* youtube-ios-player-helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.release.xcconfig"; sourceTree = "<group>"; };
+		8E0A1E5E3580111F8B7E5CE5DF7D2C92 /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Sources/YTPlayerView.h; sourceTree = "<group>"; };
+		8E29B3A57F0C35FE2955F2C92B247FD1 /* Pods-Another Truckin CinemaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin CinemaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9142030F2478C1737DB3EF6C9F230623 /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
+		9359F426C1CDC6C8BDE30AE62AC81ED1 /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
+		94F081B10B82DA18912F15B6FFDC3780 /* youtube-ios-player-helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.debug.xcconfig"; sourceTree = "<group>"; };
+		953B227DF636D4B1C4B8671AC1D8B444 /* Pods-Another Truckin CinemaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin CinemaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		96E05642EE7C20B27DBD71F241D8487E /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstantsInternal.h; path = IQKeyboardManager/Constants/IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		98527D7196957AAB07B79E2E2AFDE23E /* IQKeyboardManager */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManager; path = IQKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B6725B782188F18CB76A740433F14E4 /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FE2CB76DFE2EC1990450D3E56EE7C4B /* LTHRadioButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LTHRadioButton.release.xcconfig; sourceTree = "<group>"; };
+		A094D441D11421F1C9AC0F51700160D8 /* IQPreviousNextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQPreviousNextView.m; path = IQKeyboardManager/IQToolbar/IQPreviousNextView.m; sourceTree = "<group>"; };
+		A1644F85B67A6980A87E1085B6B83F1F /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUITextFieldView+Additions.h"; path = "IQKeyboardManager/Categories/IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		A2B6C5E7E53BA6F311342B25AC53F8C6 /* LTHRadioButton-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LTHRadioButton-Info.plist"; sourceTree = "<group>"; };
+		A381E3A193AF9F25E98731EA5AD8C9EC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap"; sourceTree = "<group>"; };
+		A40AA0BCBA55E520FEB2E7985B94D8B7 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A42DBD2F42D55606EEBA514009498B87 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		A689A410ECF5D7EAE4F76E83F868F52B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist"; sourceTree = "<group>"; };
+		A8E4D6269EBCA2ADB2E04F6607CCF739 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIView+IQKeyboardToolbar.h"; path = "IQKeyboardManager/IQToolbar/IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		ADDE1B8CE794593D6EC4D27F0C23EA24 /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
+		B14A52BAD3DF28020D62ED45D75D5650 /* youtube-ios-player-helper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "youtube-ios-player-helper-Info.plist"; sourceTree = "<group>"; };
+		B3395E447B3E2144D67AA73137EB3F75 /* Pods-Another Truckin Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema.debug.xcconfig"; sourceTree = "<group>"; };
+		B3CA234C76AFD15436222408BD868E40 /* LTHRadioButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LTHRadioButton.swift; path = source/LTHRadioButton.swift; sourceTree = "<group>"; };
+		B5F84FDD237D475C55E93EB00D6160C5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "Maps/Frameworks/GoogleMaps.xcframework/ios-arm64/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		B86E85EB6AC5261D0B32B5C0FEFF6744 /* LTHRadioButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LTHRadioButton-dummy.m"; sourceTree = "<group>"; };
+		C0F57D56B5451270931DE6A3169E8F4A /* LTHRadioButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LTHRadioButton-prefix.pch"; sourceTree = "<group>"; };
+		C62954681E9C95C6C5197DF4DDA41390 /* Pods-Another Truckin CinemaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin CinemaTests.release.xcconfig"; sourceTree = "<group>"; };
 		C699D2AEFAC8E57754FFCCC4B1435EE7 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests"; path = Pods_Another_Truckin_Cinema_Another_Truckin_CinemaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7288BB1CDEF9AFA2D5908BFF9B22885 /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
+		C7A5BF827DAFFD79EBD5328F6C8D7023 /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
+		C7A89C909372F2A580C1F4A069F64A13 /* ResourceBundle-Assets-youtube-ios-player-helper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Assets-youtube-ios-player-helper-Info.plist"; sourceTree = "<group>"; };
+		C8B45E95674615DD5FB0E62A1AE5CDE3 /* Pods-Another Truckin Cinema-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin Cinema-dummy.m"; sourceTree = "<group>"; };
+		CA9C5F3F1670BA532597C1A00AFF9ADC /* IQKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
 		CCDF3C3611599C54D95C5F7D2CE4CB36 /* LTHRadioButton */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LTHRadioButton; path = LTHRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDD02DB40AE70F9A1F47A03CA2C2008E /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
-		D1320A4E0CAEDBDAAD7CEBA91A1159E2 /* Pods-Another Truckin CinemaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin CinemaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D3FC4B5BF295862119ACFB7A39C41D60 /* youtube-ios-player-helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.debug.xcconfig"; sourceTree = "<group>"; };
-		D61C084AD515F3C10DDD20B69380004D /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; includeInIndex = 1; name = "YTPlayerView-iframe-player.html"; path = "Sources/Assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		D025008437795D8D1B768D795BA76A85 /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
+		D0ADEFEE75DB8EB19476726488D51D14 /* IQPreviousNextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQPreviousNextView.h; path = IQKeyboardManager/IQToolbar/IQPreviousNextView.h; sourceTree = "<group>"; };
+		D5B60DEE651A1B8B5FA3F038E742FD7E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "youtube-ios-player-helper-Assets"; path = Assets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D81237502F7174C511297D0D1F6AF275 /* Pods-Another Truckin CinemaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin CinemaTests.release.xcconfig"; sourceTree = "<group>"; };
-		DA69A7A3396FF292D4285267B355011B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh"; sourceTree = "<group>"; };
-		DBFD125B0B0A848EEF274FB449FA3508 /* Pods-Another Truckin Cinema-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin Cinema-umbrella.h"; sourceTree = "<group>"; };
-		DD1A10982638623B3CEA6DC20AC61A32 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h"; sourceTree = "<group>"; };
-		E4B7BFBF89D6A560E6A69EB4E064E9CD /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EE882256054F0F5DB3715F36920415E5 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F0B49454A672E6E30BBB5261A061FE39 /* LTHRadioButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LTHRadioButton-prefix.pch"; sourceTree = "<group>"; };
-		F1CA493094FE66DA0D3993BFCD7FDEB3 /* youtube-ios-player-helper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "youtube-ios-player-helper-Info.plist"; sourceTree = "<group>"; };
-		F7E9C20F02189D7109AEF741DD532404 /* LTHRadioButton-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LTHRadioButton-Info.plist"; sourceTree = "<group>"; };
-		F81B4A35CD686F35023653703796428A /* Pods-Another Truckin CinemaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin CinemaTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		F8A81C83C5A5EEB4B4D3CEFA2D7EB2FB /* Pods-Another Truckin CinemaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin CinemaTests-dummy.m"; sourceTree = "<group>"; };
-		F8D7241919F96A600D90FAE570DB67A8 /* LTHRadioButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LTHRadioButton.release.xcconfig; sourceTree = "<group>"; };
-		FE34F8E39B3EAEBE313E0E3C2A65EFA4 /* Pods-Another Truckin Cinema-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Another Truckin Cinema-dummy.m"; sourceTree = "<group>"; };
+		D6872A2E20260158E8A2ABEB58A5A428 /* DropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DropDown-Info.plist"; sourceTree = "<group>"; };
+		D801A9DC156D1151AFF4F6FF11044666 /* Pods-Another Truckin Cinema.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Another Truckin Cinema.modulemap"; sourceTree = "<group>"; };
+		D80D219EDEAC0EBC59AEBA50EA48737E /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
+		DD253AFBBD71CD41EE1B2C87F31A3E1E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DFACB327D3BC08A6C13A6C2A9ECDC682 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQNSArray+Sort.h"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		E3924CB79E71A1E10AFABF6082CAB211 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = "YTPlayerView-iframe-player.html"; path = "Sources/Assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		EB923E8DCA1218A20E3D32D1D0B170D1 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h"; sourceTree = "<group>"; };
+		EBEA03694812506350E84BFF79E1AFD5 /* IQTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQTextView.h; path = IQKeyboardManager/IQTextView/IQTextView.h; sourceTree = "<group>"; };
+		EE112173E54D4F17B841EC200907E6D7 /* IQKeyboardManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.release.xcconfig; sourceTree = "<group>"; };
+		EE702849233228585E8933CD4402CF90 /* Pods-Another Truckin CinemaTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Another Truckin CinemaTests-Info.plist"; sourceTree = "<group>"; };
+		F16C8E3B2D9E9FEB22DCE2C6440A0A37 /* Pods-Another Truckin Cinema-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Another Truckin Cinema-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F42D4DCCA3096FB6F8DCAF9362CA5585 /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DropDown.modulemap; sourceTree = "<group>"; };
+		F436DDE5739D43577AC5C05F8694EBDB /* GoogleMaps-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GoogleMaps-xcframeworks.sh"; sourceTree = "<group>"; };
+		FC41DD664C9CD94A79F991C39D7329DC /* IQKeyboardManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IQKeyboardManager-dummy.m"; sourceTree = "<group>"; };
+		FC99F8987DE922698B224F316E5535B2 /* IQKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManager.h; path = IQKeyboardManager/IQKeyboardManager.h; sourceTree = "<group>"; };
+		FCCC67E1070334FB692CBA3644765FAC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources.sh"; sourceTree = "<group>"; };
+		FD3EF9C3128D4131A0C266CA9E06DA8E /* LTHRadioButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LTHRadioButton-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,23 +303,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E21D45443AFF2160796B9012C5317AC /* Frameworks */ = {
+		7D33780B948A3E4364412C5BC201A0CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83DBED1320BDA6E03ADCBED4C528994A /* Foundation.framework in Frameworks */,
+				2457FC29D9DFC58923D6750CF1096A07 /* CoreGraphics.framework in Frameworks */,
+				245C3EFCCB26556535EC3F082169D7F6 /* Foundation.framework in Frameworks */,
+				56F69E27093A6FF4B13AACEA76827231 /* QuartzCore.framework in Frameworks */,
+				F677A7103D7C898C2FF7998DACFAF54B /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFE72E6A85B85C2EE4DFE39F74C3F481 /* Frameworks */ = {
+		808BE4E171BD75B6477EC2B77490C2B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				381FD2D72F0A2FCBB3AAB45E1BCC6381 /* Foundation.framework in Frameworks */,
+				34D86F4481D9328BF45B637B906B3122 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E6F4A7298C67AAB4EB08111523188ECC /* Frameworks */ = {
+		861FDAD0E09BC68C86BD32502A6E18EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7D9DB1E917F99A1EEA8725ED86C415 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACBB861ED71CD8E4EA63D3547D653D68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -178,150 +353,303 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB970936F1FBE888ACA732004498A1CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				665C9DB83D65C4BEBC87158858235628 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1606F68F8D3D6C8E9247398394B91253 /* Pods-Another Truckin CinemaTests */ = {
+		09843F1E966B6DB49D84AA41B2E27E0D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0B9272B81C370FFE245546330D72D2FA /* Pods-Another Truckin CinemaTests.modulemap */,
-				D1320A4E0CAEDBDAAD7CEBA91A1159E2 /* Pods-Another Truckin CinemaTests-acknowledgements.markdown */,
-				F81B4A35CD686F35023653703796428A /* Pods-Another Truckin CinemaTests-acknowledgements.plist */,
-				F8A81C83C5A5EEB4B4D3CEFA2D7EB2FB /* Pods-Another Truckin CinemaTests-dummy.m */,
-				6825EE90A996858C6DE2BDD2DB4034A4 /* Pods-Another Truckin CinemaTests-Info.plist */,
-				3677AD5FF8A33F3B0755CBCC659507C6 /* Pods-Another Truckin CinemaTests-umbrella.h */,
-				BC5D2328368C7E4A68917CA82A680882 /* Pods-Another Truckin CinemaTests.debug.xcconfig */,
-				D81237502F7174C511297D0D1F6AF275 /* Pods-Another Truckin CinemaTests.release.xcconfig */,
+				F436DDE5739D43577AC5C05F8694EBDB /* GoogleMaps-xcframeworks.sh */,
+				2F6326FCEE71E93D7FB0201347DC95FE /* GoogleMaps.debug.xcconfig */,
+				ADDE1B8CE794593D6EC4D27F0C23EA24 /* GoogleMaps.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
+		19819D1B1187CF7B2B4904CC6693183A /* LTHRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				B3CA234C76AFD15436222408BD868E40 /* LTHRadioButton.swift */,
+				4F3E45FC98DA56DD889E368CE97657B9 /* Support Files */,
+			);
+			path = LTHRadioButton;
+			sourceTree = "<group>";
+		};
+		1C81839025D7C124DCAB32E265E3EEE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				258B1A1152D16C35806963B0B9B43485 /* GoogleMaps.xcframework */,
+				C7A5BF827DAFFD79EBD5328F6C8D7023 /* GoogleMapsCore.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		207717D825CE8BA3592F279BCD4C2038 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38380E8DEDD9435A9B2FFCDB141FCE3B /* DropDown */,
+				6C8D4C12FB05B0A73F305332666F991D /* GoogleMaps */,
+				6F63BDADC0B06F70D19EC92F377CB201 /* IQKeyboardManager */,
+				19819D1B1187CF7B2B4904CC6693183A /* LTHRadioButton */,
+				97018C405FFD1AB4817DCF7576C62FD3 /* youtube-ios-player-helper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		22DF53FE008B65DED6224A8350B7DDAB /* Pods-Another Truckin CinemaTests */ = {
+			isa = PBXGroup;
+			children = (
+				7653C42AE2757F9BEAE1AFE1E1856C79 /* Pods-Another Truckin CinemaTests.modulemap */,
+				8E29B3A57F0C35FE2955F2C92B247FD1 /* Pods-Another Truckin CinemaTests-acknowledgements.markdown */,
+				61FCAF49E1DEABBD5E2863CE649B2F56 /* Pods-Another Truckin CinemaTests-acknowledgements.plist */,
+				2E1ACFA18E7D364C3A9482C6496C9EA5 /* Pods-Another Truckin CinemaTests-dummy.m */,
+				EE702849233228585E8933CD4402CF90 /* Pods-Another Truckin CinemaTests-Info.plist */,
+				4E802E9F76BA39FD31E110DF62F75EDA /* Pods-Another Truckin CinemaTests-umbrella.h */,
+				953B227DF636D4B1C4B8671AC1D8B444 /* Pods-Another Truckin CinemaTests.debug.xcconfig */,
+				C62954681E9C95C6C5197DF4DDA41390 /* Pods-Another Truckin CinemaTests.release.xcconfig */,
 			);
 			name = "Pods-Another Truckin CinemaTests";
 			path = "Target Support Files/Pods-Another Truckin CinemaTests";
 			sourceTree = "<group>";
 		};
-		206F534806D606B24B42C7C7C9BFEA27 /* LTHRadioButton */ = {
+		29919D68A2B438B749DA34EFADB6829C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				6AA2B4C793D270CDBA721A0815942EF3 /* LTHRadioButton.swift */,
-				9F4D6F710BA7B3F37F5A5AD1E748B1B9 /* Support Files */,
+				EFC235064ACEC353E3B917FB8C059398 /* Frameworks */,
 			);
-			name = LTHRadioButton;
-			path = LTHRadioButton;
+			name = Base;
 			sourceTree = "<group>";
 		};
-		386D602E37C36E8E3F6720FD39702D7C /* Resources */ = {
+		38380E8DEDD9435A9B2FFCDB141FCE3B /* DropDown */ = {
 			isa = PBXGroup;
 			children = (
-				D61C084AD515F3C10DDD20B69380004D /* YTPlayerView-iframe-player.html */,
+				3DD8997CBE188E68CAF4A723259F986B /* DPDConstants.swift */,
+				830FD0B0A7A89495CD08A3E945BA000E /* DPDKeyboardListener.swift */,
+				069F63A326A23E530B1916596B911549 /* DPDUIView+Extension.swift */,
+				D025008437795D8D1B768D795BA76A85 /* DropDown.swift */,
+				624D4C9DE7026AAEE8834CCB91F61214 /* DropDown+Appearance.swift */,
+				5048D1492AD20DBABA6D796E8FABCE06 /* DropDownCell.swift */,
+				5919B48E75629F8AEEDE42E65E81F4EF /* Resources */,
+				EC2B0A4998ACDE34DCC3CEAF92CBB1E0 /* Support Files */,
 			);
-			name = Resources;
+			path = DropDown;
 			sourceTree = "<group>";
 		};
-		3B6ACC8BAFB1623B38C7D0D24DA9AE3C /* Support Files */ = {
+		4F3E45FC98DA56DD889E368CE97657B9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B169327CA2186A66E9DA2AA0EAE5F39F /* ResourceBundle-Assets-youtube-ios-player-helper-Info.plist */,
-				2E2195A9E791E14831D287401A7BBD1C /* youtube-ios-player-helper.modulemap */,
-				CDD02DB40AE70F9A1F47A03CA2C2008E /* youtube-ios-player-helper-dummy.m */,
-				F1CA493094FE66DA0D3993BFCD7FDEB3 /* youtube-ios-player-helper-Info.plist */,
-				70184909E8F5DE32D2EC14E9C6CF7424 /* youtube-ios-player-helper-prefix.pch */,
-				110573D56A6024A5747176F26E7F0F87 /* youtube-ios-player-helper-umbrella.h */,
-				D3FC4B5BF295862119ACFB7A39C41D60 /* youtube-ios-player-helper.debug.xcconfig */,
-				946898F83D0EB750EA7E1AC413B474F0 /* youtube-ios-player-helper.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/youtube-ios-player-helper";
-			sourceTree = "<group>";
-		};
-		55E185B8172E7AD9D1643BB7B47914F0 /* youtube-ios-player-helper */ = {
-			isa = PBXGroup;
-			children = (
-				B07C73AD2FA9D75E3F99C0BD63B55A1F /* YTPlayerView.h */,
-				76EC90AE681B7EF9D5E87E62A31F9BD9 /* YTPlayerView.m */,
-				386D602E37C36E8E3F6720FD39702D7C /* Resources */,
-				3B6ACC8BAFB1623B38C7D0D24DA9AE3C /* Support Files */,
-			);
-			name = "youtube-ios-player-helper";
-			path = "youtube-ios-player-helper";
-			sourceTree = "<group>";
-		};
-		571269D5A008A9AF3CE3CC19F2935CF7 /* Pods-Another Truckin Cinema */ = {
-			isa = PBXGroup;
-			children = (
-				0494FCFEA479E5E5A838427FCE299138 /* Pods-Another Truckin Cinema.modulemap */,
-				2ED42D6E58FF2616D45A1052B59708A8 /* Pods-Another Truckin Cinema-acknowledgements.markdown */,
-				04B8AB92C918D226E112316C8C0F509C /* Pods-Another Truckin Cinema-acknowledgements.plist */,
-				FE34F8E39B3EAEBE313E0E3C2A65EFA4 /* Pods-Another Truckin Cinema-dummy.m */,
-				75389320B6857D9949395DE952A05D7B /* Pods-Another Truckin Cinema-frameworks.sh */,
-				82A2397E9112839BD1B1BEA98A266580 /* Pods-Another Truckin Cinema-Info.plist */,
-				DBFD125B0B0A848EEF274FB449FA3508 /* Pods-Another Truckin Cinema-umbrella.h */,
-				0C7D72C3DFC4C63BFA9BDFF23E91D72D /* Pods-Another Truckin Cinema.debug.xcconfig */,
-				5305AB04FC088643525511117777E39F /* Pods-Another Truckin Cinema.release.xcconfig */,
-			);
-			name = "Pods-Another Truckin Cinema";
-			path = "Target Support Files/Pods-Another Truckin Cinema";
-			sourceTree = "<group>";
-		};
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		74BF73A183CB88ECA1A241A13BA8BE96 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5F47F0C152CC09CCF70AD73765468E3E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap */,
-				E4B7BFBF89D6A560E6A69EB4E064E9CD /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown */,
-				9F3640B4DF0A40AEBDB8360488842966 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist */,
-				58600A053A5BD33A263BEC9BC67E7F93 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */,
-				DA69A7A3396FF292D4285267B355011B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh */,
-				6B245A547068049EE3988CED4331BA70 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist */,
-				DD1A10982638623B3CEA6DC20AC61A32 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */,
-				38A533B76C2808847E5B24100FA7119B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */,
-				EE882256054F0F5DB3715F36920415E5 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */,
-			);
-			name = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests";
-			path = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests";
-			sourceTree = "<group>";
-		};
-		8AA21D1AA5B7F8EDCE49D25E9D68ACA5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				206F534806D606B24B42C7C7C9BFEA27 /* LTHRadioButton */,
-				55E185B8172E7AD9D1643BB7B47914F0 /* youtube-ios-player-helper */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9A27312BAE85F8191E8E408058E3C950 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				571269D5A008A9AF3CE3CC19F2935CF7 /* Pods-Another Truckin Cinema */,
-				74BF73A183CB88ECA1A241A13BA8BE96 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */,
-				1606F68F8D3D6C8E9247398394B91253 /* Pods-Another Truckin CinemaTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		9F4D6F710BA7B3F37F5A5AD1E748B1B9 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				346C11C32BE1C272005D5E63C4BB2499 /* LTHRadioButton.modulemap */,
-				75B38ED76457EC69F57B60ED9E279476 /* LTHRadioButton-dummy.m */,
-				F7E9C20F02189D7109AEF741DD532404 /* LTHRadioButton-Info.plist */,
-				F0B49454A672E6E30BBB5261A061FE39 /* LTHRadioButton-prefix.pch */,
-				1E4781FA65AE9F7361283BEC5DF2B7D7 /* LTHRadioButton-umbrella.h */,
-				2B2CAA528AE5CEF2A75028D30E5246B8 /* LTHRadioButton.debug.xcconfig */,
-				F8D7241919F96A600D90FAE570DB67A8 /* LTHRadioButton.release.xcconfig */,
+				7BC97B6D1275C25E1881AB36F52A5B5D /* LTHRadioButton.modulemap */,
+				B86E85EB6AC5261D0B32B5C0FEFF6744 /* LTHRadioButton-dummy.m */,
+				A2B6C5E7E53BA6F311342B25AC53F8C6 /* LTHRadioButton-Info.plist */,
+				C0F57D56B5451270931DE6A3169E8F4A /* LTHRadioButton-prefix.pch */,
+				FD3EF9C3128D4131A0C266CA9E06DA8E /* LTHRadioButton-umbrella.h */,
+				69306B66ED90ED0AFCD163AC7895F750 /* LTHRadioButton.debug.xcconfig */,
+				9FE2CB76DFE2EC1990450D3E56EE7C4B /* LTHRadioButton.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/LTHRadioButton";
 			sourceTree = "<group>";
 		};
-		C98B769925D00FCC63370BBA2DAB984A /* Products */ = {
+		520C1F8FBD5A557DF252680E3D5F1DCC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5F84FDD237D475C55E93EB00D6160C5 /* GoogleMaps.bundle */,
+				5D51EFBF257FD2628CB50EF8D809A95F /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5919B48E75629F8AEEDE42E65E81F4EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				359489F4E3DDCD9B6E20301BC5225F81 /* DropDownCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5ACFE8F89343E8AB770E70726465E779 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				80167A94EA4F41A691C4884F02304E52 /* Pods-Another Truckin Cinema */,
+				AEDE33A00D19342A077ED8EE16C0AA15 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */,
+				22DF53FE008B65DED6224A8350B7DDAB /* Pods-Another Truckin CinemaTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6C8D4C12FB05B0A73F305332666F991D /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				29919D68A2B438B749DA34EFADB6829C /* Base */,
+				8A35D6F0111BE8EB4EEB5188529121AD /* Maps */,
+				09843F1E966B6DB49D84AA41B2E27E0D /* Support Files */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		6F63BDADC0B06F70D19EC92F377CB201 /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				8364BC7A7C53FE105EC956B795538F31 /* IQBarButtonItem.h */,
+				37713E4F2B74D5405B3E58263C398BBE /* IQBarButtonItem.m */,
+				FC99F8987DE922698B224F316E5535B2 /* IQKeyboardManager.h */,
+				3E7E0EC6486EA7027A17F63E20EEEDD9 /* IQKeyboardManager.m */,
+				6109C30712FE84CE36A547410F5A48BD /* IQKeyboardManagerConstants.h */,
+				96E05642EE7C20B27DBD71F241D8487E /* IQKeyboardManagerConstantsInternal.h */,
+				46D999F088DB39BE32D8D9137F3C419A /* IQKeyboardReturnKeyHandler.h */,
+				5F78F7AF048885936829F8D4B713CE77 /* IQKeyboardReturnKeyHandler.m */,
+				DFACB327D3BC08A6C13A6C2A9ECDC682 /* IQNSArray+Sort.h */,
+				0BA2DF9D4B62403F1D396BB81323EB24 /* IQNSArray+Sort.m */,
+				D0ADEFEE75DB8EB19476726488D51D14 /* IQPreviousNextView.h */,
+				A094D441D11421F1C9AC0F51700160D8 /* IQPreviousNextView.m */,
+				EBEA03694812506350E84BFF79E1AFD5 /* IQTextView.h */,
+				1885C14C8C850F931F4DBD8A0215B021 /* IQTextView.m */,
+				037C4D446B394F60CB0797AA7DC934DE /* IQTitleBarButtonItem.h */,
+				6B000BA351A0EE8E71B03C2CC088FF5A /* IQTitleBarButtonItem.m */,
+				80DC18664AF53FEE1824BD255195A113 /* IQToolbar.h */,
+				1DAB895876764A6E8C4A6909A8F304D7 /* IQToolbar.m */,
+				424365BFC0398FEEB978D245D82D60CA /* IQUIScrollView+Additions.h */,
+				22BE00058EB144B242BC9110421EE114 /* IQUIScrollView+Additions.m */,
+				A1644F85B67A6980A87E1085B6B83F1F /* IQUITextFieldView+Additions.h */,
+				815B66F0567215B164B018C432547A0D /* IQUITextFieldView+Additions.m */,
+				5D884D3317CAB74BEFF24D6813875594 /* IQUIView+Hierarchy.h */,
+				7AA5BB7EA9A5111D1349167CDCFB70A9 /* IQUIView+Hierarchy.m */,
+				A8E4D6269EBCA2ADB2E04F6607CCF739 /* IQUIView+IQKeyboardToolbar.h */,
+				55ECB59552C1C5CD78AC23FEF8DD86AC /* IQUIView+IQKeyboardToolbar.m */,
+				7C3B097387417E9A728FDF149033A2E1 /* IQUIViewController+Additions.h */,
+				60F4845AB22DC2FA4D3E6319D2A95D94 /* IQUIViewController+Additions.m */,
+				D00B73360BE2AFA42BC9470D9B4C78F7 /* Support Files */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		80167A94EA4F41A691C4884F02304E52 /* Pods-Another Truckin Cinema */ = {
+			isa = PBXGroup;
+			children = (
+				D801A9DC156D1151AFF4F6FF11044666 /* Pods-Another Truckin Cinema.modulemap */,
+				F16C8E3B2D9E9FEB22DCE2C6440A0A37 /* Pods-Another Truckin Cinema-acknowledgements.markdown */,
+				7C1A90B23DA052EB6DD6F95FBB5E0ACB /* Pods-Another Truckin Cinema-acknowledgements.plist */,
+				C8B45E95674615DD5FB0E62A1AE5CDE3 /* Pods-Another Truckin Cinema-dummy.m */,
+				447B83CB7791F80FAA2E4AC60B782D41 /* Pods-Another Truckin Cinema-frameworks.sh */,
+				2C25DB253661D1B79B31EF8BD620CD3F /* Pods-Another Truckin Cinema-Info.plist */,
+				0AFBB9A0587AA715C66BB8AE5BABE0C9 /* Pods-Another Truckin Cinema-resources.sh */,
+				1AA38C5A436E30051BCE919037E9F68E /* Pods-Another Truckin Cinema-umbrella.h */,
+				B3395E447B3E2144D67AA73137EB3F75 /* Pods-Another Truckin Cinema.debug.xcconfig */,
+				0F2CC5B8D577D89EE1B6D1E2C2B7161E /* Pods-Another Truckin Cinema.release.xcconfig */,
+			);
+			name = "Pods-Another Truckin Cinema";
+			path = "Target Support Files/Pods-Another Truckin Cinema";
+			sourceTree = "<group>";
+		};
+		8A35D6F0111BE8EB4EEB5188529121AD /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				1C81839025D7C124DCAB32E265E3EEE4 /* Frameworks */,
+				520C1F8FBD5A557DF252680E3D5F1DCC /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		97018C405FFD1AB4817DCF7576C62FD3 /* youtube-ios-player-helper */ = {
+			isa = PBXGroup;
+			children = (
+				8E0A1E5E3580111F8B7E5CE5DF7D2C92 /* YTPlayerView.h */,
+				6566FF5E6F1046810B48AA8E84A985E4 /* YTPlayerView.m */,
+				D7F66FEE09488904D686CAB9025E8D87 /* Resources */,
+				FCF2C601BF4518E21543FA2B96238654 /* Support Files */,
+			);
+			path = "youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
+		AEDE33A00D19342A077ED8EE16C0AA15 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A381E3A193AF9F25E98731EA5AD8C9EC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap */,
+				D5B60DEE651A1B8B5FA3F038E742FD7E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.markdown */,
+				A40AA0BCBA55E520FEB2E7985B94D8B7 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-acknowledgements.plist */,
+				066090832589634094B35FFCB3216772 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m */,
+				7CAA97C6E4760EA55E7A4FB7E78830D3 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh */,
+				A689A410ECF5D7EAE4F76E83F868F52B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist */,
+				FCCC67E1070334FB692CBA3644765FAC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources.sh */,
+				EB923E8DCA1218A20E3D32D1D0B170D1 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h */,
+				7EF80784783EF8B2DCAAA91DEA3A5EF0 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */,
+				DD253AFBBD71CD41EE1B2C87F31A3E1E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */,
+			);
+			name = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests";
+			path = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests";
+			sourceTree = "<group>";
+		};
+		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9D206BABE81E6BF0B9B23880B238CC7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
+				207717D825CE8BA3592F279BCD4C2038 /* Pods */,
+				EF9421293292878C58AEDE67EFD025A7 /* Products */,
+				5ACFE8F89343E8AB770E70726465E779 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D00B73360BE2AFA42BC9470D9B4C78F7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				82B54C8B15AF04D88072AAB58769E8B1 /* IQKeyboardManager.modulemap */,
+				FC41DD664C9CD94A79F991C39D7329DC /* IQKeyboardManager-dummy.m */,
+				064B9270D2EC9FA2BD54705CEDD5BC50 /* IQKeyboardManager-Info.plist */,
+				CA9C5F3F1670BA532597C1A00AFF9ADC /* IQKeyboardManager-prefix.pch */,
+				00953F16E3F95B765C67CBF0CBFC4CC5 /* IQKeyboardManager-umbrella.h */,
+				220AE21ACB5871A8C8C6D7C381C68D27 /* IQKeyboardManager.debug.xcconfig */,
+				EE112173E54D4F17B841EC200907E6D7 /* IQKeyboardManager.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IQKeyboardManager";
+			sourceTree = "<group>";
+		};
+		D7F66FEE09488904D686CAB9025E8D87 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E3924CB79E71A1E10AFABF6082CAB211 /* YTPlayerView-iframe-player.html */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EC2B0A4998ACDE34DCC3CEAF92CBB1E0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F42D4DCCA3096FB6F8DCAF9362CA5585 /* DropDown.modulemap */,
+				6DC5B2EE91A81FF2608812633382B93A /* DropDown-dummy.m */,
+				D6872A2E20260158E8A2ABEB58A5A428 /* DropDown-Info.plist */,
+				C7288BB1CDEF9AFA2D5908BFF9B22885 /* DropDown-prefix.pch */,
+				9142030F2478C1737DB3EF6C9F230623 /* DropDown-umbrella.h */,
+				7DE42ABF3A157892302E62A7B87819BA /* DropDown.debug.xcconfig */,
+				76A658828C14EB658DEE2AE9D4FD019F /* DropDown.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DropDown";
+			sourceTree = "<group>";
+		};
+		EF9421293292878C58AEDE67EFD025A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B6725B782188F18CB76A740433F14E4 /* DropDown.framework */,
+				98527D7196957AAB07B79E2E2AFDE23E /* IQKeyboardManager */,
 				CCDF3C3611599C54D95C5F7D2CE4CB36 /* LTHRadioButton */,
 				360170E3C876AE2A416062276B96325D /* Pods-Another Truckin Cinema */,
 				C699D2AEFAC8E57754FFCCC4B1435EE7 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */,
@@ -332,23 +660,39 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CF1408CF629C7361332E53B88F7BD30C = {
+		EFC235064ACEC353E3B917FB8C059398 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				8AA21D1AA5B7F8EDCE49D25E9D68ACA5 /* Pods */,
-				C98B769925D00FCC63370BBA2DAB984A /* Products */,
-				9A27312BAE85F8191E8E408058E3C950 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				777184E2760C1FE763D58B1377D821AE /* GoogleMapsBase.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9D206BABE81E6BF0B9B23880B238CC7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				840FA0B75AF62912A30DDC66B647ED98 /* CoreGraphics.framework */,
+				79CF7D56C5D50C18B2EA0ED106D998C7 /* Foundation.framework */,
+				A42DBD2F42D55606EEBA514009498B87 /* QuartzCore.framework */,
+				04D60AC13D33197690A05C641925DDDA /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		FCF2C601BF4518E21543FA2B96238654 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7A89C909372F2A580C1F4A069F64A13 /* ResourceBundle-Assets-youtube-ios-player-helper-Info.plist */,
+				D80D219EDEAC0EBC59AEBA50EA48737E /* youtube-ios-player-helper.modulemap */,
+				9359F426C1CDC6C8BDE30AE62AC81ED1 /* youtube-ios-player-helper-dummy.m */,
+				B14A52BAD3DF28020D62ED45D75D5650 /* youtube-ios-player-helper-Info.plist */,
+				56B3FC5ED86839EA5E53AD8CF0C31ED9 /* youtube-ios-player-helper-prefix.pch */,
+				89BC7CD5BDA2ACD7C308C18332281D35 /* youtube-ios-player-helper-umbrella.h */,
+				94F081B10B82DA18912F15B6FFDC3780 /* youtube-ios-player-helper.debug.xcconfig */,
+				8C9A9A8E2F76A4C2A1CC2CB15B33671D /* youtube-ios-player-helper.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,19 +715,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9CBB7EFC772F9D018281CB5D7CED4B0 /* Headers */ = {
+		409211D0743ADB9E12858F097AB900B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E3C5B68611DB9C730F676866F6CE41A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h in Headers */,
+				9EE42EA1D5742891C0A2718A3BFE0F4A /* IQBarButtonItem.h in Headers */,
+				293A4E38AD5968B32012FDCC10D5E3AC /* IQKeyboardManager.h in Headers */,
+				8B566763930AD11F2945B71E4B2754A2 /* IQKeyboardManager-umbrella.h in Headers */,
+				376283CB1C2F4FBFDEB918476761CBF2 /* IQKeyboardManagerConstants.h in Headers */,
+				768C7D8165465E63F576F9135C572829 /* IQKeyboardManagerConstantsInternal.h in Headers */,
+				571898C9118E0B2E87F77CD223979CC4 /* IQKeyboardReturnKeyHandler.h in Headers */,
+				92A2BA5CE2E0F13CF32B96118A54B298 /* IQNSArray+Sort.h in Headers */,
+				43B3A6E418AF6D457318D5DFD64B22B7 /* IQPreviousNextView.h in Headers */,
+				3A5E751E5D684DE8F34433773EF9F259 /* IQTextView.h in Headers */,
+				F73C6B8F53A58263A375518A8BFF974F /* IQTitleBarButtonItem.h in Headers */,
+				14F350D1AE912096B4B04F9A0C6BAABE /* IQToolbar.h in Headers */,
+				A0C2891A8EE757E199310C3601A66130 /* IQUIScrollView+Additions.h in Headers */,
+				4D44DCC513AD5E580D92EDDF2D6A45A0 /* IQUITextFieldView+Additions.h in Headers */,
+				9869BE90A4E205295E92E1930E059FC0 /* IQUIView+Hierarchy.h in Headers */,
+				B34EE15CECE3B3F06DC0C1BB1FFA61C1 /* IQUIView+IQKeyboardToolbar.h in Headers */,
+				C2E3562A9EDADE0BCFD5D54324629F46 /* IQUIViewController+Additions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFE6B57EDCB49D944C73FC18961B1B37 /* Headers */ = {
+		97CE91431E229797751455423C79CA4F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6851BA53D3FAE4500DB85EF0EB7125 /* Pods-Another Truckin Cinema-umbrella.h in Headers */,
+				E0A8C46EEE733B55971B1CC5ED65C9AA /* DropDown-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A982EB2BA53328F6E51CFF403BC84462 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15F805E4601B78817EE5B42C3DDF7F5 /* Pods-Another Truckin Cinema-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAEA217C63A6EADE9780FDF1C65038BB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA29871A7967C49B9385E1DDBEA4C992 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,18 +775,21 @@
 /* Begin PBXNativeTarget section */
 		0FC0AE2DA873E5456EC64580973EDDCC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2983EB76FC8AE4BB19B65A2A31D8EC0C /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema-Another Truckin CinemaUITests" */;
+			buildConfigurationList = 698B647C0D3EDB09B13588FE05F6FA85 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema-Another Truckin CinemaUITests" */;
 			buildPhases = (
-				D9CBB7EFC772F9D018281CB5D7CED4B0 /* Headers */,
-				067C1696FC2EB1373DFA92757D67C7B7 /* Sources */,
-				BFE72E6A85B85C2EE4DFE39F74C3F481 /* Frameworks */,
-				7D541D40BB6EB09B87AEC1482D992F38 /* Resources */,
+				DAEA217C63A6EADE9780FDF1C65038BB /* Headers */,
+				EA0BEBD9D762E2846509389D1800659D /* Sources */,
+				FB970936F1FBE888ACA732004498A1CA /* Frameworks */,
+				49FA9C91615122B1ACB20080D8FF6BC0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9C9ED0A38B07903824B6CDAC098B9FAA /* PBXTargetDependency */,
-				B28F119D79EB01A6E303F4A2A4A72139 /* PBXTargetDependency */,
+				C1794E159D5636B1291962BADC6BC58A /* PBXTargetDependency */,
+				5AFF14BA8E0860FA1CAAD0808BAD2098 /* PBXTargetDependency */,
+				EFEACEF703793AC6C6DDF5CBDDDB6E50 /* PBXTargetDependency */,
+				55004E7490AEE63B611FE660549B30B1 /* PBXTargetDependency */,
+				9118F3A76A6FFE014E1FA274B1B35758 /* PBXTargetDependency */,
 			);
 			name = "Pods-Another Truckin Cinema-Another Truckin CinemaUITests";
 			productName = Pods_Another_Truckin_Cinema_Another_Truckin_CinemaUITests;
@@ -420,18 +798,21 @@
 		};
 		2C909AA309499BF383B9FD1D8D833A27 /* Pods-Another Truckin Cinema */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EECC7FC1BA254F4DC988DE0D1820B2A6 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema" */;
+			buildConfigurationList = DF1536136113C57679746EADF0E99B80 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema" */;
 			buildPhases = (
-				DFE6B57EDCB49D944C73FC18961B1B37 /* Headers */,
-				7D4E45D07DC69A73B2EA749A89F7AF9C /* Sources */,
-				4E21D45443AFF2160796B9012C5317AC /* Frameworks */,
-				DD51C1FE5A61E9CBDC99F1BC42EBAB67 /* Resources */,
+				A982EB2BA53328F6E51CFF403BC84462 /* Headers */,
+				33F0EFF395A834CD4C16E3F824EC2001 /* Sources */,
+				861FDAD0E09BC68C86BD32502A6E18EA /* Frameworks */,
+				AB5201F000E55EE9F41B0C3F51E99C12 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A8F436B34701CC1DE6D1ADB663724B34 /* PBXTargetDependency */,
-				2138BEC315D9CB9830895A7E9723E62B /* PBXTargetDependency */,
+				B258E493C36F1CC4CA2052D62666276A /* PBXTargetDependency */,
+				A8BB0756D34CCAFA2F7BE155590C71C0 /* PBXTargetDependency */,
+				259C63CA16136D089C14C77CBE903E4F /* PBXTargetDependency */,
+				9968CA097B19AC493C31CF7A3E891239 /* PBXTargetDependency */,
+				44C8C17ADD173A4D5808AE9169C21D30 /* PBXTargetDependency */,
 			);
 			name = "Pods-Another Truckin Cinema";
 			productName = Pods_Another_Truckin_Cinema;
@@ -440,11 +821,11 @@
 		};
 		3820B3D61248CD2A225DA312BC70F110 /* youtube-ios-player-helper-Assets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E07A931B27DA22D8A57C3289A814474 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper-Assets" */;
+			buildConfigurationList = 1EE32ACF1E887E13DAF22D3419146BD5 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper-Assets" */;
 			buildPhases = (
-				2E8E861DFEFBBDE1D1502F1C58598F87 /* Sources */,
-				E6F4A7298C67AAB4EB08111523188ECC /* Frameworks */,
-				177C1B19D7C355422BE0A6B76878329B /* Resources */,
+				71BA29B701E78643446542F70924F494 /* Sources */,
+				ACBB861ED71CD8E4EA63D3547D653D68 /* Frameworks */,
+				F6D1375DB047CFC20EC7F5AFD80DA900 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -467,7 +848,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				7023FC8E2125463C08630804BC6E5062 /* PBXTargetDependency */,
+				B33CE5075C4A9762F9ADFC4341B6EE6B /* PBXTargetDependency */,
 			);
 			name = "Pods-Another Truckin CinemaTests";
 			productName = Pods_Another_Truckin_CinemaTests;
@@ -486,11 +867,29 @@
 			buildRules = (
 			);
 			dependencies = (
-				7BAC8B919185D73EE25367CA4AC7F453 /* PBXTargetDependency */,
+				756BC19724996BED9866A2186159E10B /* PBXTargetDependency */,
 			);
 			name = "youtube-ios-player-helper";
 			productName = youtube_ios_player_helper;
 			productReference = 8498A1B2C60117E181CA67921DDAE0B6 /* youtube-ios-player-helper */;
+			productType = "com.apple.product-type.framework";
+		};
+		E9F9401E9C74C0C393164FD8D86D0068 /* DropDown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53052E6CBA1E65D6EF818199E617AC68 /* Build configuration list for PBXNativeTarget "DropDown" */;
+			buildPhases = (
+				97CE91431E229797751455423C79CA4F /* Headers */,
+				48864C435B3DB37698CF568C638CF98F /* Sources */,
+				808BE4E171BD75B6477EC2B77490C2B1 /* Frameworks */,
+				EFDE5B37A62BFF2F9A9BD2023B960CD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DropDown;
+			productName = DropDown;
+			productReference = 9B6725B782188F18CB76A740433F14E4 /* DropDown.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */ = {
@@ -511,6 +910,24 @@
 			productReference = CCDF3C3611599C54D95C5F7D2CE4CB36 /* LTHRadioButton */;
 			productType = "com.apple.product-type.framework";
 		};
+		FBA456CB50E371584C11231929A0971E /* IQKeyboardManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 468D926BA08FE82BE611371F2784EEC3 /* Build configuration list for PBXNativeTarget "IQKeyboardManager" */;
+			buildPhases = (
+				409211D0743ADB9E12858F097AB900B3 /* Headers */,
+				696476BA263493405A5C1762E016993A /* Sources */,
+				7D33780B948A3E4364412C5BC201A0CD /* Frameworks */,
+				D5CF6450C682B42321290106E8F7E838 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IQKeyboardManager;
+			productName = IQKeyboardManager;
+			productReference = 98527D7196957AAB07B79E2E2AFDE23E /* IQKeyboardManager */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -529,10 +946,13 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = C98B769925D00FCC63370BBA2DAB984A /* Products */;
+			productRefGroup = EF9421293292878C58AEDE67EFD025A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				E9F9401E9C74C0C393164FD8D86D0068 /* DropDown */,
+				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
+				FBA456CB50E371584C11231929A0971E /* IQKeyboardManager */,
 				FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */,
 				2C909AA309499BF383B9FD1D8D833A27 /* Pods-Another Truckin Cinema */,
 				0FC0AE2DA873E5456EC64580973EDDCC /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests */,
@@ -551,15 +971,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		177C1B19D7C355422BE0A6B76878329B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26EE736C078EEB204BA61ACBBE685975 /* YTPlayerView-iframe-player.html in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7D541D40BB6EB09B87AEC1482D992F38 /* Resources */ = {
+		49FA9C91615122B1ACB20080D8FF6BC0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -574,6 +986,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AB5201F000E55EE9F41B0C3F51E99C12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CF6450C682B42321290106E8F7E838 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DD2A049A6ACF52C992817645945C6F5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,24 +1007,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD51C1FE5A61E9CBDC99F1BC42EBAB67 /* Resources */ = {
+		EFDE5B37A62BFF2F9A9BD2023B960CD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E1653C561E14BBEAC9CF4873570D58 /* DropDownCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6D1375DB047CFC20EC7F5AFD80DA900 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				074639EB93F8D5E133781EE3CA7DAD8B /* YTPlayerView-iframe-player.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		067C1696FC2EB1373DFA92757D67C7B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		942DFFF130A9500FD868DB7E68CB3859 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CBCF6963163D5FB68204D081467692A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m in Sources */,
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-input-files.xcfilelist",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/GoogleMaps/GoogleMaps-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		2080545E642F69E7BA83CAC23F20C425 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -607,10 +1054,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2E8E861DFEFBBDE1D1502F1C58598F87 /* Sources */ = {
+		33F0EFF395A834CD4C16E3F824EC2001 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6737EE70D0024E211C2ECD17B4DC2C80 /* Pods-Another Truckin Cinema-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,11 +1071,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7D4E45D07DC69A73B2EA749A89F7AF9C /* Sources */ = {
+		48864C435B3DB37698CF568C638CF98F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABB3F9520EED2C86F663DE714A6272D6 /* Pods-Another Truckin Cinema-dummy.m in Sources */,
+				74012B832FAF67F8D62A2B27CDAFE8B5 /* DPDConstants.swift in Sources */,
+				89A72A55273CE358DC4E7600F785C37B /* DPDKeyboardListener.swift in Sources */,
+				B73E510E851686F8184E26986A470458 /* DPDUIView+Extension.swift in Sources */,
+				84459C4824533C9C4FD12AFC941F3CE1 /* DropDown.swift in Sources */,
+				515E22E4255B6073C1897BDDB091A2B8 /* DropDown+Appearance.swift in Sources */,
+				907338727C09F65DB75AA7AB9E10C3B4 /* DropDown-dummy.m in Sources */,
+				BDC10974A8641F01C5665C61EA37A153 /* DropDownCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		696476BA263493405A5C1762E016993A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F822E3E2AEAA87BAD9A511F5487BA4B /* IQBarButtonItem.m in Sources */,
+				0A48DAEFF3B2B76B6D59ECEACCF349DB /* IQKeyboardManager.m in Sources */,
+				F4F723087ED20D05F02C8FF1562305CA /* IQKeyboardManager-dummy.m in Sources */,
+				A25CA3F2540143EFA8C6D6C45845B79A /* IQKeyboardReturnKeyHandler.m in Sources */,
+				A0AF68FE7C423F0A669441A25935D049 /* IQNSArray+Sort.m in Sources */,
+				10BBF53FAF4C4845C71FF1D16A1F2185 /* IQPreviousNextView.m in Sources */,
+				3C63DF222FD6B77E855A172B1CB46771 /* IQTextView.m in Sources */,
+				06FFE460D79ABD60F42C0332EB3BEE4D /* IQTitleBarButtonItem.m in Sources */,
+				E3226C305B708F68460A437B3A73C0DE /* IQToolbar.m in Sources */,
+				6C8D636FC19EF52AC1C6C137034BD842 /* IQUIScrollView+Additions.m in Sources */,
+				CCECE87431A451056454222F247B89D5 /* IQUITextFieldView+Additions.m in Sources */,
+				77F56E4B8630FEEF0B934FC9F86852AE /* IQUIView+Hierarchy.m in Sources */,
+				DDEBC6CD2F36B3D7445C6C419FC34102 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				47E70B39D50CD49CB93F05C8A29A71FE /* IQUIViewController+Additions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71BA29B701E78643446542F70924F494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,51 +1122,112 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA0BEBD9D762E2846509389D1800659D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7F7B341B13256F8BC2E5D6FF736B64A /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2138BEC315D9CB9830895A7E9723E62B /* PBXTargetDependency */ = {
+		259C63CA16136D089C14C77CBE903E4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManager;
+			target = FBA456CB50E371584C11231929A0971E /* IQKeyboardManager */;
+			targetProxy = 8746EF1635F08E9A5BF87FA2E30B7249 /* PBXContainerItemProxy */;
+		};
+		44C8C17ADD173A4D5808AE9169C21D30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "youtube-ios-player-helper";
 			target = D1A7AF186BE136DE56FD5699070589B8 /* youtube-ios-player-helper */;
-			targetProxy = B0FA16477DCB7FDE378A5D947D1DD726 /* PBXContainerItemProxy */;
+			targetProxy = 4454230701C86A8975D5CFE66C9853C6 /* PBXContainerItemProxy */;
 		};
-		7023FC8E2125463C08630804BC6E5062 /* PBXTargetDependency */ = {
+		55004E7490AEE63B611FE660549B30B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-Another Truckin Cinema";
-			target = 2C909AA309499BF383B9FD1D8D833A27 /* Pods-Another Truckin Cinema */;
-			targetProxy = 74664B3D6C1C934631CCCE98AEDD63DF /* PBXContainerItemProxy */;
+			name = LTHRadioButton;
+			target = FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */;
+			targetProxy = D32375D23182FD3471E9CEA9E5E4F0CC /* PBXContainerItemProxy */;
 		};
-		7BAC8B919185D73EE25367CA4AC7F453 /* PBXTargetDependency */ = {
+		5AFF14BA8E0860FA1CAAD0808BAD2098 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 36EB5DDA61B03AB13148F6B90ED83CA8 /* PBXContainerItemProxy */;
+		};
+		756BC19724996BED9866A2186159E10B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "youtube-ios-player-helper-Assets";
 			target = 3820B3D61248CD2A225DA312BC70F110 /* youtube-ios-player-helper-Assets */;
-			targetProxy = C82D4FA86AA94DD98B5A874215979DF0 /* PBXContainerItemProxy */;
+			targetProxy = 690F3C9C5238A900C4574CB0B0368DD1 /* PBXContainerItemProxy */;
 		};
-		9C9ED0A38B07903824B6CDAC098B9FAA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LTHRadioButton;
-			target = FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */;
-			targetProxy = F9862A01A4B83673B6B55F301F56DA45 /* PBXContainerItemProxy */;
-		};
-		A8F436B34701CC1DE6D1ADB663724B34 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LTHRadioButton;
-			target = FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */;
-			targetProxy = 51C6EF1F5E6F058B4B4BF027E8419869 /* PBXContainerItemProxy */;
-		};
-		B28F119D79EB01A6E303F4A2A4A72139 /* PBXTargetDependency */ = {
+		9118F3A76A6FFE014E1FA274B1B35758 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "youtube-ios-player-helper";
 			target = D1A7AF186BE136DE56FD5699070589B8 /* youtube-ios-player-helper */;
-			targetProxy = 09F1899BF492FBDD75DA52EDD50D0F81 /* PBXContainerItemProxy */;
+			targetProxy = E8A2C47C82A4C8CB525B4FC46EC53702 /* PBXContainerItemProxy */;
+		};
+		9968CA097B19AC493C31CF7A3E891239 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LTHRadioButton;
+			target = FB6589BA961B6D177A92436AC1859598 /* LTHRadioButton */;
+			targetProxy = 2B4B8E4AF4BB1BF60CE543B5676EA609 /* PBXContainerItemProxy */;
+		};
+		A8BB0756D34CCAFA2F7BE155590C71C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 459A3B3D8C0693909C580F9A3EFC8777 /* PBXContainerItemProxy */;
+		};
+		B258E493C36F1CC4CA2052D62666276A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			target = E9F9401E9C74C0C393164FD8D86D0068 /* DropDown */;
+			targetProxy = 5CDDA6CD38184AA10C7A8B8138C73784 /* PBXContainerItemProxy */;
+		};
+		B33CE5075C4A9762F9ADFC4341B6EE6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Another Truckin Cinema";
+			target = 2C909AA309499BF383B9FD1D8D833A27 /* Pods-Another Truckin Cinema */;
+			targetProxy = 0EC339F063B91EDEEF62E0C83CB6B954 /* PBXContainerItemProxy */;
+		};
+		C1794E159D5636B1291962BADC6BC58A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			target = E9F9401E9C74C0C393164FD8D86D0068 /* DropDown */;
+			targetProxy = 04EFBB069C5D861407FFA091A25BF3EC /* PBXContainerItemProxy */;
+		};
+		EFEACEF703793AC6C6DDF5CBDDDB6E50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManager;
+			target = FBA456CB50E371584C11231929A0971E /* IQKeyboardManager */;
+			targetProxy = 864BFF9B085A30519F540EADFB0653F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		27F33BCDE0CD0510D4FAFD84B5D9CDF7 /* Debug */ = {
+		1BCB7B67C1A6AD1990E608DBC61EFA65 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38A533B76C2808847E5B24100FA7119B /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */;
+			baseConfigurationReference = 94F081B10B82DA18912F15B6FFDC3780 /* youtube-ios-player-helper.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
+				IBSC_MODULE = youtube_ios_player_helper;
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = Assets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		24689A84C468CB58BAA300F6BEC354BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3395E447B3E2144D67AA73137EB3F75 /* Pods-Another Truckin Cinema.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -696,7 +1239,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,7 +1248,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -713,6 +1256,58 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2871FF9CE6DD60B9298C19F519D31113 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F6326FCEE71E93D7FB0201347DC95FE /* GoogleMaps.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		313B5A983A701FEB3AFBCF7A9D926D05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 220AE21ACB5871A8C8C6D7C381C68D27 /* IQKeyboardManager.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManager/IQKeyboardManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManager;
+				PRODUCT_NAME = IQKeyboardManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -787,7 +1382,7 @@
 		};
 		5D9FC5EAAE5F46050FA73E4AD36E758A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3FC4B5BF295862119ACFB7A39C41D60 /* youtube-ios-player-helper.debug.xcconfig */;
+			baseConfigurationReference = 94F081B10B82DA18912F15B6FFDC3780 /* youtube-ios-player-helper.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -822,7 +1417,7 @@
 		};
 		619EF3E1786070468CF2C629C9E78D94 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8D7241919F96A600D90FAE570DB67A8 /* LTHRadioButton.release.xcconfig */;
+			baseConfigurationReference = 9FE2CB76DFE2EC1990450D3E56EE7C4B /* LTHRadioButton.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -857,7 +1452,7 @@
 		};
 		6E969AB416E702009BA86C1A5E26C047 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC5D2328368C7E4A68917CA82A680882 /* Pods-Another Truckin CinemaTests.debug.xcconfig */;
+			baseConfigurationReference = 953B227DF636D4B1C4B8671AC1D8B444 /* Pods-Another Truckin CinemaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -892,43 +1487,9 @@
 			};
 			name = Debug;
 		};
-		78ADCB9A807437C6D6F6398825020D75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 946898F83D0EB750EA7E1AC413B474F0 /* youtube-ios-player-helper.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
-				IBSC_MODULE = youtube_ios_player_helper;
-				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = Assets;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		7B4933299F1B620A7D214717FFFC1CE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3FC4B5BF295862119ACFB7A39C41D60 /* youtube-ios-player-helper.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
-				IBSC_MODULE = youtube_ios_player_helper;
-				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = Assets;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		809719E17778775AAD817D885191A198 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 946898F83D0EB750EA7E1AC413B474F0 /* youtube-ios-player-helper.release.xcconfig */;
+			baseConfigurationReference = 8C9A9A8E2F76A4C2A1CC2CB15B33671D /* youtube-ios-player-helper.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1026,7 +1587,7 @@
 		};
 		91D1A131C7A9571DE32876590C4FBECC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B2CAA528AE5CEF2A75028D30E5246B8 /* LTHRadioButton.debug.xcconfig */;
+			baseConfigurationReference = 69306B66ED90ED0AFCD163AC7895F750 /* LTHRadioButton.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1058,9 +1619,224 @@
 			};
 			name = Debug;
 		};
-		A7BDBF32D9D008DB82B0CE4F6FDC32AD /* Release */ = {
+		996E7F30EAFDE73F45294AD914E804B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE882256054F0F5DB3715F36920415E5 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */;
+			baseConfigurationReference = EE112173E54D4F17B841EC200907E6D7 /* IQKeyboardManager.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManager/IQKeyboardManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManager;
+				PRODUCT_NAME = IQKeyboardManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9FBD308E06A27BFBDD6A7527EBB306A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C9A9A8E2F76A4C2A1CC2CB15B33671D /* youtube-ios-player-helper.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
+				IBSC_MODULE = youtube_ios_player_helper;
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = Assets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		A44F786484AA40076CDCD4F5FEEA8074 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF80784783EF8B2DCAAA91DEA3A5EF0 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C24518E891FAA59668669823639498EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A658828C14EB658DEE2AE9D4FD019F /* DropDown.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/DropDown-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
+				PRODUCT_MODULE_NAME = DropDown;
+				PRODUCT_NAME = DropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E2BDF92B8CC2BC2155451F879B088044 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F2CC5B8D577D89EE1B6D1E2C2B7161E /* Pods-Another Truckin Cinema.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E2CDE7BD114C532701D2E79C5CB4CAA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DE42ABF3A157892302E62A7B87819BA /* DropDown.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DropDown/DropDown-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DropDown/DropDown.modulemap";
+				PRODUCT_MODULE_NAME = DropDown;
+				PRODUCT_NAME = DropDown;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EE798DD35112381FCC891F4E9D1CF820 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADDE1B8CE794593D6EC4D27F0C23EA24 /* GoogleMaps.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F42E3B5003FF4469754CCFF2B65127DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD253AFBBD71CD41EE1B2C87F31A3E1E /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1096,47 +1872,9 @@
 			};
 			name = Release;
 		};
-		E2524AB62FA175D53C0A706FF8E0D5D2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5305AB04FC088643525511117777E39F /* Pods-Another Truckin Cinema.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		F84F1E07DF8EBA451A0132252E291983 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D81237502F7174C511297D0D1F6AF275 /* Pods-Another Truckin CinemaTests.release.xcconfig */;
+			baseConfigurationReference = C62954681E9C95C6C5197DF4DDA41390 /* Pods-Another Truckin CinemaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1172,51 +1910,14 @@
 			};
 			name = Release;
 		};
-		FCA094C199462DA0A3779D54DD1CA25B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C7D72C3DFC4C63BFA9BDFF23E91D72D /* Pods-Another Truckin Cinema.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2983EB76FC8AE4BB19B65A2A31D8EC0C /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema-Another Truckin CinemaUITests" */ = {
+		1EE32ACF1E887E13DAF22D3419146BD5 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper-Assets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				27F33BCDE0CD0510D4FAFD84B5D9CDF7 /* Debug */,
-				A7BDBF32D9D008DB82B0CE4F6FDC32AD /* Release */,
+				1BCB7B67C1A6AD1990E608DBC61EFA65 /* Debug */,
+				9FBD308E06A27BFBDD6A7527EBB306A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1230,6 +1931,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		432269212CA7661476954A7A4DAA814D /* Build configuration list for PBXAggregateTarget "GoogleMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2871FF9CE6DD60B9298C19F519D31113 /* Debug */,
+				EE798DD35112381FCC891F4E9D1CF820 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		468D926BA08FE82BE611371F2784EEC3 /* Build configuration list for PBXNativeTarget "IQKeyboardManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				313B5A983A701FEB3AFBCF7A9D926D05 /* Debug */,
+				996E7F30EAFDE73F45294AD914E804B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1239,11 +1958,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E07A931B27DA22D8A57C3289A814474 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper-Assets" */ = {
+		53052E6CBA1E65D6EF818199E617AC68 /* Build configuration list for PBXNativeTarget "DropDown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B4933299F1B620A7D214717FFFC1CE0 /* Debug */,
-				78ADCB9A807437C6D6F6398825020D75 /* Release */,
+				E2CDE7BD114C532701D2E79C5CB4CAA8 /* Debug */,
+				C24518E891FAA59668669823639498EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		698B647C0D3EDB09B13588FE05F6FA85 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema-Another Truckin CinemaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A44F786484AA40076CDCD4F5FEEA8074 /* Debug */,
+				F42E3B5003FF4469754CCFF2B65127DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1266,11 +1994,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EECC7FC1BA254F4DC988DE0D1820B2A6 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema" */ = {
+		DF1536136113C57679746EADF0E99B80 /* Build configuration list for PBXNativeTarget "Pods-Another Truckin Cinema" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FCA094C199462DA0A3779D54DD1CA25B /* Debug */,
-				E2524AB62FA175D53C0A706FF8E0D5D2 /* Release */,
+				24689A84C468CB58BAA300F6BEC354BD /* Debug */,
+				E2BDF92B8CC2BC2155451F879B088044 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

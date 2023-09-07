@@ -8,23 +8,20 @@
 import Foundation
 import UIKit
 
+
+
 /// TicketSelectionVC class
-class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, AppNavigationBarDelegate, CycledBannerSignUpCellDelegate {
+class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavigationBarDelegate {
     
     /// Style struct
     fileprivate struct Style {
-        static let ContinueButtonHeight: CGFloat = 50
-        static let BannerHeight: CGFloat = 100
-        static let BannerTopAnchorConstant: CGFloat = 9
-        static let BannerLeadingTrailingMargin: CGFloat = 12
-        static let BannerCornerRadius: CGFloat = 15
         static let PricingLabelFont: UIFont = AppFont.semiBold(size: 13)
         static let PricingLabelItalicFont: UIFont = AppFont.semiBoldItalic(size: 13)
         static let TextColor: UIColor = AppColors.TextColorPrimary
         static let RadioButonSize: CGFloat = 30
-        static let RadioTitleFont: UIFont = AppFont.regular(size: 12)
+        static let RadioTitleFont: UIFont = AppFont.regular(size: 13)
         static let RadioTicketAmountLabelFont: UIFont = AppFont.semiBold(size: 17)
-        static let RadioPriceLabelFont: UIFont = AppFont.regular(size: 12)
+        static let RadioPriceLabelFont: UIFont = AppFont.regular(size: 13)
         static let RadioTopMargin: CGFloat = 80
         static let AlertLabelFont: UIFont = AppFont.regular(size: 12)
     }
@@ -53,19 +50,6 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         case Plus = "plus"
         func getString() -> String { return self.rawValue }
     }
-    
-    /// Cycled banner collection view4
-    fileprivate lazy var cycledBanner: CycledBanner = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: view.bounds.width - Style.BannerLeadingTrailingMargin * 2, height: Style.BannerHeight)
-        let collectionView = CycledBanner(frame: .zero, collectionViewLayout: layout)
-        collectionView.layer.cornerRadius = Style.BannerCornerRadius
-        collectionView.layer.masksToBounds = true
-        return collectionView
-    }()
     
     /// Banner's wrapper view for displaying the drop shadow
     fileprivate lazy var bannerWrapper: UIView = {
@@ -150,6 +134,8 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         btn.isEnabled = false
         return btn
     }()
+    /// sign up banner view
+    fileprivate lazy var signUpBannerView = SignUpBannerView()
     /// Max amount of tickets allower per purchase
     private let maxTicketsAllowed: Double = 10
     /// Amount of selected tickets
@@ -172,11 +158,6 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         label.isHidden = true
         return label
     }()
-    
-    /// timer
-    private var timer: Timer?
-    /// timer amount in seconds
-    private var timeLeft: Int = 420
 
     init(movieDetails: String) {
         super.init()
@@ -189,7 +170,6 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-//        executeTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,8 +184,7 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         addCustomNavBar()
-        addBannerConstraints()
-        setupBannerDataSource()
+        addBanner()
         configure()
         
         radioTicketCostLabel.text = "$12.50"
@@ -213,16 +192,7 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         
         radioButtonPlus.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
         radioButtonMinus.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
-    }
-    
-    /// triggers timer
-    private func executeTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
-            guard let sSelf = self else { return }
-            sSelf.timeLeft -= 1
-            let str = sSelf.timeLeft.convertToMinutesAndSeconds()
-            sSelf.appNavBar.updateTimerLabel(with: sSelf.timeLeft.convertToMinutesAndSeconds())
-        })
+        continueButton.addTarget(self, action: #selector(didTapContinueButton), for: .touchUpInside)
     }
     
     @objc private func didTapMinusButton() {
@@ -269,6 +239,11 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         }
     }
     
+    @objc private func didTapContinueButton() {
+        let vc = CarDetailsVC()
+        AppNavigation.shared.navigateTo(vc)
+    }
+    
     private func configure() {
         let admissionsStack = UIStackView(arrangedSubviews: [generalAdmissionLabel, childrenAdmissionLabel])
         admissionsStack.axis = .vertical
@@ -278,7 +253,7 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         view.addSubview(admissionsStack)
         
         admissionsStack.disableTranslatesAutoresizingMaskIntoContraints()
-        admissionsStack.topAnchor.tc_constrain(equalTo: bannerWrapper.bottomAnchor, constant: 15)
+        admissionsStack.topAnchor.tc_constrain(equalTo: bannerWrapper.bottomAnchor, constant: AppTheme.BannerBottomMargin)
         admissionsStack.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         admissionsStack.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
         
@@ -322,7 +297,7 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         
         view.addSubview(continueButton)
         continueButton.disableTranslatesAutoresizingMaskIntoContraints()
-        continueButton.heightAnchor.tc_constrain(equalToConstant: Style.ContinueButtonHeight)
+        continueButton.heightAnchor.tc_constrain(equalToConstant: ThemeButton.Style.Height)
         continueButton.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         continueButton.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
         continueButton.bottomAnchor.tc_constrain(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -AppTheme.BottomMargin)
@@ -334,33 +309,22 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
     }
     
     /// Sets up banner constraints
-    fileprivate func addBannerConstraints() {
-        cycledBanner.backgroundColor = AppColors.BannerCollectionBGColor
-        cycledBanner.showsHorizontalScrollIndicator = false
-        cycledBanner.showsVerticalScrollIndicator = false
+    fileprivate func addBanner() {
+        signUpBannerView.delegate = self
         
-        bannerWrapper.addSubview(cycledBanner)
+        bannerWrapper.addSubview(signUpBannerView)
+        signUpBannerView.disableTranslatesAutoresizingMaskIntoContraints()
+        signUpBannerView.tc_constrainToSuperview()
+        
         view.addSubview(bannerWrapper)
-        
-        /// banner shadow wrapper view constraints
         bannerWrapper.disableTranslatesAutoresizingMaskIntoContraints()
-        bannerWrapper.topAnchor.tc_constrain(equalTo: appNavBar.bottomAnchor, constant: Style.BannerTopAnchorConstant)
-        bannerWrapper.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: Style.BannerLeadingTrailingMargin)
-        bannerWrapper.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -Style.BannerLeadingTrailingMargin)
-        bannerWrapper.heightAnchor.tc_constrain(equalToConstant: Style.BannerHeight)
+        bannerWrapper.topAnchor.tc_constrain(equalTo: appNavBar.bottomAnchor, constant: AppTheme.BannerTopAnchorConstant)
+        bannerWrapper.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.BannerLeadingTrailingMargin)
+        bannerWrapper.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.BannerLeadingTrailingMargin)
+        bannerWrapper.heightAnchor.tc_constrain(equalToConstant: AppTheme.BannerHeight)
         
-        /// banner collection view constraints
-        cycledBanner.disableTranslatesAutoresizingMaskIntoContraints()
-        cycledBanner.tc_constrainToSuperview()
-    }
-    
-    /// Sets up data source for both the banner and movie collection views
-    fileprivate func setupBannerDataSource() {
-        /// Cycled banner
-        cycledBanner.delegate = self
-        cycledBanner.dataSource = self
-        cycledBanner.register(CycledBannerSignUpCell.self, forCellWithReuseIdentifier: CycledBannerSignUpCell.reuseIdentifier)
-        cycledBanner.register(CycledBannerCell.self, forCellWithReuseIdentifier: CycledBannerCell.reuseIdentifier)
+        bannerWrapper.layer.cornerRadius = SignUpBannerView.Style.BannerCornerRadius
+        bannerWrapper.clipsToBounds = true
     }
     
     // MARK: - Signup Banner Delegate Methods
@@ -390,19 +354,6 @@ class TicketSelectionVC: BaseViewController, UICollectionViewDataSource, UIColle
         appNavBar.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         appNavBar.delegate = self
     }
-}
-
-extension TicketSelectionVC {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CycledBannerSignUpCell.reuseIdentifier, for: indexPath) as! CycledBannerSignUpCell
-        cell.delegate = self
-        return cell
-    }
-    
 }
 
 extension TicketSelectionVC {

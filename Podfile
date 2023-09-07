@@ -7,8 +7,11 @@ target 'Another Truckin Cinema' do
 
   # Pods for Another Truckin Cinema
   
-  pod "youtube-ios-player-helper", "~> 1.0.4"
-  pod "LTHRadioButton"
+  pod 'youtube-ios-player-helper', '~> 1.0.4'
+  pod 'LTHRadioButton'
+  pod 'DropDown', '2.3.13'
+  pod 'GoogleMaps', '8.1.0'
+  pod 'IQKeyboardManager', '6.5.12'
 
   target 'Another Truckin CinemaTests' do
     inherit! :search_paths

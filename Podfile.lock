@@ -1,20 +1,36 @@
 PODS:
+  - DropDown (2.3.13)
+  - GoogleMaps (8.1.0):
+    - GoogleMaps/Maps (= 8.1.0)
+  - GoogleMaps/Base (8.1.0)
+  - GoogleMaps/Maps (8.1.0):
+    - GoogleMaps/Base
+  - IQKeyboardManager (6.5.12)
   - LTHRadioButton (1.2.3)
   - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
+  - DropDown (= 2.3.13)
+  - GoogleMaps (= 8.1.0)
+  - IQKeyboardManager (= 6.5.12)
   - LTHRadioButton
   - youtube-ios-player-helper (~> 1.0.4)
 
 SPEC REPOS:
   trunk:
+    - DropDown
+    - GoogleMaps
+    - IQKeyboardManager
     - LTHRadioButton
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  GoogleMaps: 97300a4b89a3641563782c52228c4530f5fe0d89
+  IQKeyboardManager: b1fd66ccf7a79095bdcc4a2735231586f744216e
   LTHRadioButton: b20980614572f7911272a6b8aa79ec0fdc9a74d4
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: aea8b4f134e21da6d817dae58ec57a6580fa3036
+PODFILE CHECKSUM: b56b206b709dceb6c13a024d83dfbf096d9dfc3d
 
 COCOAPODS: 1.12.1

@@ -12,6 +12,7 @@ import UIKit
 class ThemeButton: RoundedButton {
     
     struct Style {
+        static let Height: CGFloat = 45
         static var TitleFont: UIFont = AppFont.semiBold(size: 15)
         static var ActiveBg: UIColor = AppColors.ButtonActive
         static var InactiveBg: UIColor = AppColors.ButtonInactive
@@ -23,6 +24,7 @@ class ThemeButton: RoundedButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        titleLabel?.font = Style.TitleFont
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +38,6 @@ class ThemeButton: RoundedButton {
         setBackgroundImage(Style.InactiveBg.image(), for: .disabled)
         setBackgroundImage(Style.HighlightedBg.image(), for: .highlighted)
         
-        titleLabel?.font = Style.TitleFont
         setTitleColor(Style.ActiveTitleColor, for: .normal)
         setTitleColor(Style.InactiveTitleColor, for: .disabled)
         setTitleColor(Style.HighlightedTitleColor, for: .highlighted)

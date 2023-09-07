@@ -1,3 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/LTHRadioButton/LTHRadioButton.framework
 ${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework

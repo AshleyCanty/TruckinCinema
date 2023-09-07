@@ -10,9 +10,11 @@ import Foundation
 enum ButtonTitle: String {
     /// General / RSVP flow
     case Continue = "Continue"
+    case ContinueToPurchase = "Continue to Purchase"
     case Done = "Done"
     case Okay = "Ok"
     case RSVPNow = "RSVP Now"
+    case Submit = "Submit"
     
     /// Food and Drinks
     case OrderNow = "Order Now"

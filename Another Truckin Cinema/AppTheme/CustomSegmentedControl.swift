@@ -13,7 +13,7 @@ import UIKit
 class CustomSegmentedControl: UIControl {
     /// Style struct
     struct Style {
-        static let ItemFont: UIFont = AppFont.regular(size: 12)
+        static let ItemFont: UIFont = AppFont.regular(size: 13)
         static let ItemTextColor: UIColor = AppColors.SegmentedControlTextColor
         static let SelectedItemTextColor: UIColor = AppColors.SegmentedControlSelectedTextColor
         static let SelectedBorderColor: UIColor = AppColors.RegularTeal
@@ -138,7 +138,7 @@ class CustomSegmentedControl: UIControl {
         addSubview(selectorView)
         selectorView.disableTranslatesAutoresizingMaskIntoContraints()
         selectorView.heightAnchor.tc_constrain(equalToConstant: Style.SelectedBorderHeight)
-        selectorView.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: -Style.SelectedBorderHeight)
+        selectorView.bottomAnchor.tc_constrain(equalTo: bottomAnchor)
         selectorViewWidthConstraint = selectorView.widthAnchor.constraint(equalToConstant: buttons[selectedSegment].frame.width)
         selectorViewWidthConstraint?.isActive = true
         selectorViewCenterXConstraint = selectorView.centerXAnchor.constraint(equalTo: buttons[selectedSegment].centerXAnchor)

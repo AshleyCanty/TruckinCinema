@@ -29,8 +29,8 @@ class ShowtimeCell: UITableViewCell {
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
         static let TextColor: UIColor = AppColors.TextColorPrimary
-        static let TitleLabelFont: UIFont = AppFont.semiBold(size: 12)
-        static let RegularLabelFont: UIFont = AppFont.regular(size: 12)
+        static let TitleLabelFont: UIFont = AppFont.semiBold(size: 13)
+        static let RegularLabelFont: UIFont = AppFont.regular(size: 13)
         static let SpacerViewHeight: CGFloat = 5
     }
     /// Title label

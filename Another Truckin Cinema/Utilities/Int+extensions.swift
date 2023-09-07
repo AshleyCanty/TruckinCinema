@@ -11,6 +11,6 @@ extension Int {
     func convertToMinutesAndSeconds() -> String {
         let minutes = self / 60
         let seconds = self % 60
-        return "\(minutes):\(seconds)"
+        return String(format: "%02i:%02i", minutes, seconds)
     }
 }
