@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 /// HomescreenVC class
-class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, AppNavigationBarDelegate {    
+class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, AppNavigationBarDelegate, CycledBannerSignUpCellDelegate {
     
     /// Style struct
     fileprivate struct Style {
@@ -21,7 +21,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         static let MenuButtonSize: CGFloat = 24
         static let NavigationTitleLeftRightMargin: CGFloat = 32
         static let NavigationTitleFontSize: CGFloat = 25
-        static let NavigationTitleTextColor: UIColor = UIColor.white
+        static let NavigationTitleTextColor: UIColor = AppColors.TextColorPrimary
         static let RightButtonTintColor: UIColor = AppColors.RegularGray
         static let CurrentPageIndicatorTintColor: UIColor = AppColors.CurrentPageIndicatorTintColor
         static let PageIndicatorTintColor: UIColor = AppColors.PageIndicatorTintColor
@@ -174,6 +174,8 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         cycledBanner.isPagingEnabled = true
         cycledBanner.showsHorizontalScrollIndicator = false
         cycledBanner.backgroundColor = AppColors.BannerCollectionBGColor
+        cycledBanner.showsHorizontalScrollIndicator = false
+        cycledBanner.showsVerticalScrollIndicator = false
 
         bannerWrapper.addSubviews(subviews: [cycledBanner, pageControl])
         view.addSubview(bannerWrapper)
@@ -207,11 +209,21 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         movieCollection.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
     }
     
+    // MARK: - Signup Banner Delegate Methods
+    
+    func didPressSignUpButton() {
+        let vc = RegistrationVC(step: .One, tier: .Tier1)
+        AppNavigation.shared.navigateTo(vc)
+    }
+    
     // MARK: - Custom NavBar Delegate Methods
     
     func didPressNavBarLeftButton() {}
     
-    func didPressNavBarRightButton() {}
+    func didPressNavBarRightButton() {
+        let vc = SignInVC()
+        AppNavigation.shared.navigateTo(vc)
+    }
     
     func addCustomNavBar() {
         view.addSubview(appNavBar)
@@ -232,8 +244,19 @@ extension HomescreenVC {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if type(of: collectionView) == MovieCollection.self {
-            let movieDetailVC = MovieDetailsVC(movieId: 385687)
-            AppNavigation.shared.navigateTo(movieDetailVC)
+            if indexPath.item == 0 {
+                let movieDetailVC = MovieDetailsVC(movieId: 385687)
+                AppNavigation.shared.navigateTo(movieDetailVC)
+            } else if indexPath.item == 1 {
+                let vc = FoodDeliveryDetailsVC()
+                AppNavigation.shared.navigateTo(vc)
+            } else if indexPath.item == 2 {
+                let vc = RegistrationVC(step: .One, tier: .Tier1)
+                AppNavigation.shared.navigateTo(vc)
+            } else if indexPath.item == 3 {
+                let vc = PaymentConfirmationVC()
+                AppNavigation.shared.navigateTo(vc)
+            }
         }
     }
     
@@ -249,6 +272,8 @@ extension HomescreenVC {
         if collectionView == self.cycledBanner {
             if indexPath.item == 0 && !hideSignupBanner {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CycledBannerSignUpCell.reuseIdentifier, for: indexPath) as! CycledBannerSignUpCell
+                cell.delegate = self
+                
                 return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CycledBannerCell.reuseIdentifier, for: indexPath) as! CycledBannerCell

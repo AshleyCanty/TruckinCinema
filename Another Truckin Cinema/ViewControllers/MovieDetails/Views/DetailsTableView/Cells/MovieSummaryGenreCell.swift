@@ -33,14 +33,14 @@ class MovieSummaryGenreCell: UITableViewCell {
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
         static let TitleFont: UIFont = AppFont.medium(size: 13)
-        static let TitleTextColor: UIColor = AppColors.MovieDetailsTextColorSecondary
+        static let TitleTextColor: UIColor = AppColors.TextColorSecondary
         static let TitleTopMargin: CGFloat = 12
         static let SummaryTextViewTopMargin: CGFloat = 12
         static let SummaryTextViewFont: UIFont = AppFont.regular(size: 12)
-        static let SummaryTextColor: UIColor = .white
+        static let SummaryTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillBackgroundColor: UIColor = AppColors.BackgroundSecondary
         static let GenrePillTextFont: UIFont = AppFont.medium(size: 12)
-        static let GenrePillTextColor: UIColor = .white
+        static let GenrePillTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillSpacing: CGFloat = 10.0
         
     }

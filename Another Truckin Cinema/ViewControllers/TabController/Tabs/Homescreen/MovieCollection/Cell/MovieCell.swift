@@ -12,7 +12,7 @@ class MovieCell: UICollectionViewCell {
     
     struct Style {
         static let CellHeight: CGFloat = 260
-        static let TitleTextColor: UIColor = .white
+        static let TitleTextColor: UIColor = AppColors.TextColorPrimary
         static let TitleTextFont: UIFont = AppFont.semiBold(size: 11)
         static let TitleBackgroundColor: UIColor = AppColors.BackgroundSecondary
         static let CornerRadius: CGFloat = 15

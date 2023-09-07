@@ -8,18 +8,22 @@
 import Foundation
 import UIKit
 
-class CycledBannerSignUpCell: UICollectionViewCell {
+protocol CycledBannerSignUpCellDelegate: AnyObject {
+    func didPressSignUpButton()
+}
+
+class CycledBannerSignUpCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     /// Style struct
     fileprivate struct Style {
         static let DescriptionFont: UIFont = AppFont.medium(size: 13)
-        static let DescriptionTextColor: UIColor = .white
+        static let DescriptionTextColor: UIColor = AppColors.TextColorPrimary
         static let DescriptionTopMargin: CGFloat = 12
         static let DescriptionLeadingMargin: CGFloat = 8
         static let DescriptionTrailingMargin: CGFloat = 12
         static let JoinButtonBorderWidth: CGFloat = 1
-        static let JoinButtonBorderColor: UIColor = .white
+        static let JoinButtonBorderColor: UIColor = AppColors.TextColorPrimary
         static let JoinButtonTitleLabelFont: UIFont = AppFont.semiBold(size: 10)
-        static let JoinButtonTextColor: UIColor = .white
+        static let JoinButtonTextColor: UIColor = AppColors.TextColorPrimary
         static let JoinButtonWidth: CGFloat = 70
         static let JoinButtonContentInsets: NSDirectionalEdgeInsets = .init(top: 8, leading: 15, bottom: 8, trailing: 15)
         static let JoinButtonContentEdgeInsets: UIEdgeInsets = .init(top: 8, left: 15, bottom: 8, right: 15)
@@ -96,6 +100,8 @@ class CycledBannerSignUpCell: UICollectionViewCell {
         return label
     }()
     
+    weak var delegate: CycledBannerSignUpCellDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupViews()
@@ -141,5 +147,21 @@ class CycledBannerSignUpCell: UICollectionViewCell {
         joinButton.topAnchor.tc_constrain(equalTo: descriptionLabel.bottomAnchor)
         joinButton.trailingAnchor.tc_constrain(equalTo: contentView.trailingAnchor, constant: -Style.JoinButtonTrailingMargin)
         joinButton.bottomAnchor.tc_constrain(equalTo: contentView.bottomAnchor, constant: -Style.JoinButtonBottomMargin)
+        
+        joinButton.addTarget(self, action: #selector(didPressButton), for: .touchUpInside)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressButton))
+        tapGesture.delegate = self
+        joinButton.isUserInteractionEnabled = true
+        joinButton.addGestureRecognizer(tapGesture)
+    }
+    
+    /// triggers delegate method
+    @objc private func didPressButton() {
+        delegate?.didPressSignUpButton()
+    }
+    
+    public func getSignUpButtonFrame() -> CGRect {
+        return joinButton.frame
     }
 }

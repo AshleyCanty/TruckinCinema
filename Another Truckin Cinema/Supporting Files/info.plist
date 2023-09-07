@@ -11,7 +11,9 @@
 		<string>Montserrat-Regular.ttf</string>
 		<string>Montserrat-Medium.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
+		<string>Montserrat-SemiBoldItalic.ttf</string>
 		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
@@ -31,5 +33,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>Application fonts resource path</key>
+	<string></string>
 </dict>
 </plist>

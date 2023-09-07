@@ -57,6 +57,17 @@
 		249523312A639E6E007228D5 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249523302A639E6E007228D5 /* MovieCell.swift */; };
 		249523332A639E9F007228D5 /* MovieCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249523322A639E9F007228D5 /* MovieCellModel.swift */; };
 		249523352A639F47007228D5 /* MovieCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249523342A639F47007228D5 /* MovieCellData.swift */; };
+		24C153472A8195500080CB19 /* Registration+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153462A8195500080CB19 /* Registration+Enums.swift */; };
+		24C1534B2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1534A2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift */; };
+		24C1534E2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1534D2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift */; };
+		24C153502A832BD10080CB19 /* LocationConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1534F2A832BD10080CB19 /* LocationConfirmationCell.swift */; };
+		24C153522A832CF60080CB19 /* DateConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153512A832CF60080CB19 /* DateConfirmationCell.swift */; };
+		24C153542A83772C0080CB19 /* DoneButtonConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153532A83772C0080CB19 /* DoneButtonConfirmationCell.swift */; };
+		24C153562A843DE80080CB19 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24C153552A843CA70080CB19 /* Montserrat-SemiBoldItalic.ttf */; };
+		24C153572A843DED0080CB19 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24C1534C2A82F9340080CB19 /* Montserrat-ExtraBold.ttf */; };
+		24C153592A844A5A0080CB19 /* Int+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153582A844A5A0080CB19 /* Int+extensions.swift */; };
+		24C1535C2A844A7F0080CB19 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1535B2A844A7F0080CB19 /* RadioButton.swift */; };
+		24C1535E2A847D150080CB19 /* AppUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1535D2A847D150080CB19 /* AppUITextField.swift */; };
 		24F5DA792A7EC23400AC7A59 /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */; };
 		24F5DA7E2A7EFD0600AC7A59 /* CarDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA7D2A7EFD0600AC7A59 /* CarDetailsVC.swift */; };
 		24F5DA802A7EFE5800AC7A59 /* SnackBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA7F2A7EFE5800AC7A59 /* SnackBarVC.swift */; };
@@ -65,7 +76,7 @@
 		24F5DA862A7F010900AC7A59 /* PaymentOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA852A7F010900AC7A59 /* PaymentOrderVC.swift */; };
 		24F5DA882A7F013F00AC7A59 /* PaymentConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA872A7F013F00AC7A59 /* PaymentConfirmationVC.swift */; };
 		24F5DA8A2A7F040100AC7A59 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA892A7F040100AC7A59 /* SignInVC.swift */; };
-		24F5DA8C2A7F046100AC7A59 /* MembershipRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA8B2A7F046100AC7A59 /* MembershipRegistrationVC.swift */; };
+		24F5DA8C2A7F046100AC7A59 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA8B2A7F046100AC7A59 /* RegistrationVC.swift */; };
 		24F5DA8E2A8023EE00AC7A59 /* AppAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA8D2A8023EE00AC7A59 /* AppAlertController.swift */; };
 		24FA37482A5849EB009BFEAE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466C7712A578ACE006AED5F /* Launch Screen.storyboard */; };
 		24FA37492A5849EB009BFEAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244CCB852A5500C60045DDAB /* Assets.xcassets */; };
@@ -153,6 +164,17 @@
 		249523302A639E6E007228D5 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		249523322A639E9F007228D5 /* MovieCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellModel.swift; sourceTree = "<group>"; };
 		249523342A639F47007228D5 /* MovieCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellData.swift; sourceTree = "<group>"; };
+		24C153462A8195500080CB19 /* Registration+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration+Enums.swift"; sourceTree = "<group>"; };
+		24C1534A2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQRCodeConfirmationCell.swift; sourceTree = "<group>"; };
+		24C1534C2A82F9340080CB19 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		24C1534D2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsAndScreenConfirmationCell.swift; sourceTree = "<group>"; };
+		24C1534F2A832BD10080CB19 /* LocationConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConfirmationCell.swift; sourceTree = "<group>"; };
+		24C153512A832CF60080CB19 /* DateConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConfirmationCell.swift; sourceTree = "<group>"; };
+		24C153532A83772C0080CB19 /* DoneButtonConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButtonConfirmationCell.swift; sourceTree = "<group>"; };
+		24C153552A843CA70080CB19 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		24C153582A844A5A0080CB19 /* Int+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extensions.swift"; sourceTree = "<group>"; };
+		24C1535B2A844A7F0080CB19 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		24C1535D2A847D150080CB19 /* AppUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITextField.swift; sourceTree = "<group>"; };
 		24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
 		24F5DA7D2A7EFD0600AC7A59 /* CarDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsVC.swift; sourceTree = "<group>"; };
 		24F5DA7F2A7EFE5800AC7A59 /* SnackBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarVC.swift; sourceTree = "<group>"; };
@@ -161,7 +183,7 @@
 		24F5DA852A7F010900AC7A59 /* PaymentOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderVC.swift; sourceTree = "<group>"; };
 		24F5DA872A7F013F00AC7A59 /* PaymentConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationVC.swift; sourceTree = "<group>"; };
 		24F5DA892A7F040100AC7A59 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
-		24F5DA8B2A7F046100AC7A59 /* MembershipRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipRegistrationVC.swift; sourceTree = "<group>"; };
+		24F5DA8B2A7F046100AC7A59 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		24F5DA8D2A8023EE00AC7A59 /* AppAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertController.swift; sourceTree = "<group>"; };
 		24FC6D3B2A678A3E00461AA8 /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
 		24FC6D3E2A68310700461AA8 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
@@ -312,8 +334,9 @@
 		2466B7CF2A64A31000DDC8BC /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				2495231E2A5F5B69007228D5 /* NavigationTitles+Icons.swift */,
 				24FC6D452A68BC4200461AA8 /* AppNavigation.swift */,
+				24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */,
+				2495231E2A5F5B69007228D5 /* NavigationTitles+Icons.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -352,6 +375,7 @@
 				24FC6D422A68315F00461AA8 /* AppLabels */,
 				24FC6D3D2A6830EA00461AA8 /* AppButtons */,
 				24F5DA8D2A8023EE00AC7A59 /* AppAlertController.swift */,
+				24C1535D2A847D150080CB19 /* AppUITextField.swift */,
 			);
 			path = AppTheme;
 			sourceTree = "<group>";
@@ -389,7 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				24702C202A7E14F100C87D26 /* TicketSelectionVC.swift */,
-				24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */,
+				24C1535B2A844A7F0080CB19 /* RadioButton.swift */,
 			);
 			path = TicketPurchase;
 			sourceTree = "<group>";
@@ -402,7 +426,9 @@
 				24771A742A56559300FB33AF /* Montserrat-Regular.ttf */,
 				2487F7822A5A2C8300FD1517 /* Montserrat-Medium.ttf */,
 				24771A752A56559300FB33AF /* Montserrat-SemiBold.ttf */,
+				24C153552A843CA70080CB19 /* Montserrat-SemiBoldItalic.ttf */,
 				24771A762A5655A700FB33AF /* Montserrat-Bold.ttf */,
+				24C1534C2A82F9340080CB19 /* Montserrat-ExtraBold.ttf */,
 				24771A772A5655B500FB33AF /* Montserrat-Black.ttf */,
 			);
 			path = Fonts;
@@ -417,6 +443,7 @@
 				249523212A60CCBF007228D5 /* AutoLayout+extensions.swift */,
 				249523262A6100D1007228D5 /* UIView+extensions.swift */,
 				2461ED992A6F702E007916A3 /* ImageDownloader.swift */,
+				24C153582A844A5A0080CB19 /* Int+extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -492,6 +519,36 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		24C153452A81952E0080CB19 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				24F5DA8B2A7F046100AC7A59 /* RegistrationVC.swift */,
+				24C153462A8195500080CB19 /* Registration+Enums.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		24C153482A82D4EF0080CB19 /* PaymentConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				24F5DA872A7F013F00AC7A59 /* PaymentConfirmationVC.swift */,
+				24C153492A82D4FD0080CB19 /* Cells */,
+			);
+			path = PaymentConfirmation;
+			sourceTree = "<group>";
+		};
+		24C153492A82D4FD0080CB19 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				24C1534A2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift */,
+				24C1534D2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift */,
+				24C1534F2A832BD10080CB19 /* LocationConfirmationCell.swift */,
+				24C153512A832CF60080CB19 /* DateConfirmationCell.swift */,
+				24C153532A83772C0080CB19 /* DoneButtonConfirmationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		24C4092A2A775923001E5290 /* TopDetailsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,9 +595,9 @@
 				24F5DA812A7EFEB700AC7A59 /* SnackSelectionVC.swift */,
 				24F5DA832A7F003400AC7A59 /* FoodDeliveryDetailsVC.swift */,
 				24F5DA852A7F010900AC7A59 /* PaymentOrderVC.swift */,
-				24F5DA872A7F013F00AC7A59 /* PaymentConfirmationVC.swift */,
+				24C153482A82D4EF0080CB19 /* PaymentConfirmation */,
 				24F5DA892A7F040100AC7A59 /* SignInVC.swift */,
-				24F5DA8B2A7F046100AC7A59 /* MembershipRegistrationVC.swift */,
+				24C153452A81952E0080CB19 /* Registration */,
 			);
 			path = RemainingVCs;
 			sourceTree = "<group>";
@@ -711,6 +768,8 @@
 				2487F7852A5A371200FD1517 /* Montserrat-Regular.ttf in Resources */,
 				2487F7862A5A371400FD1517 /* Montserrat-Medium.ttf in Resources */,
 				24FA37492A5849EB009BFEAE /* Assets.xcassets in Resources */,
+				24C153572A843DED0080CB19 /* Montserrat-ExtraBold.ttf in Resources */,
+				24C153562A843DE80080CB19 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				2487F7892A5A371A00FD1517 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,30 +899,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F5DA822A7EFEB700AC7A59 /* SnackSelectionVC.swift in Sources */,
+				24C1535C2A844A7F0080CB19 /* RadioButton.swift in Sources */,
+				24C153522A832CF60080CB19 /* DateConfirmationCell.swift in Sources */,
 				2466B7CE2A649FA900DDC8BC /* MovieCollection.swift in Sources */,
 				2461EDA32A709CBA007916A3 /* CustomSegmentedControl.swift in Sources */,
 				24F5DA7E2A7EFD0600AC7A59 /* CarDetailsVC.swift in Sources */,
 				24625D222A78881C0088FE4C /* ShowtimeRadioListCell.swift in Sources */,
+				24C1534E2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift in Sources */,
 				249523292A621CFD007228D5 /* RoundedButton.swift in Sources */,
 				2461ED9C2A701C73007916A3 /* MovieDetailsTrailerTopView.swift in Sources */,
 				249523272A6100D1007228D5 /* UIView+extensions.swift in Sources */,
 				249523312A639E6E007228D5 /* MovieCell.swift in Sources */,
 				2466C7742A579437006AED5F /* UIColor+extensions.swift in Sources */,
+				24C153542A83772C0080CB19 /* DoneButtonConfirmationCell.swift in Sources */,
 				24F5DA862A7F010900AC7A59 /* PaymentOrderVC.swift in Sources */,
 				24702C1E2A7DC8C600C87D26 /* TrailerPlayerVC.swift in Sources */,
 				244CCB7A2A5500C50045DDAB /* AppDelegate.swift in Sources */,
 				2487F7902A5BBA9300FD1517 /* BannerItem.swift in Sources */,
 				249523332A639E9F007228D5 /* MovieCellModel.swift in Sources */,
 				2466B7CC2A64989200DDC8BC /* CycledBanner.swift in Sources */,
+				24C1535E2A847D150080CB19 /* AppUITextField.swift in Sources */,
 				2457A9012A593960009A9C8A /* BaseViewController.swift in Sources */,
 				2461ED9A2A6F702E007916A3 /* ImageDownloader.swift in Sources */,
+				24C153592A844A5A0080CB19 /* Int+extensions.swift in Sources */,
 				24F5DA8A2A7F040100AC7A59 /* SignInVC.swift in Sources */,
 				24FC6D462A68BC4200461AA8 /* AppNavigation.swift in Sources */,
 				24625D1B2A780DD90088FE4C /* MovieTrailerCell.swift in Sources */,
 				244CCB7C2A5500C50045DDAB /* SceneDelegate.swift in Sources */,
 				24771A7C2A5659FB00FB33AF /* AppColors.swift in Sources */,
 				2466C7822A57BF97006AED5F /* MembershipTiersVC.swift in Sources */,
-				24F5DA8C2A7F046100AC7A59 /* MembershipRegistrationVC.swift in Sources */,
+				24F5DA8C2A7F046100AC7A59 /* RegistrationVC.swift in Sources */,
 				2487F7942A5BBC6F00FD1517 /* BannerItemData.swift in Sources */,
 				24FC6D3C2A678A3E00461AA8 /* MovieDetailsVC.swift in Sources */,
 				2495231F2A5F5B69007228D5 /* NavigationTitles+Icons.swift in Sources */,
@@ -878,6 +943,7 @@
 				24625D1D2A7811340088FE4C /* MovieSummaryGenreCell.swift in Sources */,
 				2487F79A2A5BC90200FD1517 /* UIImage+extensions.swift in Sources */,
 				2487F78B2A5AFD5300FD1517 /* AppFont.swift in Sources */,
+				24C153472A8195500080CB19 /* Registration+Enums.swift in Sources */,
 				24702C212A7E14F100C87D26 /* TicketSelectionVC.swift in Sources */,
 				2487F7962A5BC11900FD1517 /* CycledBannerCell.swift in Sources */,
 				249523252A60D05D007228D5 /* CycledBannerSignUpCell.swift in Sources */,
@@ -887,6 +953,8 @@
 				2487F78D2A5AFDED00FD1517 /* UIFont+extensions.swift in Sources */,
 				24F5DA792A7EC23400AC7A59 /* AppNavigationBar.swift in Sources */,
 				2466B7CA2A64874C00DDC8BC /* DateView.swift in Sources */,
+				24C153502A832BD10080CB19 /* LocationConfirmationCell.swift in Sources */,
+				24C1534B2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift in Sources */,
 				2466C77E2A57BF3A006AED5F /* DriveInLocationsVC.swift in Sources */,
 				24F5DA882A7F013F00AC7A59 /* PaymentConfirmationVC.swift in Sources */,
 				24F5DA842A7F003400AC7A59 /* FoodDeliveryDetailsVC.swift in Sources */,

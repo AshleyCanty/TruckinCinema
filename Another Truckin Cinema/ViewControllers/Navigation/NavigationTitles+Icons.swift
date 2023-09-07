@@ -26,8 +26,10 @@ public enum NavigationTitle: String {
     case OurDriveIns = "Our Drive-ins"
     case FoodAndDrinks = "Food & Drinks"
     case MyATCMembership = "My ATC Membership"
+    case FoodDeliveryOrPickup = "Delivery to Car or Pickup at Snackbar"
+    case CreateAccount = "Create Account"
+    case SignIn = "Sign In"
     
-    case DeliveryOrPickup = "Delivery to Car or Pickup at Snackbar"
     
     func getString() -> String { return self.rawValue }
 }

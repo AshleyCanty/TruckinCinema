@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         AppNavigation.shared.setNavigationBarHidden(true, animated: false)
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = AppColors.TextColorPrimary
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

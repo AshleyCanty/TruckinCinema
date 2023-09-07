@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
         static let MenuButtonSize: CGFloat = 24
         static let NavigationTitleLeftRightMargin: CGFloat = 32
         static let NavigationTitleFontSize: CGFloat = 25
-        static let NavigationTitleTextColor: UIColor = UIColor.white
+        static let NavigationTitleTextColor: UIColor = AppColors.TextColorPrimary
         static let RightButtonTintColor: UIColor = AppColors.RegularGray
     }
     
@@ -48,6 +48,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColors.BackgroundMain
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {

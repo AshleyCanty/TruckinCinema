@@ -30,12 +30,12 @@ class MovieTrailerCell: UITableViewCell {
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
         static let TextFont: UIFont = AppFont.regular(size: 10)
-        static let TextColor: UIColor = AppColors.MovieDetailsTextColorSecondary
-        static let DurationTextColor: UIColor = .white
+        static let TextColor: UIColor = AppColors.TextColorSecondary
+        static let DurationTextColor: UIColor = AppColors.TextColorPrimary
         static let TitleTopMargin: CGFloat = 12
         static let GenrePillBackgroundColor: UIColor = AppColors.BackgroundSecondary
         static let GenrePillTextFont: UIFont = AppFont.medium(size: 12)
-        static let GenrePillTextColor: UIColor = .white
+        static let GenrePillTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillSpacing: CGFloat = 10.0
         static let PlayButtonSize: CGFloat = 36
         static let CornerRadius: CGFloat = 15
@@ -120,6 +120,7 @@ class MovieTrailerCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         cellDelegate?.updateRowHeightForTrailerCell()
+        // refactor - fix shadow getting cut off at sides
         guard shadowWrapperView.layer.shadowPath == nil else { return }
         shadowWrapperView.addShadow(color: AppTheme.ShadowColor, opacity: AppTheme.ShadowOpacity, radius: AppTheme.ShadowRadius, offset: AppTheme.ShadowOffset)
     }

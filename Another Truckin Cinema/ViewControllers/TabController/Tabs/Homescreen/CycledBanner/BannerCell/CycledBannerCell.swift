@@ -13,7 +13,7 @@ class CycledBannerCell: UICollectionViewCell {
     /// Style struct
     struct Style {
         static let DescriptionFont: UIFont = AppFont.semiBold(size: 13)
-        static let DescriptionTextColor: UIColor = .white
+        static let DescriptionTextColor: UIColor = AppColors.TextColorPrimary
         static let DescriptionTopMargin: CGFloat = 12.0
         static let GradientViewColors: [UIColor] = [.black.withAlphaComponent(0.8), .clear]
         static let GradientStartPoint: CGPoint = CGPoint(x: 0, y: 0)

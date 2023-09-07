@@ -22,8 +22,20 @@ public struct AppFont {
         return create(using: CustomFont.MontserratSemiBold, size: size, weight: .semibold)
     }
     
+    static func semiBoldItalic(size: CGFloat) -> UIFont {
+        return create(using: CustomFont.MontserratSemiBoldItalic, size: size, weight: .semibold)
+    }
+    
     static func bold(size: CGFloat) -> UIFont {
         return create(using: CustomFont.MontserratBold, size: size, weight: .bold)
+    }
+    
+    static func extraBold(size: CGFloat) -> UIFont {
+        return create(using: CustomFont.MontserratExtraBold, size: size, weight: .bold)
+    }
+    
+    static func black(size: CGFloat) -> UIFont {
+        return create(using: CustomFont.MontserratBlack, size: size, weight: .black)
     }
     
     /// Creates and returns a custom font. If the custom font cannot be found, it'll return a systemFont instead.
@@ -37,5 +49,8 @@ public enum CustomFont: String {
     case MontserratRegular = "Montserrat-Regular"
     case MontserratMedium = "Montserrat-Medium"
     case MontserratSemiBold = "Montserrat-SemiBold"
+    case MontserratSemiBoldItalic = "Montserrat-SemiBoldItalic"
     case MontserratBold = "Montserrat-Bold"
+    case MontserratExtraBold = "Montserrat-ExtraBold"
+    case MontserratBlack = "Montserrat-Black"
 }

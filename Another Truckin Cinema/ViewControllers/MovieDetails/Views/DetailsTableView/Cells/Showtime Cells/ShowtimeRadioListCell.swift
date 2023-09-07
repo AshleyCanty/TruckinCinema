@@ -31,12 +31,12 @@ class ShowtimeRadioListCell: UITableViewCell {
     /// Style struct
     struct Style {
         static let BackgroundColor: UIColor = AppColors.BackgroundMain
-        static let TextColor: UIColor = .white
+        static let TextColor: UIColor = AppColors.TextColorPrimary
         static let TitleLabelFont: UIFont = AppFont.semiBold(size: 12)
         static let RegularLabelFont: UIFont = AppFont.regular(size: 12)
         static let RadioSelectedColor: UIColor = AppColors.RegularTeal
-        static let RadioDeselectedColor: UIColor = .white
-        static let RadioLabelTextColor: UIColor = .white
+        static let RadioDeselectedColor: UIColor = AppColors.TextColorPrimary
+        static let RadioLabelTextColor: UIColor = AppColors.TextColorPrimary
         static let RadioLabelFont: UIFont = AppFont.regular(size: 12)
         static let RadioSpacing: CGFloat = 20
     }

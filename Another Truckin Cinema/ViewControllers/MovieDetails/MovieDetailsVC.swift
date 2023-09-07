@@ -121,7 +121,6 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
 
     override func viewWillAppear(_ animated: Bool) {
-        setSource(sourceTitle: "MovieDetailsVC")
         super.viewWillAppear(animated)
     }
     

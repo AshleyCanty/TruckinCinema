@@ -19,11 +19,11 @@ class MovieDetailsTitleDurationView: UIView {
     /// Style struct
     struct Style {
         static let QuestionIconSize: CGFloat = 13
-        static let QuestionIconTintColor: UIColor = AppColors.MovieDetailsTextColorSecondary
+        static let QuestionIconTintColor: UIColor = AppColors.TextColorSecondary
         static let TitleFont: UIFont = AppFont.bold(size: 17)
-        static let TitleTextColor: UIColor = AppColors.MovieDetailsTextColorPrimary
+        static let TitleTextColor: UIColor = AppColors.TextColorPrimary
         static let DurationRatingFont: UIFont = AppFont.regular(size: 11)
-        static let DurationRatingTextColor: UIColor = AppColors.MovieDetailsTextColorSecondary
+        static let DurationRatingTextColor: UIColor = AppColors.TextColorSecondary
         static let HStackTopMargin: CGFloat = 8
         static let HStackSpacing: CGFloat = 8
         static let releaseDateTopMargin: CGFloat = 8
@@ -83,6 +83,8 @@ class MovieDetailsTitleDurationView: UIView {
     lazy var verticalSeperator = SeperatorView()
     /// True if question icon constraints have bee set
     var didSetQuestionIconConstraints: Bool = false
+    /// true if should show release label
+    private var showReleaseDate: Bool = true
     
     override var intrinsicContentSize: CGSize {
         var height: CGFloat = Style.HStackTopMargin + Style.releaseDateTopMargin
@@ -92,8 +94,9 @@ class MovieDetailsTitleDurationView: UIView {
         return CGSize(width: superviewWidth - (AppTheme.LeadingTrailingMargin*2), height: height)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(showReleaseDate: Bool = true) {
+        super.init(frame: .zero)
+        self.showReleaseDate = showReleaseDate
         backgroundColor = .clear
         configure()
         showText()
@@ -110,6 +113,18 @@ class MovieDetailsTitleDurationView: UIView {
         questionIcon.heightAnchor.tc_constrain(equalToConstant: Style.QuestionIconSize)
         questionIcon.widthAnchor.tc_constrain(equalToConstant: Style.QuestionIconSize)
         didSetQuestionIconConstraints = true
+    }
+    
+    /// Updates font of movie title
+    public func updateMovieTitleFont(font: UIFont) {
+        titleLabel.font = font
+    }
+    
+    public func updateDurationRatingTextColor(with color: UIColor) {
+        durationLabel.textColor = color
+        ratingLabel.textColor = color
+        questionIcon.tintColor = color
+        verticalSeperator.backgroundColor = color
     }
     
     /// Returns height of title label
@@ -140,11 +155,9 @@ class MovieDetailsTitleDurationView: UIView {
         ///  Vertical stack's arranged subviews
         addSubview(titleLabel)
         addSubview(hStack)
-        addSubview(releaseDateLabel)
         
         titleLabel.disableTranslatesAutoresizingMaskIntoContraints()
         hStack.disableTranslatesAutoresizingMaskIntoContraints()
-        releaseDateLabel.disableTranslatesAutoresizingMaskIntoContraints()
         
         titleLabel.topAnchor.tc_constrain(equalTo: topAnchor)
         titleLabel.leadingAnchor.tc_constrain(equalTo: leadingAnchor)
@@ -154,6 +167,10 @@ class MovieDetailsTitleDurationView: UIView {
         hStack.leadingAnchor.tc_constrain(equalTo: leadingAnchor)
         hStack.trailingAnchor.tc_constrain(lessThanOrEqualTo: trailingAnchor)
         
+        
+        guard showReleaseDate else { return }
+        addSubview(releaseDateLabel)
+        releaseDateLabel.disableTranslatesAutoresizingMaskIntoContraints()
         releaseDateLabel.topAnchor.tc_constrain(equalTo: hStack.bottomAnchor, constant: Style.releaseDateTopMargin)
         releaseDateLabel.leadingAnchor.tc_constrain(equalTo: leadingAnchor)
         releaseDateLabel.trailingAnchor.tc_constrain(equalTo: trailingAnchor)

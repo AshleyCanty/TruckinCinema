@@ -21,7 +21,7 @@ class SeperatorView: UIView {
     }
     
     func setup() {
-        backgroundColor = AppColors.MovieDetailsTextColorSecondary
+        backgroundColor = AppColors.TextColorSecondary
     }
     
     override var intrinsicContentSize: CGSize {
