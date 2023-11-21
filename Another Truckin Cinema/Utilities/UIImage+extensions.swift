@@ -16,3 +16,17 @@ extension UIImage {
         self.init(named: imgNamed)!
     }
 }
+
+
+extension UIImageView {
+    func downloadImage(from url: URL) async throws {
+        let imageData = try await URLCache.shared.downloadImageData(for: url)
+        let image = UIImage(data: imageData)
+        
+        if let castedSelf = self as? CustomImageView {
+            castedSelf.hideSpinner()
+        }
+
+        self.image = image
+    }
+}

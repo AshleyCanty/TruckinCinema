@@ -8,13 +8,8 @@
 import Foundation
 
 struct ShowtimeDates {
-    /// returns dates for Fri - Sun
-    var weekendDates: [String] {
-        get { return getDates()}
-    }
-    
-    /// Get showtime dates from calender
-    private func getDates() -> [String] {
+    /// Get showtime dates from calender. Returns dates for Fri - Sun
+    public func getShowtimwDates(rsvpFormat: Bool = false) -> [String] {
         let now = Date()
         let startDate = Date()
         let calender = Calendar.current
@@ -35,7 +30,7 @@ struct ShowtimeDates {
         let sundayDate = calender.date(byAdding: dayComponent, to: saturdayDate)
         
         let theaterOpenDays: [Date?] = [fridayDate, saturdayDate, sundayDate]
-        let formattedDates = convertDatesToStringFormat(dates: theaterOpenDays)
+        let formattedDates = convertDatesToStringFormat(dates: theaterOpenDays, rsvpFormat: rsvpFormat)
         
         print(startDate, calender.startOfDay(for: endDate))
         
@@ -43,10 +38,10 @@ struct ShowtimeDates {
     }
     
     /// Convert dates into String format
-    private func convertDatesToStringFormat(dates: [Date?]) -> [String] {
+    private func convertDatesToStringFormat(dates: [Date?], rsvpFormat: Bool) -> [String] {
         let formattedDates = dates.map { optionalDate in
             guard let date = optionalDate else { return ""}
-            return date.convertToStringShowingWeekdayAndDate()
+            return date.convertToStringShowingWeekdayAndDate(rsvpFormat: rsvpFormat)
         }
         return formattedDates.filter({ $0.count > 0})
     }

@@ -10,9 +10,13 @@ import Foundation
 
 extension Date {
     /// Converts date to string format. Example - 'Tue, May 7, 2001'
-    func convertToStringShowingWeekdayAndDate() -> String {
+    func convertToStringShowingWeekdayAndDate(rsvpFormat: Bool) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEE MMM d yyy")
+        if !rsvpFormat {
+            dateFormatter.setLocalizedDateFormatFromTemplate("EEE MMM d yyy")
+        } else {
+            dateFormatter.setLocalizedDateFormatFromTemplate("EEEE MM/dd")
+        }
         return dateFormatter.string(from: self)
     }
 }

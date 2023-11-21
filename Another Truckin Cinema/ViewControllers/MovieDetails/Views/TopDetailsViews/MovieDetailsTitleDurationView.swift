@@ -49,6 +49,7 @@ class MovieDetailsTitleDurationView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = Style.TitleFont
+        label.textColor = Style.TitleTextColor
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -56,18 +57,21 @@ class MovieDetailsTitleDurationView: UIView {
     ///  duration label
     lazy var durationLabel: UILabel = {
         let label = UILabel()
+        label.textColor = Style.TitleTextColor
         label.font = Style.DurationRatingFont
         return label
     }()
     ///  rating label
     lazy var ratingLabel: UILabel = {
         let label = UILabel()
+        label.textColor = Style.TitleTextColor
         label.font = Style.DurationRatingFont
         return label
     }()
     ///  release date label
     lazy var releaseDateLabel: UILabel = {
         let label = UILabel()
+        label.textColor = Style.TitleTextColor
         label.font = Style.DurationRatingFont
         return label
     }()
@@ -79,6 +83,13 @@ class MovieDetailsTitleDurationView: UIView {
         imageView.frame.size = CGSize(width: Style.QuestionIconSize, height: Style.QuestionIconSize)
         return imageView
     }()
+    
+    public var movie: MovieDetails? {
+        didSet {
+            updateViewsWithMovieData()
+        }
+    }
+    
     /// vertical seperator view
     lazy var verticalSeperator = SeperatorView()
     /// True if question icon constraints have bee set
@@ -99,7 +110,6 @@ class MovieDetailsTitleDurationView: UIView {
         self.showReleaseDate = showReleaseDate
         backgroundColor = .clear
         configure()
-        showText()
     }
     
     required init?(coder: NSCoder) {
@@ -114,6 +124,15 @@ class MovieDetailsTitleDurationView: UIView {
         questionIcon.widthAnchor.tc_constrain(equalToConstant: Style.QuestionIconSize)
         didSetQuestionIconConstraints = true
     }
+    
+    private func updateViewsWithMovieData() {
+        guard let movie = movie else { return }
+        titleLabel.text = movie.title
+        durationLabel.text = movie.runtime?.convertToRuntimeString()
+        releaseDateLabel.text = movie.releaseDate?.convertToDisplayDate()
+    }
+    
+    
     
     /// Updates font of movie title
     public func updateMovieTitleFont(font: UIFont) {
@@ -130,13 +149,6 @@ class MovieDetailsTitleDurationView: UIView {
     /// Returns height of title label
     public func getTitleLabelHeight() -> CGFloat {
         return titleLabel.frame.height
-    }
-    
-    fileprivate func showText() {
-        titleLabel.text = "Transformers: Rise of the Beasts Collection"
-        durationLabel.text = "2 HR 7 MIN"
-        ratingLabel.text = "PG13"
-        releaseDateLabel.text = "Released Jun 6, 2023"
     }
     
     /// Configures views

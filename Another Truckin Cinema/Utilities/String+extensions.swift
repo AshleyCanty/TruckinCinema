@@ -56,4 +56,17 @@ extension String {
         
         return  returnValue
     }
+    
+    func convertToDisplayDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: self)
+
+        let displayFormatter = DateFormatter()
+        displayFormatter.dateFormat = "MMM d, yyyy"
+        guard let date = date else { return self }
+        let displayDate = displayFormatter.string(from: date)
+        return "Released \(displayDate)"
+    }
 }

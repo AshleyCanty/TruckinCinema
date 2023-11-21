@@ -285,7 +285,6 @@ extension CarDetailsVC {
 extension UIViewController {
     /// custom method for UIIVewController extension
     @objc public func hideKeyboard() {
-        print()
         view.endEditing(true)
     }
 }

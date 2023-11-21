@@ -25,8 +25,8 @@ class MovieDetailsTrailerTopView: UIView {
         static let GradientColors: [UIColor] = [UIColor.clear, AppColors.BackgroundMain]
     }
     /// backdrop imageview
-    fileprivate lazy var backdropImageView: UIImageView = {
-        let view = UIImageView()
+    lazy var backdropImageView: CustomImageView = {
+        let view =  CustomImageView()
         view.contentMode = .scaleAspectFill
         return view
     }()
@@ -82,12 +82,12 @@ class MovieDetailsTrailerTopView: UIView {
         
         playButton.addTarget(self, action: #selector(didPressPlayButton), for: .touchUpInside)
     }
-    /// Sets the backdrop image
-    public func setBackdropImage(_ image: UIImage) {
-        backdropImageView.image = image
-    }
-    
+
     @objc fileprivate func didPressPlayButton() {
         delegate?.didPressPlayButtonForTopTrailer()
+    }
+
+    public func hidePlayButton(shouldHide: Bool) {
+        playButton.isHidden = shouldHide
     }
 }

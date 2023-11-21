@@ -12,7 +12,7 @@ struct MovieSummary {
     static let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }
 
-enum Genre: String, CaseIterable {
+enum Genres: String, CaseIterable {
     case Action = "Action"
     case Thriller = "Thriller"
     case SciFi = "Sci-fi"
@@ -36,10 +36,10 @@ class MovieSummaryGenreCell: UITableViewCell {
         static let TitleTextColor: UIColor = AppColors.TextColorSecondary
         static let TitleTopMargin: CGFloat = 12
         static let SummaryTextViewTopMargin: CGFloat = 12
-        static let SummaryTextViewFont: UIFont = AppFont.regular(size: 13)
+        static let SummaryTextViewFont: UIFont = AppFont.regular(size: 12)
         static let SummaryTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillBackgroundColor: UIColor = AppColors.BackgroundSecondary
-        static let GenrePillTextFont: UIFont = AppFont.medium(size: 13)
+        static let GenrePillTextFont: UIFont = AppFont.medium(size: 12)
         static let GenrePillTextColor: UIColor = AppColors.TextColorPrimary
         static let GenrePillSpacing: CGFloat = 10.0
         
@@ -49,6 +49,13 @@ class MovieSummaryGenreCell: UITableViewCell {
         case Synopsis = "SYNOPSIS"
         func getString() -> String { return self.rawValue }
     }
+    
+    public var genres: [Genre]? {
+        didSet {
+            setGenreStack()
+        }
+    }
+    
     /// summary titleLabel
     private var summaryTitleLabel: UILabel = {
         let label = UILabel()
@@ -61,7 +68,6 @@ class MovieSummaryGenreCell: UITableViewCell {
     /// summary textView
     weak var summaryTextView: UITextView! = {
         let textview = UITextView()
-        textview.text = MovieSummary.text
         textview.font = Style.SummaryTextViewFont
         textview.textColor = Style.SummaryTextColor
         textview.isScrollEnabled = false
@@ -77,7 +83,7 @@ class MovieSummaryGenreCell: UITableViewCell {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.spacing = Style.GenrePillSpacing
-        sv.distribution = .equalCentering
+        sv.distribution = .fillProportionally
         sv.alignment = .fill
         return sv
     }()
@@ -99,28 +105,32 @@ class MovieSummaryGenreCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         genreStack.arrangedSubviews.forEach { genrePill in
-            genrePill.layer.masksToBounds = true
-            genrePill.layer.cornerRadius = genrePill.frame.height / 2
+            genrePill.layer.cornerRadius = genrePill.intrinsicContentSize.height / 2
         }
         if let delegate = cellDelegate {
             delegate.updateRowHeightForSummaryCell()
         }
     }
     
-    /// Configure the views
-    private func configure() {
-        contentView.backgroundColor = Style.BackgroundColor
-        Genre.allCases.forEach { genre in
+    private func setGenreStack() {
+        guard let genreList = genres, genreStack.arrangedSubviews.isEmpty else { return }
+        genreList.forEach { genre in
             let label = PaddedLabel()
-            label.text = genre.getString()
+            label.text = genre.name
             label.font = Style.GenrePillTextFont
             label.textColor = Style.GenrePillTextColor
             label.textAlignment = .center
             label.backgroundColor = Style.GenrePillBackgroundColor
-            label.padding(8, 8, 25, 25)
-        
+            label.clipsToBounds = true
+            label.padding(8, 8, 20, 20)
+            label.layer.cornerRadius = label.intrinsicContentSize.height/2
             genreStack.addArrangedSubview(label)
         }
+    }
+    
+    /// Configure the views
+    private func configure() {
+        contentView.backgroundColor = Style.BackgroundColor
         
         let genreStackWrapper = UIView()
         genreStackWrapper.addSubview(genreStack)

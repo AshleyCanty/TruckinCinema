@@ -9,7 +9,7 @@ import UIKit
 import DropDown
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+        
     var window: UIWindow?
     
     // TODO: - Put all signup banners / & labels below it into tableview or collection view
@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     /// This method is similar to AppDelegate's didFinishLaunchingWithOptions, its one of the first things that runs
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         configureDropDown()
-        
+                
         guard let windowScene = (scene as? UIWindowScene) else { return }
         /// Lets configure our windowScene
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

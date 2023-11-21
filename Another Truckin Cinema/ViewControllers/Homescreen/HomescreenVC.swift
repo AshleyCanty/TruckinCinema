@@ -41,7 +41,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     
     /// Date Labels . Refactor - Use real dates
     fileprivate lazy var dateViews: [DateView] = {
-        let dates: [String] = ["Fri Jun 9, 2023", "Sat Jun 10, 2023", "Sun Jun 11, 2023"]
+        let dates: [String] = ShowtimeDates().getShowtimwDates()
         var views: [DateView] = []
         dates.forEach { views.append(DateView(date: $0)) }
         return views
@@ -118,12 +118,30 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     /// Timer used for auto scrolling the banner
     fileprivate var timer = Timer()
     
+    let client = MovieDBClient()
+
+    private var movies: [Movie] = [] {
+        didSet {
+            // reload tabledata
+            movieCollection.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pageControl.addTarget(self, action: #selector(changePage(sender:)), for: UIControl.Event.valueChanged)
         setupViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showRegistrationSuccessAlert), name: Notification.Name(rawValue: AppNotificationNames.RegistrationComplete), object: nil)
+        
+        Task {
+            do {
+                guard let results = try await MovieDBClient().fetchPopularMovies().results?.prefix(4) else { return }
+                movies = Array(results)
+            } catch {
+                print("Failed to fetch and decode")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -262,7 +280,8 @@ extension HomescreenVC {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if type(of: collectionView) == MovieCollection.self {
             if indexPath.item == 0 {
-                let vc = MovieDetailsVC(movieId: 385687)
+                let stringId = String(movies[indexPath.item].id ?? 0)
+                let vc = MovieDetailsVC(movieId: stringId)
                 AppNavigation.shared.navigateTo(vc)
             } else if indexPath.item == 1 {
                 let vc = FoodDeliveryDetailsVC()
@@ -281,7 +300,7 @@ extension HomescreenVC {
         if collectionView == self.cycledBanner {
             return bannerItems.count
         }
-        return MovieCellData.movieCollectionItems.count
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -300,7 +319,20 @@ extension HomescreenVC {
             }
         } else if collectionView == movieCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
-            cell.item = MovieCellData.movieCollectionItems[indexPath.item]
+            cell.titleLabel.text = movies[indexPath.item].title
+            cell.posterImageView.showSpinner()
+             Task {
+                do {
+                    guard let posterPath = movies[indexPath.row].posterPath else { throw APIError.invalidURL }
+                    let posterUrl = client.createImageUrl(with: posterPath)
+                    try await cell.posterImageView.downloadImage(from: posterUrl)
+                } catch {
+                    print("Failed to retrieve image: \(error.localizedDescription).")
+                    cell.posterImageView.image = UIImage(named: "placeholder-poster")
+                }
+            }
+            
+            
             return cell
         }
         return UICollectionViewCell()

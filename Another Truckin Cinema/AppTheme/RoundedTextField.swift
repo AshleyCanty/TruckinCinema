@@ -107,6 +107,7 @@ class RoundedTextField: UITextField {
         backgroundColor = Style.BackgroundColor
         layer.borderColor = Style.BorderColor.cgColor
         layer.borderWidth = Style.BorderWidth
+        textColor = Style.TextColor
         
         addSubview(iconButton)
         iconButton.disableTranslatesAutoresizingMaskIntoContraints()

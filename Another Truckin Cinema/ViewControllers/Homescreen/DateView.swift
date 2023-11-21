@@ -13,7 +13,7 @@ class DateView: UIView {
     /// Style struct
     struct Style {
         static let DataLabeltextColor: UIColor = AppColors.DateLabelTextColor
-        static let DataLabelFont: UIFont = AppFont.semiBold(size: 13)
+        static let DataLabelFont: UIFont = AppFont.semiBold(size: 11)
         static let DataLabelInsets: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
         static let DateLabelBackgroundColor: UIColor = AppColors.BackgroundSecondary
     }

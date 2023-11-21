@@ -21,16 +21,9 @@ class MovieCell: UICollectionViewCell {
     
     static let reuseIdentifier: String = "MovieCell"
     
-    /// movie cell item
-    public var item: MovieCellItem? {
-        didSet {
-            configure()
-        }
-    }
-    
     /// poster image view
-    fileprivate var posterImageView: UIImageView = {
-        let imageview = UIImageView()
+    public var posterImageView: CustomImageView = {
+        let imageview = CustomImageView()
         imageview.contentMode = .scaleAspectFill
         imageview.layer.masksToBounds = true
         imageview.layer.cornerRadius = Style.CornerRadius
@@ -38,7 +31,7 @@ class MovieCell: UICollectionViewCell {
         return imageview
     }()
     
-    fileprivate var titleLabel: UILabel = {
+    public var titleLabel: UILabel = {
         let label = PaddedLabel()
         label.padding(0, 0, 8, 8)
         label.numberOfLines = 2
@@ -51,8 +44,7 @@ class MovieCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addShadow(color: AppTheme.ShadowColor, opacity: AppTheme.ShadowOpacity, radius: AppTheme.ShadowRadius, offset: AppTheme.ShadowOffset)
-        contentView.backgroundColor = .clear
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -61,13 +53,12 @@ class MovieCell: UICollectionViewCell {
     
     /// configures cell . Refactor to add real data
     fileprivate func configure() {
-        guard let item = item else { return }
+        contentView.addShadow(color: AppTheme.ShadowColor, opacity: AppTheme.ShadowOpacity, radius: AppTheme.ShadowRadius, offset: AppTheme.ShadowOffset)
+        contentView.backgroundColor = .clear
+        
         let titleView = UIView()
         titleView.backgroundColor = Style.TitleBackgroundColor
         titleView.addSubview(titleLabel)
-        
-        titleLabel.text = item.title
-        posterImageView.image = UIImage(imgNamed: item.posterURL)
         
         posterImageView.addSubview(titleView)
         contentView.addSubviews(subviews: [posterImageView])

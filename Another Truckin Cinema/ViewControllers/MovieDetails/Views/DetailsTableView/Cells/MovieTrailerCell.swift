@@ -11,16 +11,12 @@ import UIKit
 protocol MovieTrailerCellProtocol: AnyObject {
     func updateRowHeightForTrailerCell()
     func didPressPlayButton(key: String)
+    func didPressTrailerShareButton(key: String)
 }
 
 class MovieTrailerCell: UITableViewCell {
     /// reuse identifier
     static let reuseIdentifier = "MovieTrailerCell"
-    /// Summary title enum
-    enum TrailerTitle: String {
-        case title = "Transformers: Rise of the Beasts | Emotional Journey"
-        func getString() -> String { return self.rawValue }
-    }
     /// icon name enum
     enum IconName: String {
         case share = "share"
@@ -44,8 +40,8 @@ class MovieTrailerCell: UITableViewCell {
     /// shadowview for backdrop image view
     fileprivate let shadowWrapperView = UIView()
     /// poster image view
-    fileprivate var backdropImageView: UIImageView = {
-        let imageview = UIImageView()
+    public var backdropImageView: CustomImageView = {
+        let imageview = CustomImageView()
         imageview.contentMode = .scaleAspectFill
         imageview.layer.masksToBounds = true
         imageview.layer.cornerRadius = Style.CornerRadius
@@ -73,7 +69,7 @@ class MovieTrailerCell: UITableViewCell {
         return btn
     }()
     /// duration label
-    private let durationlabel: UILabel = {
+    public let durationlabel: UILabel = {
         let label = UILabel()
         label.text = "2:37"
         label.textAlignment = .right
@@ -82,9 +78,9 @@ class MovieTrailerCell: UITableViewCell {
         return label
     }()
     /// trailer title label
-    private let trailerTitleLabel: UILabel = {
+    public let trailerTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = TrailerTitle.title.getString()
+        label.sizeToFit()
         label.numberOfLines = 0
         label.textAlignment = .left
         label.textColor = Style.TextColor
@@ -93,7 +89,7 @@ class MovieTrailerCell: UITableViewCell {
         return label
     }()
     /// trailer date posted label
-    private let trailerDateLabel: UILabel = {
+    public let trailerDateLabel: UILabel = {
         let label = UILabel()
         label.text = "2 months ago"
         label.numberOfLines = 0
@@ -139,7 +135,7 @@ class MovieTrailerCell: UITableViewCell {
         wrapperView.addSubviews(subviews: [shadowWrapperView])
         shadowWrapperView.disableTranslatesAutoresizingMaskIntoContraints()
         shadowWrapperView.topAnchor.tc_constrain(equalTo: wrapperView.topAnchor)
-        shadowWrapperView.heightAnchor.tc_constrain(equalTo: contentView.widthAnchor, multiplier: 9.0/21.0)
+        shadowWrapperView.heightAnchor.tc_constrain(equalTo: contentView.widthAnchor, multiplier: 9.0/16.0)
         shadowWrapperView.leadingAnchor.tc_constrain(equalTo: wrapperView.leadingAnchor)
         shadowWrapperView.trailingAnchor.tc_constrain(equalTo: wrapperView.trailingAnchor)
         
@@ -169,6 +165,7 @@ class MovieTrailerCell: UITableViewCell {
         
         wrapperView.addSubview(labelStack)
         labelStack.disableTranslatesAutoresizingMaskIntoContraints()
+        labelStack.widthAnchor.tc_constrain(lessThanOrEqualTo: widthAnchor, multiplier: 2/3, constant: 0)
         labelStack.leadingAnchor.tc_constrain(equalTo: wrapperView.leadingAnchor)
         labelStack.topAnchor.tc_constrain(equalTo: shadowWrapperView.bottomAnchor, constant: 8)
         labelStack.bottomAnchor.tc_constrain(equalTo: wrapperView.bottomAnchor, constant: -18)
@@ -181,19 +178,23 @@ class MovieTrailerCell: UITableViewCell {
         shareButton.heightAnchor.tc_constrain(equalToConstant: 25)
         shareButton.widthAnchor.tc_constrain(equalToConstant: 25)
         
+        shareButton.addTarget(self, action: #selector(shareTrailer), for: .touchUpInside)
+        
         backdropImageView.bringSubviewToFront(playButton)
     }
-    /// set backdrop image
-    public func setBackdropImage(_ image: UIImage) {
-        backdropImageView.image = image
-    }
     
+    /// Sets video key with value passed. Must be set before the ytplayer can play a video
     public func setVideoKey(key: String) {
         videoKey = key
     }
     
+    /// Triggers ytplayer to be presented for trailer viewing
     @objc private func playTrailer() {
         cellDelegate?.didPressPlayButton(key: videoKey)
+    }
+    
+    @objc private func shareTrailer() {
+        cellDelegate?.didPressTrailerShareButton(key: videoKey)
     }
 }
 
