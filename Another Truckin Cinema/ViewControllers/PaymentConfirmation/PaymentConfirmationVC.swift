@@ -33,6 +33,18 @@ class PaymentConfirmationVC: BaseViewController, AppNavigationBarDelegate, Locat
         return table
     }()
     
+    private var rsvpOrder: MovieReservation?
+
+    
+    init(rsvpOrder: MovieReservation?) {
+        super.init()
+        self.rsvpOrder = rsvpOrder
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         setSource(sourceTitle: "PaymentConfirmationV VC")
         super.viewWillAppear(animated)

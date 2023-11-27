@@ -10,7 +10,7 @@ import UIKit
 import LTHRadioButton
 
 protocol ShowtimeRadioListCellDelegate: AnyObject {
-    func didSelectRadioButton(isSelected: Bool)
+    func didSelectRadioButton(isSelected: Bool, date: String?)
 }
 
 class ShowtimeRadioListCell: UITableViewCell {
@@ -86,13 +86,13 @@ class ShowtimeRadioListCell: UITableViewCell {
             radioButton.onSelect { [weak self] in
                 guard let sSelf = self else { return }
                 sSelf.deselectOtherButtons(sender: radioButton)
-                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: true)
+                sSelf.cellDelegate?.didSelectRadioButton(isSelected: true, date: radioOption)
             }
             radioButton.onDeselect { [weak self] in
                 guard let sSelf = self else { return }
                 let results = sSelf.radioButtons.filter({ $0.isSelected == true }).count
                 if results == 0 {
-                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: false)
+                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: false, date: nil)
                 }
             }
     

@@ -22,6 +22,7 @@ enum ShowtimeSubtitle: String {
     func getString() -> String { return self.rawValue }
 }
 
+
 class ShowtimeCell: UITableViewCell {
     /// Reuse identifier
     static let reuseIdentifier = "ShowtimeCell"

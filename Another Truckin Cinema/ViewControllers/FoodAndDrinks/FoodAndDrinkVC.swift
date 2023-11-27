@@ -170,7 +170,7 @@ class FoodAndDrinkVC: BaseViewController, AppNavigationBarDelegate, UITableViewD
     }
     
     @objc func didTapOrderNowButton() {
-        AppNavigation.shared.navigateTo(SnackBarVC())
+        AppNavigation.shared.navigateTo(SnackBarVC(rsvpOrder: nil))
     }
     
     @objc func selectedSegment() {

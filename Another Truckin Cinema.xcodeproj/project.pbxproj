@@ -30,6 +30,15 @@
 		244F82E72A9AA619002938B4 /* NearbyDriveInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F82E62A9AA619002938B4 /* NearbyDriveInCell.swift */; };
 		244F82E92A9BE23B002938B4 /* DriveInLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F82E82A9BE23B002938B4 /* DriveInLocationsVC.swift */; };
 		2457A9012A593960009A9C8A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457A9002A593960009A9C8A /* BaseViewController.swift */; };
+		245D70932B112535008E0543 /* MovieReservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70922B112535008E0543 /* MovieReservation.swift */; };
+		245D70962B1135A5008E0543 /* CarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70952B1135A5008E0543 /* CarColor.swift */; };
+		245D70992B113600008E0543 /* FoodOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70982B113600008E0543 /* FoodOrder.swift */; };
+		245D709B2B113756008E0543 /* SnackBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D709A2B113756008E0543 /* SnackBarItem.swift */; };
+		245D709D2B113BFD008E0543 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D709C2B113BFD008E0543 /* Customer.swift */; };
+		245D709F2B113C1C008E0543 /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D709E2B113C1C008E0543 /* Membership.swift */; };
+		245D70A12B113C76008E0543 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70A02B113C76008E0543 /* Ticket.swift */; };
+		245D70A62B11795C008E0543 /* MovieShowtime+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70A52B11795C008E0543 /* MovieShowtime+Enums.swift */; };
+		245D70A82B13FA65008E0543 /* ConfirmationToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245D70A72B13FA65008E0543 /* ConfirmationToastView.swift */; };
 		2461B6732A8D7CF2007C52CA /* DropDownTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461B6722A8D7CF2007C52CA /* DropDownTextFieldView.swift */; };
 		2461B6752A8DB814007C52CA /* CarDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461B6742A8DB814007C52CA /* CarDetailsDropDownCell.swift */; };
 		2461B6772A8EA745007C52CA /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2461B6762A8EA745007C52CA /* Car.swift */; };
@@ -178,6 +187,15 @@
 		244F82E62A9AA619002938B4 /* NearbyDriveInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDriveInCell.swift; sourceTree = "<group>"; };
 		244F82E82A9BE23B002938B4 /* DriveInLocationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveInLocationsVC.swift; sourceTree = "<group>"; };
 		2457A9002A593960009A9C8A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		245D70922B112535008E0543 /* MovieReservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReservation.swift; sourceTree = "<group>"; };
+		245D70952B1135A5008E0543 /* CarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarColor.swift; sourceTree = "<group>"; };
+		245D70982B113600008E0543 /* FoodOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrder.swift; sourceTree = "<group>"; };
+		245D709A2B113756008E0543 /* SnackBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarItem.swift; sourceTree = "<group>"; };
+		245D709C2B113BFD008E0543 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		245D709E2B113C1C008E0543 /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
+		245D70A02B113C76008E0543 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		245D70A52B11795C008E0543 /* MovieShowtime+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieShowtime+Enums.swift"; sourceTree = "<group>"; };
+		245D70A72B13FA65008E0543 /* ConfirmationToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationToastView.swift; sourceTree = "<group>"; };
 		2461B6722A8D7CF2007C52CA /* DropDownTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTextFieldView.swift; sourceTree = "<group>"; };
 		2461B6742A8DB814007C52CA /* CarDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsDropDownCell.swift; sourceTree = "<group>"; };
 		2461B6762A8EA745007C52CA /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
@@ -330,8 +348,8 @@
 				24F5DA7D2A7EFD0600AC7A59 /* CarDetailsVC.swift */,
 				240951BD2A8898FD004B9A19 /* CarDetailsCell.swift */,
 				2461B6742A8DB814007C52CA /* CarDetailsDropDownCell.swift */,
-				2461B6762A8EA745007C52CA /* Car.swift */,
-				2461B6782A8EA75C007C52CA /* Model */,
+				245D70952B1135A5008E0543 /* CarColor.swift */,
+				245D70942B113584008E0543 /* Model */,
 			);
 			path = CarDetails;
 			sourceTree = "<group>";
@@ -410,11 +428,40 @@
 			path = NearbyDriveIns;
 			sourceTree = "<group>";
 		};
-		2461B6782A8EA75C007C52CA /* Model */ = {
+		245D70942B113584008E0543 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2461B6762A8EA745007C52CA /* Car.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		245D70A22B115D7E008E0543 /* RSVP */ = {
+			isa = PBXGroup;
+			children = (
+				245D70982B113600008E0543 /* FoodOrder.swift */,
+				245D70922B112535008E0543 /* MovieReservation.swift */,
+				245D70A02B113C76008E0543 /* Ticket.swift */,
+			);
+			path = RSVP;
+			sourceTree = "<group>";
+		};
+		245D70A32B115DEA008E0543 /* Custumer */ = {
+			isa = PBXGroup;
+			children = (
+				245D709C2B113BFD008E0543 /* Customer.swift */,
+				245D709E2B113C1C008E0543 /* Membership.swift */,
+			);
+			path = Custumer;
+			sourceTree = "<group>";
+		};
+		245D70A42B115E1B008E0543 /* Homescreen */ = {
+			isa = PBXGroup;
+			children = (
+				249E6BC32B098506007F8494 /* MovieDetails.swift */,
+				249E6BC12B082612007F8494 /* PopularMovies.swift */,
+			);
+			path = Homescreen;
 			sourceTree = "<group>";
 		};
 		2461B6792A8EE0D9007C52CA /* PaymentOrder */ = {
@@ -522,6 +569,7 @@
 				244D94912AAA54D100D4E16C /* DriveInDropDownView.swift */,
 				244D94932AAA54F200D4E16C /* DriveInDetailView.swift */,
 				244D94952AAA5AB000D4E16C /* ParticipatingDriveInsTableView.swift */,
+				245D709A2B113756008E0543 /* SnackBarItem.swift */,
 			);
 			path = FoodAndDrinks;
 			sourceTree = "<group>";
@@ -579,10 +627,10 @@
 				2466B7C82A64870D00DDC8BC /* Homescreen */,
 				2466B7D02A64B18100DDC8BC /* OurDriveIns */,
 				2466B7D12A64B19900DDC8BC /* FoodAndDrinks */,
+				24F5DA7C2A7EFA9700AC7A59 /* SnackBar */,
 				2466B7D22A64B1A900DDC8BC /* Membership */,
 				24702C1F2A7E14B800C87D26 /* TicketPurchase */,
 				240951BC2A889572004B9A19 /* CarDetails */,
-				24F5DA7C2A7EFA9700AC7A59 /* SnackBar */,
 				24C153482A82D4EF0080CB19 /* PaymentConfirmation */,
 				2461B6792A8EE0D9007C52CA /* PaymentOrder */,
 				24FC6D3A2A678A0100461AA8 /* MovieDetails */,
@@ -722,8 +770,9 @@
 		249E6BC02B08255E007F8494 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				249E6BC12B082612007F8494 /* PopularMovies.swift */,
-				249E6BC32B098506007F8494 /* MovieDetails.swift */,
+				245D70A32B115DEA008E0543 /* Custumer */,
+				245D70A22B115D7E008E0543 /* RSVP */,
+				245D70A42B115E1B008E0543 /* Homescreen */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -788,6 +837,7 @@
 				244F82D82A95543F002938B4 /* FoodDeliveryDetails */,
 				2461B68C2A94584D007C52CA /* View */,
 				2461B68B2A945845007C52CA /* Model */,
+				245D70A72B13FA65008E0543 /* ConfirmationToastView.swift */,
 			);
 			path = SnackBar;
 			sourceTree = "<group>";
@@ -809,6 +859,7 @@
 				24FC6D3B2A678A3E00461AA8 /* MovieDetailsVC.swift */,
 				24702C1D2A7DC8C600C87D26 /* TrailerPlayerVC.swift */,
 				2461ED9F2A704B00007916A3 /* Views */,
+				245D70A52B11795C008E0543 /* MovieShowtime+Enums.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -1138,6 +1189,7 @@
 				249523292A621CFD007228D5 /* RoundedButton.swift in Sources */,
 				2461ED9C2A701C73007916A3 /* MovieDetailsTrailerTopView.swift in Sources */,
 				244D94922AAA54D100D4E16C /* DriveInDropDownView.swift in Sources */,
+				245D70992B113600008E0543 /* FoodOrder.swift in Sources */,
 				249523272A6100D1007228D5 /* UIView+extensions.swift in Sources */,
 				24905C8E2AA1972D0031D721 /* TierCell.swift in Sources */,
 				249523312A639E6E007228D5 /* MovieCell.swift in Sources */,
@@ -1148,6 +1200,7 @@
 				249E6BC62B098970007F8494 /* Data+extensions.swift in Sources */,
 				24F5DA862A7F010900AC7A59 /* PaymentOrderVC.swift in Sources */,
 				24702C1E2A7DC8C600C87D26 /* TrailerPlayerVC.swift in Sources */,
+				245D70A82B13FA65008E0543 /* ConfirmationToastView.swift in Sources */,
 				24905C822A9BE60B0031D721 /* UIViewController+extentions.swift in Sources */,
 				244CCB7A2A5500C50045DDAB /* AppDelegate.swift in Sources */,
 				2487F7902A5BBA9300FD1517 /* BannerItem.swift in Sources */,
@@ -1174,14 +1227,18 @@
 				24905C902AA197440031D721 /* CompareLevelsCell.swift in Sources */,
 				24FC6D462A68BC4200461AA8 /* AppNavigation.swift in Sources */,
 				24625D1B2A780DD90088FE4C /* MovieTrailerCell.swift in Sources */,
+				245D709D2B113BFD008E0543 /* Customer.swift in Sources */,
 				244CCB7C2A5500C50045DDAB /* SceneDelegate.swift in Sources */,
+				245D70932B112535008E0543 /* MovieReservation.swift in Sources */,
 				24771A7C2A5659FB00FB33AF /* AppColors.swift in Sources */,
 				2466C7822A57BF97006AED5F /* MembershipTiersVC.swift in Sources */,
 				24905C842A9ED0E20031D721 /* ChangeLocationVC.swift in Sources */,
+				245D70A62B11795C008E0543 /* MovieShowtime+Enums.swift in Sources */,
 				24F5DA8C2A7F046100AC7A59 /* RegistrationVC.swift in Sources */,
 				24905C882A9FCF100031D721 /* CurrentLocationLabel.swift in Sources */,
 				2487F7942A5BBC6F00FD1517 /* BannerItemData.swift in Sources */,
 				24FC6D3C2A678A3E00461AA8 /* MovieDetailsVC.swift in Sources */,
+				245D70962B1135A5008E0543 /* CarColor.swift in Sources */,
 				244F82E72A9AA619002938B4 /* NearbyDriveInCell.swift in Sources */,
 				244F82DC2A9554D2002938B4 /* FoodDeliveryRecipientCell.swift in Sources */,
 				240951C22A89A1FF004B9A19 /* OrderCartView.swift in Sources */,
@@ -1195,6 +1252,7 @@
 				249523222A60CCBF007228D5 /* AutoLayout+extensions.swift in Sources */,
 				244F82DA2A955476002938B4 /* FoodDeliveryTimeCell.swift in Sources */,
 				24FC6D3F2A68310700461AA8 /* ThemeButton.swift in Sources */,
+				245D70A12B113C76008E0543 /* Ticket.swift in Sources */,
 				2461B6882A943A04007C52CA /* SnackBarItemOptionCell.swift in Sources */,
 				2461B68E2A9458A7007C52CA /* SnackBarSelectedItemOptionsVC.swift in Sources */,
 				24625D1D2A7811340088FE4C /* MovieSummaryGenreCell.swift in Sources */,
@@ -1222,6 +1280,7 @@
 				24F5DA792A7EC23400AC7A59 /* AppNavigationBar.swift in Sources */,
 				2466B7CA2A64874C00DDC8BC /* DateView.swift in Sources */,
 				2461B6772A8EA745007C52CA /* Car.swift in Sources */,
+				245D709B2B113756008E0543 /* SnackBarItem.swift in Sources */,
 				24C153502A832BD10080CB19 /* LocationConfirmationCell.swift in Sources */,
 				24C1534B2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift in Sources */,
 				24F5DA882A7F013F00AC7A59 /* PaymentConfirmationVC.swift in Sources */,
@@ -1229,6 +1288,7 @@
 				24FC6D412A68313F00461AA8 /* ButtonTitles.swift in Sources */,
 				2466C77C2A57BE05006AED5F /* TabBarController.swift in Sources */,
 				2461ED9E2A70233E007916A3 /* MovieDetailsTitleDurationView.swift in Sources */,
+				245D709F2B113C1C008E0543 /* Membership.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

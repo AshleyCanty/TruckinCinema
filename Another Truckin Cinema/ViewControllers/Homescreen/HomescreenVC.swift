@@ -278,22 +278,36 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
 extension HomescreenVC {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if type(of: collectionView) == MovieCollection.self {
-            if indexPath.item == 0 {
-                let stringId = String(movies[indexPath.item].id ?? 0)
-                let vc = MovieDetailsVC(movieId: stringId)
-                AppNavigation.shared.navigateTo(vc)
-            } else if indexPath.item == 1 {
-                let vc = FoodDeliveryDetailsVC()
-                AppNavigation.shared.navigateTo(vc)
-            } else if indexPath.item == 2 {
-                let vc = RegistrationVC(step: .One, tier: .Tier1)
-                AppNavigation.shared.navigateTo(vc)
-            } else if indexPath.item == 3 {
-                let vc = SignInVC()
-                AppNavigation.shared.navigateTo(vc)
-            }
+        guard type(of: collectionView) == MovieCollection.self, let idNumber = movies[indexPath.item].id else { return }
+            
+        /// First two items are 1st & 2nd movies on Screen One.
+        /// Last two items are 1st & 2nd movies on Screen Two.
+        var screen: Screen?
+        let movieId = String(idNumber)
+        
+        if indexPath.item == 0 {
+            screen = Screen(id: MovieScreenId.first.rawValue,
+                                viewingOrder: MovieViewingOrder.first.rawValue,
+                                showtime: MovieShowtime.first.rawValue)
+        } else if indexPath.item == 1 {
+            screen = Screen(id: MovieScreenId.first.rawValue,
+                                viewingOrder: MovieViewingOrder.second.rawValue,
+                                showtime: MovieShowtime.second.rawValue)
+//            let vc = FoodDeliveryDetailsVC()
+        } else if indexPath.item == 2 {
+//            vc = RegistrationVC(step: .One, tier: .Tier1)
+            screen = Screen(id: MovieScreenId.second.rawValue,
+                                viewingOrder: MovieViewingOrder.first.rawValue,
+                                showtime: MovieShowtime.first.rawValue)
+        } else if indexPath.item == 3 {
+//            vc = SignInVC()
+            screen = Screen(id: MovieScreenId.second.rawValue,
+                                viewingOrder: MovieViewingOrder.second.rawValue,
+                                showtime: MovieShowtime.second.rawValue)
         }
+        guard let screen = screen else { return }
+        let vc = MovieDetailsVC(movieId: movieId, screen: screen)
+        AppNavigation.shared.navigateTo(vc)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

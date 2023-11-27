@@ -76,13 +76,13 @@ class SnackBarCell: UICollectionViewCell {
     public func configureCellForItemType() {
         switch type {
         case .popcorn:
-            foodTitleLabelLabel.text = SnackBarItemMain.Popcorn.getString()
+            foodTitleLabelLabel.text = SnackBarItemMain.Popcorn.getStringVal()
             backgroundImageView.image = UIImage(imgNamed: SnackBarItemMain.Popcorn.getImage())
         case .beverages:
-            foodTitleLabelLabel.text = SnackBarItemMain.Beverages.getString()
+            foodTitleLabelLabel.text = SnackBarItemMain.Beverages.getStringVal()
             backgroundImageView.image = UIImage(imgNamed: SnackBarItemMain.Beverages.getImage())
         case .snacks:
-            foodTitleLabelLabel.text = SnackBarItemMain.Snacks.getString()
+            foodTitleLabelLabel.text = SnackBarItemMain.Snacks.getStringVal()
             backgroundImageView.image = UIImage(imgNamed: SnackBarItemMain.Snacks.getImage())
         default:
             break

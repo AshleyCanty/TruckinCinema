@@ -8,9 +8,11 @@
 import Foundation
 
 
-struct Car {
+/// struct for car model
+struct Car: Codable {
     var make: String?
     var model: String?
     var color: String?
     var licensePlate: String?
 }
+

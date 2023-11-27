@@ -104,10 +104,19 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     private var movie: MovieDetails? 
     
     private var trailers: MovieTrailers?
+    
+    /// Screen info for movie viewing
+    private var screen: Screen?
+    
+    /// stores the rsvp order
+    lazy var rsvpOrder: MovieReservation? = {
+        return MovieReservation()
+    }()
 
-    init(movieId: String) {
+    init(movieId: String, screen: Screen) {
         super.init() /// used to place this last, but switched it on 11/19
         self.movieId = movieId
+        self.screen = screen
     }
     
     required init?(coder: NSCoder) {
@@ -116,6 +125,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rsvpOrder = MovieReservation()
         trailerHeader.delegate = self
         configure()
         fetchMovieDetails()
@@ -134,7 +144,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
             sSelf.view.layoutIfNeeded()
         }
     }
-    
+
     @MainActor
     func refreshTable() {
         tableView.reloadData()
@@ -176,7 +186,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         }
         tableView.reloadData()
     }
-     
+    
     /// configure views
     fileprivate func configure() {
         view.addSubview(trailerHeader)
@@ -291,8 +301,9 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     // MARK: - Cell Delegate methods
     
     /// animates rsvp button visibility based on isSelected value
-    func didSelectRadioButton(isSelected: Bool) {
+    func didSelectRadioButton(isSelected: Bool, date: String?) {
         if isSelected {
+            storeRSVPDate(date: date ?? "")
             showRSVPButton()
             return
         }
@@ -344,8 +355,36 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     }
     
     @objc private func didPressRSVPButton() {
-        let ticketSelectionVC = TicketSelectionVC(movieDetails: "")
-        AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
+        /// Store movie details in rsvpOrder object
+        storeRSVPMovieDetails()
+        
+        let alertVC = UIAlertController(title: "Which location would you like to choose?", message: nil, preferredStyle: .actionSheet)
+        DriveInLocations.names.forEach { location in
+            let action = UIAlertAction(title: location, style: .default) { [weak self] _ in
+                guard let sSelf = self else { return }
+                sSelf.rsvpOrder?.location = location
+                /// pass rsvpOrder to next view controller
+                let ticketSelectionVC = TicketSelectionVC(rsvpOrder: sSelf.rsvpOrder)
+                AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
+            }
+            alertVC.addAction(action)
+        }
+        present(alertVC, animated: true)
+    }
+    
+    /// Stores movie details in rsvp pbject
+    private func storeRSVPMovieDetails() {
+        guard let unwrappedMovie = movie, let title = unwrappedMovie.title, let duration = unwrappedMovie.runtime, let rating = titleDetailView.ratingLabel.text else { return }
+        let movieDetails = ReservedMovieDetails(movieTitle: title,
+                                                duration: duration.convertToRuntimeString(),
+                                                rating: rating,
+                                                screen: screen)
+        
+        rsvpOrder?.reservedMovieDetails = movieDetails
+    }
+    
+    private func storeRSVPDate(date: String) {
+        rsvpOrder?.date = date
     }
 }
 
@@ -392,14 +431,15 @@ extension MovieDetailsVC {
     /// Return showtime cell
     private func getShowtimeCell(indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+
         if indexPath.row == 0 {
             if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: ShowtimeSubtitle.Placement.getString())
+                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: getMoviePlacementString())
                 cell = showtimeCell
             }
         } else if indexPath.row == 1 {
             if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: ShowtimeSubtitle.Showtime.getString())
+                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: getMovieShowtimeString())
                 cell = showtimeCell
             }
         } else {
@@ -411,11 +451,28 @@ extension MovieDetailsVC {
         return cell
     }
     
+    /// Returns string for movie screen placement
+    func getMoviePlacementString() -> String {
+        guard let unwrappedScreen = screen, let screenId = MovieScreenId(rawValue: unwrappedScreen.id), let viewingOrder = MovieViewingOrder(rawValue: unwrappedScreen.viewingOrder) else { return "" }
+        return "\(screenId.getStringVal()) Movie on Screen \(viewingOrder.getStringVal())"
+    }
+    
+    /// Returns string for movie showtime
+    func getMovieShowtimeString() -> String {
+        guard let unwrappedScreen = screen, let movieScreenId = MovieShowtime(rawValue: unwrappedScreen.showtime) else { return "" }
+        return movieScreenId.getStringVal()
+    }
+    
+    func getReducedGenreList() -> [Genre] {
+        guard let genres = movie?.genres?.prefix(3) else { return [] }
+        return Array(genres)
+    }
+    
     /// Return summary cell
     private func getSummaryCell(indexPath: IndexPath) -> MovieSummaryGenreCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell else {  return MovieSummaryGenreCell() }
         cell.summaryTextView.text = movie?.overview
-        cell.genres = movie?.genres
+        cell.genres = getReducedGenreList()
         cell.cellDelegate = self
         return cell
     }

@@ -69,4 +69,18 @@ extension String {
         let displayDate = displayFormatter.string(from: date)
         return "Released \(displayDate)"
     }
+    
+    func convertToNavBarDisplayDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        let date = dateFormatter.date(from: self) ?? Date()
+        
+        dateFormatter.dateFormat = "EEE, MMM d"
+        let resultString = dateFormatter.string(from: date)
+        print(resultString)
+        
+        dateFormatter.dateStyle = .medium
+        
+        return resultString
+    }
 }
