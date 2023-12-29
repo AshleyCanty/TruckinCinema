@@ -556,22 +556,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "69B8ABF9-43B3-457A-9032-DB06174E5770"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8D0B3746-0DC2-4B95-8BD8-CE559485FDA1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -620,38 +604,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "00FDF258-EA4E-4703-9C82-B4F79CEA0C9E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0FDEF1B-CFB5-4685-862E-83358DDB2FF6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F37A4D9F-1DC4-4339-A6DE-C0F87121C226"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -675,8 +627,8 @@
             filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -684,33 +636,256 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "15C13DE1-FD1E-4076-8A69-B966027809EF"
+            uuid = "3892558D-C50C-42C3-A0BC-3903C03782D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "type"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3892558D-C50C-42C3-A0BC-3903C03782D2 - f56b9701ca01431d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC.type.didset : Another_Truckin_Cinema.SnackBarItemType"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "3892558D-C50C-42C3-A0BC-3903C03782D2 - 5c8f8d14ba0421d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC.type.didset : Swift.Optional&lt;Another_Truckin_Cinema.SnackBarItemType&gt;"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "67D41E71-F98C-4B13-814C-1A6CF29E4CA2"
+            uuid = "9D9BF514-7A82-4779-A22B-062A1D310C00"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "init(itemType:rsvpOrder:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9D9BF514-7A82-4779-A22B-062A1D310C00 - abc5ef09d6d6559"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC.__allocating_init(itemType: Another_Truckin_Cinema.SnackBarItemType, rsvpOrder: Swift.Optional&lt;Another_Truckin_Cinema.MovieReservation&gt;) -&gt; Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+               <Location
+                  uuid = "9D9BF514-7A82-4779-A22B-062A1D310C00 - 56909498f44367b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC.__allocating_init(itemType: Swift.Optional&lt;Another_Truckin_Cinema.SnackBarItemType&gt;, rsvpOrder: Swift.Optional&lt;Another_Truckin_Cinema.MovieReservation&gt;) -&gt; Another_Truckin_Cinema.SnackBarSelectedItemOptionsVC"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarSelectedItemOptionsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06C5614E-9A54-406F-86CD-E367EB9ED23B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/SnackBarVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "06C5614E-9A54-406F-86CD-E367EB9ED23B - ef71c75bb7401ca5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "544">
+               </Location>
+               <Location
+                  uuid = "06C5614E-9A54-406F-86CD-E367EB9ED23B - ef71c75bb7401ca5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "500">
+               </Location>
+               <Location
+                  uuid = "06C5614E-9A54-406F-86CD-E367EB9ED23B - ef71c75bb7401ca5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/SnackBarVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "472">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5939E9C2-7577-41C0-AAEF-6A9A48151D74"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "type"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "5939E9C2-7577-41C0-AAEF-6A9A48151D74 - 2acf5584408c7982"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarCell.type.didset : Another_Truckin_Cinema.SnackBarItemType"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "5939E9C2-7577-41C0-AAEF-6A9A48151D74 - 16e549b892cd9f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarCell.type.didset : Swift.Optional&lt;Another_Truckin_Cinema.SnackBarItemType&gt;"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "741B7FB2-9889-447B-9676-E5B7416F8C43"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "configureCellForItemType()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "741B7FB2-9889-447B-9676-E5B7416F8C43 - 5d4835d839a6f5f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarCell.configureCellForItemType() -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "741B7FB2-9889-447B-9676-E5B7416F8C43 - 5d4835d839a6f78"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.SnackBarCell.configureCellForItemType() -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/SnackBar/View/SnackBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

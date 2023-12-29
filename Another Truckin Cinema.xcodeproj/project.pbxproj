@@ -10,12 +10,12 @@
 		240951BE2A8898FD004B9A19 /* CarDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240951BD2A8898FD004B9A19 /* CarDetailsCell.swift */; };
 		240951C02A88A23B004B9A19 /* SignUpBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240951BF2A88A23B004B9A19 /* SignUpBannerView.swift */; };
 		240951C22A89A1FF004B9A19 /* OrderCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240951C12A89A1FF004B9A19 /* OrderCartView.swift */; };
+		242F3F802B3E6A9700B8EA24 /* SnackBarCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F7F2B3E6A9700B8EA24 /* SnackBarCollectionViewDataSource.swift */; };
+		242F3F822B3E819100B8EA24 /* SnackBarItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F812B3E819100B8EA24 /* SnackBarItemManager.swift */; };
+		242F3F842B3E904500B8EA24 /* SnackBarSelectedItemsOptionsVC+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F832B3E904500B8EA24 /* SnackBarSelectedItemsOptionsVC+extensions.swift */; };
 		244CCB7A2A5500C50045DDAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB792A5500C50045DDAB /* AppDelegate.swift */; };
 		244CCB7C2A5500C50045DDAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB7B2A5500C50045DDAB /* SceneDelegate.swift */; };
 		244CCB842A5500C50045DDAB /* Another_Truckin_Cinema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB822A5500C50045DDAB /* Another_Truckin_Cinema.xcdatamodeld */; };
-		244CCB942A5500C60045DDAB /* Another_Truckin_CinemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB932A5500C60045DDAB /* Another_Truckin_CinemaTests.swift */; };
-		244CCB9E2A5500C60045DDAB /* Another_Truckin_CinemaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB9D2A5500C60045DDAB /* Another_Truckin_CinemaUITests.swift */; };
-		244CCBA02A5500C60045DDAB /* Another_Truckin_CinemaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244CCB9F2A5500C60045DDAB /* Another_Truckin_CinemaUITestsLaunchTests.swift */; };
 		244D948E2AAA309E00D4E16C /* AppNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D948D2AAA309E00D4E16C /* AppNotificationNames.swift */; };
 		244D94902AAA31A400D4E16C /* RegistrationSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D948F2AAA31A400D4E16C /* RegistrationSuccessView.swift */; };
 		244D94922AAA54D100D4E16C /* DriveInDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D94912AAA54D100D4E16C /* DriveInDropDownView.swift */; };
@@ -120,6 +120,9 @@
 		24C153592A844A5A0080CB19 /* Int+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153582A844A5A0080CB19 /* Int+extensions.swift */; };
 		24C1535C2A844A7F0080CB19 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1535B2A844A7F0080CB19 /* RadioButton.swift */; };
 		24C1535E2A847D150080CB19 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1535D2A847D150080CB19 /* RoundedTextField.swift */; };
+		24C341742B24032E00517666 /* Another_Truckin_CinemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C341732B24032E00517666 /* Another_Truckin_CinemaTests.swift */; };
+		24C341812B24034A00517666 /* Another_Truckin_CinemaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C341802B24034A00517666 /* Another_Truckin_CinemaUITests.swift */; };
+		24C341832B24034A00517666 /* Another_Truckin_CinemaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C341822B24034A00517666 /* Another_Truckin_CinemaUITestsLaunchTests.swift */; };
 		24DAE7CB2B0B0F22002D22C8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DAE7CA2B0B0F22002D22C8 /* CustomImageView.swift */; };
 		24F5DA792A7EC23400AC7A59 /* AppNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */; };
 		24F5DA7E2A7EFD0600AC7A59 /* CarDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA7D2A7EFD0600AC7A59 /* CarDetailsVC.swift */; };
@@ -135,20 +138,18 @@
 		24FC6D3F2A68310700461AA8 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D3E2A68310700461AA8 /* ThemeButton.swift */; };
 		24FC6D412A68313F00461AA8 /* ButtonTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D402A68313F00461AA8 /* ButtonTitles.swift */; };
 		24FC6D462A68BC4200461AA8 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D452A68BC4200461AA8 /* AppNavigation.swift */; };
-		80C1B744497CB54E184F5756 /* Pods_Another_Truckin_Cinema_Another_Truckin_CinemaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A6115BB07D9F54E53E6C4E /* Pods_Another_Truckin_Cinema_Another_Truckin_CinemaUITests.framework */; };
-		C406017B23705062A3F33D7A /* Pods_Another_Truckin_CinemaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFB1B723C812C6AE0E2F01F /* Pods_Another_Truckin_CinemaTests.framework */; };
 		EC3A71D0F6B931C8D7EDBD66 /* Pods_Another_Truckin_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F69DCFD205AD71BCECB6AA /* Pods_Another_Truckin_Cinema.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		244CCB902A5500C60045DDAB /* PBXContainerItemProxy */ = {
+		24C341752B24032E00517666 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 244CCB6E2A5500C50045DDAB /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 244CCB752A5500C50045DDAB;
 			remoteInfo = "Another Truckin Cinema";
 		};
-		244CCB9A2A5500C60045DDAB /* PBXContainerItemProxy */ = {
+		24C341842B24034A00517666 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 244CCB6E2A5500C50045DDAB /* Project object */;
 			proxyType = 1;
@@ -162,17 +163,15 @@
 		240951BD2A8898FD004B9A19 /* CarDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsCell.swift; sourceTree = "<group>"; };
 		240951BF2A88A23B004B9A19 /* SignUpBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBannerView.swift; sourceTree = "<group>"; };
 		240951C12A89A1FF004B9A19 /* OrderCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartView.swift; sourceTree = "<group>"; };
+		242F3F7F2B3E6A9700B8EA24 /* SnackBarCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		242F3F812B3E819100B8EA24 /* SnackBarItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarItemManager.swift; sourceTree = "<group>"; };
+		242F3F832B3E904500B8EA24 /* SnackBarSelectedItemsOptionsVC+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnackBarSelectedItemsOptionsVC+extensions.swift"; sourceTree = "<group>"; };
 		2431C6392A57DC320046CCD1 /* info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = info.plist; sourceTree = "<group>"; };
 		244CCB762A5500C50045DDAB /* Another Truckin Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Another Truckin Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244CCB792A5500C50045DDAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		244CCB7B2A5500C50045DDAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		244CCB832A5500C50045DDAB /* Another_Truckin_Cinema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Another_Truckin_Cinema.xcdatamodel; sourceTree = "<group>"; };
 		244CCB852A5500C60045DDAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		244CCB8F2A5500C60045DDAB /* Another Truckin CinemaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Another Truckin CinemaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		244CCB932A5500C60045DDAB /* Another_Truckin_CinemaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaTests.swift; sourceTree = "<group>"; };
-		244CCB992A5500C60045DDAB /* Another Truckin CinemaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Another Truckin CinemaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		244CCB9D2A5500C60045DDAB /* Another_Truckin_CinemaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaUITests.swift; sourceTree = "<group>"; };
-		244CCB9F2A5500C60045DDAB /* Another_Truckin_CinemaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		244D948D2AAA309E00D4E16C /* AppNotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationNames.swift; sourceTree = "<group>"; };
 		244D948F2AAA31A400D4E16C /* RegistrationSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSuccessView.swift; sourceTree = "<group>"; };
 		244D94912AAA54D100D4E16C /* DriveInDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveInDropDownView.swift; sourceTree = "<group>"; };
@@ -278,6 +277,11 @@
 		24C153582A844A5A0080CB19 /* Int+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extensions.swift"; sourceTree = "<group>"; };
 		24C1535B2A844A7F0080CB19 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		24C1535D2A847D150080CB19 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		24C341712B24032E00517666 /* Another Truckin CinemaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Another Truckin CinemaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C341732B24032E00517666 /* Another_Truckin_CinemaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaTests.swift; sourceTree = "<group>"; };
+		24C3417E2B24034A00517666 /* Another Truckin CinemaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Another Truckin CinemaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24C341802B24034A00517666 /* Another_Truckin_CinemaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaUITests.swift; sourceTree = "<group>"; };
+		24C341822B24034A00517666 /* Another_Truckin_CinemaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Another_Truckin_CinemaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		24DAE7CA2B0B0F22002D22C8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		24F5DA782A7EC23400AC7A59 /* AppNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationBar.swift; sourceTree = "<group>"; };
 		24F5DA7D2A7EFD0600AC7A59 /* CarDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsVC.swift; sourceTree = "<group>"; };
@@ -310,19 +314,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB8C2A5500C60045DDAB /* Frameworks */ = {
+		24C3416E2B24032E00517666 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C406017B23705062A3F33D7A /* Pods_Another_Truckin_CinemaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB962A5500C60045DDAB /* Frameworks */ = {
+		24C3417B2B24034A00517666 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C1B744497CB54E184F5756 /* Pods_Another_Truckin_Cinema_Another_Truckin_CinemaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,17 +351,25 @@
 				240951BD2A8898FD004B9A19 /* CarDetailsCell.swift */,
 				2461B6742A8DB814007C52CA /* CarDetailsDropDownCell.swift */,
 				245D70952B1135A5008E0543 /* CarColor.swift */,
-				245D70942B113584008E0543 /* Model */,
 			);
 			path = CarDetails;
+			sourceTree = "<group>";
+		};
+		242F3F852B3E905600B8EA24 /* SnackBarSelectedItemOptionsVC */ = {
+			isa = PBXGroup;
+			children = (
+				2461B68D2A9458A7007C52CA /* SnackBarSelectedItemOptionsVC.swift */,
+				242F3F832B3E904500B8EA24 /* SnackBarSelectedItemsOptionsVC+extensions.swift */,
+			);
+			path = SnackBarSelectedItemOptionsVC;
 			sourceTree = "<group>";
 		};
 		244CCB6D2A5500C50045DDAB = {
 			isa = PBXGroup;
 			children = (
 				244CCB782A5500C50045DDAB /* Another Truckin Cinema */,
-				244CCB922A5500C60045DDAB /* Another Truckin CinemaTests */,
-				244CCB9C2A5500C60045DDAB /* Another Truckin CinemaUITests */,
+				24C341722B24032E00517666 /* Another Truckin CinemaTests */,
+				24C3417F2B24034A00517666 /* Another Truckin CinemaUITests */,
 				244CCB772A5500C50045DDAB /* Products */,
 				0F6A1DBB474652AB50028279 /* Pods */,
 				E6231C2619FF867EE476A114 /* Frameworks */,
@@ -370,8 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				244CCB762A5500C50045DDAB /* Another Truckin Cinema.app */,
-				244CCB8F2A5500C60045DDAB /* Another Truckin CinemaTests.xctest */,
-				244CCB992A5500C60045DDAB /* Another Truckin CinemaUITests.xctest */,
+				24C341712B24032E00517666 /* Another Truckin CinemaTests.xctest */,
+				24C3417E2B24034A00517666 /* Another Truckin CinemaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,33 +389,15 @@
 		244CCB782A5500C50045DDAB /* Another Truckin Cinema */ = {
 			isa = PBXGroup;
 			children = (
-				249E6BC02B08255E007F8494 /* Model */,
 				249E6BBB2B072574007F8494 /* Network Service */,
 				2466C7792A57BDC4006AED5F /* AppDelegate */,
 				2466C77A2A57BDD6006AED5F /* ViewControllers */,
-				2466C7762A579EF4006AED5F /* AppTheme */,
+				249E6BC02B08255E007F8494 /* Model */,
 				24771A7A2A5659D000FB33AF /* Utilities */,
 				2466C7772A57BDA0006AED5F /* Core Data */,
 				24FA37462A5849B7009BFEAE /* Supporting Files */,
 			);
 			path = "Another Truckin Cinema";
-			sourceTree = "<group>";
-		};
-		244CCB922A5500C60045DDAB /* Another Truckin CinemaTests */ = {
-			isa = PBXGroup;
-			children = (
-				244CCB932A5500C60045DDAB /* Another_Truckin_CinemaTests.swift */,
-			);
-			path = "Another Truckin CinemaTests";
-			sourceTree = "<group>";
-		};
-		244CCB9C2A5500C60045DDAB /* Another Truckin CinemaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				244CCB9D2A5500C60045DDAB /* Another_Truckin_CinemaUITests.swift */,
-				244CCB9F2A5500C60045DDAB /* Another_Truckin_CinemaUITestsLaunchTests.swift */,
-			);
-			path = "Another Truckin CinemaUITests";
 			sourceTree = "<group>";
 		};
 		244F82D82A95543F002938B4 /* FoodDeliveryDetails */ = {
@@ -426,42 +418,6 @@
 				24905C892A9FE5870031D721 /* LocationCell.swift */,
 			);
 			path = NearbyDriveIns;
-			sourceTree = "<group>";
-		};
-		245D70942B113584008E0543 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2461B6762A8EA745007C52CA /* Car.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		245D70A22B115D7E008E0543 /* RSVP */ = {
-			isa = PBXGroup;
-			children = (
-				245D70982B113600008E0543 /* FoodOrder.swift */,
-				245D70922B112535008E0543 /* MovieReservation.swift */,
-				245D70A02B113C76008E0543 /* Ticket.swift */,
-			);
-			path = RSVP;
-			sourceTree = "<group>";
-		};
-		245D70A32B115DEA008E0543 /* Custumer */ = {
-			isa = PBXGroup;
-			children = (
-				245D709C2B113BFD008E0543 /* Customer.swift */,
-				245D709E2B113C1C008E0543 /* Membership.swift */,
-			);
-			path = Custumer;
-			sourceTree = "<group>";
-		};
-		245D70A42B115E1B008E0543 /* Homescreen */ = {
-			isa = PBXGroup;
-			children = (
-				249E6BC32B098506007F8494 /* MovieDetails.swift */,
-				249E6BC12B082612007F8494 /* PopularMovies.swift */,
-			);
-			path = Homescreen;
 			sourceTree = "<group>";
 		};
 		2461B6792A8EE0D9007C52CA /* PaymentOrder */ = {
@@ -555,9 +511,9 @@
 			children = (
 				244F82E82A9BE23B002938B4 /* DriveInLocationsVC.swift */,
 				244F82E12A9AA42E002938B4 /* FavoriteDriveInsVC.swift */,
-				244F82E52A9AA600002938B4 /* NearbyDriveIns */,
 				24905C832A9ED0E20031D721 /* ChangeLocationVC.swift */,
 				24905C872A9FCF100031D721 /* CurrentLocationLabel.swift */,
+				244F82E52A9AA600002938B4 /* NearbyDriveIns */,
 			);
 			path = OurDriveIns;
 			sourceTree = "<group>";
@@ -623,18 +579,15 @@
 		2466C77A2A57BDD6006AED5F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2466B7CF2A64A31000DDC8BC /* Navigation */,
-				2466B7C82A64870D00DDC8BC /* Homescreen */,
-				2466B7D02A64B18100DDC8BC /* OurDriveIns */,
-				2466B7D12A64B19900DDC8BC /* FoodAndDrinks */,
-				24F5DA7C2A7EFA9700AC7A59 /* SnackBar */,
-				2466B7D22A64B1A900DDC8BC /* Membership */,
-				24702C1F2A7E14B800C87D26 /* TicketPurchase */,
+				249C76302B21554F00B4A790 /* TabBar */,
 				240951BC2A889572004B9A19 /* CarDetails */,
+				24FC6D3A2A678A0100461AA8 /* MovieDetails */,
+				2466B7CF2A64A31000DDC8BC /* Navigation */,
 				24C153482A82D4EF0080CB19 /* PaymentConfirmation */,
 				2461B6792A8EE0D9007C52CA /* PaymentOrder */,
-				24FC6D3A2A678A0100461AA8 /* MovieDetails */,
 				2461B67C2A8EE433007C52CA /* SignIn */,
+				24F5DA7C2A7EFA9700AC7A59 /* SnackBar */,
+				24702C1F2A7E14B800C87D26 /* TicketPurchase */,
 				24C153452A81952E0080CB19 /* Registration */,
 			);
 			path = ViewControllers;
@@ -669,6 +622,7 @@
 		24771A7A2A5659D000FB33AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2466C7762A579EF4006AED5F /* AppTheme */,
 				2461ED992A6F702E007916A3 /* URLCache.swift */,
 				2466C7732A579437006AED5F /* UIColor+extensions.swift */,
 				2487F78C2A5AFDED00FD1517 /* UIFont+extensions.swift */,
@@ -757,6 +711,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		249C76302B21554F00B4A790 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2466B7D12A64B19900DDC8BC /* FoodAndDrinks */,
+				2466B7C82A64870D00DDC8BC /* Homescreen */,
+				2466B7D22A64B1A900DDC8BC /* Membership */,
+				2466B7D02A64B18100DDC8BC /* OurDriveIns */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		249E6BBB2B072574007F8494 /* Network Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,9 +735,14 @@
 		249E6BC02B08255E007F8494 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				245D70A32B115DEA008E0543 /* Custumer */,
-				245D70A22B115D7E008E0543 /* RSVP */,
-				245D70A42B115E1B008E0543 /* Homescreen */,
+				2461B6762A8EA745007C52CA /* Car.swift */,
+				245D709C2B113BFD008E0543 /* Customer.swift */,
+				245D70982B113600008E0543 /* FoodOrder.swift */,
+				245D709E2B113C1C008E0543 /* Membership.swift */,
+				249E6BC32B098506007F8494 /* MovieDetails.swift */,
+				245D70922B112535008E0543 /* MovieReservation.swift */,
+				249E6BC12B082612007F8494 /* PopularMovies.swift */,
+				245D70A02B113C76008E0543 /* Ticket.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -811,6 +781,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		24C341722B24032E00517666 /* Another Truckin CinemaTests */ = {
+			isa = PBXGroup;
+			children = (
+				24C341732B24032E00517666 /* Another_Truckin_CinemaTests.swift */,
+			);
+			path = "Another Truckin CinemaTests";
+			sourceTree = "<group>";
+		};
+		24C3417F2B24034A00517666 /* Another Truckin CinemaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				24C341802B24034A00517666 /* Another_Truckin_CinemaUITests.swift */,
+				24C341822B24034A00517666 /* Another_Truckin_CinemaUITestsLaunchTests.swift */,
+			);
+			path = "Another Truckin CinemaUITests";
+			sourceTree = "<group>";
+		};
 		24C4092A2A775923001E5290 /* TopDetailsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,11 +820,13 @@
 			isa = PBXGroup;
 			children = (
 				24F5DA832A7F003400AC7A59 /* SnackBarVC.swift */,
-				2461B68D2A9458A7007C52CA /* SnackBarSelectedItemOptionsVC.swift */,
+				242F3F852B3E905600B8EA24 /* SnackBarSelectedItemOptionsVC */,
 				244F82D82A95543F002938B4 /* FoodDeliveryDetails */,
 				2461B68C2A94584D007C52CA /* View */,
 				2461B68B2A945845007C52CA /* Model */,
 				245D70A72B13FA65008E0543 /* ConfirmationToastView.swift */,
+				242F3F7F2B3E6A9700B8EA24 /* SnackBarCollectionViewDataSource.swift */,
+				242F3F812B3E819100B8EA24 /* SnackBarItemManager.swift */,
 			);
 			path = SnackBar;
 			sourceTree = "<group>";
@@ -915,44 +904,40 @@
 			productReference = 244CCB762A5500C50045DDAB /* Another Truckin Cinema.app */;
 			productType = "com.apple.product-type.application";
 		};
-		244CCB8E2A5500C60045DDAB /* Another Truckin CinemaTests */ = {
+		24C341702B24032E00517666 /* Another Truckin CinemaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 244CCBA62A5500C60045DDAB /* Build configuration list for PBXNativeTarget "Another Truckin CinemaTests" */;
+			buildConfigurationList = 24C341772B24032E00517666 /* Build configuration list for PBXNativeTarget "Another Truckin CinemaTests" */;
 			buildPhases = (
-				1D979D2121B78A8E46B5D45E /* [CP] Check Pods Manifest.lock */,
-				244CCB8B2A5500C60045DDAB /* Sources */,
-				244CCB8C2A5500C60045DDAB /* Frameworks */,
-				244CCB8D2A5500C60045DDAB /* Resources */,
+				24C3416D2B24032E00517666 /* Sources */,
+				24C3416E2B24032E00517666 /* Frameworks */,
+				24C3416F2B24032E00517666 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				244CCB912A5500C60045DDAB /* PBXTargetDependency */,
+				24C341762B24032E00517666 /* PBXTargetDependency */,
 			);
 			name = "Another Truckin CinemaTests";
 			productName = "Another Truckin CinemaTests";
-			productReference = 244CCB8F2A5500C60045DDAB /* Another Truckin CinemaTests.xctest */;
+			productReference = 24C341712B24032E00517666 /* Another Truckin CinemaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		244CCB982A5500C60045DDAB /* Another Truckin CinemaUITests */ = {
+		24C3417D2B24034A00517666 /* Another Truckin CinemaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 244CCBA92A5500C60045DDAB /* Build configuration list for PBXNativeTarget "Another Truckin CinemaUITests" */;
+			buildConfigurationList = 24C341862B24034A00517666 /* Build configuration list for PBXNativeTarget "Another Truckin CinemaUITests" */;
 			buildPhases = (
-				728D4CB86CEEA7E8C6B82E50 /* [CP] Check Pods Manifest.lock */,
-				244CCB952A5500C60045DDAB /* Sources */,
-				244CCB962A5500C60045DDAB /* Frameworks */,
-				244CCB972A5500C60045DDAB /* Resources */,
-				F78DA5F483EC0794D0969B87 /* [CP] Embed Pods Frameworks */,
-				B28AA9FF9A4D41C4405CCF2B /* [CP] Copy Pods Resources */,
+				24C3417A2B24034A00517666 /* Sources */,
+				24C3417B2B24034A00517666 /* Frameworks */,
+				24C3417C2B24034A00517666 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				244CCB9B2A5500C60045DDAB /* PBXTargetDependency */,
+				24C341852B24034A00517666 /* PBXTargetDependency */,
 			);
 			name = "Another Truckin CinemaUITests";
 			productName = "Another Truckin CinemaUITests";
-			productReference = 244CCB992A5500C60045DDAB /* Another Truckin CinemaUITests.xctest */;
+			productReference = 24C3417E2B24034A00517666 /* Another Truckin CinemaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -968,11 +953,11 @@
 					244CCB752A5500C50045DDAB = {
 						CreatedOnToolsVersion = 14.3;
 					};
-					244CCB8E2A5500C60045DDAB = {
+					24C341702B24032E00517666 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 244CCB752A5500C50045DDAB;
 					};
-					244CCB982A5500C60045DDAB = {
+					24C3417D2B24034A00517666 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 244CCB752A5500C50045DDAB;
 					};
@@ -992,8 +977,8 @@
 			projectRoot = "";
 			targets = (
 				244CCB752A5500C50045DDAB /* Another Truckin Cinema */,
-				244CCB8E2A5500C60045DDAB /* Another Truckin CinemaTests */,
-				244CCB982A5500C60045DDAB /* Another Truckin CinemaUITests */,
+				24C341702B24032E00517666 /* Another Truckin CinemaTests */,
+				24C3417D2B24034A00517666 /* Another Truckin CinemaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1017,14 +1002,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB8D2A5500C60045DDAB /* Resources */ = {
+		24C3416F2B24032E00517666 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB972A5500C60045DDAB /* Resources */ = {
+		24C3417C2B24034A00517666 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1034,28 +1019,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D979D2121B78A8E46B5D45E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Another Truckin CinemaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		405C94FC75BE59239DA544D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1071,45 +1034,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		728D4CB86CEEA7E8C6B82E50 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B28AA9FF9A4D41C4405CCF2B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C5784CF5FE6AB2A6F90DD4EE /* [CP] Check Pods Manifest.lock */ = {
@@ -1151,23 +1075,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema/Pods-Another Truckin Cinema-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F78DA5F483EC0794D0969B87 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Another Truckin Cinema-Another Truckin CinemaUITests/Pods-Another Truckin Cinema-Another Truckin CinemaUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1182,6 +1089,8 @@
 				2466B7CE2A649FA900DDC8BC /* MovieCollection.swift in Sources */,
 				2461EDA32A709CBA007916A3 /* CustomSegmentedControl.swift in Sources */,
 				24F5DA7E2A7EFD0600AC7A59 /* CarDetailsVC.swift in Sources */,
+				242F3F822B3E819100B8EA24 /* SnackBarItemManager.swift in Sources */,
+				242F3F842B3E904500B8EA24 /* SnackBarSelectedItemsOptionsVC+extensions.swift in Sources */,
 				244F82E02A96D3A2002938B4 /* ShowtimeDates.swift in Sources */,
 				24625D222A78881C0088FE4C /* ShowtimeRadioListCell.swift in Sources */,
 				24C1534E2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift in Sources */,
@@ -1195,6 +1104,7 @@
 				249523312A639E6E007228D5 /* MovieCell.swift in Sources */,
 				2466C7742A579437006AED5F /* UIColor+extensions.swift in Sources */,
 				2461B6732A8D7CF2007C52CA /* DropDownTextFieldView.swift in Sources */,
+				242F3F802B3E6A9700B8EA24 /* SnackBarCollectionViewDataSource.swift in Sources */,
 				24905C962AA4E7FC0031D721 /* RegistrationCellStepTwo.swift in Sources */,
 				24C153542A83772C0080CB19 /* DoneButtonConfirmationCell.swift in Sources */,
 				249E6BC62B098970007F8494 /* Data+extensions.swift in Sources */,
@@ -1292,35 +1202,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB8B2A5500C60045DDAB /* Sources */ = {
+		24C3416D2B24032E00517666 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244CCB942A5500C60045DDAB /* Another_Truckin_CinemaTests.swift in Sources */,
+				24C341742B24032E00517666 /* Another_Truckin_CinemaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		244CCB952A5500C60045DDAB /* Sources */ = {
+		24C3417A2B24034A00517666 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				244CCBA02A5500C60045DDAB /* Another_Truckin_CinemaUITestsLaunchTests.swift in Sources */,
-				244CCB9E2A5500C60045DDAB /* Another_Truckin_CinemaUITests.swift in Sources */,
+				24C341832B24034A00517666 /* Another_Truckin_CinemaUITestsLaunchTests.swift in Sources */,
+				24C341812B24034A00517666 /* Another_Truckin_CinemaUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		244CCB912A5500C60045DDAB /* PBXTargetDependency */ = {
+		24C341762B24032E00517666 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 244CCB752A5500C50045DDAB /* Another Truckin Cinema */;
-			targetProxy = 244CCB902A5500C60045DDAB /* PBXContainerItemProxy */;
+			targetProxy = 24C341752B24032E00517666 /* PBXContainerItemProxy */;
 		};
-		244CCB9B2A5500C60045DDAB /* PBXTargetDependency */ = {
+		24C341852B24034A00517666 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 244CCB752A5500C50045DDAB /* Another Truckin Cinema */;
-			targetProxy = 244CCB9A2A5500C60045DDAB /* PBXContainerItemProxy */;
+			targetProxy = 24C341842B24034A00517666 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1503,16 +1413,13 @@
 			};
 			name = Release;
 		};
-		244CCBA72A5500C60045DDAB /* Debug */ = {
+		24C341782B24032E00517666 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC572AF0FBFB8E678668636C /* Pods-Another Truckin CinemaTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ashleycanty.Another-Truckin-CinemaTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1523,16 +1430,13 @@
 			};
 			name = Debug;
 		};
-		244CCBA82A5500C60045DDAB /* Release */ = {
+		24C341792B24032E00517666 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62A0D7E8E71AC02EF90B93C0 /* Pods-Another Truckin CinemaTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ashleycanty.Another-Truckin-CinemaTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1543,11 +1447,9 @@
 			};
 			name = Release;
 		};
-		244CCBAA2A5500C60045DDAB /* Debug */ = {
+		24C341872B24034A00517666 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 699BA6F7AF5364DA794B83C7 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1561,11 +1463,9 @@
 			};
 			name = Debug;
 		};
-		244CCBAB2A5500C60045DDAB /* Release */ = {
+		24C341882B24034A00517666 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 599111A86B6042C1791BDC28 /* Pods-Another Truckin Cinema-Another Truckin CinemaUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1600,20 +1500,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		244CCBA62A5500C60045DDAB /* Build configuration list for PBXNativeTarget "Another Truckin CinemaTests" */ = {
+		24C341772B24032E00517666 /* Build configuration list for PBXNativeTarget "Another Truckin CinemaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				244CCBA72A5500C60045DDAB /* Debug */,
-				244CCBA82A5500C60045DDAB /* Release */,
+				24C341782B24032E00517666 /* Debug */,
+				24C341792B24032E00517666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		244CCBA92A5500C60045DDAB /* Build configuration list for PBXNativeTarget "Another Truckin CinemaUITests" */ = {
+		24C341862B24034A00517666 /* Build configuration list for PBXNativeTarget "Another Truckin CinemaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				244CCBAA2A5500C60045DDAB /* Debug */,
-				244CCBAB2A5500C60045DDAB /* Release */,
+				24C341872B24034A00517666 /* Debug */,
+				24C341882B24034A00517666 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

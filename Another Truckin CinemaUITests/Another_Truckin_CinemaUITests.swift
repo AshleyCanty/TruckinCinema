@@ -2,7 +2,7 @@
 //  Another_Truckin_CinemaUITests.swift
 //  Another Truckin CinemaUITests
 //
-//  Created by ashley canty on 7/4/23.
+//  Created by ashley canty on 12/8/23.
 //
 
 import XCTest

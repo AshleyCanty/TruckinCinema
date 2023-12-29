@@ -2,11 +2,10 @@
 //  Another_Truckin_CinemaTests.swift
 //  Another Truckin CinemaTests
 //
-//  Created by ashley canty on 7/4/23.
+//  Created by ashley canty on 12/8/23.
 //
 
 import XCTest
-@testable import Another_Truckin_Cinema
 
 final class Another_Truckin_CinemaTests: XCTestCase {
 
@@ -28,7 +27,7 @@ final class Another_Truckin_CinemaTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }

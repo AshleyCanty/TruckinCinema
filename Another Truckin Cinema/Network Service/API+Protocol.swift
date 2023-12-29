@@ -25,18 +25,21 @@ extension GenericAPI {
             throw APIError.responseUnsuccessful(description: "Status code: \(httpResponse.statusCode)")
         }
         do {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.dateFormat = "MMM d, yyyy"
-
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            
-            return try decoder.decode(type, from: data)
+            return try prepareDecoder(with: type, data)
         } catch {
             throw APIError.failedToDecode(description: error.localizedDescription)
         }
+    }
+    
+    private func prepareDecoder<T: Codable>(with type: T.Type, _ data: Data) throws -> T where T : Decodable {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "MMM d, yyyy"
+
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return try decoder.decode(type, from: data)
     }
 }
 

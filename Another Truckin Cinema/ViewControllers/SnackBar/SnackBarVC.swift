@@ -13,7 +13,7 @@ import Combine
 // TODO now  = Refactor App NavBar so that it can be customized from any child class of BaseView Controller
 
 
-class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerViewDelegate, UICollectionViewDelegate {
 
     /// Custom NavBar
     private lazy var appNavBar = AppNavigationBar(type: .FoodDeliveryOrPickUp, shouldShowTimer: true)
@@ -40,9 +40,10 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     private lazy var signUpBannerView = SignUpBannerView()
     /// order cart view
     private lazy var orderCartView = OrderCartView()
+    
+    private let dataSource = SnackBarCollectionViewDataSource()
     /// collectionview
-    private lazy var collectionView: UICollectionView =
-    {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
@@ -130,7 +131,7 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     }
     
     private func setupCollectionViewDataSource() {
-        collectionView.dataSource = self
+        collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.register(SnackBarCell.self, forCellWithReuseIdentifier:  SnackBarCell.reuseIdentifier)
     }
@@ -200,9 +201,9 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
 extension SnackBarVC {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarCell.reuseIdentifier, for: indexPath) as? SnackBarCell {
-            let itemType: SnackBarItemType = [.popcorn, .beverages, .snacks][indexPath.item]
-            let vc = SnackBarSelectedItemOptionsVC(itemType: itemType, rsvpOrder: rsvpOrder)
+        if let cell = collectionView.cellForItem(at: indexPath) as? SnackBarCell {
+            let type = cell.type
+            let vc = SnackBarSelectedItemOptionsVC(itemType: cell.type, rsvpOrder: rsvpOrder)
             AppNavigation.shared.navigateTo(vc)
             
            vc.snackOrder.sink { [weak self] item in
@@ -228,17 +229,6 @@ extension SnackBarVC {
                }
            }.store(in: &cancellables)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemType: [SnackBarItemType] = [.popcorn, .beverages, .snacks]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarCell.reuseIdentifier, for: indexPath) as? SnackBarCell
-        cell?.type = itemType[indexPath.row]
-        return cell ?? SnackBarCell()
     }
 }
 

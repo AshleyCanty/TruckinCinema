@@ -49,7 +49,7 @@ class SnackBarSelectedItemOptionsVC: BaseViewController, AppNavigationBarDelegat
     /// Updates SnackBarVC with selected items
     var snackOrder = PassthroughSubject<SnackBarItemModel, Never>()
     
-    lazy var datasource = [SnackBarItemModel]()
+    private var snackItemManager: SnackBarItemManager = SnackBarItemManager(type: .popcorn)
     
     private var rsvpOrder: MovieReservation?
     
@@ -59,7 +59,7 @@ class SnackBarSelectedItemOptionsVC: BaseViewController, AppNavigationBarDelegat
     
     private var isAnimatingToastView = false
     
-    convenience init(itemType: SnackBarItemType, rsvpOrder: MovieReservation?) {
+    convenience init(itemType: SnackBarItemType?, rsvpOrder: MovieReservation?) {
         self.init()
         self.rsvpOrder = rsvpOrder
         type = itemType
@@ -123,77 +123,13 @@ class SnackBarSelectedItemOptionsVC: BaseViewController, AppNavigationBarDelegat
     
     /// setup collection view datasource
     func setupCollectionViewDataSource() {
+        guard let type = type else { return }
+        snackItemManager = SnackBarItemManager(type: type)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(SnackBarCell.self, forCellWithReuseIdentifier: SnackBarCell.reuseIdentifier)
         collectionView.register(SnackBarItemOptionCell.self, forCellWithReuseIdentifier: SnackBarItemOptionCell.reuseID)
-        
-        guard let itemType = type else { return }
-        switch itemType {
-        case .popcorn: setDataForPopcornItems()
-        case .beverages: setDataForBeverageItems()
-        case .snacks: setDataForSnackItems()
-        }
-    }
-    
-    /// setup popcorn items
-    private func setDataForPopcornItems() {
-        let mainMenuName = SnackBarItemMain.Popcorn.getStringVal()
-        self.datasource = [
-            SnackBarItemModel(mainMenu: mainMenuName,
-                              name: SnackBarPopcornOption.Traditional.getStringVal(),
-                              image: SnackBarPopcornImage.Traditional.getStringVal(),
-                              priceString: SnackBarPopcornPrice.Traditional.getStringVal(),
-                              priceNumber: SnackBarPopcornPrice.Traditional.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName,
-                              name: SnackBarPopcornOption.GourmetSingle.getStringVal(),
-                              image: SnackBarPopcornImage.GourmetSingle.getStringVal(),
-                              priceString: SnackBarPopcornPrice.GourmetSingle.getStringVal(),
-                              priceNumber: SnackBarPopcornPrice.GourmetSingle.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName,
-                              name: SnackBarPopcornOption.GourmetDuo.getStringVal(),
-                              image: SnackBarPopcornImage.GourmetDuo.getStringVal(),
-                              priceString: SnackBarPopcornPrice.GourmetDuo.getStringVal(),
-                              priceNumber: SnackBarPopcornPrice.GourmetDuo.getDoubleVal())
-        ]
-    }
-    
-    /// setup beverage items
-    private func setDataForBeverageItems() {
-        let mainMenuName = SnackBarItemMain.Beverages.getStringVal()
-        self.datasource = [
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarBeverageOption.Small.getStringVal(),
-                              image: SnackBarBeverageImage.Small.getStringVal(),
-                              priceString: SnackBarBeveragePrice.Small.getStringVal(),
-                              priceNumber: SnackBarBeveragePrice.Small.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarBeverageOption.Medium.getStringVal(),
-                              image: SnackBarBeverageImage.Medium.getStringVal(),
-                              priceString: SnackBarBeveragePrice.Medium.getStringVal(),
-                              priceNumber: SnackBarBeveragePrice.Medium.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarBeverageOption.Large.getStringVal(),
-                              image: SnackBarBeverageImage.Large.getStringVal(),
-                              priceString: SnackBarBeveragePrice.Large.getStringVal(),
-                              priceNumber: SnackBarBeveragePrice.Large.getDoubleVal())
-        ]
-    }
-    
-    /// setup snack items
-    private func setDataForSnackItems() {
-        let mainMenuName = SnackBarItemMain.Snacks.getStringVal()
-        self.datasource = [
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarSnackOption.MixedCandy.getStringVal(),
-                              image: SnackBarSnackImage.MixedCandy.getStringVal(),
-                              priceString: SnackBarSnackPrice.MixedCandy.getStringVal(),
-                              priceNumber: SnackBarSnackPrice.MixedCandy.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarSnackOption.Nachos.getStringVal(),
-                              image: SnackBarSnackImage.Nachos.getStringVal(),
-                              priceString: SnackBarSnackPrice.Nachos.getStringVal(),
-                              priceNumber: SnackBarSnackPrice.Nachos.getDoubleVal()),
-            SnackBarItemModel(mainMenu: mainMenuName, name: SnackBarSnackOption.PretzelBites.getStringVal(),
-                              image: SnackBarSnackImage.PretzelBites.getStringVal(),
-                              priceString: SnackBarSnackPrice.PretzelBites.getStringVal(),
-                              priceNumber: SnackBarSnackPrice.PretzelBites.getDoubleVal())
-        ]
     }
     
     // MARK: - Custom Banner Delegate Methods
@@ -269,27 +205,21 @@ class SnackBarSelectedItemOptionsVC: BaseViewController, AppNavigationBarDelegat
             }
         }
     }
-}
-
-
-// MARK: - CollectionView Delegate methods
-
-extension SnackBarSelectedItemOptionsVC {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == 0 {
-            return CGSize(width: view.frame.width - (AppTheme.LeadingTrailingMargin*2), height: 150)
-        }
-        return CGSize(width: view.frame.width - (AppTheme.LeadingTrailingMargin*2), height: 100)
+    // Helpers
+    
+    func getSnackBarItems() -> [SnackBarItemModel] {
+        return snackItemManager.items
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.item > 0, let cell = collectionView.cellForItem(at: indexPath) as? SnackBarItemOptionCell, let item = cell.item, item.mainMenu == SnackBarItemMain.Popcorn.getStringVal() else { return }
+    // MARK: - Alert methods
+    
+    // Popcorn method
+    func setupAlertForSelectedPopcornSnack(index: Int, item: SnackBarItemModel) -> (UIAlertAction, String) {
+        var alertAction = UIAlertAction()
+        var sizeString = ""
         
-        let alertVC = UIAlertController(title: "Which size would you like?", message: nil, preferredStyle: .actionSheet)
-        var prices: [String] = []
-        
-        if indexPath.item == 1 {
+        if index == 1 {
             // traditional
             SnackBarTraditionalPopcornPrice.allCases.forEach { size in
                 let action = UIAlertAction(title: size.getSizeAndPriceStringVal(), style: .default) { [weak self] _ in
@@ -300,11 +230,11 @@ extension SnackBarSelectedItemOptionsVC {
                     sSelf.orderCartView.updateItemCountAndPrice(addItemQuantity: 1, price: item.priceNumber)
                     sSelf.view.setNeedsLayout()
                 }
-
-                alertVC.addAction(action)
-                prices.append(size.getSizeAndPriceStringVal())
+                
+                alertAction = action
+                sizeString = size.getSizeAndPriceStringVal()
             }
-        } else if indexPath.item == 2 {
+        } else if index == 2 {
             // gourmet single
             SnackBarGourmetSinglePopcornPrice.allCases.forEach { size in
                 let action = UIAlertAction(title: size.getSizeAndPriceStringVal(), style: .default) { [weak self] _ in
@@ -316,10 +246,10 @@ extension SnackBarSelectedItemOptionsVC {
                     sSelf.view.setNeedsLayout()
                 }
 
-                alertVC.addAction(action)
-                prices.append(size.getSizeAndPriceStringVal())
+                alertAction = action
+                sizeString = size.getSizeAndPriceStringVal()
             }
-        } else if indexPath.item == 3 {
+        } else if index == 3 {
             // gourmet duo
             SnackBarGourmetDuoPopcornPrice.allCases.forEach { size in
                 let action = UIAlertAction(title: size.getSizeAndPriceStringVal(), style: .default) { [weak self] _ in
@@ -331,33 +261,12 @@ extension SnackBarSelectedItemOptionsVC {
                     sSelf.view.setNeedsLayout()
                 }
 
-                alertVC.addAction(action)
-                prices.append(size.getSizeAndPriceStringVal())
+                alertAction = action
+                sizeString = size.getSizeAndPriceStringVal()
             }
         }
         
-        present(alertVC, animated: true)
+        return (alertAction, sizeString)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count + 1 // extra one for large cell at top
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarCell.reuseIdentifier, for: indexPath) as? SnackBarCell {
-                cell.type = type
-                cell.rightArrowIcon.isHidden = true
-                return cell
-            }
-        } else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarItemOptionCell.reuseID, for: indexPath) as? SnackBarItemOptionCell {
-                let item = datasource[indexPath.item - 1]
-                cell.configure(image: UIImage(imgNamed: item.image), item: item)
-                return cell
-            }
-        }
-        
-        return SnackBarItemOptionCell()
-    }
 }

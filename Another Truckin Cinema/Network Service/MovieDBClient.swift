@@ -8,6 +8,8 @@
 import Foundation
 
 
+//protocol MovieClient
+
 final class MovieDBClient: GenericAPI {
     private let youtubeBaseUrl: URL = URL(string: "http://www.youtube.com/v")! /// https://developers.google.com/youtube/iframe_api_reference
     
@@ -38,30 +40,26 @@ final class MovieDBClient: GenericAPI {
     
     /// Fetches popular movies
     public func fetchPopularMovies() async throws -> PopularMovies {
-        let result = try await prepareFetch(type: PopularMovies.self,
+        try await prepareFetch(type: PopularMovies.self,
                                             paths: ["popular"],
                                             queryItems: [URLQueryItem(name: "language", value: "en"), URLQueryItem(name: "page", value: "1")])
-        return result
     }
     
     /// Fetches a movie
     public func fetchMovie(withId id: String) async throws -> MovieDetails {
-        let result = try await prepareFetch(type: MovieDetails.self, paths: [id])
-        return result
+        try await prepareFetch(type: MovieDetails.self, paths: [id])
     }
     
     /// Fetches movie trailers
     public func fetchMovieTrailers(withId id: String) async throws -> MovieTrailers {
-        let result = try await prepareFetch(type: MovieTrailers.self, paths: [id, "videos"])
-        return result
+        try await prepareFetch(type: MovieTrailers.self, paths: [id, "videos"])
     }
     
     /// Fetch release dates and ratings
     public func fetchRatingAndReleaseDates(withId id: String) async throws -> MovieReleaseDates {
-        let results = try await prepareFetch(type: MovieReleaseDates.self, paths: [id],
+        try await prepareFetch(type: MovieReleaseDates.self, paths: [id],
                                              queryItems: [URLQueryItem(name: "language", value: "en"),
                                                           URLQueryItem(name: "append_to_response", value: "release_dates")])
-        return results
     }
     
 //    /// Fetches movie trailers
@@ -72,14 +70,12 @@ final class MovieDBClient: GenericAPI {
 //    
     /// Returns url for poster
     public func createImageUrl(with posterPath: String) -> URL {
-        let updatedPosterPath = posterPath.replacingOccurrences(of: "/", with: "")
-        return imageBaseUrl.appending(path: updatedPosterPath)
+        imageBaseUrl.appending(path: posterPath.replacingOccurrences(of: "/", with: ""))
     }
     
     /// Returns url for trailer's thumbnail image
     public func createTrailerThumbnailUrl(withKey key: String) -> URL {
-        var updatedUrl = trailerThumbnailBaseUrl.appending(path: key)
-        return updatedUrl.appending(path: "hqdefault.jpg")
+        trailerThumbnailBaseUrl.appending(path: key).appending(path: "hqdefault.jpg")
     }
     
     /// Prepares network request by accepting params: codable type, paths, and query items

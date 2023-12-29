@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum SnackBarItemType {
+enum SnackBarItemType: CaseIterable {
     case popcorn
     case beverages
     case snacks
@@ -49,8 +49,6 @@ class SnackBarCell: UICollectionViewCell {
     
     public var type: SnackBarItemType? {
         didSet {
-            let ty = type
-//            type =
             configureCellForItemType()
         }
     }
@@ -74,6 +72,7 @@ class SnackBarCell: UICollectionViewCell {
     
     /// adjusts UI based on food type
     public func configureCellForItemType() {
+        guard let type = type else { return }
         switch type {
         case .popcorn:
             foodTitleLabelLabel.text = SnackBarItemMain.Popcorn.getStringVal()
@@ -84,10 +83,7 @@ class SnackBarCell: UICollectionViewCell {
         case .snacks:
             foodTitleLabelLabel.text = SnackBarItemMain.Snacks.getStringVal()
             backgroundImageView.image = UIImage(imgNamed: SnackBarItemMain.Snacks.getImage())
-        default:
-            break
         }
-        print()
     }
     
     private func setupUI() {
