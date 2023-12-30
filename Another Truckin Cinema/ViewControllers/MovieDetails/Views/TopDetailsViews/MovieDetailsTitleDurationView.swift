@@ -84,7 +84,7 @@ class MovieDetailsTitleDurationView: UIView {
         return imageView
     }()
     
-    public var movie: MovieDetails? {
+    public var movie: Movie? {
         didSet {
             updateViewsWithMovieData()
         }

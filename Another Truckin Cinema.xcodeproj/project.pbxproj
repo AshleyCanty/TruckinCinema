@@ -134,6 +134,8 @@
 		24F5DA8E2A8023EE00AC7A59 /* AppAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5DA8D2A8023EE00AC7A59 /* AppAlertController.swift */; };
 		24FA37482A5849EB009BFEAE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2466C7712A578ACE006AED5F /* Launch Screen.storyboard */; };
 		24FA37492A5849EB009BFEAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244CCB852A5500C60045DDAB /* Assets.xcassets */; };
+		24FB3F0F2B40D12800DE27C8 /* RemoteMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB3F0E2B40D12800DE27C8 /* RemoteMovieLoader.swift */; };
+		24FB3F112B40D28700DE27C8 /* MovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB3F102B40D28700DE27C8 /* MovieLoader.swift */; };
 		24FC6D3C2A678A3E00461AA8 /* MovieDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D3B2A678A3E00461AA8 /* MovieDetailsVC.swift */; };
 		24FC6D3F2A68310700461AA8 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D3E2A68310700461AA8 /* ThemeButton.swift */; };
 		24FC6D412A68313F00461AA8 /* ButtonTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FC6D402A68313F00461AA8 /* ButtonTitles.swift */; };
@@ -291,6 +293,8 @@
 		24F5DA892A7F040100AC7A59 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		24F5DA8B2A7F046100AC7A59 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		24F5DA8D2A8023EE00AC7A59 /* AppAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertController.swift; sourceTree = "<group>"; };
+		24FB3F0E2B40D12800DE27C8 /* RemoteMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieLoader.swift; sourceTree = "<group>"; };
+		24FB3F102B40D28700DE27C8 /* MovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLoader.swift; sourceTree = "<group>"; };
 		24FC6D3B2A678A3E00461AA8 /* MovieDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsVC.swift; sourceTree = "<group>"; };
 		24FC6D3E2A68310700461AA8 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		24FC6D402A68313F00461AA8 /* ButtonTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitles.swift; sourceTree = "<group>"; };
@@ -389,6 +393,8 @@
 		244CCB782A5500C50045DDAB /* Another Truckin Cinema */ = {
 			isa = PBXGroup;
 			children = (
+				24FB3F0D2B40CC2400DE27C8 /* Movie Feature */,
+				24FB3F122B40D29F00DE27C8 /* Movie API */,
 				249E6BBB2B072574007F8494 /* Network Service */,
 				2466C7792A57BDC4006AED5F /* AppDelegate */,
 				2466C77A2A57BDD6006AED5F /* ViewControllers */,
@@ -842,6 +848,22 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		24FB3F0D2B40CC2400DE27C8 /* Movie Feature */ = {
+			isa = PBXGroup;
+			children = (
+				24FB3F102B40D28700DE27C8 /* MovieLoader.swift */,
+			);
+			path = "Movie Feature";
+			sourceTree = "<group>";
+		};
+		24FB3F122B40D29F00DE27C8 /* Movie API */ = {
+			isa = PBXGroup;
+			children = (
+				24FB3F0E2B40D12800DE27C8 /* RemoteMovieLoader.swift */,
+			);
+			path = "Movie API";
+			sourceTree = "<group>";
+		};
 		24FC6D3A2A678A0100461AA8 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -1154,6 +1176,7 @@
 				240951C22A89A1FF004B9A19 /* OrderCartView.swift in Sources */,
 				2495231F2A5F5B69007228D5 /* NavigationTitles+Icons.swift in Sources */,
 				2495232B2A6396BF007228D5 /* PaddedLabel.swift in Sources */,
+				24FB3F112B40D28700DE27C8 /* MovieLoader.swift in Sources */,
 				24625D202A7882E10088FE4C /* ShowtimeCell.swift in Sources */,
 				2466C76E2A57037C006AED5F /* HomescreenVC.swift in Sources */,
 				2461B6842A8F0FA8007C52CA /* ContactInfoEmailVC.swift in Sources */,
@@ -1177,6 +1200,7 @@
 				24C153472A8195500080CB19 /* Registration+Enums.swift in Sources */,
 				24702C212A7E14F100C87D26 /* TicketSelectionVC.swift in Sources */,
 				2487F7962A5BC11900FD1517 /* CycledBannerCell.swift in Sources */,
+				24FB3F0F2B40D12800DE27C8 /* RemoteMovieLoader.swift in Sources */,
 				249523252A60D05D007228D5 /* CycledBannerSignUpCell.swift in Sources */,
 				24905C922AA4D20B0031D721 /* RegistrationCellStepOne.swift in Sources */,
 				2461EDA12A7092B4007916A3 /* SeperatorView.swift in Sources */,

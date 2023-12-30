@@ -46,8 +46,8 @@ final class MovieDBClient: GenericAPI {
     }
     
     /// Fetches a movie
-    public func fetchMovie(withId id: String) async throws -> MovieDetails {
-        try await prepareFetch(type: MovieDetails.self, paths: [id])
+    public func fetchMovie(withId id: String) async throws -> Movie {
+        try await prepareFetch(type: Movie.self, paths: [id])
     }
     
     /// Fetches movie trailers

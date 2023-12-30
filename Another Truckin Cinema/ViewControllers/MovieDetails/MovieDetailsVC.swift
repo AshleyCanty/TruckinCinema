@@ -101,7 +101,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         }
     }
     
-    private var movie: MovieDetails? 
+    private var movie: Movie? 
     
     private var trailers: MovieTrailers?
     

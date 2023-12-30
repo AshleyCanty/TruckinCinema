@@ -120,7 +120,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     
     let client = MovieDBClient()
 
-    private var movies: [Movie] = [] {
+    private var movies: [PopularMovie] = [] {
         didSet {
             // reload tabledata
             movieCollection.reloadData()
