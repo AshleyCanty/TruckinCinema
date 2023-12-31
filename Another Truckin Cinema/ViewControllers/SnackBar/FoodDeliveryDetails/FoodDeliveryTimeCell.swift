@@ -99,7 +99,7 @@ class FoodDeliveryTimeCell: UICollectionViewCell, DropDownTextFieldViewDelegate 
     
     private func setupDropDownViews() {
         dateDropDownView.delegate = self
-        dateDropDownView.setDataSource(dataSource: ShowtimeDates().weekendDates)
+        dateDropDownView.setDataSource(dataSource: ShowtimeDates().getShowtimwDates())
         dateDropDownView.textField.setup(placeholder: Placeholder.Date.getString())
         
         screenDropDownView.delegate = self

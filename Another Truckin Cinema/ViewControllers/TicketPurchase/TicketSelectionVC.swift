@@ -148,6 +148,9 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
     }
     
     private lazy var appNavBar = AppNavigationBar(type: .MovieRSVP)
+    
+    private var rsvpOrder: MovieReservation?
+    
     /// maxLimitReachedLabel
     private lazy var maxLimitReachedLabel: UILabel = {
         let label = UILabel()
@@ -159,8 +162,9 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
         return label
     }()
 
-    init(movieDetails: String) {
+    init(rsvpOrder: MovieReservation?) {
         super.init()
+        self.rsvpOrder = rsvpOrder
     }
     
     required init?(coder: NSCoder) {
@@ -186,7 +190,6 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
         addCustomNavBar()
         addBanner()
         configure()
-        
         radioTicketCostLabel.text = "$12.50"
         radioCounterLabel.text = "0 Tickets"
         
@@ -195,6 +198,16 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
         continueButton.addTarget(self, action: #selector(didTapContinueButton), for: .touchUpInside)
     }
     
+    /// Sets values for navbar text labels to display movie information
+    private func configureNavBarDetails() {
+        guard let order = rsvpOrder,
+        let screen = order.reservedMovieDetails.screen,
+        let showtime = MovieShowtime(rawValue: screen.showtime)?.getStringVal() else { return }
+
+        let appBarSubtitle = "\(order.location) | \(order.date.convertToNavBarDisplayDate()) | \(showtime)"
+        appNavBar.configureNavBar(withTitle: order.reservedMovieDetails.movieTitle, withSubtitle: appBarSubtitle)
+    }
+
     @objc private func didTapMinusButton() {
         if numberOfSelectedTickets >= 1 {
             numberOfSelectedTickets -= 1
@@ -239,11 +252,19 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
         }
     }
     
+    private func storeRSVPTickets() {
+        guard let order = rsvpOrder else { return }
+        rsvpOrder?.tickets.purchaseId = order.id
+        rsvpOrder?.tickets.quantity = Int(numberOfSelectedTickets)
+    }
+    
     @objc private func didTapContinueButton() {
-        let vc = CarDetailsVC()
+        storeRSVPTickets()
+        let vc = CarDetailsVC(rsvpOrder: rsvpOrder)
         AppNavigation.shared.navigateTo(vc)
     }
     
+    /// set up subviews for this views controller
     private func configure() {
         let admissionsStack = UIStackView(arrangedSubviews: [generalAdmissionLabel, childrenAdmissionLabel])
         admissionsStack.axis = .vertical
@@ -353,6 +374,8 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
         appNavBar.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
         appNavBar.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         appNavBar.delegate = self
+        
+        configureNavBarDetails()
     }
 }
 

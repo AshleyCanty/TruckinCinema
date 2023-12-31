@@ -42,7 +42,6 @@ class TrailerPlayerVC: UIViewController, YTPlayerViewDelegate {
         ytPlayer.delegate = self
         view.addSubview(ytPlayer)
         
-        ytPlayer.backgroundColor = .yellow
         ytPlayer.disableTranslatesAutoresizingMaskIntoContraints()
         ytPlayer.centerYAnchor.tc_constrain(equalTo: view.centerYAnchor)
         ytPlayer.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)

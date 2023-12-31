@@ -10,10 +10,21 @@ import UIKit
 
 
 struct SnackBarItemModel {
+    let mainMenu: String
+    var size: String
     let name: String
     let image: String
     let priceString: String
     let priceNumber: Double
+    
+    init(mainMenu: String, size: String = "", name: String, image: String, priceString: String, priceNumber: Double) {
+        self.mainMenu = mainMenu
+        self.size = size
+        self.name = name
+        self.image = image
+        self.priceString = priceString
+        self.priceNumber = priceNumber
+    }
 }
 
 // MARK: - Main Menu Names & Images
@@ -23,7 +34,7 @@ enum SnackBarItemMain: String {
     case Beverages = "Beverages"
     case Snacks = "Snacks"
     
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
     
     func getImage() -> String {
         switch self {
@@ -41,35 +52,88 @@ enum SnackBarPopcornOption: String, CaseIterable {
     case Traditional = "Traditional Popcorn"
     case GourmetSingle = "Gourmet Single"
     case GourmetDuo = "Gourmet Duo"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
 enum SnackBarPopcornImage: String, CaseIterable {
     case Traditional = "popcorn_traditional"
     case GourmetSingle = "popcorn_gourmetSingle"
     case GourmetDuo = "popcorn_gourmetDuo"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
-enum SnackBarPopcornPrice: Int, CaseIterable {
-    case Traditional
-    case GourmetSingle
-    case GourmetDuo
+enum SnackBarPopcornPrice: Double, CaseIterable {
+    case Traditional = 9.09
+    case GourmetSingle = 9.69
+    case GourmetDuo = 11.69
     
-    func getDoubleValue() -> Double {
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "$%.2f", self.rawValue) }
+}
+/// tradtitional popcorn prices enum
+enum SnackBarTraditionalPopcornPrice: Double, CaseIterable {
+    case small = 6.50
+    case medium = 9.09
+    case large = 11.69
+    
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "$%.2f", self.rawValue) }
+    
+    func getSizeAndPriceStringVal() -> String {
+        var size = ""
         switch self {
-        case .Traditional: return 9.09
-        case .GourmetSingle: return 9.69
-        case .GourmetDuo: return 11.69
+        case .small:
+            size = "Small"
+        case .medium:
+            size = "Medium"
+        case .large:
+            size = "Large"
         }
+        return String(format: "\(size) - $%.2f", self.rawValue)
     }
+}
+/// gourmet single popcorn prices enum
+enum SnackBarGourmetSinglePopcornPrice: Double, CaseIterable {
+    case small = 6.99
+    case medium = 9.69
+    case large = 12.15
     
-    func getString() -> String {
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "$%.2f", self.rawValue) }
+    
+    func getSizeAndPriceStringVal() -> String {
+        var size = ""
         switch self {
-        case .Traditional: return "$9.09"
-        case .GourmetSingle: return "$9.69"
-        case .GourmetDuo: return "$11.69"
+        case .small:
+            size = "Small"
+        case .medium:
+            size = "Medium"
+        case .large:
+            size = "Large"
         }
+        return String(format: "\(size) - $%.2f", self.rawValue)
+    }
+}
+/// gourmet duo popcorn prices enum
+enum SnackBarGourmetDuoPopcornPrice: Double, CaseIterable {
+    case small = 7.20
+    case medium = 11.69
+    case large = 13.30
+    
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "$%.2f", self.rawValue) }
+    
+    func getSizeAndPriceStringVal() -> String {
+        var size = ""
+        switch self {
+        case .small:
+            size = "Small"
+        case .medium:
+            size = "Medium"
+        case .large:
+            size = "Large"
+        }
+        return String(format: "\(size) - $%.2f", self.rawValue)
     }
 }
 
@@ -80,36 +144,23 @@ enum SnackBarBeverageImage: String, CaseIterable {
     case Small = "beverages_small"
     case Medium = "beverages_medium"
     case Large = "beverages_large"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
 enum SnackBarBeverageOption: String, CaseIterable {
     case Small = "Small"
     case Medium = "Medium"
     case Large = "Large"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
-enum SnackBarBeveragePrice: CaseIterable {
-    case Small
-    case Medium
-    case Large
+enum SnackBarBeveragePrice: Double, CaseIterable {
+    case Small = 5.80
+    case Medium = 6.50
+    case Large = 8.99
     
-    func getDoubleValue() -> Double {
-        switch self {
-        case .Small: return 5.80
-        case .Medium: return 6.50
-        case .Large: return 8.99
-        }
-    }
-    
-    func getString() -> String {
-        switch self {
-        case .Small: return "$5.80"
-        case .Medium: return "$6.50"
-        case .Large: return "$8.99"
-        }
-    }
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "$%.2f", self.rawValue) }
 }
 
 // MARK: - Snacks
@@ -118,35 +169,22 @@ enum SnackBarSnackImage: String, CaseIterable {
     case MixedCandy = "snacks_mixed"
     case Nachos = "snacks_nachos"
     case PretzelBites = "snacks_pretzels"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
 enum SnackBarSnackOption: String, CaseIterable {
     case MixedCandy = "Mixed Candy"
     case Nachos = "Nachos"
     case PretzelBites = "PretzelBites"
-    func getString() -> String { return self.rawValue }
+    func getStringVal() -> String { return self.rawValue }
 }
 
-enum SnackBarSnackPrice: CaseIterable {
-    case MixedCandy
-    case Nachos
-    case PretzelBites
+enum SnackBarSnackPrice: Double, CaseIterable {
+    case MixedCandy = 4.60
+    case Nachos = 7.99
+    case PretzelBites = 6.99
     
-    func getDoubleValue() -> Double {
-        switch self {
-        case .MixedCandy: return 4.60
-        case .Nachos: return 7.99
-        case .PretzelBites: return 6.99
-        }
-    }
-    
-    func getString() -> String {
-        switch self {
-        case .MixedCandy: return "$4.60"
-        case .Nachos: return "$7.99"
-        case .PretzelBites: return "$6.99"
-        }
-    }
+    func getDoubleVal() -> Double { return self.rawValue }
+    func getStringVal() -> String { return String(format: "%.2f", self.rawValue) }
 }
 

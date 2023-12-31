@@ -17,6 +17,7 @@ class OrderCartView: UIView {
     }
     
     private lazy var itemCount: Int = 0
+    private lazy var currentSumTotal: Double = 0.0
     
     private lazy var itemCountLabel: UILabel = {
         let label = UILabel()
@@ -66,7 +67,7 @@ class OrderCartView: UIView {
         
         cartButton.disableTranslatesAutoresizingMaskIntoContraints()
         cartButton.centerYAnchor.tc_constrain(equalTo: centerYAnchor)
-        cartButton.leadingAnchor.tc_constrain(equalTo: leadingAnchor)
+        cartButton.leadingAnchor.tc_constrain(equalTo: leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         cartButton.heightAnchor.tc_constrain(equalToConstant: Style.CartImageSize)
         cartButton.widthAnchor.tc_constrain(equalToConstant: Style.CartImageSize)
         
@@ -79,9 +80,28 @@ class OrderCartView: UIView {
         priceLabel.centerYAnchor.tc_constrain(equalTo: cartButton.centerYAnchor)
         
         continueButton.disableTranslatesAutoresizingMaskIntoContraints()
-        continueButton.trailingAnchor.tc_constrain(equalTo: trailingAnchor)
+        continueButton.trailingAnchor.tc_constrain(equalTo: trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
         continueButton.bottomAnchor.tc_constrain(equalTo: bottomAnchor, constant: -AppTheme.BottomMargin)
         continueButton.heightAnchor.tc_constrain(equalToConstant: ThemeButton.Style.Height)
         continueButton.widthAnchor.tc_constrain(equalTo: widthAnchor, multiplier: 0.5)
     }
+    
+    public func updateItemCountAndPrice(addItemQuantity itemCount: Int, price: Double) {
+        addToCart(itemCount: itemCount, price: price)
+        itemCountLabel.text = String(self.itemCount)
+        priceLabel.text = String(format: "$%.2f", self.currentSumTotal)
+    }
+    
+    public func addToCart(itemCount: Int, price: Double) {
+        self.itemCount += itemCount
+        self.currentSumTotal += price
+    }
+    
+    public func removeFromCart(itemCount: Int, price: Double) {
+        self.itemCount -= itemCount
+        self.currentSumTotal -= price
+    }
 }
+
+
+// FIX - the Alert Toast View!!!!!!!! ITs foating!!!

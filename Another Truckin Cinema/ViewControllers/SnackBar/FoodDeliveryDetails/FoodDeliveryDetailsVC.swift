@@ -26,6 +26,18 @@ class FoodDeliveryDetailsVC: BaseViewController, AppNavigationBarDelegate, UICol
         return collectionView
     }()
     
+    private var rsvpOrder: MovieReservation?
+
+    
+    init(rsvpOrder: MovieReservation?) {
+        super.init()
+        self.rsvpOrder = rsvpOrder
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionDataSource()
@@ -45,7 +57,6 @@ class FoodDeliveryDetailsVC: BaseViewController, AppNavigationBarDelegate, UICol
         collectionView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor)
         collectionView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor)
         
-        
         orderCartView.disableTranslatesAutoresizingMaskIntoContraints()
         orderCartView.leadingAnchor.tc_constrain(equalTo: view.leadingAnchor, constant: AppTheme.LeadingTrailingMargin)
         orderCartView.trailingAnchor.tc_constrain(equalTo: view.trailingAnchor, constant: -AppTheme.LeadingTrailingMargin)
@@ -64,7 +75,7 @@ class FoodDeliveryDetailsVC: BaseViewController, AppNavigationBarDelegate, UICol
     }
     
     @objc private func didTapContinueButton() {
-        let vc = PaymentOrderVC()
+        let vc = PaymentOrderVC(rsvpOrder: rsvpOrder)
         AppNavigation.shared.navigateTo(vc)
     }
     
@@ -73,7 +84,7 @@ class FoodDeliveryDetailsVC: BaseViewController, AppNavigationBarDelegate, UICol
     }
     
     @objc private func didTapAddMoreFoodButton() {
-        let vc = SnackBarVC()
+        let vc = SnackBarVC(rsvpOrder: rsvpOrder)
         AppNavigation.shared.navigateTo(vc)
     }
     

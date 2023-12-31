@@ -10,19 +10,13 @@ import UIKit
 import LTHRadioButton
 
 protocol ShowtimeRadioListCellDelegate: AnyObject {
-    func didSelectRadioButton(isSelected: Bool)
+    func didSelectRadioButton(isSelected: Bool, date: String?)
 }
 
 class ShowtimeRadioListCell: UITableViewCell {
     /// Reuse identifier
     static let reuseIdentifier = "ShowtimeRadioListCell"
-    /// radio options enum
-    enum RadioOptions: String, CaseIterable {
-        case one = "Friday 6/9"
-        case two = "Saturday 6/10"
-        case three = "Sunday 6/11"
-        func getString() -> String { return self.rawValue }
-    }
+
     /// radio title enum
     enum RadioTitle: String {
         case WhichDayOfRSVPTitle = "Which day would you like to RSVP for?"
@@ -63,10 +57,8 @@ class ShowtimeRadioListCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    // Refactor - show latest weekend dates
-    // setup(radioOptions: [String]? = nil)
+ 
     public func configure() {
-//        self.radioOptions = radioOptions
         backgroundColor = Style.BackgroundColor
         
         contentView.addSubview(titleLabel)
@@ -87,26 +79,27 @@ class ShowtimeRadioListCell: UITableViewCell {
         vStack.leadingAnchor.tc_constrain(equalTo: contentView.leadingAnchor)
         vStack.trailingAnchor.tc_constrain(equalTo: contentView.trailingAnchor)
         
-        RadioOptions.allCases.forEach { radioOption in
+        let radioOptions = ShowtimeDates().getShowtimwDates(rsvpFormat: true)
+        radioOptions.forEach { radioOption in
             let radioButton = LTHRadioButton(selectedColor: Style.RadioSelectedColor, deselectedColor: Style.RadioDeselectedColor)
             radioButton.useTapGestureRecognizer = true
             radioButton.onSelect { [weak self] in
                 guard let sSelf = self else { return }
                 sSelf.deselectOtherButtons(sender: radioButton)
-                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: true)
+                sSelf.cellDelegate?.didSelectRadioButton(isSelected: true, date: radioOption)
             }
             radioButton.onDeselect { [weak self] in
                 guard let sSelf = self else { return }
                 let results = sSelf.radioButtons.filter({ $0.isSelected == true }).count
                 if results == 0 {
-                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: false)
+                    sSelf.cellDelegate?.didSelectRadioButton(isSelected: false, date: nil)
                 }
             }
     
             radioButtons.append(radioButton)
             
             let radioLabel = UILabel()
-            radioLabel.text = radioOption.getString()
+            radioLabel.text = radioOption
             radioLabel.font = Style.RadioLabelFont
             radioLabel.textColor = Style.RadioLabelTextColor
             

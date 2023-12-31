@@ -16,13 +16,12 @@ class PaymentOrderVC: BaseViewController, AppNavigationBarDelegate, PaymentSelec
     }
     
     func didSelectPaymentOption(isSelected: Bool) {
-        
         guard !orderCartView.continueButton.isEnabled, let emailText = contactInfoView.emailButton.titleLabel?.text, !emailText.isEmpty else { return }
         orderCartView.continueButton.isEnabled = true
     }
     
     @objc func didTapContinueButton() {
-        let vc = PaymentConfirmationVC()
+        let vc = PaymentConfirmationVC(rsvpOrder: rsvpOrder)
         AppNavigation.shared.navigateTo(vc)
     }
     
@@ -42,7 +41,17 @@ class PaymentOrderVC: BaseViewController, AppNavigationBarDelegate, PaymentSelec
     /// order cart view
     private lazy var orderCartView = OrderCartView()
     
-    // MARK: - Custom NavBar Delegate Methods
+    private var rsvpOrder: MovieReservation?
+    
+
+    init(rsvpOrder: MovieReservation?) {
+        super.init()
+        self.rsvpOrder = rsvpOrder
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +87,8 @@ class PaymentOrderVC: BaseViewController, AppNavigationBarDelegate, PaymentSelec
         orderCartView.continueButton.addTarget(self, action: #selector(didTapContinueButton), for: .touchUpInside)
         orderCartView.continueButton.isEnabled = false
     }
+    
+    // MARK: - Custom NavBar Delegate Methods
     
     func didPressNavBarLeftButton() {
         navigationController?.popViewController(animated: true)

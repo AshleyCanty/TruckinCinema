@@ -200,8 +200,8 @@ class AppNavigationBar: UIView {
     }
 
     /// configure based on type
-    public func configureNavBar(withTitle title: String? = "Transformers: Rise of the Beasts Collection",
-                                    withSubtitle subtitle: String? = "Drive-in No. 3 Zanzibar | Sun, Jun 11 | 8:30pm") {
+    public func configureNavBar(withTitle title: String? = "",
+                                    withSubtitle subtitle: String? = "") {
         titleLabel.text = title
         subtitleLabel.text = subtitle
     }

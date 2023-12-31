@@ -18,7 +18,7 @@ class PaymentSelectionView: UIView {
     struct Style {
         static let TitleFont: UIFont = AppFont.semiBold(size: 13)
         static let SubtitleFont: UIFont = AppFont.regular(size: 13)
-        static let TextColor: UIColor = AppColors.TextColorPrimary
+        static let TextColor: UIColor = .white
         static let ImageWidth: CGFloat = 50
         static let ImageHeight: CGFloat = 32
         static let RadioSelectedColor: UIColor = AppColors.RegularTeal

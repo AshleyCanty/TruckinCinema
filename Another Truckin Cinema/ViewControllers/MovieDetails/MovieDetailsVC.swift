@@ -44,7 +44,7 @@ import youtube_ios_player_helper
 
 
 /// MovieDetailsVC
-class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, ShowtimeRadioListCellDelegate, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
+class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
     
     /// enum  for Segmented Control Titles
     enum SegmentedControlTitle: String, CaseIterable {
@@ -78,7 +78,7 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }()
     /// table view that display different data when segmentedControl changes
     fileprivate var tableView: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.separatorStyle = .none
         return table
     }()
@@ -91,16 +91,32 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }()
     /// wrapper view to hide/show the rsvp button
     fileprivate lazy var rsvpButtonWrapperView = UIView()
+    
+    private let client = MovieDBClient()
+    
     /// movieId string
-    fileprivate var movieId: Int? {
+    private var movieId: String? {
         didSet {
-            // Call method that calls API class
+            fetchMovieDetails()
         }
     }
+    
+    private var movie: Movie? 
+    
+    private var trailers: MovieTrailers?
+    
+    /// Screen info for movie viewing
+    private var screen: Screen?
+    
+    /// stores the rsvp order
+    lazy var rsvpOrder: MovieReservation? = {
+        return MovieReservation()
+    }()
 
-    init(movieId: Int) {
+    init(movieId: String, screen: Screen) {
+        super.init() /// used to place this last, but switched it on 11/19
         self.movieId = movieId
-        super.init()
+        self.screen = screen
     }
     
     required init?(coder: NSCoder) {
@@ -109,10 +125,10 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rsvpOrder = MovieReservation()
         trailerHeader.delegate = self
         configure()
-        loadBackDropImage()
-        registerTableViewCells()
+        fetchMovieDetails()
         configureTableDataSource()
         self.navigationItem.hidesBackButton = true
         segmentedControl.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
@@ -128,20 +144,37 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             sSelf.view.layoutIfNeeded()
         }
     }
+
+    @MainActor
+    func refreshTable() {
+        tableView.reloadData()
+    }
     
-    /// registers table view cells
-    fileprivate func registerTableViewCells() {
-        tableView.register(ShowtimeCell.self, forCellReuseIdentifier: ShowtimeCell.reuseIdentifier)
-        tableView.register(ShowtimeRadioListCell.self, forCellReuseIdentifier: ShowtimeRadioListCell.reuseIdentifier)
-        tableView.register(MovieSummaryGenreCell.self, forCellReuseIdentifier: MovieSummaryGenreCell.reuseIdentifier)
-        tableView.register(MovieTrailerCell.self, forCellReuseIdentifier: MovieTrailerCell.reuseIdentifier)
-        
+    /// Calls on client to fetch movie details
+    private func fetchMovieDetails() {
+        Task {
+            do {
+                guard let id = movieId else { throw APIError.invalidData }
+                movie = try await client.fetchMovie(withId: id)
+                loadTrailerHeaderBackDropImage()
+                updateTitleHeaderView()
+                trailers = try await client.fetchMovieTrailers(withId: id)
+                refreshTable()
+                
+            } catch (let error) {
+                print("Invalid movie Id: \(error.localizedDescription)")
+            }
+        }
     }
     
     /// Configured tableview datasource and delegate
     fileprivate func configureTableDataSource() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(ShowtimeCell.self, forCellReuseIdentifier: ShowtimeCell.reuseIdentifier)
+        tableView.register(ShowtimeRadioListCell.self, forCellReuseIdentifier: ShowtimeRadioListCell.reuseIdentifier)
+        tableView.register(MovieSummaryGenreCell.self, forCellReuseIdentifier: MovieSummaryGenreCell.reuseIdentifier)
+        tableView.register(MovieTrailerCell.self, forCellReuseIdentifier: MovieTrailerCell.reuseIdentifier)
     }
     
     @objc func selectedSegment() {
@@ -153,7 +186,7 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         }
         tableView.reloadData()
     }
-     
+    
     /// configure views
     fileprivate func configure() {
         view.addSubview(trailerHeader)
@@ -214,14 +247,36 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     /// Loads backdrop image for trailer header
-    @objc fileprivate func loadBackDropImage() {
-        let imageUrlString = "https://image.tmdb.org/t/p/w780/qWQSnedj0LCUjWNp9fLcMtfgadp.jpg"
-        ImageDownloader.downloadImage(imageUrlString) { [weak self] image, urlString in
-            guard let sSelf = self, let image = image else { return }
-            DispatchQueue.main.async {
-                sSelf.trailerHeader.setBackdropImage(image)
+    @objc fileprivate func loadTrailerHeaderBackDropImage() {
+        Task {
+            do {
+                guard let backdropPath = movie?.backdropPath else { throw APIError.invalidData }
+                let url = client.createImageUrl(with: backdropPath)
+                try await trailerHeader.backdropImageView.downloadImage(from: url)
+                trailerHeader.hidePlayButton(shouldHide: false)
+            } catch {
+                print("Failed to retrieve image: \(error.localizedDescription)")
+                trailerHeader.backdropImageView.image = UIImage(named: "placeholder-backdrop")
+                trailerHeader.hidePlayButton(shouldHide: true)
             }
         }
+    }
+    
+    private func updateTitleHeaderView() {
+        titleDetailView.movie = movie
+        Task {
+            do {
+                guard let id = movieId else { throw APIError.invalidData }
+                let ratings = try await client.fetchRatingAndReleaseDates(withId: id)
+                titleDetailView.ratingLabel.text = ratings.filterForUSRating()
+            } catch {
+                print("Failed to fetch rating: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func filterForUSRating() {
+        
     }
     
     // MARK: - Custom NavBar methods
@@ -246,8 +301,9 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: - Cell Delegate methods
     
     /// animates rsvp button visibility based on isSelected value
-    func didSelectRadioButton(isSelected: Bool) {
+    func didSelectRadioButton(isSelected: Bool, date: String?) {
         if isSelected {
+            storeRSVPDate(date: date ?? "")
             showRSVPButton()
             return
         }
@@ -268,90 +324,80 @@ class MovieDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    /// Delegate method for trailer cells in table view
     func didPressPlayButton(key: String) {
         playTrailer(videoKey: key)
     }
     
+    /// Delegate method for trailer in top header
     func didPressPlayButtonForTopTrailer() {
-        playTrailer(videoKey: "pYPcCSxprcs")
+        guard let trailers = trailers, let list = trailers.results, let lastTrailer = list.last else { return }
+        playTrailer(videoKey: lastTrailer.key)
     }
     
     private func playTrailer(videoKey: String? = ""){
-        // let key = "pYPcCSxprcs" // Get ready to join the fight
         guard let key = videoKey else { return }
         let trailerPlayerVC = TrailerPlayerVC()
         trailerPlayerVC.setVideKey(key: key)
         trailerPlayerVC.modalTransitionStyle = .coverVertical
         trailerPlayerVC.modalPresentationStyle = .fullScreen
         present(trailerPlayerVC, animated: true)
+        
+        trailerPlayerVC.ytPlayer.videoUrl()
+    }
+    
+    /// Present the popoever sheet for the trailer to be shared
+    func didPressTrailerShareButton(key: String) {
+        let text = "Hey, you should check out this movie!"
+        let url = client.createTrailerUrl(videoKey: key)
+        let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+        self.present(vc, animated: true)
     }
     
     @objc private func didPressRSVPButton() {
-        let ticketSelectionVC = TicketSelectionVC(movieDetails: "")
-        AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
+        /// Store movie details in rsvpOrder object
+        storeRSVPMovieDetails()
+        
+        let alertVC = UIAlertController(title: "Which location would you like to choose?", message: nil, preferredStyle: .actionSheet)
+        DriveInLocations.names.forEach { location in
+            let action = UIAlertAction(title: location, style: .default) { [weak self] _ in
+                guard let sSelf = self else { return }
+                sSelf.rsvpOrder?.location = location
+                /// pass rsvpOrder to next view controller
+                let ticketSelectionVC = TicketSelectionVC(rsvpOrder: sSelf.rsvpOrder)
+                AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
+            }
+            alertVC.addAction(action)
+        }
+        present(alertVC, animated: true)
+    }
+    
+    /// Stores movie details in rsvp pbject
+    private func storeRSVPMovieDetails() {
+        guard let unwrappedMovie = movie, let title = unwrappedMovie.title, let duration = unwrappedMovie.runtime, let rating = titleDetailView.ratingLabel.text else { return }
+        let movieDetails = ReservedMovieDetails(movieTitle: title,
+                                                duration: duration.convertToRuntimeString(),
+                                                rating: rating,
+                                                screen: screen)
+        
+        rsvpOrder?.reservedMovieDetails = movieDetails
+    }
+    
+    private func storeRSVPDate(date: String) {
+        rsvpOrder?.date = date
     }
 }
 
-// MARK: -- TableView Delegate & Data Source Methods
+// MARK: -- Custom table methods
 
 extension MovieDetailsVC {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            return 3
-        case .one:
-            return 1
-        case .two:
-            return 3
-        case .none:
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            cell = getShowtimeCell(indexPath: indexPath)
-        case .one:
-            if let unwrappedCell = getSummaryCell(indexPath: indexPath) as? MovieSummaryGenreCell {
-                unwrappedCell.cellDelegate = self
-                cell = unwrappedCell
-            }
-        case .two:
-            cell = getTrailerCell(indexPath: indexPath)
-        case .none:
-            print()
-        }
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
-        switch selectedSegmentIndex {
-        case .zero:
-            return getHeightForShowtimeCells(indexPath: indexPath)
-        case .one:
-            return getHeightForSummaryCell(indexPath: indexPath)
-        case .two:
-            return getHeightForTrailerCell(indexPath: indexPath)
-        case .none:
-            return 0
-        }
-    }
-    
-    // MARK: -- Custom table methods
     
     /// MovieSummaryGenreCellProtocol method used to update TableView row heights after the summary textView height changes
     func updateRowHeightForSummaryCell() {
         triggerTableViewUpdates()
     }
     
-    /// MovieTrailerCellProtocol method used to update TableView row heights 
+    /// MovieTrailerCellProtocol method used to update TableView row heights
     func updateRowHeightForTrailerCell() {
 //        triggerTableViewUpdates()
     }
@@ -384,45 +430,175 @@ extension MovieDetailsVC {
     
     /// Return showtime cell
     private func getShowtimeCell(indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+
         if indexPath.row == 0 {
             if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: ShowtimeSubtitle.Placement.getString())
-                return showtimeCell
+                showtimeCell.setup(title: ShowtimeTitle.Placement.getString(), subtitle: getMoviePlacementString())
+                cell = showtimeCell
             }
         } else if indexPath.row == 1 {
             if let showtimeCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.reuseIdentifier, for: indexPath) as? ShowtimeCell {
-                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: ShowtimeSubtitle.Showtime.getString())
-                return showtimeCell
+                showtimeCell.setup(title: ShowtimeTitle.Showtime.getString(), subtitle: getMovieShowtimeString())
+                cell = showtimeCell
             }
         } else {
             if let unwrappedCell = tableView.dequeueReusableCell(withIdentifier: ShowtimeRadioListCell.reuseIdentifier, for: indexPath) as? ShowtimeRadioListCell {
                 unwrappedCell.cellDelegate = self
-                return unwrappedCell
+                cell = unwrappedCell
             }
         }
-        return UITableViewCell()
+        return cell
+    }
+    
+    /// Returns string for movie screen placement
+    func getMoviePlacementString() -> String {
+        guard let unwrappedScreen = screen, let screenId = MovieScreenId(rawValue: unwrappedScreen.id), let viewingOrder = MovieViewingOrder(rawValue: unwrappedScreen.viewingOrder) else { return "" }
+        return "\(screenId.getStringVal()) Movie on Screen \(viewingOrder.getStringVal())"
+    }
+    
+    /// Returns string for movie showtime
+    func getMovieShowtimeString() -> String {
+        guard let unwrappedScreen = screen, let movieScreenId = MovieShowtime(rawValue: unwrappedScreen.showtime) else { return "" }
+        return movieScreenId.getStringVal()
+    }
+    
+    func getReducedGenreList() -> [Genre] {
+        guard let genres = movie?.genres?.prefix(3) else { return [] }
+        return Array(genres)
     }
     
     /// Return summary cell
-    private func getSummaryCell(indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell
-        return cell ?? UITableViewCell()
+    private func getSummaryCell(indexPath: IndexPath) -> MovieSummaryGenreCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieSummaryGenreCell.reuseIdentifier, for: indexPath) as? MovieSummaryGenreCell else {  return MovieSummaryGenreCell() }
+        cell.summaryTextView.text = movie?.overview
+        cell.genres = getReducedGenreList()
+        cell.cellDelegate = self
+        return cell
     }
     
     /// Return movie trailer cell
-    private func getTrailerCell(indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: MovieTrailerCell.reuseIdentifier, for: indexPath) as? MovieTrailerCell {
-            cell.cellDelegate = self
-            cell.setVideoKey(key: "pYPcCSxprcs")
-            let imageUrlString = "https://image.tmdb.org/t/p/w780/qWQSnedj0LCUjWNp9fLcMtfgadp.jpg"
-            ImageDownloader.downloadImage(imageUrlString) { image, _ in
-                guard let image = image else { return }
-                DispatchQueue.main.async {
-                    cell.setBackdropImage(image)
-                }
+    private func getTrailerCell(indexPath: IndexPath) -> MovieTrailerCell {
+        guard let trailers = trailers?.results, let cell = tableView.dequeueReusableCell(withIdentifier: MovieTrailerCell.reuseIdentifier, for: indexPath) as? MovieTrailerCell else { return MovieTrailerCell() }
+        cell.cellDelegate = self
+        Task {
+            do {
+                guard let key = trailers[indexPath.row].key else { throw APIError.invalidData }
+                cell.setVideoKey(key: key)
+                
+                let thumbnailUrl = client.createTrailerThumbnailUrl(withKey: key)
+                try await cell.backdropImageView.downloadImage(from: thumbnailUrl)
+            } catch {
+                print("Failed to fetch thumbnail: \(error.localizedDescription)")
+                cell.backdropImageView.image = UIImage(named: "placeholder-backdrop")
             }
-            return cell
         }
-        return UITableViewCell()
+        cell.trailerTitleLabel.text = trailers[indexPath.row].name
+        cell.durationlabel.text = generateRandomDuration()
+        cell.trailerDateLabel.text = ChangeDatePublishedFormat(datePublishedString: trailers[indexPath.row].publishedAt ?? "")
+        return cell
+    }
+    
+    // MARK: -- Movie Trailer Cell Methods
+    
+    /// Returns year string
+    private func getYearsDisplayString(years: Int) -> String {
+        return years > 1 ? "\(years) years" : "\(years) year"
+    }
+    
+    /// Returns month string
+    private func getMonthDisplayString(months: Int) -> String {
+        return months > 1 ? "\(months) months ago" : "\(months) month ago"
+    }
+    
+    /// Returns day string
+    private func getDayDisplayString(days: Int) -> String {
+        return days > 1 ? "\(days) days ago" : "\(days) day ago"
+    }
+    
+    /// Returns formatted date published string
+    private func ChangeDatePublishedFormat(datePublishedString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let datePublished = dateFormatter.date(from: datePublishedString) ?? Date()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM"
+
+        var gregorianCalender = Calendar(identifier: .gregorian)
+        gregorianCalender.locale = Locale.autoupdatingCurrent
+        
+        let timeBetweenDates = gregorianCalender.dateComponents(
+            [.year, .month, .day], from: datePublished, to: Date())
+        let days = timeBetweenDates.day ?? 0
+        let months = timeBetweenDates.month ?? 0
+        let years = timeBetweenDates.year ?? 0
+        
+        if years == 0 && months == 0 {
+            return getDayDisplayString(days: days)
+        } else if years > 0 {
+            return getYearsDisplayString(years: years).appending(" ").appending(getMonthDisplayString(months: months))
+        } else {
+            return getMonthDisplayString(months: months)
+        }
+    }
+    
+    /// Creates and returns randomly generated duration for a trailer
+    private func generateRandomDuration() -> String {
+        let minutes = Int.random(in: 1...3)
+        let seconds = Int.random(in: 10...59)
+        return String(format: "%02i:%02i", arguments: [minutes, seconds])
+    }
+}
+
+
+// MARK: -- TableView Delegate & Data Source Methods
+
+extension MovieDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return 3
+        case .one:
+            return 1
+        case .two:
+            return trailers?.results?.count ?? 0
+        case .none:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            cell = getShowtimeCell(indexPath: indexPath)
+        case .one:
+                cell = getSummaryCell(indexPath: indexPath)
+        case .two:
+            cell = getTrailerCell(indexPath: indexPath)
+        case .none:
+            print() // Do nothing
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let selectedSegmentIndex = SegmentedControlIndex(rawValue: segmentedControl.selectedSegmentIndex)
+        switch selectedSegmentIndex {
+        case .zero:
+            return getHeightForShowtimeCells(indexPath: indexPath)
+        case .one:
+            return getHeightForSummaryCell(indexPath: indexPath)
+        case .two:
+            return getHeightForTrailerCell(indexPath: indexPath)
+        case .none:
+            return 0
+        }
     }
 }

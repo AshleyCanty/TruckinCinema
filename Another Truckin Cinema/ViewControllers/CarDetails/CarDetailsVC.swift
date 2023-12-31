@@ -18,8 +18,8 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
         let topMargin: CGFloat = (lm.top + Style.BannerTopAnchorConstant + Style.BannerHeight + appNavBar.frame.height + statusBarHeight + 15)
         return topMargin
     }
-    
-    
+
+
     /// Style struct
     private struct Style {
         static let ContinueButtonHeight: CGFloat = 50
@@ -50,8 +50,17 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
     /// timer amount in seconds
     private var timeLeft: Int = 420
     
-    /// save data
-    var car = Car()
+    private var rsvpOrder: MovieReservation?
+
+    
+    init(rsvpOrder: MovieReservation?) {
+        super.init()
+        self.rsvpOrder = rsvpOrder
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,9 +69,15 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableDataSource()
+        updateCartInfo()
         configure()
         
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: Notification.Name(rawValue: AppNotificationNames.HideKeyboard), object: nil)
+    }
+    
+    private func updateCartInfo() {
+        guard let rsvpOrder = rsvpOrder else { return }
+        orderCartView.updateItemCountAndPrice(addItemQuantity: rsvpOrder.tickets.quantity, price: rsvpOrder.tickets.calculateTotalPrice())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,17 +110,16 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
 //            showErrorAlertForCarDetails()
 //            return
 //        }
-//        let vc = FoodDeliveryDetailsVC()
-        let vc = PaymentOrderVC()
+        let vc = SnackBarVC(rsvpOrder: rsvpOrder)
+//        let vc = FoodDeliveryDetailsVC(rsvpOrder: rsvpOrder)
+//        let vc = PaymentOrderVC()
         AppNavigation.shared.navigateTo(vc)
     }
     
 
-    
+    /// Returns true if car details exist
     private func checkIfCarDetailsAreFilled() -> Bool {
-        if (car.make == nil || car.model == nil || car.color == nil || car.licensePlate == nil) {
-            return false
-        }
+        guard let order = rsvpOrder, (order.car.make != nil || order.car.model != nil || order.car.color != nil || order.car.licensePlate != nil) else { return false }
         return true
     }
     
@@ -140,7 +154,6 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
             guard let sSelf = self, sSelf.timeLeft > 0 else { return }
             sSelf.timeLeft -= 1
-            let str = sSelf.timeLeft.convertToMinutesAndSeconds()
             sSelf.appNavBar.updateTimerLabel(with: sSelf.timeLeft.convertToMinutesAndSeconds())
         })
     }
@@ -168,15 +181,16 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
     
     // MARK: - Cell Delegate Methods
     func carDetailValueDidChange(type: CarDetailType, detailValue: String) {
+        // Stores car data in rsvpOrder object
         switch type {
         case .make:
-            car.make = detailValue
+            rsvpOrder?.car.make = detailValue
         case .model:
-            car.model = detailValue
+            rsvpOrder?.car.model = detailValue
         case .color:
-            car.color = detailValue
+            rsvpOrder?.car.color = detailValue
         case .licensePlate:
-            car.licensePlate = detailValue
+            rsvpOrder?.car.licensePlate = detailValue
         }
     }
     
@@ -285,7 +299,6 @@ extension CarDetailsVC {
 extension UIViewController {
     /// custom method for UIIVewController extension
     @objc public func hideKeyboard() {
-        print()
         view.endEditing(true)
     }
 }

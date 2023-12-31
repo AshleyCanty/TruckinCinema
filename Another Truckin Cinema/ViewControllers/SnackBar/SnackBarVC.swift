@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import Combine
 
 
 // TODO now  = Refactor App NavBar so that it can be customized from any child class of BaseView Controller
 
 
-class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerViewDelegate, UICollectionViewDelegate {
 
     /// Custom NavBar
     private lazy var appNavBar = AppNavigationBar(type: .FoodDeliveryOrPickUp, shouldShowTimer: true)
@@ -39,9 +40,10 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     private lazy var signUpBannerView = SignUpBannerView()
     /// order cart view
     private lazy var orderCartView = OrderCartView()
+    
+    private let dataSource = SnackBarCollectionViewDataSource()
     /// collectionview
-    private lazy var collectionView: UICollectionView =
-    {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
@@ -54,6 +56,19 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     
     let snackBarDescriptionString = "Head straight to your parking spot, get comfy and we’ll deliver your order right to you at the time you choose. You may also pick up your order at the Snackbar as an alternative."
     
+    private var rsvpOrder: MovieReservation?
+    
+    private var cancellables = Set<AnyCancellable>()
+
+    init(rsvpOrder: MovieReservation?) {
+        super.init()
+        self.rsvpOrder = rsvpOrder
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         setSource(sourceTitle: "FoodDeliveryDetails VC")
         super.viewWillAppear(animated)
@@ -62,8 +77,11 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewDataSource()
+        updateCartInfo()
         setupUI()
     }
+    
+    
     
     private func setupUI() {
         addCustomNavBar()
@@ -113,30 +131,37 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     }
     
     private func setupCollectionViewDataSource() {
-        collectionView.dataSource = self
+        collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.register(SnackBarCell.self, forCellWithReuseIdentifier:  SnackBarCell.reuseIdentifier)
     }
     
+    private func updateCartInfo() {
+        guard let rsvpOrder = rsvpOrder else { return }
+        orderCartView.updateItemCountAndPrice(addItemQuantity: rsvpOrder.tickets.quantity, price: rsvpOrder.tickets.calculateTotalPrice())
+    }
+    
     @objc private func didTapContinueButton() {
-        let vc = FoodDeliveryDetailsVC()
-        AppNavigation.shared.navigateTo(vc)
-//        let alertVC = UIAlertController(title: "Would you like your food delivered to you?", message: nil, preferredStyle: .alert)
-//        let actionNo = UIAlertAction(title: "No, thank you", style: .default) { _ in
-//            alertVC.dismiss(animated: true)
-//
-//            let vc = PaymentOrderVC()
-//            AppNavigation.shared.navigateTo(vc)
-//        }
-//        let actionYes = UIAlertAction(title: "Yes, schedule a delivery", style: .default) { _ in
-//            let vc = FoodDeliveryDetailsVC()
-//            AppNavigation.shared.navigateTo(vc)
-//        }
-//
-//        alertVC.addAction(actionNo)
-//        alertVC.addAction(actionYes)
-//
-//        present(alertVC, animated: true)
+//        let vc = FoodDeliveryDetailsVC(rsvpOrder: rsvpOrder)
+//        AppNavigation.shared.navigateTo(vc)
+        let alertVC = UIAlertController(title: "Would you like your food delivered to you?", message: nil, preferredStyle: .alert)
+        let actionNo = UIAlertAction(title: "No, thank you", style: .default) { [weak self] _ in
+            guard let sSelf = self else { return }
+            alertVC.dismiss(animated: true)
+
+            let vc = PaymentOrderVC(rsvpOrder: sSelf.rsvpOrder)
+            AppNavigation.shared.navigateTo(vc)
+        }
+        let actionYes = UIAlertAction(title: "Yes, schedule a delivery", style: .default) { [weak self] _ in
+            guard let sSelf = self else { return }
+            let vc = FoodDeliveryDetailsVC(rsvpOrder: sSelf.rsvpOrder)
+            AppNavigation.shared.navigateTo(vc)
+        }
+
+        alertVC.addAction(actionNo)
+        alertVC.addAction(actionYes)
+
+        present(alertVC, animated: true)
     }
     
     @objc private func didTapCartButton() {
@@ -176,22 +201,34 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
 extension SnackBarVC {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarCell.reuseIdentifier, for: indexPath) as? SnackBarCell {
-            let itemType: SnackBarItemType = [.popcorn, .beverages, .snacks][indexPath.item]
-            let vc = SnackBarSelectedItemOptionsVC(itemType: itemType)
+        if let cell = collectionView.cellForItem(at: indexPath) as? SnackBarCell {
+            let type = cell.type
+            let vc = SnackBarSelectedItemOptionsVC(itemType: cell.type, rsvpOrder: rsvpOrder)
             AppNavigation.shared.navigateTo(vc)
+            
+           vc.snackOrder.sink { [weak self] item in
+               guard let sSelf = self else { return }
+               
+               let itemMainMenu = SnackBarItemMain(rawValue: item.mainMenu)
+               var snackItem: SnackBarItem?
+               
+               switch itemMainMenu {
+               case .Popcorn:
+                   print()
+               case .Beverages:
+                   print()
+               case .Snacks:
+                   print()
+               case .none: break
+               }
+               
+               if sSelf.rsvpOrder?.foodOrder == nil {
+                   sSelf.rsvpOrder?.foodOrder = FoodOrder()
+               } else {
+//                   sSelf.rs
+               }
+           }.store(in: &cancellables)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemType: [SnackBarItemType] = [.popcorn, .beverages, .snacks]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnackBarCell.reuseIdentifier, for: indexPath) as? SnackBarCell
-        cell?.type = itemType[indexPath.row]
-        return cell ?? SnackBarCell()
     }
 }
 
