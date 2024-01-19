@@ -345,46 +345,37 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchMovie() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(with: .movie(withId: id)) { result in
-            
+        try await loader.load(with: .movie(withId: id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                movie = results as? Movie
+                DispatchQueue.main.async { [weak self] in
+                    self?.titleDetailView.movie = self?.movie
+                }
+                
+                Task {
+                    await self.fetchTrailerHeaderBackDropImage()
+                }
+            case .failure(_):
+                print()
+            }
         }
-        
-        
-//        loader.load(forRequestType: .singleMovie(withMovieId: id), completion: { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let results):
-//                movie = results as? Movie
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.titleDetailView.movie = self?.movie
-//                }
-//
-//                Task {
-//                    await self.fetchTrailerHeaderBackDropImage()
-//                }
-//            case .failure(_):
-//                print()
-//            }
-//        })
     }
     
     private func fetchTrailers() async throws {
         guard let id = movieId else { throw APIError.invalidData }
         
-        loader.load(with: .allTrailers(withId: id)) { result in
-            
+        try await loader.load(with: .allTrailers(withId: id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                trailers = results as? MovieTrailers
+                refreshTable(send: refreshControl)
+            case .failure(_):
+                break // refactor - show error message
+            }
         }
-        
-//        loader.load(forRequestType: .movieTrailers(withMovieId: id), completion: { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let results):
-//                trailers = results as? MovieTrailers
-//                refreshTable(send: refreshControl)
-//            case .failure(_):
-//                break // refactor - show error message
-//            }
-//        })
     }
 
     /// Loads backdrop image for trailer header
@@ -416,23 +407,20 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     private func fetchRatingAndReleaseDates() async throws {
         guard let id = movieId else { throw APIError.invalidData }
         
-        loader.load(with: .releaseDates(withId: id)) { result in
-            
+        try await loader.load(with: .releaseDates(withId: id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                let ratings = results as? MovieReleaseDates
+                let filteredRatings = ratings?.filterForUSRating()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.titleDetailView.ratingLabel.text = filteredRatings
+                }
+            case .failure(_):
+                print()
+            }
         }
-//        loader.load(forRequestType: .movieRatingAndReleaseDates(withMovieId: id)) { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let results):
-//                let ratings = results as? MovieReleaseDates
-//                let filteredRatings = ratings?.filterForUSRating()
-//
-//                DispatchQueue.main.async { [weak self] in
-//                    self?.titleDetailView.ratingLabel.text = filteredRatings
-//                }
-//            case .failure(_):
-//                print()
-//            }
-//        }
     }
 }
 

@@ -154,27 +154,23 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     }
     
     private func fetchPopularMovies() async throws {
-        loader.load(with: .popularMovies) { result in
-            
+        try await loader.load(with: .popularMovies) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
+                    // handle failure
+                    return
+                }
+                self.movies = Array(topFourMovies)
+                refreshCollection()
+                print()
+                
+                
+            case .failure(_):
+                print()
+            }
         }
-        
-//        loader.load(forRequestType: .popularMovies) { [weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let results):
-//                guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
-//                    // handle failure
-//                    return
-//                }
-//                self.movies = Array(topFourMovies)
-//                refreshCollection()
-//                print()
-//
-//
-//            case .failure(_):
-//                print()
-//            }
-//        }
     }
     
     private func refreshCollection() {

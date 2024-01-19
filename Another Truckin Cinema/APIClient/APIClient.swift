@@ -24,11 +24,11 @@ extension APIClient {
             headers.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.headerField) }
         }
         
-        guard let (data, response) = try? await session.data(for: urlRequest),
-              let httpResponse = response as? HTTPURLResponse else {
+        guard let (data, response) = try? await session.data(for: urlRequest), let httpResponse = response as? HTTPURLResponse else {
+            print()
             return completion(.failure(APIError.connectivity))
         }
-        
+        print()
         return completion(.success((data, httpResponse)))
     }
 }
