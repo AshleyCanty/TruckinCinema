@@ -1,9 +1,20 @@
-
-
-# TruckinCinema _(in progress - building UI with dummy data first)_
+# TruckinCinema _(in progress)_
 Another Truckin' Cinema is proud to present their mobile app to the world. Drive-in theater lovers will now be able to RSVP for movies, order food for delivery or pickup, and join the ATC membership for weekly promotional benefits!
 
 _Delsea Drive-in Theater is not associated with this application. This project for the sole purpose of demonstrating my skills as a developer._
+
+You'll have to plug in your API Keys if you want give it a test run. When you open Xcode and see the file navigator, just go to Supporting Files -> API-Info.plist and add your API Keys.
+
+Recently added unit testing for fetching movies from the database.
+
+![Screenshot 2024-01-19 at 2 29 24 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/173e0ea2-f8b1-4c12-854c-9df2bc9c570b)
+![Screenshot 2024-01-19 at 2 29 30 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/62cee67b-0b9e-4519-ae23-31846d493fa9)
+![Screenshot 2024-01-19 at 2 29 36 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/c5494cca-04bc-44fc-add4-d83576b1e68d)
+![Screenshot 2024-01-19 at 2 29 43 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/62f17fc6-702b-40a1-bada-313e8ea25c6a)
+
+
+
+
 
 ----------------------
 
