@@ -7,15 +7,8 @@
 
 import Foundation
 
-
-
 final class MovieDBClient: APIClient {
-
-    static let headers = [(headerField: "apikey", value: MovieDBClient.apiKey),
-                          (headerField: "authorization", value: "Bearer \(MovieDBClient.bearerToken)")]
-    
-    static let apiKey = "d781149385cbb34069c2a866eac35a30"
-    static let bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNzgxMTQ5Mzg1Y2JiMzQwNjljMmE4NjZlYWMzNWEzMCIsInN1YiI6IjY0YTRhYzBjOGM0NGI5MDEyZDZiOTMwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jexcRRrax-HS91ElbcQlu1Xnf8_yp97WgjUjvEQeVJk"
+    typealias MovieDBClientHeader = [(headerField: String, value: String)]
     
     let session: URLSession
     
@@ -25,5 +18,21 @@ final class MovieDBClient: APIClient {
     
     convenience init() {
         self.init(configuration: .default)
+    }
+    
+    /// Returns a tuple containing the API Key and Bearer Token
+    static func headers() -> MovieDBClientHeader {
+        guard let filePath = Bundle.main.path(forResource: "API-Info", ofType: "plist") else {
+            fatalError("Failed to find 'API-Info.plist'")
+        }
+        
+        let plist = NSDictionary(contentsOfFile: filePath)
+        
+        guard let dict = plist?.object(forKey: APIInfoPlistKey.tmdb) as? NSDictionary, let apiKey = dict.object(forKey: APIInfoPlistKey.apiKey) as? String, let bearerToken = dict.object(forKey: APIInfoPlistKey.bearerToken) else {
+            fatalError("Register for a TMDB developer account and get an API key at https://developers.themoviedb.org/3/getting-started/introduction.")
+        }
+        
+        return [(headerField: "apikey", value: apiKey),
+                (headerField: "authorization", value: "Bearer \(bearerToken)")]
     }
 }

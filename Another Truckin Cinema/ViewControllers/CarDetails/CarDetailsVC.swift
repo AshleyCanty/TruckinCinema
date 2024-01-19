@@ -76,8 +76,8 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
     }
     
     private func updateCartInfo() {
-        guard let rsvpOrder = rsvpOrder else { return }
-        orderCartView.updateItemCountAndPrice(addItemQuantity: rsvpOrder.tickets.quantity, price: rsvpOrder.tickets.calculateTotalPrice())
+        guard let rsvpOrder = rsvpOrder, let tickets = rsvpOrder.tickets else { return }
+        orderCartView.updateItemCountAndPrice(addItemQuantity: tickets.quantity, price: tickets.calculateTotalPrice())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +119,7 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
 
     /// Returns true if car details exist
     private func checkIfCarDetailsAreFilled() -> Bool {
-        guard let order = rsvpOrder, (order.car.make != nil || order.car.model != nil || order.car.color != nil || order.car.licensePlate != nil) else { return false }
+        guard let order = rsvpOrder, (order.car?.make != nil || order.car?.model != nil || order.car?.color != nil || order.car?.licensePlate != nil) else { return false }
         return true
     }
     
@@ -184,13 +184,13 @@ class CarDetailsVC: BaseViewController, SignUpBannerViewDelegate, CarDetailCellD
         // Stores car data in rsvpOrder object
         switch type {
         case .make:
-            rsvpOrder?.car.make = detailValue
+            rsvpOrder?.car?.make = detailValue
         case .model:
-            rsvpOrder?.car.model = detailValue
+            rsvpOrder?.car?.model = detailValue
         case .color:
-            rsvpOrder?.car.color = detailValue
+            rsvpOrder?.car?.color = detailValue
         case .licensePlate:
-            rsvpOrder?.car.licensePlate = detailValue
+            rsvpOrder?.car?.licensePlate = detailValue
         }
     }
     

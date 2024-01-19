@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 protocol MovieTrailerCellProtocol: AnyObject {
-    func updateRowHeightForTrailerCell()
     func didPressPlayButton(key: String)
     func didPressTrailerShareButton(key: String)
 }
@@ -115,7 +114,6 @@ class MovieTrailerCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        cellDelegate?.updateRowHeightForTrailerCell()
         // refactor - fix shadow getting cut off at sides
         guard shadowWrapperView.layer.shadowPath == nil else { return }
         shadowWrapperView.addShadow(color: AppTheme.ShadowColor, opacity: AppTheme.ShadowOpacity, radius: AppTheme.ShadowRadius, offset: AppTheme.ShadowOffset)

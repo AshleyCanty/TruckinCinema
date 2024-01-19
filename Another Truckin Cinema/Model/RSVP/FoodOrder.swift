@@ -24,6 +24,14 @@ struct FoodOrder: Codable {
         self.drink = drink
         self.deliveryDetails = deliveryDetails
     }
+    
+    func getTotalCost() -> Double {
+        var sum: Double = 0
+        candy?.forEach({ sum += $0.price })
+        popcorn?.forEach({ sum += $0.price })
+        drink?.forEach({ sum += $0.price })
+        return sum
+    }
 }
 
 struct FoodDeliveryDetails: Codable {

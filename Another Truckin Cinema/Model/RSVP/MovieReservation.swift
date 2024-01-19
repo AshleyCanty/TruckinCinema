@@ -9,12 +9,12 @@ import Foundation
 
 struct MovieReservation: Codable, Identifiable {
     let id: String = UUID().uuidString
-    var date: String
-    var car: Car
-    var customer: Customer
-    var location: String
-    var tickets: Tickets
-    var reservedMovieDetails: ReservedMovieDetails
+    var date: String?
+    var car: Car?
+    var customer: Customer?
+    var location: String?
+    var tickets: Tickets?
+    var reservedMovieDetails: ReservedMovieDetails?
     var foodOrder: FoodOrder?
     
     init(date: String = "",
@@ -34,19 +34,18 @@ struct MovieReservation: Codable, Identifiable {
     }
     
     func calculateTotalOrderCost() -> Double {
-        let ticketCost = tickets.calculateTotalPrice()
-//        let snackbarCost =
-        let total = ticketCost
-        return total
+        let ticketCost = tickets?.calculateTotalPrice() ?? 0
+        let foodCost = foodOrder?.getTotalCost() ?? 0
+        return ticketCost + foodCost
     }
 }
 
 // ------
 
 struct ReservedMovieDetails: Codable {
-    var movieTitle: String
-    var duration: String
-    var rating: String
+    var movieTitle: String?
+    var duration: String?
+    var rating: String?
     var screen: Screen?
 }
 

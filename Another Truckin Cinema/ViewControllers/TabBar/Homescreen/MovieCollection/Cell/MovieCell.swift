@@ -51,7 +51,7 @@ class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// configures cell . Refactor to add real data
+    /// configures cell
     fileprivate func configure() {
         contentView.addShadow(color: AppTheme.ShadowColor, opacity: AppTheme.ShadowOpacity, radius: AppTheme.ShadowRadius, offset: AppTheme.ShadowOffset)
         contentView.backgroundColor = .clear

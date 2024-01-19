@@ -39,7 +39,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         return sv
     }()
     
-    /// Date Labels . Refactor - Use real dates
+    /// Date Labels
     fileprivate lazy var dateViews: [DateView] = {
         let dates: [String] = ShowtimeDates().getShowtimwDates()
         var views: [DateView] = []
@@ -153,20 +153,19 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    // refactor
     private func fetchPopularMovies() async throws {
         try await loader.load(with: .popularMovies) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let results):
                 guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
-                    // handle failure
+                    // refactor - handle failure
                     return
                 }
                 self.movies = Array(topFourMovies)
                 refreshCollection()
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                break // refactor - show error message
             }
         }
     }
@@ -364,7 +363,7 @@ extension HomescreenVC {
             cell.posterImageView.showSpinner()
              Task {
                 do {
-                    guard let posterPath = movies[indexPath.row].posterPath else { throw APIError.invalidURL }
+                    guard let posterPath = movies[indexPath.row].posterPath else { throw RemoteMovieLoader.Error.invalidUrl }
                     guard let url = MovieAPI.GET.poster(withPath: posterPath).url else { throw RemoteMovieLoader.Error.invalidUrl }
                     try await cell.posterImageView.downloadImage(from: url)
                 } catch {

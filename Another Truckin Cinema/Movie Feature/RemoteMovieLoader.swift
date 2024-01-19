@@ -22,13 +22,11 @@ final class RemoteMovieLoader: MovieLoader {
         self.client = client
     }
     
-    // refactor to see if we can  use multiple status codes
-    
     func load(with endpoint: MovieAPI.GET, completion: @escaping (MovieLoader.Result) -> Void) async throws {
         
         guard let url = endpoint.url else { throw Error.invalidUrl }
 
-        await client.fetch(withUrl: url, headers: MovieDBClient.headers, completion: { [weak self] result in
+        await client.fetch(withUrl: url, headers: MovieDBClient.headers(), completion: { [weak self] result in
             guard self != nil else { return }
             
             switch result {

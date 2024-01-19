@@ -201,11 +201,14 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
     /// Sets values for navbar text labels to display movie information
     private func configureNavBarDetails() {
         guard let order = rsvpOrder,
-        let screen = order.reservedMovieDetails.screen,
-        let showtime = MovieShowtime(rawValue: screen.showtime)?.getStringVal() else { return }
+              let movieTitle = order.reservedMovieDetails?.movieTitle,
+              let screen = order.reservedMovieDetails?.screen,
+              let location = order.location,
+              let date = order.date?.convertToNavBarDisplayDate(),
+              let showtime = MovieShowtime(rawValue: screen.showtime)?.getStringVal() else { return }
 
-        let appBarSubtitle = "\(order.location) | \(order.date.convertToNavBarDisplayDate()) | \(showtime)"
-        appNavBar.configureNavBar(withTitle: order.reservedMovieDetails.movieTitle, withSubtitle: appBarSubtitle)
+        let appBarSubtitle = "\(location) | \(date) | \(showtime)"
+        appNavBar.configureNavBar(withTitle: movieTitle, withSubtitle: appBarSubtitle)
     }
 
     @objc private func didTapMinusButton() {
@@ -254,8 +257,8 @@ class TicketSelectionVC: BaseViewController,  SignUpBannerViewDelegate, AppNavig
     
     private func storeRSVPTickets() {
         guard let order = rsvpOrder else { return }
-        rsvpOrder?.tickets.purchaseId = order.id
-        rsvpOrder?.tickets.quantity = Int(numberOfSelectedTickets)
+        rsvpOrder?.tickets?.purchaseId = order.id
+        rsvpOrder?.tickets?.quantity = Int(numberOfSelectedTickets)
     }
     
     @objc private func didTapContinueButton() {

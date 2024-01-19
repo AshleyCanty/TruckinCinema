@@ -137,8 +137,8 @@ class SnackBarVC: BaseViewController, AppNavigationBarDelegate, SignUpBannerView
     }
     
     private func updateCartInfo() {
-        guard let rsvpOrder = rsvpOrder else { return }
-        orderCartView.updateItemCountAndPrice(addItemQuantity: rsvpOrder.tickets.quantity, price: rsvpOrder.tickets.calculateTotalPrice())
+        guard let rsvpOrder = rsvpOrder, let tickets = rsvpOrder.tickets else { return }
+        orderCartView.updateItemCountAndPrice(addItemQuantity: tickets.quantity, price: tickets.calculateTotalPrice())
     }
     
     @objc private func didTapContinueButton() {

@@ -8,9 +8,7 @@
 import Foundation
 
 
-
-
-struct MovieAPIBaseUrl {
+enum MovieAPIBaseUrl {
     static let movieDBUrl = "https://api.themoviedb.org/3/movie"
     static let imageBaseUrl = "https://image.tmdb.org/t/p/original/"
     static let trailerThumbnailBaseUrl = "https://img.youtube.com/vi/"
@@ -83,7 +81,7 @@ enum MovieAPI {
                         URLQueryItem(name: "page", value: "1")]
             case .releaseDates(_):
                 return [URLQueryItem(name: "language", value: "en"),
-                        URLQueryItem(name: "append_to_response", value: "release")]
+                        URLQueryItem(name: "append_to_response", value: "release_dates")]
             default:
                 return []
             }

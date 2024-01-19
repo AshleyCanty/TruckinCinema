@@ -80,9 +80,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     private var screen: Screen?
     
     /// stores the rsvp order
-    lazy var rsvpOrder: MovieReservation? = {
-        return MovieReservation()
-    }()
+    private var rsvpOrder: MovieReservation? = MovieReservation()
 
     init(movieId: String, screen: Screen) {
         super.init() /// used to place this last, but switched it on 11/19
@@ -304,6 +302,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
             let action = UIAlertAction(title: location, style: .default) { [weak self] _ in
                 guard let sSelf = self else { return }
                 sSelf.rsvpOrder?.location = location
+                sSelf.rsvpOrder?.reservedMovieDetails?.screen = sSelf.screen
                 /// pass rsvpOrder to next view controller
                 let ticketSelectionVC = TicketSelectionVC(rsvpOrder: sSelf.rsvpOrder)
                 AppNavigation.shared.pushViewController(ticketSelectionVC, animated: true)
@@ -315,13 +314,10 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     /// Stores movie details in rsvp pbject
     private func storeRSVPMovieDetails() {
-        guard let unwrappedMovie = movie, let title = unwrappedMovie.title, let duration = unwrappedMovie.runtime, let rating = titleDetailView.ratingLabel.text else { return }
-        let movieDetails = ReservedMovieDetails(movieTitle: title,
-                                                duration: duration.convertToRuntimeString(),
-                                                rating: rating,
-                                                screen: screen)
-        
-        rsvpOrder?.reservedMovieDetails = movieDetails
+        guard let movie = movie else { return }
+        rsvpOrder?.reservedMovieDetails = ReservedMovieDetails(movieTitle: movie.title,
+                                                               duration: movie.runtime?.convertToRuntimeString(),
+                                                               rating: titleDetailView.ratingLabel.text)
     }
     
     private func storeRSVPDate(date: String) {
@@ -344,7 +340,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     }
     
     private func fetchMovie() async throws {
-        guard let id = movieId else { throw APIError.invalidData }
+        guard let id = movieId else { throw RemoteMovieLoader.Error.invalidData }
         try await loader.load(with: .movie(withId: id)) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -358,13 +354,13 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
                     await self.fetchTrailerHeaderBackDropImage()
                 }
             case .failure(_):
-                print()
+                break // refactor - show error message
             }
         }
     }
     
     private func fetchTrailers() async throws {
-        guard let id = movieId else { throw APIError.invalidData }
+        guard let id = movieId else { throw RemoteMovieLoader.Error.invalidData }
         
         try await loader.load(with: .allTrailers(withId: id)) { [weak self] result in
             guard let self = self else { return }
@@ -401,11 +397,10 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
             self?.trailerHeader.backdropImageView.image = UIImage(named: "placeholder-backdrop")
             self?.trailerHeader.hidePlayButton(shouldHide: true)
         }
-        print("Failed to retrieve image: \(errorMessage)")
     }
     
     private func fetchRatingAndReleaseDates() async throws {
-        guard let id = movieId else { throw APIError.invalidData }
+        guard let id = movieId else { throw RemoteMovieLoader.Error.invalidData }
         
         try await loader.load(with: .releaseDates(withId: id)) { [weak self] result in
             guard let self = self else { return }
@@ -418,7 +413,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
                     self?.titleDetailView.ratingLabel.text = filteredRatings
                 }
             case .failure(_):
-                print()
+                break // refactor - show error message
             }
         }
     }
@@ -431,11 +426,6 @@ extension MovieDetailsVC {
     /// MovieSummaryGenreCellProtocol method used to update TableView row heights after the summary textView height changes
     func updateRowHeightForSummaryCell() {
         triggerTableViewUpdates()
-    }
-    
-    /// MovieTrailerCellProtocol method used to update TableView row heights
-    func updateRowHeightForTrailerCell() {
-//        triggerTableViewUpdates()
     }
     
     private func triggerTableViewUpdates() {
@@ -519,7 +509,7 @@ extension MovieDetailsVC {
         cell.cellDelegate = self
         Task {
             do {
-                guard let key = trailers[indexPath.row].key else { throw APIError.invalidData }
+                guard let key = trailers[indexPath.row].key else { throw RemoteMovieLoader.Error.invalidData }
                 cell.setVideoKey(key: key)
                 
                 guard let url = MovieAPI.GET.trailerThumbnail(withKey: key).url else { throw RemoteMovieLoader.Error.invalidUrl }

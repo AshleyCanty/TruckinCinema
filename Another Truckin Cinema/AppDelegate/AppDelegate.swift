@@ -16,14 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        IQKeyboardManager.shared().isEnabled = true
         setupAPIs()
-        setupLibrariesAndFrameworks()
         
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -66,11 +66,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     private func setupAPIs() {
-        GMSServices.provideAPIKey("AIzaSyCPPsnixtrpM6i6NU8S9XNxlfnNEOaAFPQ")
-    }
-    
-    private func setupLibrariesAndFrameworks() {
-        IQKeyboardManager.shared().isEnabled = true
+        guard let filePath = Bundle.main.path(forResource: APIInfoPlistKey.main, ofType: "plist") else {
+            fatalError("Failed to find 'API-Info.plist'")
+        }
+        
+        let plist = NSDictionary(contentsOfFile: filePath)
+        
+        
+        // Google Maps SDK
+        guard let dict = plist?.object(forKey: APIInfoPlistKey.googleMapsSDK) as? NSDictionary, let apiKey = dict.object(forKey: APIInfoPlistKey.apiKey) as? String else {
+            fatalError("Create an API Key for Google Maps SDK at https://developers.google.com/maps/documentation/ios-sdk/get-api-key.")
+        }
+        
+        GMSServices.provideAPIKey(apiKey)
     }
 
     // MARK: - Core Data Saving support

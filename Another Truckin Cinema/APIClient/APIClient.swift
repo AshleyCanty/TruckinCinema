@@ -15,7 +15,6 @@ protocol APIClient {
     func fetch(withUrl url: URL, headers: [(headerField: String, value: String)]?, completion: @escaping ((Result) -> Void)) async
 }
 
-// refactor - do json parsing in fetch method and change result type to T.Response
 extension APIClient {
     func fetch(withUrl url: URL, headers: [(headerField: String, value: String)]?, completion: @escaping ((Result) -> Void)) async {
 
