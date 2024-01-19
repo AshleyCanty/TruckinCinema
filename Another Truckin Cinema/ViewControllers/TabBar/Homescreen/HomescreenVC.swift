@@ -154,23 +154,27 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     }
     
     private func fetchPopularMovies() async throws {
-        loader.load(forRequestType: .popularMovies) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let results):
-                guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
-                    // handle failure
-                    return
-                }
-                self.movies = Array(topFourMovies)
-                refreshCollection()
-                print()
-                
+        loader.load(with: .popularMovies) { result in
             
-            case .failure(_):
-                print()
-            }
         }
+        
+//        loader.load(forRequestType: .popularMovies) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let results):
+//                guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
+//                    // handle failure
+//                    return
+//                }
+//                self.movies = Array(topFourMovies)
+//                refreshCollection()
+//                print()
+//
+//
+//            case .failure(_):
+//                print()
+//            }
+//        }
     }
     
     private func refreshCollection() {
@@ -367,8 +371,8 @@ extension HomescreenVC {
              Task {
                 do {
                     guard let posterPath = movies[indexPath.row].posterPath else { throw APIError.invalidURL }
-                    let posterUrl = try loader.getMovieAccessoryUrl(for: .poster(withPath: posterPath))
-                    try await cell.posterImageView.downloadImage(from: posterUrl)
+                    guard let url = MovieAPI.GET.poster(withPath: posterPath).url else { throw RemoteMovieLoader.Error.invalidUrl }
+                    try await cell.posterImageView.downloadImage(from: url)
                 } catch {
                     print("Failed to retrieve image: \(error.localizedDescription).")
                     cell.posterImageView.image = UIImage(named: "placeholder-poster")

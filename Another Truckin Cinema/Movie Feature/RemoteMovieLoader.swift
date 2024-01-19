@@ -9,6 +9,7 @@ import Foundation
 
 
 final class RemoteMovieLoader: MovieLoader {
+    
     let client: APIClient
     
     enum Error: Swift.Error {
@@ -21,55 +22,20 @@ final class RemoteMovieLoader: MovieLoader {
         self.client = client
     }
     
-//    func load(forRequestType movieRequestType: MovieDBRequestType, completion: @escaping (MovieLoader.Result) -> Void) {
-//
-//        guard let request = try? getMovieDBRequest(forType: movieRequestType) else {
-//            completion(.failure(Error.invalidData))
-//            return
-//        }
-//
-//        Task {
-//            await client.fetch(with: request) { [weak self] result in
-//                guard let self = self else {
-//                    return
-//                }
-//                switch result {
-//                case .success(let jsonObjects):
-//                    completion(.success(jsonObjects))
-//                case .failure(let error):
-//                    completion(.failure(error))
-//                }
-//
-//            }
-//        }
-//    }
-    
-    func load<T: APIRequest>(forRequest request: T, completion: @escaping (MovieLoader.Result) -> Void) {
+    func load(with endpoint: MovieAPI.GET, completion: @escaping (MovieLoader.Result) -> Void) {
+        guard let url = endpoint.url else { return }
 
         Task {
-            await client.fetch(with: request) { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                switch result {
-                case .success(let jsonObjects):
-                    completion(.success(jsonObjects))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+            await client.fetch(withUrl: url, headers: MovieDBClient.headers) { [weak self] result in
+                guard self != nil else { return }
                 
+                switch result {
+                case .success((let data, let response)):
+                    completion(MovieItemMapper.map(forMovieEndpointType: endpoint, data: data, response: response))
+                case .failure(_):
+                    completion(.failure(Error.connectivity))
+                }
             }
         }
-    }
-    
-    public func getMovieAccessoryUrl(for type: MovieAccessoryType) throws -> URL {
-        guard let movieClient = client as? MovieDBClient else { throw Error.invalidData }
-        return movieClient.getMovieAccessoryURL(forType: type)
-    }
-    
-    private func getMovieDBRequest(forType type: MovieDBRequestType) throws -> any APIRequest {
-        guard let movieClient = client as? MovieDBClient else { throw Error.invalidData }
-        return movieClient.getMovieDBRequest(forType: type)
-        
     }
 }

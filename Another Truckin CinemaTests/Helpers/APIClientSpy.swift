@@ -10,27 +10,24 @@ import XCTest
 @testable import Another_Truckin_Cinema
 
 
-
-
-
 class APIClientSpy: APIClient {
 
     var session: URLSession = URLSession(configuration: .default)
     
     typealias StatusCode = Int
-    var messages = [(request: APIRequestStub, completion: (APIClient.Result) -> Void)]()
+    var messages = [(url: URL, completion: (APIClient.Result) -> Void)]()
     
-    var receivedRequests: [APIRequestStub] {
-        return messages.map({ $0.request })
+    var requestedUrls: [URL] {
+        return messages.map({ $0.url })
     }
-    
-    func fetch<T>(with request: T, completion: @escaping ((APIClient.Result) -> Void)) async where T : APIRequest {
-        guard let requestStub = request as? APIRequestStub else { return }
-        messages.append((requestStub, completion))
+
+    func fetch(withUrl url: URL, headers: [(value: String, headerField: String)]?, completion: @escaping ((APIClient.Result) -> Void)) async {
+        messages.append((url, completion))
+        print()
     }
     
     func complete(with error: Error, at index: Int, file: StaticString = #filePath, lineNumber: UInt = #line) {
-        guard receivedRequests.count > index else {
+        guard requestedUrls.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }
 
@@ -38,10 +35,11 @@ class APIClientSpy: APIClient {
     }
     
     func complete(with statusCode: StatusCode, data: Data = Data(), at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) {
-        guard receivedRequests.count > index else {
+        print()
+        guard requestedUrls.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }
-        let url = try receivedRequests[index].url()
+        let url = requestedUrls[index]
         let response = HTTPURLResponse(
             url: url,
             statusCode: statusCode,

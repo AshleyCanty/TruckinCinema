@@ -288,14 +288,11 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     /// Present the popoever sheet for the trailer to be shared
     func didPressTrailerShareButton(key: String) {
-        do {
-            let url = try loader.getMovieAccessoryUrl(for: .trailer(withKey: key))
-            let text = "Hey, you should check out this movie!"
-            let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
-            self.present(vc, animated: true)
-        } catch {
-            NSLog("Unable to process request: invalid url")
-        }
+        guard let url = MovieAPI.GET.trailer(withKey: key).url else { return }
+        let text = "Hey, you should check out this movie!"
+        let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+        self.present(vc, animated: true)
+       
     }
     
     @objc private func didPressRSVPButton() {
@@ -348,47 +345,56 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchMovie() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .singleMovie(withMovieId: id), completion: { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let results):
-                movie = results as? Movie
-                DispatchQueue.main.async { [weak self] in
-                    self?.titleDetailView.movie = self?.movie
-                }
-                
-                Task {
-                    await self.fetchTrailerHeaderBackDropImage()
-                }
-            case .failure(_):
-                print()
-            }
-        })
+        loader.load(with: .movie(withId: id)) { result in
+            
+        }
+        
+        
+//        loader.load(forRequestType: .singleMovie(withMovieId: id), completion: { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let results):
+//                movie = results as? Movie
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.titleDetailView.movie = self?.movie
+//                }
+//
+//                Task {
+//                    await self.fetchTrailerHeaderBackDropImage()
+//                }
+//            case .failure(_):
+//                print()
+//            }
+//        })
     }
     
     private func fetchTrailers() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .movieTrailers(withMovieId: id), completion: { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let results):
-                trailers = results as? MovieTrailers
-                refreshTable(send: refreshControl)
-            case .failure(_):
-                break // refactor - show error message
-            }
-        })
+        
+        loader.load(with: .allTrailers(withId: id)) { result in
+            
+        }
+        
+//        loader.load(forRequestType: .movieTrailers(withMovieId: id), completion: { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let results):
+//                trailers = results as? MovieTrailers
+//                refreshTable(send: refreshControl)
+//            case .failure(_):
+//                break // refactor - show error message
+//            }
+//        })
     }
 
     /// Loads backdrop image for trailer header
     @objc private func fetchTrailerHeaderBackDropImage() async {
         do {
-            guard let backdropPath = movie?.backdropPath else {
+            guard let backdropPath = movie?.backdropPath, let url = MovieAPI.GET.poster(withPath: backdropPath).url else {
                 setDefaultImageForTrailerBackdrop(errorMessage: "invalid backdrop path")
                 return
             }
             
-            let url = try loader.getMovieAccessoryUrl(for: .poster(withPath: backdropPath))
             try await trailerHeader.backdropImageView.downloadImage(from: url)
             
             DispatchQueue.main.async { [weak self] in
@@ -409,20 +415,24 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchRatingAndReleaseDates() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .movieRatingAndReleaseDates(withMovieId: id)) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let results):
-                let ratings = results as? MovieReleaseDates
-                let filteredRatings = ratings?.filterForUSRating()
-                
-                DispatchQueue.main.async { [weak self] in
-                    self?.titleDetailView.ratingLabel.text = filteredRatings
-                }
-            case .failure(_):
-                print()
-            }
+        
+        loader.load(with: .releaseDates(withId: id)) { result in
+            
         }
+//        loader.load(forRequestType: .movieRatingAndReleaseDates(withMovieId: id)) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let results):
+//                let ratings = results as? MovieReleaseDates
+//                let filteredRatings = ratings?.filterForUSRating()
+//
+//                DispatchQueue.main.async { [weak self] in
+//                    self?.titleDetailView.ratingLabel.text = filteredRatings
+//                }
+//            case .failure(_):
+//                print()
+//            }
+//        }
     }
 }
 
@@ -524,8 +534,8 @@ extension MovieDetailsVC {
                 guard let key = trailers[indexPath.row].key else { throw APIError.invalidData }
                 cell.setVideoKey(key: key)
                 
-                let thumbnailUrl = try loader.getMovieAccessoryUrl(for: .trailerThumbnail(withKey: key))
-                try await cell.backdropImageView.downloadImage(from: thumbnailUrl)
+                guard let url = MovieAPI.GET.trailerThumbnail(withKey: key).url else { throw RemoteMovieLoader.Error.invalidUrl }
+                try await cell.backdropImageView.downloadImage(from: url)
             } catch {
                 print("Failed to fetch thumbnail: \(error.localizedDescription)")
                 cell.backdropImageView.image = UIImage(named: "placeholder-backdrop")

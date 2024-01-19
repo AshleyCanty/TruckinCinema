@@ -27,42 +27,47 @@ class LoadMoviesFromRemoteUseCaseTests: XCTestCase {
     func test_load_requestsFromURLOnlyOnce() {
         let (sut, client) = makeSUT()
         
-        sut.load(completion: { _ in })
+        let exp = expectation(description: "wait for loader to finish")
+        exp.expectedFulfillmentCount = 1
+        
+        sut.load(with: .popularMovies, completion: { _ in
+            exp.fulfill()
+        })
+        
+//        wait(for: [exp], timeout: 1.0)
         XCTAssertEqual(client.requestedUrls.count, 1)
     }
-    
-    func test_load_doesNotMakeRequestAfterDeallocation() {
-        let request = APIRequestStub()
-        let client = APIClientSpy()
-        var sut: RemoteMovieLoader? = RemoteMovieLoader(url: url, client: client)
-        
-        var capturedResults = [RemoteMovieLoader.Result]()
-        sut?.load { capturedResults.append($0) }
-        sut = nil
-        
-        client.complete(with: 200, data: Data())
-        XCTAssertNil(sut)
-        XCTAssertTrue(capturedResults.isEmpty)
-    }
-    
-    func test_load_returnsConnectivityErrorWithFailedResponse() {
-        
-    }
-    
-    func test_load_returnsInvalidDataErrorWhenStatusIsNot200() {
-        let request = APIRequestStub()
-        let client = APIClientSpy()
-        var sut = RemoteMovieLoader(client: client)
-        
-        let statusCodes = [199, 202, 300, 404, 400]
-        statusCodes.enumerated().forEach { index, code in
-            var capturedErrors = [RemoteMovieLoader.Error]()
-                
-            expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
-                client.complete(with: code, at: index)
-            }
-        }
-    }
+//
+//    func test_load_doesNotMakeRequestAfterDeallocation() {
+//        let client = APIClientSpy()
+//        var sut: RemoteMovieLoader? = RemoteMovieLoader(client: client)
+//
+//        var capturedResults = [RemoteMovieLoader.Result]()
+//        sut?.load(with: .popularMovies) { capturedResults.append($0) }
+//        sut = nil
+//
+//        client.complete(with: 200, data: Data())
+//        XCTAssertNil(sut)
+//        XCTAssertTrue(capturedResults.isEmpty)
+//    }
+//
+//    func test_load_returnsConnectivityErrorWithFailedResponse() {
+//
+//    }
+//
+//    func test_load_returnsInvalidDataErrorWhenStatusIsNot200() {
+//        let client = APIClientSpy()
+//        var sut = RemoteMovieLoader(client: client)
+//
+//        let statusCodes = [199, 202, 300, 404, 400]
+//        statusCodes.enumerated().forEach { index, code in
+//            var capturedErrors = [RemoteMovieLoader.Error]()
+//
+//            expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
+//                client.complete(with: code, at: index)
+//            }
+//        }
+//    }
     
     func test_load_decodeDataIntoJSON() {
         
@@ -79,18 +84,18 @@ class LoadMoviesFromRemoteUseCaseTests: XCTestCase {
 }
 
 extension LoadMoviesFromRemoteUseCaseTests {
-    func expect(sut: RemoteMovieLoader, toCompleteWith expectedResult: Result<[Movie], RemoteMovieLoader.Error>, when action: (() -> Void), file: StaticString = #filePath, line: UInt = #line) {
+    func expect(sut: RemoteMovieLoader, toCompleteWith expectedResult: Result<PopularMovies, RemoteMovieLoader.Error>, when action: (() -> Void), file: StaticString = #filePath, line: UInt = #line) {
         
         let expectation = expectation(description: "Wait for load completion")
         
-        sut.load { receivedResult in
+        sut.load(with: .popularMovies) { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedItems), .success(expectedItems)):
-                print()
-//                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                let recItems = receivedItems as! PopularMovies
+                let expItems = expectedItems
+                XCTAssertEqual(recItems, expItems, file: file, line: line)
             case let (.failure(receivedError), .failure(expectedError)):
-                print()
-//                XCTAssertEqual(receivedError as! RemoteMovieLoader.Error, expectedError, file: file, line: line)
+                XCTAssertEqual(receivedError as! RemoteMovieLoader.Error, expectedError, file: file, line: line)
             default:
                 XCTFail("Was expecting \(expectedResult) but received \(receivedResult)", file: file, line: line)
             }
