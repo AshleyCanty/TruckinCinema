@@ -5,13 +5,13 @@ _Delsea Drive-in Theater is not associated with this application. This project f
 
 You'll have to plug in your API Keys if you want give it a test run. When you open Xcode and see the file navigator, just go to Supporting Files -> API-Info.plist and add your API Keys.
 
-1st part (21 sec)
+**GIFS and Screenshots for reference**
+
+GIF #1
 <iframe src="https://giphy.com/embed/If5Ai4FdvshdEskkTs" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/If5Ai4FdvshdEskkTs">via GIPHY</a></p>
 
-2nd part (21 sec)
+GIF #2 
 <iframe src="https://giphy.com/embed/gW0aJy4JUFz2nJDtBu" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gW0aJy4JUFz2nJDtBu">via GIPHY</a></p>
-
-https://media.giphy.com/media/gW0aJy4JUFz2nJDtBu/giphy.gif 
 
 
 ![Screenshot 2024-01-19 at 2 29 24 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/173e0ea2-f8b1-4c12-854c-9df2bc9c570b)
