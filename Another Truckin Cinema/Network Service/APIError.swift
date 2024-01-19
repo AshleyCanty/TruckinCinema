@@ -14,7 +14,7 @@ enum APIError: Error {
     case invalidData
     case responseUnsuccessful(description: String)
     case failedToDecode(description: String)
-    case noInternet
+    case connectivity
     
     var customDescription: String {
         switch self {
@@ -23,7 +23,7 @@ enum APIError: Error {
         case .invalidURL: return "Invalid Url"
         case .responseUnsuccessful(description: let description): return "Unsuccessful: \(description)"
         case .failedToDecode(description: let description): return "JSON Decoding Failure: \(description)"
-        case .noInternet: return "No internet connection"
+        case .connectivity: return "No internet connection"
         }
     }
 }

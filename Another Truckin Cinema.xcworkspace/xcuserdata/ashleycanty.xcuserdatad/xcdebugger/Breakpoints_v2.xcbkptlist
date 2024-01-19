@@ -7,218 +7,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "265EE345-EC95-413F-820C-547A1EDE60C2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/Movie API/RemoteMovieLoader.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "init(url:client:movieUrlType:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "265EE345-EC95-413F-820C-547A1EDE60C2 - 44fb64772d3e2eec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Another_Truckin_Cinema.RemoteMovieLoader.load(completion: (Swift.Result&lt;Swift.Array&lt;Another_Truckin_Cinema.Movie&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Movie%20API/RemoteMovieLoader.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  uuid = "265EE345-EC95-413F-820C-547A1EDE60C2 - 44fb64772d3e2e51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Another_Truckin_Cinema.RemoteMovieLoader.load(completion: (Swift.Result&lt;Swift.Array&lt;Another_Truckin_Cinema.Movie&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Movie%20API/RemoteMovieLoader.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  uuid = "265EE345-EC95-413F-820C-547A1EDE60C2 - 185da5d71d7daeab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Another_Truckin_Cinema.RemoteMovieLoader.init(url: Foundation.URL, client: Another_Truckin_Cinema.HTTPClient, movieRequestType: Another_Truckin_Cinema.RemoteMovieLoader.MovieRequestType) -&gt; Another_Truckin_Cinema.RemoteMovieLoader"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Movie%20API/RemoteMovieLoader.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "292">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "23AB93EC-A7A5-48C3-A2EE-A6D3869EDB97"
+            uuid = "1D11CEE9-8308-4DE9-A826-BAD8C3CCB451"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "updateTitleHeaderView()"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "getTrailerCell(indexPath:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "23AB93EC-A7A5-48C3-A2EE-A6D3869EDB97 - 2993f12253dbecb5"
+                  uuid = "1D11CEE9-8308-4DE9-A826-BAD8C3CCB451 - 69bbaa942d4ad12b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.updateTitleHeaderView() -&gt; ()"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
                   moduleName = "Another Truckin Cinema"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "271"
-                  endingLineNumber = "271"
-                  offsetFromSymbolStart = "104">
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "720">
                </Location>
                <Location
-                  uuid = "23AB93EC-A7A5-48C3-A2EE-A6D3869EDB97 - 2993f12253dbecb5"
+                  uuid = "1D11CEE9-8308-4DE9-A826-BAD8C3CCB451 - f9845ff61e336a20"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.updateTitleHeaderView() -&gt; ()"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
                   moduleName = "Another Truckin Cinema"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "271"
-                  endingLineNumber = "271"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F88708FD-461E-4531-B50D-2934A16A3408"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/Network Service/MovieDBClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "createURL(usingPaths:queryItems:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - bbb03b81ca2e0df3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "292">
-               </Location>
-               <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - 86bbf52029d928c8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
                   offsetFromSymbolStart = "36">
                </Location>
                <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - 9c20ca10f4f94960"
+                  uuid = "1D11CEE9-8308-4DE9-A826-BAD8C3CCB451 - c31efc5d65729d29"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
                   moduleName = "Another Truckin Cinema"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - 9c20ca10f4f949fd"
+                  uuid = "1D11CEE9-8308-4DE9-A826-BAD8C3CCB451 - 7033a8c601817b28"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
                   moduleName = "Another Truckin Cinema"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - ec68a2588fee3763"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "F88708FD-461E-4531-B50D-2934A16A3408 - ec68a2588fee37fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for Another_Truckin_Cinema.MovieDBClient.prepareFetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, paths: Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;, queryItems: Swift.Array&lt;Foundation.URLQueryItem&gt;) async throws -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Another Truckin Cinema"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/Network%20Service/MovieDBClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "92">
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "112">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -226,33 +85,287 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6153C992-D213-42A1-B191-A3FF779FA124"
-            shouldBeEnabled = "No"
+            uuid = "037E694B-7155-4CD0-BAEF-966AEC8E2BCA"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/Network Service/API+Protocol.swift"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "prepareDecoder(with:_:)"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "getTrailerCell(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "086A3ADA-CF0B-4A48-937D-9496933D6E1B"
+            uuid = "39736FEF-138C-40F9-916B-5288D14E327F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Another Truckin Cinema/Network Service/API+Protocol.swift"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "prepareDecoder(with:_:)"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
+            landmarkName = "getTrailerCell(indexPath:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CAD4F065-C318-4C28-9443-34DED91FB78F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/Views/DetailsTableView/Cells/MovieTrailerCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "setVideoKey(key:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBD42844-1A5F-42E8-973B-A31AF0023332"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
+            landmarkName = "getTrailerCell(indexPath:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BBD42844-1A5F-42E8-973B-A31AF0023332 - 8d40415212267ca3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "535"
+                  endingLineNumber = "535"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "BBD42844-1A5F-42E8-973B-A31AF0023332 - 8d40415212267ca3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "535"
+                  endingLineNumber = "535"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  uuid = "BBD42844-1A5F-42E8-973B-A31AF0023332 - 8d40415212267ca3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Another_Truckin_Cinema.MovieDetailsVC.getTrailerCell(indexPath: Foundation.IndexPath) -&gt; Another_Truckin_Cinema.MovieTrailerCell"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "535"
+                  endingLineNumber = "535"
+                  offsetFromSymbolStart = "916">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D4F8E04-1303-4912-B7FC-A539616B1AF6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "621"
+            endingLineNumber = "621"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74354EDF-D385-41C4-92A2-F6AC512AD5DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D20F6C0-8870-4839-AC47-C77C9B42AA96"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "619"
+            endingLineNumber = "619"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "230DE5DB-056A-4B6F-8BF4-A638C7944FE7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F9E2831-B7FD-40D5-817E-0040DCEDDD63"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "fetchTrailers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6F9E2831-B7FD-40D5-817E-0040DCEDDD63 - 2052eff41e6a5457"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Another_Truckin_Cinema.MovieDetailsVC.fetchTrailers() async throws -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "386"
+                  endingLineNumber = "386"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "6F9E2831-B7FD-40D5-817E-0040DCEDDD63 - d81e7fb6d1fc4905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Decodable, Swift.Error&gt;) -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.fetchTrailers() async throws -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "386"
+                  endingLineNumber = "386"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "6F9E2831-B7FD-40D5-817E-0040DCEDDD63 - d81e7fb6d1fc4905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Decodable, Swift.Error&gt;) -&gt; () in Another_Truckin_Cinema.MovieDetailsVC.fetchTrailers() async throws -&gt; ()"
+                  moduleName = "Another Truckin Cinema"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashleycanty/Desktop/Github/TruckinCinema/Another%20Truckin%20Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "386"
+                  endingLineNumber = "386"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22DA0ECA-9D98-40CB-BEB9-490F814AA7D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/ViewControllers/MovieDetails/MovieDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "fetchTrailers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7588FB8-4CF6-4424-A5E0-F2A5CC3AFD3F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/Movie Feature/Movie API/MovieDB+APIRequests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "GetMovie"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F25CB9D-5089-47AA-AD50-2838E2079A8A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Another Truckin Cinema/Movie Feature/Movie API/MovieDB+APIRequests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "GetMovie"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

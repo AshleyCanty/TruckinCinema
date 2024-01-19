@@ -367,7 +367,7 @@ extension HomescreenVC {
              Task {
                 do {
                     guard let posterPath = movies[indexPath.row].posterPath else { throw APIError.invalidURL }
-                    let posterUrl = try loader.getPosterUrl(with: posterPath)
+                    let posterUrl = try loader.getMovieAccessoryUrl(for: .poster(withPath: posterPath))
                     try await cell.posterImageView.downloadImage(from: posterUrl)
                 } catch {
                     print("Failed to retrieve image: \(error.localizedDescription).")

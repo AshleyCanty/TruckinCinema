@@ -12,37 +12,6 @@ import UIKit
 import youtube_ios_player_helper
 
 
-/*
- TMDB Bearer token
- eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNzgxMTQ5Mzg1Y2JiMzQwNjljMmE4NjZlYWMzNWEzMCIsInN1YiI6IjY0YTRhYzBjOGM0NGI5MDEyZDZiOTMwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jexcRRrax-HS91ElbcQlu1Xnf8_yp97WgjUjvEQeVJk
- 
- 
- Now Playing
- https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1
- 
- Popular
- https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
- 
- Single Movie Retrieval with ID
- https://api.themoviedb.org/3/movie/667538
- 
- Youtube base URL
- https://youtu.be/
- https://www.youtube.com/watch?v={Key}
- example - https://youtu.be/OW1mU4vBBEU
- 
- This screen will display an image, play button that push to a new view which will automatically play a Youtube video.
- base url, file size, file path
- 
- http://image.tmdb.org/t/p/ w500/
- /2vFuG6bWGyQUzYS9d69E5l85nIz.jpg
- 
- Clip, teaser, trailer, featureette
- official = true
- 
- */
-
-
 /// MovieDetailsVC
 class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSummaryGenreCellProtocol, MovieTrailerCellProtocol, MovieDetailsTrailerTopViewProtocol, YTPlayerViewDelegate, AppNavigationBarDelegate {
     
@@ -61,15 +30,15 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         static let SegmentedControlTopMargin: CGFloat = 0
     }
     /// Tralier header view
-    fileprivate lazy var trailerHeader = MovieDetailsTrailerTopView()
+    private lazy var trailerHeader = MovieDetailsTrailerTopView()
     /// Title details view
-    fileprivate lazy var titleDetailView = MovieDetailsTitleDurationView()
+    private lazy var titleDetailView = MovieDetailsTitleDurationView()
     /// Title details view top anchor
-    fileprivate var titleDetailViewTopAnchor: NSLayoutConstraint?
+    private var titleDetailViewTopAnchor: NSLayoutConstraint?
     /// Title details view height anchor
-    fileprivate var titleDetailViewHeightAnchor: NSLayoutConstraint?
+    private var titleDetailViewHeightAnchor: NSLayoutConstraint?
     ///  segmented control
-    fileprivate lazy var segmentedControl: CustomSegmentedControl = {
+    private lazy var segmentedControl: CustomSegmentedControl = {
         let sc = CustomSegmentedControl(items: [SegmentedControlTitle.Showtimes.getString(),
                                             SegmentedControlTitle.Details.getString(),
                                             SegmentedControlTitle.Videos.getString()])
@@ -77,20 +46,22 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         return sc
     }()
     /// table view that display different data when segmentedControl changes
-    fileprivate var tableView: UITableView = {
+    private var tableView: UITableView = {
         let table = UITableView()
         table.separatorStyle = .none
         return table
     }()
     
     /// rsvp button
-    fileprivate lazy var rsvpButton: ThemeButton = {
+    private lazy var rsvpButton: ThemeButton = {
         let btn = ThemeButton(type: .custom)
         btn.setTitle(ButtonTitle.RSVPNow.getString(), for: .normal)
         return btn
     }()
     /// wrapper view to hide/show the rsvp button
-    fileprivate lazy var rsvpButtonWrapperView = UIView()
+    private lazy var rsvpButtonWrapperView = UIView()
+    
+    private var refreshControl = UIRefreshControl()
     
     private let loader = RemoteMovieLoader(client: MovieDBClient())
     
@@ -145,34 +116,48 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         }
     }
 
-    private func refreshTable() {
+    @objc private func refreshTable(send: UIRefreshControl) {
+        if segmentedControl.selectedSegmentIndex == 2 && trailers == nil {
+            Task { try await fetchTrailers() }
+        }
+        
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
     }
     
     /// Configured tableview datasource and delegate
-    fileprivate func configureTableDataSource() {
+    private func configureTableDataSource() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ShowtimeCell.self, forCellReuseIdentifier: ShowtimeCell.reuseIdentifier)
         tableView.register(ShowtimeRadioListCell.self, forCellReuseIdentifier: ShowtimeRadioListCell.reuseIdentifier)
         tableView.register(MovieSummaryGenreCell.self, forCellReuseIdentifier: MovieSummaryGenreCell.reuseIdentifier)
         tableView.register(MovieTrailerCell.self, forCellReuseIdentifier: MovieTrailerCell.reuseIdentifier)
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControl.Event.valueChanged)
     }
     
     @objc func selectedSegment() {
         // TODO - Create a sidemenu with a gradient background and corner radius
         if segmentedControl.selectedSegmentIndex != 0 {
             rsvpButton.isHidden = true
+            
         } else {
             rsvpButton.isHidden = false
         }
+        
+        if segmentedControl.selectedSegmentIndex == 2 {
+            tableView.addSubview(refreshControl)
+        } else {
+            refreshControl.removeFromSuperview()
+        }
+        
         tableView.reloadData()
     }
     
     /// configure views
-    fileprivate func configure() {
+    private func configure() {
         view.addSubview(trailerHeader)
         view.addSubview(titleDetailView)
         view.addSubview(segmentedControl)
@@ -304,7 +289,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     /// Present the popoever sheet for the trailer to be shared
     func didPressTrailerShareButton(key: String) {
         do {
-            let url = try loader.getTrailerUrl(withKey: key)
+            let url = try loader.getMovieAccessoryUrl(for: .trailer(withKey: key))
             let text = "Hey, you should check out this movie!"
             let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
             self.present(vc, animated: true)
@@ -363,7 +348,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchMovie() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .singleMovie(usingMovieId: id), completion: { [weak self] result in
+        loader.load(forRequestType: .singleMovie(withMovieId: id), completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let results):
@@ -383,27 +368,27 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchTrailers() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .movieTrailers(usingMovieId: id), completion: { [weak self] result in
+        loader.load(forRequestType: .movieTrailers(withMovieId: id), completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let results):
                 trailers = results as? MovieTrailers
-                refreshTable()
+                refreshTable(send: refreshControl)
             case .failure(_):
-                print()
+                break // refactor - show error message
             }
         })
     }
-    
+
     /// Loads backdrop image for trailer header
-    @objc fileprivate func fetchTrailerHeaderBackDropImage() async {
+    @objc private func fetchTrailerHeaderBackDropImage() async {
         do {
             guard let backdropPath = movie?.backdropPath else {
                 setDefaultImageForTrailerBackdrop(errorMessage: "invalid backdrop path")
                 return
             }
             
-            let url = try loader.getPosterUrl(with: backdropPath)
+            let url = try loader.getMovieAccessoryUrl(for: .poster(withPath: backdropPath))
             try await trailerHeader.backdropImageView.downloadImage(from: url)
             
             DispatchQueue.main.async { [weak self] in
@@ -424,7 +409,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func fetchRatingAndReleaseDates() async throws {
         guard let id = movieId else { throw APIError.invalidData }
-        loader.load(forRequestType: .movieRatingAndReleaseDates(usingMovieId: id)) { [weak self] result in
+        loader.load(forRequestType: .movieRatingAndReleaseDates(withMovieId: id)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let results):
@@ -539,7 +524,7 @@ extension MovieDetailsVC {
                 guard let key = trailers[indexPath.row].key else { throw APIError.invalidData }
                 cell.setVideoKey(key: key)
                 
-                let thumbnailUrl = try loader.getTrailerThumbnailUrl(withKey: key)
+                let thumbnailUrl = try loader.getMovieAccessoryUrl(for: .trailerThumbnail(withKey: key))
                 try await cell.backdropImageView.downloadImage(from: thumbnailUrl)
             } catch {
                 print("Failed to fetch thumbnail: \(error.localizedDescription)")

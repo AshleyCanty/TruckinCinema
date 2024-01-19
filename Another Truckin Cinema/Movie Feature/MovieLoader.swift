@@ -8,25 +8,21 @@
 import Foundation
 
 
-enum MovieRequestType {
+enum MovieDBRequestType {
     case popularMovies
-    case singleMovie(usingMovieId: String)
-    case movieTrailers(usingMovieId: String)
-    case movieRatingAndReleaseDates(usingMovieId: String)
+    case singleMovie(withMovieId: String)
+    case movieTrailers(withMovieId: String)
+    case movieRatingAndReleaseDates(withMovieId: String)
+}
+
+enum MovieAccessoryType {
+    case poster(withPath: String)
+    case trailer(withKey: String)
+    case trailerThumbnail(withKey: String)
 }
 
 protocol MovieLoader {
-    typealias Result = Swift.Result<Codable, Error>
+    typealias Result = Swift.Result<Decodable, Error>
     
-//    associatedtype
-    // use asspicatedType to require enum from protocol
-    // https://stackoverflow.com/questions/37353484/how-to-require-an-enum-be-defined-in-swift-protocol
-    
-    func load(forRequestType movieRequestType: MovieRequestType, completion: @escaping (Result) -> Void)
-    
-    
+    func load<T: APIRequest>(forRequest request: T, completion: @escaping (Result) -> Void)
 }
-// trying to pass url type to loader somehow
-// urlType goes to mapper AFTER client returns HTTP request results
-// Mapper will take urlType and (data, response).
-// Mapper or Loader will use urlType to determine the Decodable type to use

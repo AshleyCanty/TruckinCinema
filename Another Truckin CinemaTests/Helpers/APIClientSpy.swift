@@ -1,5 +1,5 @@
 //
-//  HTTPClientSpy.swift
+//  APIClientSpy.swift
 //  Another Truckin CinemaTests
 //
 //  Created by ashley canty on 12/30/23.
@@ -10,20 +10,27 @@ import XCTest
 @testable import Another_Truckin_Cinema
 
 
-class HTTPClientSpy: HTTPClient {
-    typealias StatusCode = Int
-    var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
+
+
+
+class APIClientSpy: APIClient {
+
+    var session: URLSession = URLSession(configuration: .default)
     
-    var requestedUrls: [URL] {
-        return messages.map { $0.url }
+    typealias StatusCode = Int
+    var messages = [(request: APIRequestStub, completion: (APIClient.Result) -> Void)]()
+    
+    var receivedRequests: [APIRequestStub] {
+        return messages.map({ $0.request })
     }
     
-    func get(with url: URL, completion: @escaping (HTTPClientSpy.Result) -> Void) {
-        messages.append((url, completion))
+    func fetch<T>(with request: T, completion: @escaping ((APIClient.Result) -> Void)) async where T : APIRequest {
+        guard let requestStub = request as? APIRequestStub else { return }
+        messages.append((requestStub, completion))
     }
     
     func complete(with error: Error, at index: Int, file: StaticString = #filePath, lineNumber: UInt = #line) {
-        guard requestedUrls.count > index else {
+        guard receivedRequests.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }
 
@@ -31,12 +38,12 @@ class HTTPClientSpy: HTTPClient {
     }
     
     func complete(with statusCode: StatusCode, data: Data = Data(), at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) {
-        guard requestedUrls.count > index else {
+        guard receivedRequests.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }
-        
+        let url = try receivedRequests[index].url()
         let response = HTTPURLResponse(
-            url: requestedUrls[index],
+            url: url,
             statusCode: statusCode,
             httpVersion: nil,
             headerFields: nil)!
