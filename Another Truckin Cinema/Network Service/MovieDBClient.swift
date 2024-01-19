@@ -80,6 +80,12 @@ final class MovieDBClient: GenericAPI {
     
     /// Prepares network request by accepting params: codable type, paths, and query items
     fileprivate func prepareFetch<T: Codable>(type: T.Type, paths: [String]?, queryItems: [URLQueryItem] = []) async throws -> T {
+        let request = try createRequest(paths: paths, queryItems: queryItems)
+        let result = try await fetch(type: T.self, with: request)
+        return result
+    }
+    
+    private func createRequest(paths: [String]?, queryItems: [URLQueryItem] = []) throws -> URLRequest {
         guard let paths = paths else { throw APIError.invalidURL }
         
         /// Append paths to baseURL
@@ -95,8 +101,6 @@ final class MovieDBClient: GenericAPI {
         var request = URLRequest(url: url)
         request.addValue(apiKey, forHTTPHeaderField: "apiKey")
         request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "authorization")
-        
-        let result = try await fetch(type: T.self, with: request)
-        return result
+        return request
     }
 }

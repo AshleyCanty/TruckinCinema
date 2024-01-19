@@ -14,8 +14,8 @@ final class RemoteMovieLoader: MovieLoader {
     let movieRequestType: MovieRequestType
     
     enum MovieRequestType {
-        case popularMovies(String)
-        case movieDetails
+        case popularMovies
+        case movieDetails(String)
         case movieTrailers(String)
         case movieRatingAndReleaseDates(String)
     }
@@ -25,7 +25,7 @@ final class RemoteMovieLoader: MovieLoader {
         case connectivity
     }
     
-    init(url: URL, client: HTTPClient, movieRequestType: MovieRequestType) {
+    init(url: URL, client: HTTPClient, movieRequestType: MovieRequestType = .popularMovies) {
         self.url = url
         self.client = client
         self.movieRequestType = movieRequestType
