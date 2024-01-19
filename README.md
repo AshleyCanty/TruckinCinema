@@ -7,9 +7,11 @@ You'll have to plug in your API Keys if you want give it a test run. When you op
 
 **GIFS and Screenshots for reference**
 
-<iframe src="https://giphy.com/embed/If5Ai4FdvshdEskkTs" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/If5Ai4FdvshdEskkTs">via GIPHY</a></p>
+Part-1
+https://media.giphy.com/media/If5Ai4FdvshdEskkTs/giphy.gif
 
-<iframe src="https://giphy.com/embed/gW0aJy4JUFz2nJDtBu" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gW0aJy4JUFz2nJDtBu">via GIPHY</a></p>
+Part-2
+https://media.giphy.com/media/gW0aJy4JUFz2nJDtBu/giphy.gif
 
 
 
