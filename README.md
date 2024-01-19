@@ -11,7 +11,7 @@ You'll have to plug in your API Keys if you want give it a test run. When you op
 2nd part (21 sec)
 <iframe src="https://giphy.com/embed/gW0aJy4JUFz2nJDtBu" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gW0aJy4JUFz2nJDtBu">via GIPHY</a></p>
 
-
+https://media.giphy.com/media/gW0aJy4JUFz2nJDtBu/giphy.gif 
 
 
 ![Screenshot 2024-01-19 at 2 29 24 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/173e0ea2-f8b1-4c12-854c-9df2bc9c570b)
