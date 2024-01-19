@@ -10,7 +10,7 @@ import XCTest
 @testable import Another_Truckin_Cinema
 
 
-class APIClientSpy: APIClient {
+class APIClientSpy: APIClient, Mockable {
 
     var session: URLSession = URLSession(configuration: .default)
     
@@ -23,10 +23,9 @@ class APIClientSpy: APIClient {
 
     func fetch(withUrl url: URL, headers: [(value: String, headerField: String)]?, completion: @escaping ((APIClient.Result) -> Void)) async {
         messages.append((url, completion))
-        print()
     }
     
-    func complete(with error: Error, at index: Int, file: StaticString = #filePath, lineNumber: UInt = #line) {
+    func complete(with error: Error, at index: Int, file: StaticString = #filePath, lineNumber: UInt = #line) async {
         guard requestedUrls.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }
@@ -34,7 +33,7 @@ class APIClientSpy: APIClient {
         messages[index].completion(.failure(error))
     }
     
-    func complete(with statusCode: StatusCode, data: Data = Data(), at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) {
+    func complete(with statusCode: StatusCode, data: Data = Data(), at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) async {
         print()
         guard requestedUrls.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)

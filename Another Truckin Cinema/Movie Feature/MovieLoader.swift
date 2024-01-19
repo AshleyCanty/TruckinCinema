@@ -11,5 +11,5 @@ import Foundation
 protocol MovieLoader {
     typealias Result = Swift.Result<Decodable, Error>
     
-    func load(with endpoint: MovieAPI.GET, completion: @escaping (Result) -> Void)
+    func load(with endpoint: MovieAPI.GET, completion: @escaping (Result) -> Void) async throws
 }

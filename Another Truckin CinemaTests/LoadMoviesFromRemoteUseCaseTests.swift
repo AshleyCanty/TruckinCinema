@@ -24,53 +24,88 @@ class LoadMoviesFromRemoteUseCaseTests: XCTestCase {
         XCTAssertTrue(client.requestedUrls.isEmpty)
     }
     
-    func test_load_requestsFromURLOnlyOnce() {
+    func test_load_requestsFromURLOnlyOnce() async throws {
         let (sut, client) = makeSUT()
-        
-        let exp = expectation(description: "wait for loader to finish")
-        exp.expectedFulfillmentCount = 1
-        
-        sut.load(with: .popularMovies, completion: { _ in
-            exp.fulfill()
-        })
-        
-//        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(client.requestedUrls.count, 1)
+        Task {
+            try await sut.load(with: .popularMovies, completion: { _ in })
+            XCTAssertEqual(client.requestedUrls.count, 1)
+        }
     }
-//
-//    func test_load_doesNotMakeRequestAfterDeallocation() {
-//        let client = APIClientSpy()
-//        var sut: RemoteMovieLoader? = RemoteMovieLoader(client: client)
-//
-//        var capturedResults = [RemoteMovieLoader.Result]()
-//        sut?.load(with: .popularMovies) { capturedResults.append($0) }
-//        sut = nil
-//
-//        client.complete(with: 200, data: Data())
-//        XCTAssertNil(sut)
-//        XCTAssertTrue(capturedResults.isEmpty)
-//    }
-//
-//    func test_load_returnsConnectivityErrorWithFailedResponse() {
-//
-//    }
-//
-//    func test_load_returnsInvalidDataErrorWhenStatusIsNot200() {
-//        let client = APIClientSpy()
-//        var sut = RemoteMovieLoader(client: client)
-//
-//        let statusCodes = [199, 202, 300, 404, 400]
-//        statusCodes.enumerated().forEach { index, code in
-//            var capturedErrors = [RemoteMovieLoader.Error]()
-//
-//            expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
-//                client.complete(with: code, at: index)
-//            }
-//        }
-//    }
+
+    func test_load_returnsConnectivityErrorWithFailedResponse() async throws {
+        let client = APIClientSpy()
+        let sut = RemoteMovieLoader(client: client)
+
+        try await expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.connectivity)) {
+            Task {
+                await client.complete(with: RemoteMovieLoader.Error.invalidUrl, at: 0)
+            }
+        }
+    }
+
+    func test_load_returnsInvalidDataErrorWhenStatusIsNot200() async throws {
+        let client = APIClientSpy()
+        let sut = RemoteMovieLoader(client: client)
+
+        let statusCodes = [199, 202, 300, 404, 400]
+        statusCodes.enumerated().forEach { index, code in
+            Task {
+                try await expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
+                    Task {
+                        await client.complete(with: code, at: index)
+                    }
+                }
+            }
+        }
+    }
     
-    func test_load_decodeDataIntoJSON() {
+    func test_load_deliversInvalidDataErrorOn200HTTPResponseWithInvalidJSON() async throws {
+        let (sut, client) = makeSUT()
+        try await expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
+            Task {
+                await client.complete(with: 200, data: client.loadData(filename: MockableResource.PartialPopularMovies), file: #file, lineNumber: #line)
+            }
+        }
+    }
+    
+    func test_load_deliversInvalidDataErrorOn200HTTPResponseWithPartiallyValidJSONItems() async throws {
+        let (sut, client) = makeSUT()
+        try await expect(sut: sut, toCompleteWith: .failure(RemoteMovieLoader.Error.invalidData)) {
+            Task {
+                await client.complete(with: 200, data: client.loadData(filename: MockableResource.PartialPopularMovies), file: #file, lineNumber: #line)
+            }
+        }
+    }
+    
+    func test_load_deliversSuccessWithNoItemsOn200HTTPResponseWithEmptyJSONList() async throws {
+        let (sut, client) = makeSUT()
+        try await expect(sut: sut, toCompleteWith: .success(client.loadJSON(filename: MockableResource.EmptyPopularMovies, type: PopularMovies.self))) {
+            Task {
+                await client.complete(with: 200, data: client.loadData(filename: MockableResource.EmptyPopularMovies), file: #file, lineNumber: #line)
+            }
+        }
+    }
+    
+    func test_load_deliversSuccessWithItemsOn200HTTPResponseWithJSONItems() async throws {
+        let (sut, client) = makeSUT()
+        try await expect(sut: sut, toCompleteWith: .success(client.loadJSON(filename: MockableResource.PopularMovies, type: PopularMovies.self))) {
+            Task {
+                await client.complete(with: 200, data: client.loadData(filename: MockableResource.PopularMovies), file: #file, lineNumber: #line)
+            }
+        }
+    }
+    
+    func test_load_doesNotMakeRequestAfterDeallocation() async throws {
+        let client = APIClientSpy()
+        var sut: RemoteMovieLoader? = RemoteMovieLoader(client: client)
         
+        var capturedResults = [RemoteMovieLoader.Result]()
+        try await sut?.load(with: .popularMovies) { capturedResults.append($0) }
+        
+        sut = nil
+        await client.complete(with: 200, data: Data())
+        XCTAssertNil(sut)
+        XCTAssertTrue(capturedResults.isEmpty)
     }
     
     // Helpers
@@ -84,11 +119,11 @@ class LoadMoviesFromRemoteUseCaseTests: XCTestCase {
 }
 
 extension LoadMoviesFromRemoteUseCaseTests {
-    func expect(sut: RemoteMovieLoader, toCompleteWith expectedResult: Result<PopularMovies, RemoteMovieLoader.Error>, when action: (() -> Void), file: StaticString = #filePath, line: UInt = #line) {
+    func expect(sut: RemoteMovieLoader, toCompleteWith expectedResult: Result<PopularMovies, RemoteMovieLoader.Error>, when action: (() -> Void), file: StaticString = #filePath, line: UInt = #line) async throws {
         
-        let expectation = expectation(description: "Wait for load completion")
+        let expectation = XCTestExpectation(description: "Wait for load completion")
         
-        sut.load(with: .popularMovies) { receivedResult in
+        try await sut.load(with: .popularMovies) { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedItems), .success(expectedItems)):
                 let recItems = receivedItems as! PopularMovies
@@ -103,8 +138,8 @@ extension LoadMoviesFromRemoteUseCaseTests {
         }
         
         action()
-        
-        waitForExpectations(timeout: 1)
+
+        await fulfillment(of: [expectation])
     }
 }
 
