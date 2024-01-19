@@ -153,6 +153,7 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    // refactor
     private func fetchPopularMovies() async throws {
         try await loader.load(with: .popularMovies) { [weak self] result in
             guard let self = self else { return }
@@ -164,11 +165,8 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
                 }
                 self.movies = Array(topFourMovies)
                 refreshCollection()
-                print()
-                
-                
-            case .failure(_):
-                print()
+            case .failure(let error):
+                print(error)
             }
         }
     }

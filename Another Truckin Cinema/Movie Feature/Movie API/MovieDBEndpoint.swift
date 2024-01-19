@@ -13,7 +13,7 @@ import Foundation
 struct MovieAPIBaseUrl {
     static let movieDBUrl = "https://api.themoviedb.org/3/movie"
     static let imageBaseUrl = "https://image.tmdb.org/t/p/original/"
-    static let trailerThumbnailBaseUrl = "https://i.ytimg.com/vi"
+    static let trailerThumbnailBaseUrl = "https://img.youtube.com/vi/"
     static let youtubeBaseUrl = "http://www.youtube.com/v" /// https://developers.google.com/youtube/iframe_api_reference
 }
 
@@ -63,12 +63,16 @@ enum MovieAPI {
             switch self {
             case .popularMovies:
                 return ["popular"]
-            case .movie(let id), .allTrailers(let id), .releaseDates(let id):
+            case .movie(let id), .releaseDates(let id):
                 return [id]
+            case .allTrailers(let id):
+                return [id, "videos"]
             case .poster(let path):
                 return [path]
-            case .trailer(let key), .trailerThumbnail(let key):
+            case .trailer(let key):
                 return [key]
+            case .trailerThumbnail(let key):
+                return [key, "hqdefault.jpg"]
             }
         }
         

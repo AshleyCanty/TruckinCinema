@@ -21,7 +21,7 @@ class APIClientSpy: APIClient, Mockable {
         return messages.map({ $0.url })
     }
 
-    func fetch(withUrl url: URL, headers: [(value: String, headerField: String)]?, completion: @escaping ((APIClient.Result) -> Void)) async {
+    func fetch(withUrl url: URL, headers: [(headerField: String, value: String)]?, completion: @escaping ((APIClient.Result) -> Void)) async {
         messages.append((url, completion))
     }
     

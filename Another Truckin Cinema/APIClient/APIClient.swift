@@ -12,12 +12,12 @@ protocol APIClient {
     
     var session: URLSession { get }
     
-    func fetch(withUrl url: URL, headers: [(value: String, headerField: String)]?, completion: @escaping ((Result) -> Void)) async
+    func fetch(withUrl url: URL, headers: [(headerField: String, value: String)]?, completion: @escaping ((Result) -> Void)) async
 }
 
 // refactor - do json parsing in fetch method and change result type to T.Response
 extension APIClient {
-    func fetch(withUrl url: URL, headers: [(value: String, headerField: String)]?, completion: @escaping ((Result) -> Void)) async {
+    func fetch(withUrl url: URL, headers: [(headerField: String, value: String)]?, completion: @escaping ((Result) -> Void)) async {
 
         var urlRequest = URLRequest(url: url)
         if let headers = headers {
@@ -25,10 +25,8 @@ extension APIClient {
         }
         
         guard let (data, response) = try? await session.data(for: urlRequest), let httpResponse = response as? HTTPURLResponse else {
-            print()
             return completion(.failure(APIError.connectivity))
         }
-        print()
         return completion(.success((data, httpResponse)))
     }
 }
