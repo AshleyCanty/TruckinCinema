@@ -7,10 +7,10 @@ You'll have to plug in your API Keys if you want give it a test run. When you op
 
 **GIFS and Screenshots for reference**
 
-GIF #1
+GIF no. 1
 <iframe src="https://giphy.com/embed/If5Ai4FdvshdEskkTs" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/If5Ai4FdvshdEskkTs">via GIPHY</a></p>
 
-GIF #2 
+GIF no. 2 
 <iframe src="https://giphy.com/embed/gW0aJy4JUFz2nJDtBu" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gW0aJy4JUFz2nJDtBu">via GIPHY</a></p>
 
 
