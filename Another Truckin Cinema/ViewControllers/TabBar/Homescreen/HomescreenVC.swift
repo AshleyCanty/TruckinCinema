@@ -118,16 +118,12 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     /// Timer used for auto scrolling the banner
     fileprivate var timer = Timer()
     
-    private let client: MovieDBClient
-    
-    private let loader: RemoteMovieLoader
+    private let loader = RemoteMovieLoader(client: MovieDBClient())
 
     private var movies = [PopularMovie]()
     
     
     override init() {
-        client = MovieDBClient()
-        loader = RemoteMovieLoader(client: client)
         super.init()
     }
     
@@ -371,7 +367,7 @@ extension HomescreenVC {
              Task {
                 do {
                     guard let posterPath = movies[indexPath.row].posterPath else { throw APIError.invalidURL }
-                    let posterUrl = client.createImageUrl(with: posterPath)
+                    let posterUrl = try loader.getPosterUrl(with: posterPath)
                     try await cell.posterImageView.downloadImage(from: posterUrl)
                 } catch {
                     print("Failed to retrieve image: \(error.localizedDescription).")

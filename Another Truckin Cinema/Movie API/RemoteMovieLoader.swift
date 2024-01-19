@@ -42,4 +42,19 @@ final class RemoteMovieLoader: MovieLoader {
             }
         }
     }
+    
+    func getPosterUrl(with posterPath: String) throws -> URL {
+        guard let client = client as? MovieDBClient else { throw RemoteMovieLoader.Error.invalidData }
+        return client.getImageUrl(with: posterPath)
+    }
+    
+    func getTrailerThumbnailUrl(withKey key: String) throws -> URL {
+        guard let client = client as? MovieDBClient else { throw RemoteMovieLoader.Error.invalidData }
+        return client.getTrailerThumbnailUrl(withKey: key)
+    }
+    
+    func getTrailerUrl(withKey key: String) throws -> URL {
+        guard let client = client as? MovieDBClient else { throw RemoteMovieLoader.Error.invalidData }
+        return client.getTrailerUrl(videoKey: key)
+    }
 }

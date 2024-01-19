@@ -19,7 +19,7 @@ final class MovieDBClient: HTTPClient {
     private let bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNzgxMTQ5Mzg1Y2JiMzQwNjljMmE4NjZlYWMzNWEzMCIsInN1YiI6IjY0YTRhYzBjOGM0NGI5MDEyZDZiOTMwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jexcRRrax-HS91ElbcQlu1Xnf8_yp97WgjUjvEQeVJk"
     
     /// Returns a youtube url for the trailer's video key
-    public func createTrailerUrl(videoKey: String) -> URL {
+    public func getTrailerUrl(videoKey: String) -> URL {
         // /VIDEO_ID?version=3
         var trailerUrl = youtubeBaseUrl.appending(path: videoKey)
         trailerUrl.append(queryItems: [URLQueryItem(name: "version", value: "3")])
@@ -82,12 +82,12 @@ final class MovieDBClient: HTTPClient {
     }
     
     /// Returns url for poster
-    public func createImageUrl(with posterPath: String) -> URL {
+    public func getImageUrl(with posterPath: String) -> URL {
         imageBaseUrl.appending(path: posterPath.replacingOccurrences(of: "/", with: ""))
     }
     
     /// Returns url for trailer's thumbnail image
-    public func createTrailerThumbnailUrl(withKey key: String) -> URL {
+    public func getTrailerThumbnailUrl(withKey key: String) -> URL {
         trailerThumbnailBaseUrl.appending(path: key).appending(path: "hqdefault.jpg")
     }
     

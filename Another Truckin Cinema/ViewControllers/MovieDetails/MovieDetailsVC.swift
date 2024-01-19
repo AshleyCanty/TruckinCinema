@@ -92,9 +92,7 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     /// wrapper view to hide/show the rsvp button
     fileprivate lazy var rsvpButtonWrapperView = UIView()
     
-    private let loader: RemoteMovieLoader
-    
-    private let client: MovieDBClient
+    private let loader = RemoteMovieLoader(client: MovieDBClient())
     
     /// movieId string
     private var movieId: String? {
@@ -116,9 +114,6 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     }()
 
     init(movieId: String, screen: Screen) {
-        client = MovieDBClient()
-        loader = RemoteMovieLoader(client: client)
-        
         super.init() /// used to place this last, but switched it on 11/19
         self.movieId = movieId
         self.screen = screen
@@ -308,10 +303,14 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     /// Present the popoever sheet for the trailer to be shared
     func didPressTrailerShareButton(key: String) {
-        let text = "Hey, you should check out this movie!"
-        let url = client.createTrailerUrl(videoKey: key)
-        let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
-        self.present(vc, animated: true)
+        do {
+            let url = try loader.getTrailerUrl(withKey: key)
+            let text = "Hey, you should check out this movie!"
+            let vc = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+            self.present(vc, animated: true)
+        } catch {
+            NSLog("Unable to process request: invalid url")
+        }
     }
     
     @objc private func didPressRSVPButton() {
@@ -403,7 +402,8 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
                 setDefaultImageForTrailerBackdrop(errorMessage: "invalid backdrop path")
                 return
             }
-            let url = client.createImageUrl(with: backdropPath)
+            
+            let url = try loader.getPosterUrl(with: backdropPath)
             try await trailerHeader.backdropImageView.downloadImage(from: url)
             
             DispatchQueue.main.async { [weak self] in
@@ -539,7 +539,7 @@ extension MovieDetailsVC {
                 guard let key = trailers[indexPath.row].key else { throw APIError.invalidData }
                 cell.setVideoKey(key: key)
                 
-                let thumbnailUrl = client.createTrailerThumbnailUrl(withKey: key)
+                let thumbnailUrl = try loader.getTrailerThumbnailUrl(withKey: key)
                 try await cell.backdropImageView.downloadImage(from: thumbnailUrl)
             } catch {
                 print("Failed to fetch thumbnail: \(error.localizedDescription)")

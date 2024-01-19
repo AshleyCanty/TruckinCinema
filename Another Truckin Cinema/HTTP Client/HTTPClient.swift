@@ -11,7 +11,7 @@ protocol HTTPClient {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
 
     var session: URLSession { get }
-//    func fetch<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T
+    
     func processFetch(withUrl url: URL) async throws -> Result
 }
 
