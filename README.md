@@ -5,9 +5,13 @@ _Delsea Drive-in Theater is not associated with this application. This project f
 
 You'll have to plug in your API Keys if you want give it a test run. When you open Xcode and see the file navigator, just go to Supporting Files -> API-Info.plist and add your API Keys.
 
-Recently added unit testing for fetching movies from the database.
+1st half (21 sec)
+https://github.com/AshleyCanty/TruckinCinema/assets/18271283/83a2424e-30f8-495e-959b-7cdc141fd59c
 
-![ATC-2](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/d88eee89-c2b6-40cc-8dd6-4bdad7961ef2)
+2nd half (21 sec)
+https://github.com/AshleyCanty/TruckinCinema/assets/18271283/6664d66e-8141-4dbd-b29f-0d3ea379c325
+
+
 
 ![Screenshot 2024-01-19 at 2 29 24 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/173e0ea2-f8b1-4c12-854c-9df2bc9c570b)
 ![Screenshot 2024-01-19 at 2 29 30 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/62cee67b-0b9e-4519-ae23-31846d493fa9)
