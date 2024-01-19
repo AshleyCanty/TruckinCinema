@@ -11,8 +11,6 @@ import Foundation
 //protocol MovieClient
 
 final class MovieDBClient: HTTPClient {
-
-    
     private let youtubeBaseUrl: URL = URL(string: "http://www.youtube.com/v")! /// https://developers.google.com/youtube/iframe_api_reference
     
     private let baseURL: URL = URL(string: "https://api.themoviedb.org/3/movie")!
@@ -41,30 +39,26 @@ final class MovieDBClient: HTTPClient {
     }
     
     /// Fetches popular movies
-    public func fetchPopularMovies() async throws -> PopularMovies {
-        let url = try createURL(usingPaths: ["popular"],
+    private func getPopularMoviesURL() throws -> URL { //PopularMovies
+        return try createURL(usingPaths: ["popular"],
                             queryItems: [URLQueryItem(name: "language", value: "en"), URLQueryItem(name: "page", value: "1")])
-        return try await processFetch(withUrl: url, forType: PopularMovies.self)
     }
     
     /// Fetches a movie
-    public func fetchMovie(withId id: String) async throws -> Movie {
-        let url = try createURL(usingPaths: [id])
-        return try await processFetch(withUrl: url, forType: Movie.self)
+    private func getMovieURL(withId id: String) throws -> URL { // Movie {
+        return try createURL(usingPaths: [id])
     }
     
     /// Fetches movie trailers
-    public func fetchMovieTrailers(withId id: String) async throws -> MovieTrailers {
-        let url = try createURL(usingPaths: [id, "videos"])
-        return try await processFetch(withUrl: url, forType: MovieTrailers.self)
+    private func getMovieTrailers(withId id: String) throws -> URL { //MovieTrailers {
+        return try createURL(usingPaths: [id, "videos"])
     }
     
     /// Fetch release dates and ratings
-    public func fetchRatingAndReleaseDates(withId id: String) async throws -> MovieReleaseDates {
-        let url = try createURL(usingPaths: [id],
+    private func getRatingAndReleaseDates(withId id: String) throws -> URL { // MovieReleaseDates {
+        return try createURL(usingPaths: [id],
                                 queryItems: [URLQueryItem(name: "language", value: "en"),
                                              URLQueryItem(name: "append_to_response", value: "release_dates")])
-        return try await processFetch(withUrl: url, forType: MovieReleaseDates.self)
     }
     
 //    /// Fetches movie trailers
@@ -72,7 +66,21 @@ final class MovieDBClient: HTTPClient {
 //        let result = try await prepareFetch(forType: MovieImages.self, paths: [id, "images"])
 //        return result.posters
 //    }
-//    
+//
+    
+    public func getMovieRequestUrl(forType type: MovieRequestType) throws -> URL {
+        switch type {
+        case .popularMovies:
+            return try getPopularMoviesURL()
+        case .singleMovie(let id):
+            return try getMovieURL(withId: id)
+        case .movieTrailers(let id):
+            return try getMovieTrailers(withId: id)
+        case .movieRatingAndReleaseDates(let id):
+            return try getRatingAndReleaseDates(withId: id)
+        }
+    }
+    
     /// Returns url for poster
     public func createImageUrl(with posterPath: String) -> URL {
         imageBaseUrl.appending(path: posterPath.replacingOccurrences(of: "/", with: ""))
@@ -83,16 +91,9 @@ final class MovieDBClient: HTTPClient {
         trailerThumbnailBaseUrl.appending(path: key).appending(path: "hqdefault.jpg")
     }
     
-    func processFetch<T: Codable>(withUrl url: URL, forType type: T.Type) async throws -> T {
+    func processFetch(withUrl url: URL) async throws -> HTTPClient.Result {
         let request = try createRequest(withUrl: url)
-        let result = try await fetch(with: request)
-        
-        switch result {
-        case .success((let data, let response)):
-            return try MovieDBMapper.map(data: data, response: response, type: type.self)
-        case .failure(_):
-            throw RemoteMovieLoader.Error.invalidData
-        }
+        return try await fetch(with: request)
     }
 
     private func createRequest(withUrl url: URL) throws -> URLRequest {

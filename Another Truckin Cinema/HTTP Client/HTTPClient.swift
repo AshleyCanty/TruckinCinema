@@ -12,7 +12,7 @@ protocol HTTPClient {
 
     var session: URLSession { get }
 //    func fetch<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T
-    func processFetch<T: Codable>(withUrl url: URL, forType type: T.Type) async throws -> T
+    func processFetch(withUrl url: URL) async throws -> Result
 }
 
 extension HTTPClient {

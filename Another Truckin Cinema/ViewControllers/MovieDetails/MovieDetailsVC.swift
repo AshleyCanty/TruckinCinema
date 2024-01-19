@@ -92,7 +92,9 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     /// wrapper view to hide/show the rsvp button
     fileprivate lazy var rsvpButtonWrapperView = UIView()
     
-    private let client = MovieDBClient()
+    private let loader: RemoteMovieLoader
+    
+    private let client: MovieDBClient
     
     /// movieId string
     private var movieId: String? {
@@ -114,6 +116,9 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     }()
 
     init(movieId: String, screen: Screen) {
+        client = MovieDBClient()
+        loader = RemoteMovieLoader(client: client)
+        
         super.init() /// used to place this last, but switched it on 11/19
         self.movieId = movieId
         self.screen = screen
@@ -145,25 +150,9 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         }
     }
 
-    @MainActor
-    func refreshTable() {
-        tableView.reloadData()
-    }
-    
-    /// Calls on client to fetch movie details
-    private func fetchMovieDetails() {
-        Task {
-            do {
-                guard let id = movieId else { throw APIError.invalidData }
-                movie = try await client.fetchMovie(withId: id)
-                loadTrailerHeaderBackDropImage()
-                updateTitleHeaderView()
-                trailers = try await client.fetchMovieTrailers(withId: id)
-                refreshTable()
-                
-            } catch (let error) {
-                print("Invalid movie Id: \(error.localizedDescription)")
-            }
+    private func refreshTable() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
@@ -244,35 +233,6 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
         rsvpButton.addTarget(self, action: #selector(didPressRSVPButton), for: .touchUpInside)
         
         addCustomNavBar()
-    }
-    
-    /// Loads backdrop image for trailer header
-    @objc fileprivate func loadTrailerHeaderBackDropImage() {
-        Task {
-            do {
-                guard let backdropPath = movie?.backdropPath else { throw APIError.invalidData }
-                let url = client.createImageUrl(with: backdropPath)
-                try await trailerHeader.backdropImageView.downloadImage(from: url)
-                trailerHeader.hidePlayButton(shouldHide: false)
-            } catch {
-                print("Failed to retrieve image: \(error.localizedDescription)")
-                trailerHeader.backdropImageView.image = UIImage(named: "placeholder-backdrop")
-                trailerHeader.hidePlayButton(shouldHide: true)
-            }
-        }
-    }
-    
-    private func updateTitleHeaderView() {
-        titleDetailView.movie = movie
-        Task {
-            do {
-                guard let id = movieId else { throw APIError.invalidData }
-                let ratings = try await client.fetchRatingAndReleaseDates(withId: id)
-                titleDetailView.ratingLabel.text = ratings.filterForUSRating()
-            } catch {
-                print("Failed to fetch rating: \(error.localizedDescription)")
-            }
-        }
     }
     
     private func filterForUSRating() {
@@ -385,6 +345,99 @@ class MovieDetailsVC: BaseViewController, ShowtimeRadioListCellDelegate, MovieSu
     
     private func storeRSVPDate(date: String) {
         rsvpOrder?.date = date
+    }
+    
+    // MARK :- API Methods
+    
+    /// Calls on client to fetch movie details
+    private func fetchMovieDetails() {
+        Task {
+            do {
+                try await fetchMovie()
+                try await fetchRatingAndReleaseDates()
+                try await fetchTrailers()
+            } catch (let error) {
+                print("Invalid movie Id: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func fetchMovie() async throws {
+        guard let id = movieId else { throw APIError.invalidData }
+        loader.load(forRequestType: .singleMovie(usingMovieId: id), completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                movie = results as? Movie
+                DispatchQueue.main.async { [weak self] in
+                    self?.titleDetailView.movie = self?.movie
+                }
+                
+                Task {
+                    await self.fetchTrailerHeaderBackDropImage()
+                }
+            case .failure(_):
+                print()
+            }
+        })
+    }
+    
+    private func fetchTrailers() async throws {
+        guard let id = movieId else { throw APIError.invalidData }
+        loader.load(forRequestType: .movieTrailers(usingMovieId: id), completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                trailers = results as? MovieTrailers
+                refreshTable()
+            case .failure(_):
+                print()
+            }
+        })
+    }
+    
+    /// Loads backdrop image for trailer header
+    @objc fileprivate func fetchTrailerHeaderBackDropImage() async {
+        do {
+            guard let backdropPath = movie?.backdropPath else {
+                setDefaultImageForTrailerBackdrop(errorMessage: "invalid backdrop path")
+                return
+            }
+            let url = client.createImageUrl(with: backdropPath)
+            try await trailerHeader.backdropImageView.downloadImage(from: url)
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.trailerHeader.hidePlayButton(shouldHide: false)
+            }
+        } catch (let error) {
+            setDefaultImageForTrailerBackdrop(errorMessage: error.localizedDescription)
+        }
+    }
+    
+    private func setDefaultImageForTrailerBackdrop(errorMessage: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.trailerHeader.backdropImageView.image = UIImage(named: "placeholder-backdrop")
+            self?.trailerHeader.hidePlayButton(shouldHide: true)
+        }
+        print("Failed to retrieve image: \(errorMessage)")
+    }
+    
+    private func fetchRatingAndReleaseDates() async throws {
+        guard let id = movieId else { throw APIError.invalidData }
+        loader.load(forRequestType: .movieRatingAndReleaseDates(usingMovieId: id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                let ratings = results as? MovieReleaseDates
+                let filteredRatings = ratings?.filterForUSRating()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.titleDetailView.ratingLabel.text = filteredRatings
+                }
+            case .failure(_):
+                print()
+            }
+        }
     }
 }
 

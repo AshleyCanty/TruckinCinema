@@ -109,6 +109,7 @@
 		249E6BC62B098970007F8494 /* Data+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E6BC52B098970007F8494 /* Data+extensions.swift */; };
 		249E6BE62B09BB00007F8494 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E6BE52B09BB00007F8494 /* APIError.swift */; };
 		249E6BE82B09BB2C007F8494 /* MovieDBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E6BE72B09BB2C007F8494 /* MovieDBClient.swift */; };
+		24B478CE2B47AB6B00C99BB6 /* MovieDBMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B478CD2B47AB6B00C99BB6 /* MovieDBMapper.swift */; };
 		24C153472A8195500080CB19 /* Registration+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C153462A8195500080CB19 /* Registration+Enums.swift */; };
 		24C1534B2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1534A2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift */; };
 		24C1534E2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1534D2A83217A0080CB19 /* TicketsAndScreenConfirmationCell.swift */; };
@@ -269,6 +270,7 @@
 		249E6BC52B098970007F8494 /* Data+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extensions.swift"; sourceTree = "<group>"; };
 		249E6BE52B09BB00007F8494 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		249E6BE72B09BB2C007F8494 /* MovieDBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBClient.swift; sourceTree = "<group>"; };
+		24B478CD2B47AB6B00C99BB6 /* MovieDBMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBMapper.swift; sourceTree = "<group>"; };
 		24C153462A8195500080CB19 /* Registration+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Registration+Enums.swift"; sourceTree = "<group>"; };
 		24C1534A2A82D5330080CB19 /* MovieQRCodeConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQRCodeConfirmationCell.swift; sourceTree = "<group>"; };
 		24C1534C2A82F9340080CB19 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -854,6 +856,7 @@
 			isa = PBXGroup;
 			children = (
 				24FB3F0E2B40D12800DE27C8 /* RemoteMovieLoader.swift */,
+				24B478CD2B47AB6B00C99BB6 /* MovieDBMapper.swift */,
 			);
 			path = "Movie API";
 			sourceTree = "<group>";
@@ -1196,6 +1199,7 @@
 				244CCB842A5500C50045DDAB /* Another_Truckin_Cinema.xcdatamodeld in Sources */,
 				249523352A639F47007228D5 /* MovieCellData.swift in Sources */,
 				249523222A60CCBF007228D5 /* AutoLayout+extensions.swift in Sources */,
+				24B478CE2B47AB6B00C99BB6 /* MovieDBMapper.swift in Sources */,
 				244F82DA2A955476002938B4 /* FoodDeliveryTimeCell.swift in Sources */,
 				24FC6D3F2A68310700461AA8 /* ThemeButton.swift in Sources */,
 				245D70A12B113C76008E0543 /* Ticket.swift in Sources */,

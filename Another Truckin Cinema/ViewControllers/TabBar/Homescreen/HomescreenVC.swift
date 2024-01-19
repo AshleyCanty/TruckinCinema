@@ -118,13 +118,21 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
     /// Timer used for auto scrolling the banner
     fileprivate var timer = Timer()
     
-    let client = MovieDBClient()
+    private let client: MovieDBClient
+    
+    private let loader: RemoteMovieLoader
 
-    private var movies: [PopularMovie] = [] {
-        didSet {
-            // reload tabledata
-            movieCollection.reloadData()
-        }
+    private var movies = [PopularMovie]()
+    
+    
+    override init() {
+        client = MovieDBClient()
+        loader = RemoteMovieLoader(client: client)
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -136,18 +144,43 @@ class HomescreenVC: BaseViewController, UICollectionViewDataSource, UICollection
         
         Task {
             do {
-                guard let results = try await MovieDBClient().fetchPopularMovies().results?.prefix(4) else { return }
-                movies = Array(results)
+                try await fetchPopularMovies()
             } catch {
                 print("Failed to fetch and decode")
             }
         }
     }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    private func fetchPopularMovies() async throws {
+        loader.load(forRequestType: .popularMovies) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let results):
+                guard let topFourMovies = (results as? PopularMovies)?.results?.prefix(4) else {
+                    // handle failure
+                    return
+                }
+                self.movies = Array(topFourMovies)
+                refreshCollection()
+                print()
+                
+            
+            case .failure(_):
+                print()
+            }
+        }
+    }
+    
+    private func refreshCollection() {
+        DispatchQueue.main.async { [weak self] in
+            self?.movieCollection.reloadData()
+        }
     }
 
     // MARK: -- Private methods
