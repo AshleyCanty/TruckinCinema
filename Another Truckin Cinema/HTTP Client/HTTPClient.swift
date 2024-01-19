@@ -9,7 +9,19 @@ import Foundation
 
 protocol HTTPClient {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-    
-    func get(with url: URL, completion: @escaping (Result) -> Void)
+
+    var session: URLSession { get }
+//    func fetch<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T
+    func processFetch<T: Codable>(withUrl url: URL, forType type: T.Type) async throws -> T
 }
 
+extension HTTPClient {
+    func fetch(with request: URLRequest) async throws -> HTTPClient.Result {
+        let (data, response) = try await session.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return .failure(APIError.requestFailed(description: "Invalid response"))
+        }
+        
+        return .success((data, httpResponse))
+    }
+}

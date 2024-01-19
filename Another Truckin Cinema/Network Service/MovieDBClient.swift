@@ -10,7 +10,9 @@ import Foundation
 
 //protocol MovieClient
 
-final class MovieDBClient: GenericAPI {
+final class MovieDBClient: HTTPClient {
+
+    
     private let youtubeBaseUrl: URL = URL(string: "http://www.youtube.com/v")! /// https://developers.google.com/youtube/iframe_api_reference
     
     private let baseURL: URL = URL(string: "https://api.themoviedb.org/3/movie")!
@@ -40,31 +42,34 @@ final class MovieDBClient: GenericAPI {
     
     /// Fetches popular movies
     public func fetchPopularMovies() async throws -> PopularMovies {
-        try await prepareFetch(type: PopularMovies.self,
-                                            paths: ["popular"],
-                                            queryItems: [URLQueryItem(name: "language", value: "en"), URLQueryItem(name: "page", value: "1")])
+        let url = try createURL(usingPaths: ["popular"],
+                            queryItems: [URLQueryItem(name: "language", value: "en"), URLQueryItem(name: "page", value: "1")])
+        return try await processFetch(withUrl: url, forType: PopularMovies.self)
     }
     
     /// Fetches a movie
     public func fetchMovie(withId id: String) async throws -> Movie {
-        try await prepareFetch(type: Movie.self, paths: [id])
+        let url = try createURL(usingPaths: [id])
+        return try await processFetch(withUrl: url, forType: Movie.self)
     }
     
     /// Fetches movie trailers
     public func fetchMovieTrailers(withId id: String) async throws -> MovieTrailers {
-        try await prepareFetch(type: MovieTrailers.self, paths: [id, "videos"])
+        let url = try createURL(usingPaths: [id, "videos"])
+        return try await processFetch(withUrl: url, forType: MovieTrailers.self)
     }
     
     /// Fetch release dates and ratings
     public func fetchRatingAndReleaseDates(withId id: String) async throws -> MovieReleaseDates {
-        try await prepareFetch(type: MovieReleaseDates.self, paths: [id],
-                                             queryItems: [URLQueryItem(name: "language", value: "en"),
-                                                          URLQueryItem(name: "append_to_response", value: "release_dates")])
+        let url = try createURL(usingPaths: [id],
+                                queryItems: [URLQueryItem(name: "language", value: "en"),
+                                             URLQueryItem(name: "append_to_response", value: "release_dates")])
+        return try await processFetch(withUrl: url, forType: MovieReleaseDates.self)
     }
     
 //    /// Fetches movie trailers
 //    public func fetchMoviePosters(withId id: String) async throws -> [MoviePoster] {
-//        let result = try await prepareFetch(type: MovieImages.self, paths: [id, "images"])
+//        let result = try await prepareFetch(forType: MovieImages.self, paths: [id, "images"])
 //        return result.posters
 //    }
 //    
@@ -78,14 +83,26 @@ final class MovieDBClient: GenericAPI {
         trailerThumbnailBaseUrl.appending(path: key).appending(path: "hqdefault.jpg")
     }
     
-    /// Prepares network request by accepting params: codable type, paths, and query items
-    fileprivate func prepareFetch<T: Codable>(type: T.Type, paths: [String]?, queryItems: [URLQueryItem] = []) async throws -> T {
-        let request = try createRequest(paths: paths, queryItems: queryItems)
-        let result = try await fetch(type: T.self, with: request)
-        return result
+    func processFetch<T: Codable>(withUrl url: URL, forType type: T.Type) async throws -> T {
+        let request = try createRequest(withUrl: url)
+        let result = try await fetch(with: request)
+        
+        switch result {
+        case .success((let data, let response)):
+            return try MovieDBMapper.map(data: data, response: response, type: type.self)
+        case .failure(_):
+            throw RemoteMovieLoader.Error.invalidData
+        }
+    }
+
+    private func createRequest(withUrl url: URL) throws -> URLRequest {
+        var request = URLRequest(url: url)
+        request.addValue(apiKey, forHTTPHeaderField: "apiKey")
+        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "authorization")
+        return request
     }
     
-    private func createRequest(paths: [String]?, queryItems: [URLQueryItem] = []) throws -> URLRequest {
+    private func createURL(usingPaths paths: [String]?, queryItems: [URLQueryItem] = []) throws -> URL {
         guard let paths = paths else { throw APIError.invalidURL }
         
         /// Append paths to baseURL
@@ -98,9 +115,6 @@ final class MovieDBClient: GenericAPI {
         
         /// Add header fields
         guard let url = urlComponents?.url else { throw APIError.invalidURL }
-        var request = URLRequest(url: url)
-        request.addValue(apiKey, forHTTPHeaderField: "apiKey")
-        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "authorization")
-        return request
+        return url
     }
 }

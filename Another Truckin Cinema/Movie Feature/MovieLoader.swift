@@ -9,9 +9,11 @@ import Foundation
 
 
 protocol MovieLoader {
-    typealias Result = Swift.Result<[Movie], Error>
+    typealias Result = Swift.Result<Codable, Error>
     
-    func load(completion: @escaping (Result) -> Void)
+    func load<T: Codable>(forType type: T.Type, completion: @escaping (Result) -> Void)
+    
+    
 }
 
 
