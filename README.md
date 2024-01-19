@@ -12,6 +12,7 @@ You'll have to plug in your API Keys if you want give it a test run. When you op
 <iframe src="https://giphy.com/embed/gW0aJy4JUFz2nJDtBu" width="230" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gW0aJy4JUFz2nJDtBu">via GIPHY</a></p>
 
 
+
 ![Screenshot 2024-01-19 at 2 29 24 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/173e0ea2-f8b1-4c12-854c-9df2bc9c570b)
 ![Screenshot 2024-01-19 at 2 29 30 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/62cee67b-0b9e-4519-ae23-31846d493fa9)
 ![Screenshot 2024-01-19 at 2 29 36 PM](https://github.com/AshleyCanty/TruckinCinema/assets/18271283/c5494cca-04bc-44fc-add4-d83576b1e68d)
