@@ -11,11 +11,24 @@ import Foundation
 final class RemoteMovieLoader: MovieLoader {
     let url: URL
     let client: HTTPClient
+    let movieRequestType: MovieRequestType
     
+    enum MovieRequestType {
+        case popularMovies(String)
+        case movieDetails
+        case movieTrailers(String)
+        case movieRatingAndReleaseDates(String)
+    }
     
-    init(url: URL, client: HTTPClient) {
+    enum Error: Swift.Error {
+        case invalidData
+        case connectivity
+    }
+    
+    init(url: URL, client: HTTPClient, movieRequestType: MovieRequestType) {
         self.url = url
         self.client = client
+        self.movieRequestType = movieRequestType
     }
     
     func load(completion: @escaping (MovieLoader.Result) -> Void) {
@@ -23,6 +36,10 @@ final class RemoteMovieLoader: MovieLoader {
             guard let self = self else { return }
             switch result {
             case .success(let data, let response):
+                guard response.statusCode == 200 else {
+                    completion(.failure(Error.invalidData))
+                    return
+                }
                 completion(.success([]))
             case .failure(let error):
                 completion(.failure(error))
@@ -30,3 +47,6 @@ final class RemoteMovieLoader: MovieLoader {
         }
     }
 }
+
+
+

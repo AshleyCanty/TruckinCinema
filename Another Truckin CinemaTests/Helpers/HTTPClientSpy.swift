@@ -11,6 +11,7 @@ import XCTest
 
 
 class HTTPClientSpy: HTTPClient {
+    typealias StatusCode = Int
     var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
     
     var requestedUrls: [URL] {
@@ -29,7 +30,7 @@ class HTTPClientSpy: HTTPClient {
         messages[index].completion(.failure(error))
     }
     
-    func complete(with statusCode: Int, data: Data, at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) {
+    func complete(with statusCode: StatusCode, data: Data = Data(), at index: Int = 0, file: StaticString = #filePath, lineNumber: UInt = #line) {
         guard requestedUrls.count > index else {
             return XCTFail("Can't complete request never made", file: file, line: lineNumber)
         }

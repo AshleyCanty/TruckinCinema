@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct Movie: Codable {
+struct Movie: Equatable, Identifiable, Codable {
+    let identifer: UUID
     let backdropPath: String?
     let genres: [Genre]?
     let id: Int?
@@ -17,6 +18,10 @@ struct Movie: Codable {
     let releaseDate: String?
     let runtime: Int?
     let title: String?
+    
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.identifer == rhs.identifer
+    }
 }
 
 struct Genre: Codable {
